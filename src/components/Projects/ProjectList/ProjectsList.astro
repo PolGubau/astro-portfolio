@@ -1,0 +1,15 @@
+---
+import type { ProjectMetadata } from "../../../lib/constants";
+import "./post-list.css";
+import ProjectListItem from "./ProjectListItem.astro";
+
+type Props = {
+  projects: ProjectMetadata[];
+};
+
+const { projects } = Astro.props;
+---
+
+<ul class="flex w-full flex-wrap gap-2">
+  {projects.map((p) => <ProjectListItem p={p} />)}
+</ul>

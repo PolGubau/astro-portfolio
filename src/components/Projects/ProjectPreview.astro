@@ -1,0 +1,49 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+  backgroundColor?: string;
+
+  image: {
+    src: string;
+    alt: string;
+  };
+}
+
+const {
+  title,
+  image: { src, alt },
+  slug,
+  backgroundColor,
+} = Astro.props;
+---
+
+<div
+  class="group project-cascade relative flex h-64 cursor-pointer flex-col gap-1 overflow-hidden bg-transparent md:h-96"
+>
+  <a
+    href={`/${slug}`}
+    style={{
+      backgroundColor,
+    }}
+    title={title}
+    class="flex h-full animate-fade-in items-start outline-0 outline-primary transition-all duration-300 hover:brightness-120 focus-visible:outline-1 md:justify-center"
+  >
+    <img
+      style={{
+        mixBlendMode: "multiply",
+      }}
+      class="pointer-events-none mt-20 h-auto w-full object-cover object-left transition-all md:h-[500px]"
+      src={src}
+      title={`Cover Image for ${title}`}
+      alt={`Cover Image for ${alt}`}
+      width={600}
+      height={330}
+    />
+    <h3
+      class="absolute top-6 left-6 z-10 mb-3 font-medium text-3xl leading-snug dark:text-neutral-800"
+    >
+      {title}
+    </h3>
+  </a>
+</div>

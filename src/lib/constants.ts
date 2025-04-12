@@ -47,20 +47,3 @@ export const metadata = {
 
 	homeOgImage: "/assets/thumbnail.png",
 };
-
-export type WithBase<T> = T & { slug: string };
-
-export type BlogMetadata = WithBase<{
-	title: string;
-	summary: string;
-	startedAt: string;
-	endedAt?: string;
-	color: string;
-	link?: string;
-	githubLink?: string;
-	npmCommand?: string;
-	npmLink?: string;
-	cover: string;
-	category?: string;
-	tech?: string;
-}>;

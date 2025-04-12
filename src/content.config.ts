@@ -7,11 +7,10 @@ const blog = defineCollection({
 	// Type-check frontmatter using a schema
 	schema: z.object({
 		title: z.string(),
-		description: z.string(),
-		// Transform string to Date object
-		pubDate: z.coerce.date(),
-		updatedDate: z.coerce.date().optional(),
-		heroImage: z.string().optional(),
+		summary: z.string(),
+		publishedAt: z.string().transform((str) => new Date(str)),
+		cover: z.string(),
+		tags: z.array(z.string()).optional(),
 	}),
 });
 
@@ -37,5 +36,6 @@ const projects = defineCollection({
 });
 
 export type Project = InferEntrySchema<"projects">;
+export type Blog = InferEntrySchema<"blog">;
 
 export const collections = { blog, projects };

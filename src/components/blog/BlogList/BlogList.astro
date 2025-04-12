@@ -1,0 +1,22 @@
+---
+import type { BlogMetadata } from "../../../lib/utils";
+import BlogLink from "../../BlogLink.astro";
+
+type Props = {
+  blogs: BlogMetadata[];
+};
+
+const { blogs } = Astro.props;
+---
+
+<ul class="flex flex-col justify-center gap-4">
+  {
+    blogs.map((post) => (
+      <li class=" project-cascade">
+        <BlogLink slug={post.id} name={post.data.title}>
+          {post.data.publishedAt}
+        </BlogLink>
+      </li>
+    ))
+  }
+</ul>

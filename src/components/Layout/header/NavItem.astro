@@ -14,7 +14,7 @@ const isActive = path === pathname || path === `/${subpath?.[0] || ""}`;
   tabindex={isActive ? -1 : undefined}
   class:list={[
     "flex rounded-xl align-middle outline-0 outline-primary transition-all focus-visible:outline-1",
-    { "pointer-events-none text-secondary-900": isActive },
+    { "pointer-events-none text-secondary-900 bg-primary": isActive },
     {
       "text-secondary-900/70 hover:brightness-150 dark:text-secondary-50/70":
         !isActive,

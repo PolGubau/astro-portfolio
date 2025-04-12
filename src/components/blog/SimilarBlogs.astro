@@ -1,0 +1,43 @@
+---
+import type { BlogMetadata } from "../../lib/utils";
+import { blogs } from "../../lib/utils";
+import BlogLink from "../BlogLink.astro";
+
+type Props = {
+  blog: BlogMetadata;
+};
+
+const similarTechProjects = (blog: BlogMetadata): BlogMetadata[] => {
+  // get 3 projects that has tech in common, if it's not the case, get up to 3 random projects
+
+  const tags = blog.data.tags ?? [];
+  const otherBlogs = blogs.filter((post) => post.id !== blog.id);
+
+  const similarTechFiles = otherBlogs.filter((post) =>
+    post.data.tags?.some((t) => tags.includes(t)),
+  );
+
+  if (similarTechFiles.length > 3) {
+    return similarTechFiles.slice(0, 3);
+  }
+
+  return otherBlogs.slice(0, 3);
+};
+const { blog } = Astro.props;
+---
+
+<>
+  <h2
+    class="mt-16 font-semibold text-2xl text-neutral-900 dark:text-neutral-100"
+  >
+    Similar Posts
+  </h2>
+  <div class="flex flex-wrap gap-2">
+    {
+      similarTechProjects(blog).map((project) => {
+        const realSlug = project.id.replace("blog/", "");
+        return <BlogLink name={project.data.title} slug={realSlug} />;
+      })
+    }
+  </div>
+</>

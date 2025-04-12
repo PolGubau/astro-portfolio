@@ -1,25 +1,46 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import ProjectLayout from "../../layouts/ProjectLayout.astro";
 import { render } from "astro:content";
+import { ProjectBar } from "../../components/Projects/ProjectBar";
+import ProjectHeader from "../../components/Projects/ProjectHeader.astro";
+import { SimilarProjects } from "../../components/Projects/SimilarProjects";
+import MainLayout from "../../layouts/MainLayout.astro";
+import MdLayout from "../../layouts/MdLayout.astro";
 import { getProjects } from "../../lib/utils";
 
 export async function getStaticPaths() {
-	const posts = getProjects();
-	if (!posts) {
+	const projects = getProjects();
+	if (!projects) {
 		return [];
 	}
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
+	return projects.map((project) => ({
+		params: { slug: project.id },
+		props: project,
 	}));
 }
 type Props = CollectionEntry<"projects">;
 
-const post = Astro.props;
-const { Content } = await render(post);
+const project = Astro.props;
+const { Content } = await render(project);
 ---
 
-<ProjectLayout {...post.data}>
-	<Content />
-</ProjectLayout>
+<MainLayout>
+	<MdLayout>
+		<section class="relative flex flex-col gap-4 overflow-x-visible">
+			<ProjectHeader project={project} />
+			<div class="overflow-visible px-1">
+				<Content />
+			</div>
+			<SimilarProjects project={project.data} />
+			<a
+				title="Back to projects"
+				href="/projects"
+				href-lang="en-us"
+				class="text-neutral-500 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300"
+			>
+				<span class="sr-only">Back to projects</span>← Back
+			</a>
+			{project.data.link ? <ProjectBar project={project.data} /> : null}
+		</section>
+	</MdLayout>
+</MainLayout>

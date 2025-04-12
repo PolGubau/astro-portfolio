@@ -1,0 +1,37 @@
+---
+interface Props {
+  title: string;
+  pros: string[];
+}
+const { title, pros } = Astro.props;
+---
+
+<div
+  class="my-4 w-full rounded-xl border border-emerald-200 bg-neutral-50 p-6 dark:border-emerald-900 dark:bg-neutral-900"
+>
+  <span>{title}</span>
+  <div class="mt-4">
+    {
+      pros.map((pro) => (
+        <div class="mb-2 flex items-baseline font-medium">
+          <div class="mr-2 h-4 w-4">
+            <svg class="h-4 w-4 text-emerald-500" viewBox="0 0 24 24">
+              <title>Pros</title>
+              <g
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                <path d="M22 4L12 14.01l-3-3" />
+              </g>
+            </svg>
+          </div>
+          <span>{pro}</span>
+        </div>
+      ))
+    }
+  </div>
+</div>

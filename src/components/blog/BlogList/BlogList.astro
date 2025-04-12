@@ -13,7 +13,7 @@ const { blogs } = Astro.props;
   {
     blogs.map((post) => (
       <li class=" project-cascade">
-        <BlogLink slug={post.id} name={post.data.title}>
+        <BlogLink slug={`/blog/${post.id}`} name={post.data.title}>
           {post.data.publishedAt}
         </BlogLink>
       </li>

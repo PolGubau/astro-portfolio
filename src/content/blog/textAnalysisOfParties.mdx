@@ -78,60 +78,18 @@ By the usage of these word clouds, we can have a **visual approach** to the most
 ### Word Clouds:
 
 #### Vox:
-
-{" "}
-
-<div className="mb-16">
-  <Image
-    src="/media/blog/textAnalysisOfParties/wc_vox.png"
-    className=""
-    alt="Gubau Afternoons mobile version"
-    width={500}
-    height={400}
-  />
-</div>
+![Word Count Vox](../../assets/media/blog/textAnalysisOfParties/wc_vox.png)
 
 #### Podemos:
-
-{" "}
-
-<div className="mb-16">
-  <Image
-    src="/media/blog/textAnalysisOfParties/wc_podemos.png"
-    className=""
-    alt="Gubau Afternoons mobile version"
-    width={500}
-    height={400}
-  />
-</div>
+![Word Count Podemos](../../assets/media/blog/textAnalysisOfParties/wc_podemos.png)
 
 #### PSOE:
-
-{" "}
-
-<div className="mb-16">
-  <Image
-    src="/media/blog/textAnalysisOfParties/wc_psoe.png"
-    className=""
-    alt="Gubau Afternoons mobile version"
-    width={500}
-    height={400}
-  />
-</div>
+![Word Count PSOE](../../assets/media/blog/textAnalysisOfParties/wc_psoe.png)
 
 #### PP:
+![Word Count PP](../../assets/media/blog/textAnalysisOfParties/wc_pp.png)
 
-{" "}
-
-<div className="mb-16">
-  <Image
-    src="/media/blog/textAnalysisOfParties/wc_pp.png"
-    className=""
-    alt="Gubau Afternoons mobile version"
-    width={500}
-    height={400}
-  />
-</div>
+ 
 
 # IV. N-gram Analysis:
 
@@ -191,13 +149,13 @@ Applying a sentiment function that sums each word found in our programs to the A
 
 Keep in mind that -5 would mean the most negative mark and +5 the most positive:
 
-The sentiment of the **Vox** political party program is 0.238.
+| Political Party | Sentiment Score |
+|----------------|-----------------|
+| Vox            | 0.238           |
+| PP             | 0.621           |
+| PSOE          | 1.130           |
+| Podemos        | -0.365          |
 
-The sentiment of the **PP** political party program is 0.621.
-
-The sentiment of the **PSOE** political party program is 1.130.
-
-The sentiment of the **Podemos** political party program is -0.365.
 
 Trying to be the most objective posible, **Podemos** seems to be the most different political party, if we check the word cloud, they use almost utopian words as 'igualdad’, 'democracia’, 'sostenibles’... but they have the worst position in the sentiment analysis.
 
@@ -215,19 +173,19 @@ In wrapping up our exploration of political party programs through text analysis
 
 The word clouds vividly illustrate distinct linguistic patterns within each political party program. Vox and PP frequently reference terms like 'españa,' reflecting a strong nationalistic discourse. In contrast, Podemos employs utopian language, emphasising concepts such as 'igualdad' and 'democracia.'
 
-1. N-gram analysis
+2. N-gram analysis
 
 Particularly focusing on bigrams, enhances our linguistic understanding by revealing commonly used phrases. This provides a nuanced view of language structure and recurring themes unique to each political party.
 
-1. Contextual analysis
+3. Contextual analysis
 
 Considering term frequency in relation to the length of the program, offers a more balanced perspective. This approach allows us to gauge the significance of repeated terms in the context of the overall content.
 
-1. Sentiment analysis using the AFINN lexicon
+4. Sentiment analysis using the AFINN lexicon
 
 It provides a punctuation to the emotional tone of each political party program. The results indicate varying sentiment scores, with Podemos displaying a more negative tone compared to other parties.
 
-1. Target Audience and Vocabulary Variety:
+5. Target Audience and Vocabulary Variety:
 
 The choice of words and their frequency also hints at the potential target audience. Podemos, with its emphasis on terms like 'menor' and 'menores,' may be targeting a younger demographic. In contrast, PP, with a more extensive vocabulary, could be appealing to an older audience.
 

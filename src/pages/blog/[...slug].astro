@@ -1,21 +1,59 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
-import { render } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import SimilarBlogs from "../../components/blog/SimilarBlogs.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+import MdLayout from "../../layouts/MdLayout.astro";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
+	const posts = await getCollection("blog");
 	return posts.map((post) => ({
 		params: { slug: post.id },
 		props: post,
 	}));
 }
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<"blog">;
+
+function formatDate(d: Date) {
+	const fullDate = d.toLocaleString("en-us", {
+		month: "long",
+		day: "numeric",
+		year: "numeric",
+	});
+
+	return fullDate;
+}
 
 const post = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BlogPost {...post.data}>
-	<Content />
-</BlogPost>
+<MainLayout>
+	<MdLayout>
+		<section class="w-full prose dark:prose-invert">
+			<a
+				href-lang="en-us"
+				href="/blog"
+				class="text-neutral-500 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300"
+			>
+				← Back
+			</a>
+			<h1 class="balance mt-4 font-semibold text-2xl">{post.data.title}</h1>
+			<p class="text-neutral-600 text-sm dark:text-neutral-400">
+				{formatDate(post.data.publishedAt)}
+			</p>
+
+			<article class="mb-8 flex w-full flex-col gap-6">
+				<Content />
+
+				<SimilarBlogs blog={post} />
+				<a
+					href="/blog"
+					href-lang="en-us"
+					class="text-neutral-500 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300"
+				>
+					← Back to blog
+				</a>
+			</article>
+		</section>
+	</MdLayout>
+</MainLayout>

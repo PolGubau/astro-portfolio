@@ -1,68 +1,64 @@
-# Astro Starter Kit: Blog
+# **Pol Gubau Amores - Portfolio and Personal Blog**
 
-```sh
-pnpm create astro@latest -- --template blog
-```
+## A showcase of my skills and projects
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+This is the repository for my personal portfolio and blog. It is built with Next.js and TypeScript, I also use Tailwind and markdown standards. It also uses Framer Motion for animations and transitions.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## **Features**
 
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+- [x] **Responsive Design**, it looks good on any device!
+- [x] **Dark Mode**, it has a dark mode directly adapted from the system preferences.
+- [x] **Blog**, it has a blog with markdown x support where I can write about my projects and other topics.
+- [x] **Animations**, it has animations and transitions to make the experience more enjoyable.
+- [x] **SEO**, it has SEO support and it is optimized for search engines.
+- [x] **Accessibility**, it has accessibility support and it is optimized for screen readers.
+- [x] **Testing**, it has unit tests for the components and pages.
+- [x] **Linting**, it has linting support for the code.
+- [x] **Formatting**, it has formatting support for the code.
+- [x] **Continuous Integration**, it has continuous integration with GitHub Actions.
+- [x] **Deployment**, it is deployed with Vercel.
 
-Features:
+## **Demo**
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+Visit my portfolio at **[https://www.polgubau.com](https://www.polgubau.com/)** to see the project in action!
 
-## 🚀 Project Structure
+## **Screenshots**
 
-Inside of your Astro project, you'll see the following folders and files:
+![Home Page](https://www.polgubau.com/brand/thumbnail.png)
 
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
+![Blog Page](https://www.polgubau.com/brand/thumbnail-blog.png)
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+![Projects Page](https://www.polgubau.com/brand/thumbnail-projects.png)
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## **Technologies Used**
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Markdown](https://www.markdownguide.org/)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+- [Jest](https://jestjs.io/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
-Any static assets, like images, can be placed in the `public/` directory.
+## **Installation**
 
-## 🧞 Commands
+1. Clone the repository: **`git clone https://github.com/PolGubau/portfolio.git`**
+2. Install dependencies: **`pnpm i`**
+3. Run the development server: **`pnpm dev`**
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+## **License**
 
-## 👀 Want to learn more?
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/PolGubau/portfolio/blob/main/LICENSE.txt) file for details.
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## **Contact**
 
-## Credit
+- **Email:** [gubaupol@PolGubau](gubaupol@PolGubau)
+- **Website:** [https://www.polgubau.com](https://www.polgubau.com/)
+- **LinkedIn:** [https://www.linkedin.com/in/pol-gubau-amores/](https://www.linkedin.com/in/pol-gubau-amores/)
+- **GitHub:** [https://github.com/PolGubau](https://github.com/PolGubau)
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+Thanks for reading, have a nice day! 🌞

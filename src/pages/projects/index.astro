@@ -1,12 +1,11 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Layout/header/header.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import { getProjects } from "../lib/utils";
-import BlogLink from "../components/BlogLink.astro";
-import ThreePhones from "../components/home/ThreePhones.astro";
-import ProjectsList from "../components/Projects/ProjectList/ProjectsList.astro";
-import MainLayout from "../layouts/MainLayout.astro";
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Layout/header/header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getProjects } from "../../lib/utils";
+import BlogLink from "../../components/BlogLink.astro";
+import ThreePhones from "../../components/home/ThreePhones.astro";
+import ProjectsList from "../../components/Projects/ProjectList/ProjectsList.astro";
 const imagesPhones = [
 	{
 		src: "/media/other/coiae.png",
@@ -23,7 +22,12 @@ const thisYear = new Date().getFullYear();
 const yearSince2018 = thisYear - 2018;
 ---
 
-<MainLayout>
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style></style>
+	</head>
 	<section>
 		<Header />
 		<main class="flex w-full flex-1 flex-col gap-8">
@@ -122,4 +126,4 @@ const yearSince2018 = thisYear - 2018;
 			<small>My lastest websites are good examples of this.</small>
 		</main>
 	</section>
-</MainLayout>
+</html>

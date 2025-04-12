@@ -1,151 +1,361 @@
 @import "tailwindcss";
+@import  "@polgubau/animated";
+@plugin "@tailwindcss/typography";
+ 
+ 
+@font-face {
+  font-family: 'Gabarito';
+  src: url('/fonts/Gabarito.ttf') format('truetype');
+  font-weight: 100 900; /* Rango de pesos soportado */
+  font-style: normal;   
+  font-display: swap;    
+}
 
-:root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
+/* @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); */
+ 
+@theme {
+--color-primary-50: #ffffec;
+--color-primary-100: #ffffc5;
+--color-primary-200: #ffffa9;
+--color-primary-300: #ffff82;
+--color-primary-400: #ffff69;
+--color-primary-500: #ffff44;
+--color-primary-600: #e8e83e;
+--color-primary-700: #b5b530;
+--color-primary-800: #8c8c25;
+--color-primary-900: #6b6b1d;
+--color-primary-950: #4d4d14;
+
+--color-secondary-50: #f7f7f7;
+--color-secondary-100: #eaeaea;
+--color-secondary-200: #d4d4d4;
+--color-secondary-300: #bcbcbc;
+--color-secondary-400: #a1a1a1;
+--color-secondary-500: #7f7f7f;
+--color-secondary-600: #666666;
+--color-secondary-700: #4d4d4d;
+--color-secondary-800: #333333;
+--color-secondary-900: #121212;
+--color-secondary-950: #0d0d0d;
+--font-main: 'Gabarito', sans-serif;
 }
-@font-face {
-	font-family: 'Atkinson';
-	src: url('/fonts/atkinson-regular.woff') format('woff');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
+:root{
+  --background: var(--color-secondary-50);
+  --foreground: var(--color-secondary-900);
 }
-@font-face {
-	font-family: 'Atkinson';
-	src: url('/fonts/atkinson-bold.woff') format('woff');
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
+@media (prefers-color-scheme: dark) {  
+  :root {
+    --background: var(--color-secondary-900);
+    --foreground: var(--color-secondary-50);
+  }
 }
-body {
-	font-family: 'Atkinson', sans-serif;
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
-	font-size: 20px;
-	line-height: 1.7;
+@theme inline {
+  --color-primary: var(--color-primary-500);
+  --color-secondary: var(--color-secondary-500);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 }
-main {
-	width: 720px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
+body{
+  @apply bg-background text-foreground antialiased font-main;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
-	line-height: 1.2;
+
+*::selection {
+  @apply bg-primary/30 text-background;
 }
-h1 {
-	font-size: 3.052em;
-}
-h2 {
-	font-size: 2.441em;
-}
-h3 {
-	font-size: 1.953em;
-}
-h4 {
-	font-size: 1.563em;
-}
-h5 {
-	font-size: 1.25em;
-}
-strong,
-b {
-	font-weight: 700;
-}
+
+
+.prose {
 a {
-	color: var(--accent);
+  transition: all;
+  @apply decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
 }
-a:hover {
-	color: var(--accent);
-}
-p {
-	margin-bottom: 1em;
-}
-.prose p {
-	margin-bottom: 2em;
-}
-textarea {
-	width: 100%;
-	font-size: 16px;
-}
-input {
-	font-size: 16px;
-}
-table {
-	width: 100%;
-}
-img {
-	max-width: 100%;
-	height: auto;
-	border-radius: 8px;
-}
-code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
+  .anchor {
+    position: absolute;
+    visibility: hidden;
+    cursor: pointer;
+    width: 80%;
+    max-width: 700px;
+    margin-left: -1em;
+    padding-right: 0.5em;
+    text-decoration: none;
+    @apply text-neutral-300 dark:text-neutral-700;
+
+ 
+    ::after {
+      @apply text-neutral-300 dark:text-neutral-700;
+      content: "#";
+    }
+  }
+  .anchor:hover {
+ visibility: visible;  }
+
+
+*:hover > .anchor {
+  visibility: visible;
 }
 pre {
-	padding: 1.5em;
-	border-radius: 8px;
+  @apply border border-neutral-800 !bg-neutral-900;
 }
-pre > code {
-	all: unset;
+code {
+  @apply text-secondary-800 dark:text-secondary-200 px-1 py-0.5 border border-neutral-100 dark:border-secondary-800 rounded-lg bg-secondary-100 dark:bg-neutral-900 p-0;
+  border: initial;
+  line-height: 1.5;
 }
-blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0px;
-	font-size: 1.333em;
+img {
+  /* Don't apply styles to next/image */
+  @apply m-0;
 }
-hr {
-	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
+ h1 {
+  @apply font-bold text-xl md:text-3xl;
 }
-@media (max-width: 720px) {
-	body {
-		font-size: 18px;
-	}
-	main {
-		padding: 1em;
-	}
+h2,
+h3,
+h4 {
+  @apply font-semibold text-lg md:text-2xl;
+}
+ .tweet a {
+  text-decoration: inherit;
+  font-weight: inherit;
+} 
+ .callout > p {
+  margin: 0 !important;
+}
+}
+  
+
+
+.prose > :first-child {
+  /* Override removing top margin, causing layout shift */
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
 }
 
-.sr-only {
-	border: 0;
-	padding: 0;
-	margin: 0;
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
-	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
-	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
-	white-space: nowrap;
+code[class*="language-"],
+pre[class*="language-"] {
+  @apply text-neutral-50;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Remove Safari input shadow on mobile */
+input[type="text"],
+input[type="email"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+ 
+table {
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+
+[data-rehype-pretty-code-fragment] code {
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-black;
+  counter-reset: line;
+  box-decoration-break: clone;
+}
+[data-rehype-pretty-code-fragment] .line {
+  @apply py-1;
+}
+[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: gray;
+}
+[data-rehype-pretty-code-fragment] .line--highlighted {
+  @apply bg-secondary-500/10; 
+  span {
+    @apply relative;
+  }
+}
+[data-rehype-pretty-code-fragment] .word--highlighted {
+  @apply rounded-md bg-secondary-500/10 p-1;
+}
+[data-rehype-pretty-code-title] {
+  @apply px-4 py-3 font-mono text-xs font-medium border rounded-t-lg text-neutral-200 border-[#333333] bg-[#1c1c1c];
+}
+[data-rehype-pretty-code-title] + pre {
+  @apply mt-0 rounded-t-none border-t-0;
+}
+
+.balance {
+  text-wrap: balance;
+}
+
+strong {
+  @apply font-semibold;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    scale: 70%;
+  }
+  to {
+    opacity: 1;
+    scale: 100%;
+  }
+}
+
+.show-animation {
+view-timeline: --image;
+view-timeline-axis: block;
+animation-timeline: --image;
+animation-name: show;
+animation-range: entry 25% cover 50%;
+animation-fill-mode: both;
+}
+
+/* three phones part */
+@keyframes first-phone {
+  from {
+    opacity: 0;
+    scale: 25%;
+    rotate: -20deg;
+  }
+  to {
+    opacity: 1;
+    scale: 100%;
+    rotate: 12deg;
+  }
+}
+.show-first-phone {
+  view-timeline: --phone1;
+  view-timeline-axis: block;
+  animation-timeline: --phone1;
+  animation-name: first-phone;
+  animation-range: entry 25% cover 50%;
+  animation-fill-mode: both;
+}
+@keyframes second-phone {
+  from {
+    opacity: 0;
+    scale: 25%;
+    rotate: 0deg;
+  }
+  to {
+    opacity: 1;
+    scale: 100%;
+    rotate: -4deg;
+  }
+}
+.show-second-phone {
+  view-timeline: --phone2;
+  view-timeline-axis: block;
+  animation-timeline: --phone2;
+  animation-name: second-phone;
+  animation-range: entry 25% cover 70%;
+  animation-fill-mode: both;
+}
+@keyframes third-phone {
+  from {
+    opacity: 0;
+    scale: 25%;
+    rotate: 10deg;
+  }
+  to {
+    opacity: 1;
+    scale: 100%;
+    rotate: -20deg;
+  }
+}
+.show-third-phone {
+  view-timeline: --phone2;
+  view-timeline-axis: block;
+  animation-timeline: --phone2;
+  animation-name: third-phone;
+  animation-range: entry 25% cover 70%;
+  animation-fill-mode: both;
+}
+@keyframes width-animation {
+  from {
+    opacity: 0;
+    margin-top: 60px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+.width-animation {
+  view-timeline: --width;
+  view-timeline-axis: block;
+  animation-timeline: --width;
+  animation-name: width-animation;
+  animation-range: entry cover 30%;
+  animation-fill-mode: both;
+}
+
+/* animation to enter from left while fading in*/
+@keyframes width-animation {
+  0% {
+    opacity: 0.5;
+    padding: 30px 0;
+  }
+  20% {
+    opacity: 1;
+    transform: rotateX(0deg);
+    padding: 0px 0;
+  }
+  80% {
+    opacity: 1;
+    transform: rotateX(0deg);
+    padding: 0px 0;
+  }
+  100% {
+    opacity: 0.5;
+    padding: 30px 0;
+  }
+}
+
+/* animation that shows in each Y axis border a width animation where the more external it is, the wider */
+.width-animation-both {
+  view-timeline: --width-animation;
+  view-timeline-axis: block;
+  animation-timeline: --width-animation;
+  animation-name: width-animation;
+  animation-fill-mode: both;
+  animation-range: cover 10% cover 100%;
+}
+
+
+@keyframes cascade-animation {
+  from {
+    opacity: 0;
+    scale: 85%;
+    /* margin-right: 200px; */
+    max-height: 20%;
+    border-radius: 40px;
+  }
+  to {
+    opacity: 1;
+    scale: 100%;
+    /* margin-right: 0px;       */
+    max-height: 100%;
+    border-radius: 10px;
+  }
+}
+.project-cascade {
+  view-timeline: --slight;
+  view-timeline-axis: block;
+  animation-timeline: --slight;
+  animation-name: cascade-animation;
+  animation-range: entry 20% cover 50%;
+  animation-fill-mode: both;
 }

@@ -43,7 +43,9 @@ const { Content } = await render(post);
 			</p>
 
 			<article class="mb-8 flex w-full flex-col gap-6">
-				<Content />
+				<div>
+					<Content />
+				</div>
 
 				<SimilarBlogs blog={post} />
 				<a

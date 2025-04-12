@@ -9,36 +9,35 @@ tags:
 ---
 import At from "../../components/mdx-components/at.astro";
 import BlogLink from "../../components/BlogLink.astro";
+import { Image } from 'astro:assets';
 
- 
+{/* images */}
+import agenda from "../../assets/media/other/agenda.png";
+import santaCecilia from "../../assets/media/other/santaCecilia.png";
+import setmana from "../../assets/media/other/setmana.png";
+
+import motorsag from "../../assets/media/other/motorsag.png";
+import gubauAfternoons from "../../assets/media/projects/gubauAfternoons/afternoons.png";
+import cvCreator from "../../assets/media/other/cvCreator.png";
+import uml from "../../assets/media/other/uml.png";
+import ruleta from "../../assets/media/other/ruleta.png";
+import erasmus1 from "../../assets/media/other/erasmus/erasmus1.png";
+import erasmus2 from "../../assets/media/other/erasmus/erasmus2.png";
+import erasmus3 from "../../assets/media/other/erasmus/erasmus3.png";
+import erasmus4 from "../../assets/media/other/erasmus/erasmus4.png";
+
+
+
+
 ## Origins
 
-I started my career as graphic designer aimed by my <strong>Arts & Design</strong> degree where I worked for a few assignments during my high
+I started my career as graphic designer aimed by my **Arts & Design** degree where I worked for a few assignments during my high
 school even some for the school itself. I also won a few design hackathons:
 
 <div className="gap-4 flex overflow-x-auto rounded-xl">
-  <img
-    className="rounded-xl h-[300px] w-full bg-primary/10 object-contain"
-    alt="My design that won the 2020 agenda for my highschool"
-        src="src/assets/media/other/agenda.png"
-     width={300}
-    height={200}
-  />
-   
-  <img
-    className="rounded-xl h-[300px] w-full bg-primary/10 object-contain"
-    alt="My design that won the 2020 agenda for my highschool"
-    src="../../assets/media/other/santaCecilia.png"
-    width={150}
-    height={200}
-  />
-  <img
-    className="rounded-xl h-[300px] w-full bg-primary/10 object-contain"
-    alt="My design that won the 2020 agenda for my highschool"
-    src="../../assets/media/other/setmana.png"
-    width={200}
-    height={200}
-  />
+  <Image src={agenda} alt="My design that won the 2020 agenda for my highschool" class="rounded-xl h-[300px] w-full bg-primary/10 object-contain"/>
+  <Image src={santaCecilia} alt="A poster I designed for my highschool" class="rounded-xl h-[300px] w-full bg-primary/10 object-contain"/>
+  <Image src={setmana} alt="A design I created for the Science week" class="rounded-xl h-[300px] w-full bg-primary/10 object-contain"/>
 </div>
 <small>
   These are a few examples of design hackathons submitions that I won during
@@ -66,10 +65,10 @@ up working for a few car dealerships as photographers and video editors.
 
 <section className="flex gap-4 show-animation">
   <div>
-    <img
+    <Image
       className="h-[200px] rounded-xl object-cover show-animation"
       alt="My design that won the 2020 agenda for my highschool"
-      src="../../assets/media/other/motorsag/cara.jpg"
+      src={motorsag}
       width={200}
       height={200}
     />

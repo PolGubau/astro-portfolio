@@ -7,6 +7,7 @@ import MdLayout from "../../layouts/MdLayout.astro";
 import { getProjects } from "../../lib/utils";
 import SimilarProjects from "../../components/Projects/SimilarProjects.astro";
 import ProjectBar from "../../components/Projects/ProjectBar.astro";
+import { metadata } from "../../lib/constants";
 
 export async function getStaticPaths() {
 	const projects = getProjects();
@@ -21,26 +22,28 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"projects">;
 
 const project = Astro.props;
+
+const PAGE_TITLE = `${project.data.title} - Projects - ${metadata.title}`;
 const { Content } = await render(project);
 ---
 
-<MainLayout>
-	<MdLayout>
-		<section class="relative flex flex-col gap-4 overflow-x-visible">
-			<ProjectHeader project={project} />
-			<div class="overflow-visible px-1">
+<MainLayout image={project.data.cover.src} title={PAGE_TITLE}>
+	<section class="relative flex flex-col gap-4 overflow-x-visible">
+		<ProjectHeader project={project} />
+		<div class="overflow-visible px-1">
+			<MdLayout>
 				<Content />
-			</div>
-			<SimilarProjects project={project} />
-			<a
-				title="Back to projects"
-				href="/projects"
-				href-lang="en-us"
-				class="text-neutral-500 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300"
-			>
-				<span class="sr-only">Back to projects</span>← Back
-			</a>
-			{project.data.link ? <ProjectBar project={project} /> : null}
-		</section>
-	</MdLayout>
+			</MdLayout>
+		</div>
+		<SimilarProjects project={project} />
+		<a
+			title="Back to projects"
+			href="/projects"
+			href-lang="en-us"
+			class="text-neutral-500 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300"
+		>
+			<span class="sr-only">Back to projects</span>← Back
+		</a>
+		{project.data.link ? <ProjectBar project={project} /> : null}
+	</section>
 </MainLayout>

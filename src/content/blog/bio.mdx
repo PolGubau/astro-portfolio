@@ -16,7 +16,10 @@ import agenda from "../../assets/media/other/agenda.png";
 import santaCecilia from "../../assets/media/other/santaCecilia.png";
 import setmana from "../../assets/media/other/setmana.png";
 
-import motorsag from "../../assets/media/other/motorsag.png";
+import motorsag1 from "../../assets/media/other/motorsag/cara.jpg";
+import motorsag2 from "../../assets/media/other/motorsag/cayenne.jpg";
+import motorsag3 from "../../assets/media/other/motorsag/mas.jpg";
+
 import gubauAfternoons from "../../assets/media/projects/gubauAfternoons/afternoons.png";
 import cvCreator from "../../assets/media/other/cvCreator.png";
 import uml from "../../assets/media/other/uml.png";
@@ -66,25 +69,24 @@ up working for a few car dealerships as photographers and video editors.
     <Image
       className="h-[200px] rounded-xl object-cover show-animation"
       alt="My design that won the 2020 agenda for my highschool"
-      src={motorsag}
+      src={motorsag1}
       width={200}
       height={200}
     />
   </div>
   <div>
-    <img
+    <Image
       className="rounded-xl h-[200px] object-cover show-animation"
       alt="My design that won the 2020 agenda for my highschool"
-      src="../../assets/media/other/motorsag/cayenne.jpg"
-      width={200}
+   src={motorsag2}      width={200}
       height={200}
     />
   </div>
   <div>
-    <img
+    <Image
       className="rounded-xl h-[200px] object-cover show-animation"
       alt="My design that won the 2020 agenda for my highschool"
-      src="../../assets/media/other/motorsag/mas.jpg"
+      src={motorsag3}
       width={200}
       height={200}
     />
@@ -116,8 +118,8 @@ Using PHP, HTML, SASS ans Jquery (a bit outdated but still the standard that yea
 
 <div className="flex flex-col gap-4 ">
   <div className="mr-24 -mb-24  show-animation">
-    <img
-      src="../../assets/media/projects/gubauAfternoons/afternoons.png"
+    <Image
+          src={gubauAfternoons}
       className="rotate-3 "
       alt="Gubau Afternoons mobile version"
       width={700}
@@ -125,8 +127,8 @@ Using PHP, HTML, SASS ans Jquery (a bit outdated but still the standard that yea
     />
   </div>
   <div className="ml-24 -mb-24 show-animation">
-    <img
-      src="../../assets/media/other/cvCreator.png"
+    <Image
+      src={cvCreator}
       alt="CV creator computer version"
       className="-rotate-3 "
       width={700}
@@ -134,11 +136,11 @@ Using PHP, HTML, SASS ans Jquery (a bit outdated but still the standard that yea
     />
   </div>
 
-{" "}
+ 
 
 <div className="mr-24 -mb-24 show-animation">
-  <img
-    src="../../assets/media/other/uml.png"
+  <Image
+    src={uml}
     alt="UML diagram creator computer version"
     className="rotate-3 "
     width={700}
@@ -147,8 +149,8 @@ Using PHP, HTML, SASS ans Jquery (a bit outdated but still the standard that yea
 </div>
 
   <div className="ml-24 show-animation">
-    <img
-      src="../../assets/media/other/ruleta.png"
+    <Image
+      src={ruleta}
       alt="Roulette computer version"
       className="-rotate-3 "
       width={700}
@@ -202,19 +204,19 @@ The second semester of the third year I did an Erasmus to **Kalmar, Sweden** whe
 
 <div className="flex flex-col gap-4 mt-8 ">
   <div className="mr-24 -mb-24 show-animation">
-    <img
-      src="../../assets/media/other/erasmus/erasmus1.png"
+    <Image
+      src={erasmus1}
       className="rotate-3 rounded-xl"
-      alt="Gubau Afternoons mobile version"
+      alt="Some nice people I met in Sweden"
       width={700}
       height={550}
     />
   </div>
 
 <div className="ml-24 -mb-24 show-animation">
-  <img
-    src="../../assets/media/other/erasmus/erasmus2.png"
-    alt="CV creator computer version"
+  <Image
+    src={erasmus2}
+    alt="A group image of the erasmus students"
     className="-rotate-3 rounded-xl"
     width={700}
     height={550}
@@ -222,9 +224,9 @@ The second semester of the third year I did an Erasmus to **Kalmar, Sweden** whe
 </div>
 
 <div className="mr-24 -mb-24 show-animation">
-  <img
-    src="../../assets/media/other/erasmus/erasmus3.png"
-    alt="UML diagram creator computer version"
+  <Image
+    src={erasmus3}
+    alt="A group image of the erasmus students"
     className="rotate-3 rounded-xl"
     width={700}
     height={550}
@@ -232,9 +234,9 @@ The second semester of the third year I did an Erasmus to **Kalmar, Sweden** whe
 </div>
 
   <div className="ml-24 mb-10 show-animation">
-    <img
-      src="../../assets/media/other/erasmus/erasmus4.png"
-      alt="Roulette computer version"
+    <Image
+      src={erasmus4}
+      alt="A group image of the erasmus students"
       className="-rotate-3 rounded-xl"
       width={700}
       height={550}
@@ -281,20 +283,22 @@ For some submittions I had written some **articles** and **essays** about **Span
 
 ## Last university year, thesis
 
-The last months in UAB were focused in the development of my thesis, a **UI library** for **React**, I struggled a bit about what name to give to the library, but at the end it was a UI library made by me so I decided to call it **Pol/UI**. 
+The last months in UAB were focused in the development of my thesis, a **UI library** for **React**, I struggled a bit about what name to give to the library, but at the end it was a UI library made by me so I decided to call it **Pol-UI**. 
 
 I spent +1000 hours creating the project, the documentations, the written thesis and the presentation.
 
 <BlogLink slug="/projects/polui" name="Check the Pol/UI Thesis" />
 
-Pol-ui ended up being a complete library with +100 components, a complete documentation and multiple examples of how to use it.
+Pol-ui ended up being a complete ecosystem with +100 components, +30 helpers, +40 hooks, a complete documentation and multiple examples of how to use it.
 
-It got a perfect score of 10/10 and it was awarded with a special mention by the university.
+It got a perfect score of 10/10 and it was **awarded with a special mention by the university**.
 
 ---
 
 ## Germany
 
-Once I finished the degree, I decided to move to Germany where the company that I was working for, Mesalvo, had the headquarters. I continued working there as a full time Frontend developer and I also started to learn **German** to be able to communicate with the locals.
+Once I finished the degree, I decided to move to Germany where the company that I was working for, Mesalvo, had the headquarters. 
+
+I continued working there as a full time Frontend developer and I also started to learn **German** to be able to communicate with the locals.
 
 I started opening to new technologies as **Java**, not to take more story points but to be able to understand the backend part of the projects that I was working on.

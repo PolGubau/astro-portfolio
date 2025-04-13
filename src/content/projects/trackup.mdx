@@ -17,6 +17,12 @@ tech:
   - Vercel
   - UI
 ---
+import At from "../../components/mdx-components/at.astro";
+import { Image } from 'astro:assets';
+
+import trackup1 from '../../assets/media/projects/trackup/1.webp';
+import trackup2 from '../../assets/media/projects/trackup/2.webp';
+import trackup3 from '../../assets/media/projects/trackup/3.webp';
 
 # TrackUp - Your Copilot for the Gym
 
@@ -28,26 +34,27 @@ With TrackUp, you can say goodbye to one-size-fits-all workout routines. Simply 
 
 <section className="flex gap-4 flex-col md:flex-row px-5">
     <Image
-  src="/media/projects/trackup/1.webp"
+  src={trackup1}
   alt="TrackUp"
   width={300}
   height={500}      
   className="h-[500px] rounded-xl object-contain show-first-phone"
   />
     <Image
-  src="/media/projects/trackup/2.webp"
+  src={trackup2}
   alt="TrackUp"
   width={300}
   height={500}      
   className="h-[500px] rounded-xl object-contain show-second-phone"
   />
-   <Image
-  src="/media/projects/trackup/3.webp"
+    <Image
+  src={trackup3}
   alt="TrackUp"
   width={300}
   height={500}      
-  className="h-[500px] rounded-xl object-contain show-third-phone "
+  className="h-[500px] rounded-xl object-contain show-third-phone"
   />
+ 
 
 </section>
 

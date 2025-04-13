@@ -17,8 +17,8 @@ const { images } = Astro.props;
 			return (
 				<Image
 					class={classes}
-					loading="lazy"
-					decoding="async"
+					priority
+					loading={"eager"}
 					alt="A preview of the performance stats in my technical blog"
 					title="A preview of the performance stats in my technical blog"
 					src={image}

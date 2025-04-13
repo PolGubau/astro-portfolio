@@ -17,6 +17,10 @@ tech:
   - Styled Components
   - React Icons
 ---
+import BlogLink from "../../components/BlogLink.astro";
+import { Image } from 'astro:assets';
+ 
+import computer from "../../assets/media/projects/stickies/stickies_computer.png"
 
 # Stickies
 
@@ -40,13 +44,12 @@ Stickies it's based in modern web development technologies as:
 
 - **React Icons** as the main icon library, it allows to use icons in the application in a simple way.
 
-  {" "}
-  <Image
+<Image
     alt="Stickies notes computer mockup image 2"
     width={800}
     height={500}
     className="rounded-xl h-full max-h-[500px] object-contain pl-16 show-animation"
-    src="/media/projects/stickies/stickies_computer.png"
+    src={computer}
   />
 
 ## My role in Stickies
@@ -76,3 +79,4 @@ I have learned to use **React** as a framework for web development, to manage th
 During 2023, I developed a modern version of Stickies using **Nextjs** and **Tailwind CSS**.
 
 <BlogLink slug="notes" name="Discover Notes project 🗒️ " />
+

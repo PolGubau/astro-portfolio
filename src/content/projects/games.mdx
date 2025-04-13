@@ -18,6 +18,14 @@ tech:
   - Tabler Icons
   - Pol-ui
 ---
+import { Image } from 'astro:assets';
+
+import mobileMockup from "../../assets/media/projects/games/3.png"
+import phoneMockup from "../../assets/media/projects/games/4.png"
+
+import cover1 from "../../assets/media/projects/games/1.webp"
+import cover2 from "../../assets/media/projects/games/2.png"
+
 
 # Pol/Games - A Journey into Singleplayer Minigames
 
@@ -47,7 +55,7 @@ The word-per-minute game is designed to test and improve your typing speed and a
     width={200}
     height={400}
     className="rounded-xl h-full max-h-[400px] my-8 object-contain show-animation"
-    src="/media/projects/games/3.png"
+    src={mobileMockup}
   />
 
 
@@ -56,7 +64,7 @@ The word-per-minute game is designed to test and improve your typing speed and a
     width={400}
     height={300}
     className="rounded-xl h-full max-h-[300px] my-8 object-contain show-animation"
-    src="/media/projects/games/4.png"
+    src={phoneMockup}
   />
  
 </div>
@@ -72,7 +80,7 @@ The memory game, on the other hand, exercises your cognitive abilities. It chall
     width={500}
     height={300}
     className="rounded-xl h-full max-h-[300px] my-8 object-contain show-animation"
-    src="/media/projects/games/1.webp"
+    src={cover1}
   />
 
 
@@ -81,7 +89,7 @@ The memory game, on the other hand, exercises your cognitive abilities. It chall
     width={200}
     height={400}
     className="rounded-xl h-full max-h-[400px] my-8 object-contain show-animation"
-    src="/media/projects/games/2.png"
+    src={cover2}
   />
  
 </div>

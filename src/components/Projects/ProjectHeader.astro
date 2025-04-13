@@ -48,8 +48,9 @@ function formatDate(date: Date) {
             aria-disabled={!p.data.link}
           >
             <h1
+              transition:name={`title-project-${p.data.title}`}
               title="Visit Project"
-              class="balance z-10 w-fit max-w-[650px] animate-slide-in-bottom rounded-full p-2 font-semibold text-4xl text-neutral-900 tracking-tighter md:text-7xl"
+              class="balance z-10 w-fit max-w-[650px] rounded-full p-2 font-semibold text-4xl text-neutral-900 tracking-tighter md:text-7xl"
               style={{
                 backgroundColor: p.data.color ?? "transparent",
               }}
@@ -75,9 +76,9 @@ function formatDate(date: Date) {
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down-left"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-up-left"
               ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-                d="M8 8v8h8"></path></svg
+                d="M8 16v-8h8"></path></svg
             >
             {formatDate(p.data.startedAt)}
           </span>
@@ -92,10 +93,11 @@ function formatDate(date: Date) {
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down-right"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down-left"
               ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-                d="M16 8v8h-8"></path></svg
+                d="M8 8v8h8"></path></svg
             >
+
             {p.data.endedAt ? formatDate(p.data.endedAt) : "In Progress"}
           </span>
         </div>
@@ -107,6 +109,8 @@ function formatDate(date: Date) {
         title={`Cover Image for the project ${p.data.title}`}
         class="-top-16 -right-60 md:-right-40 absolute opacity-50 md:opacity-100"
         src={p.data.cover}
+        priority
+        loading={"eager"}
         alt={p.data.title}
         width={500}
         height={500}

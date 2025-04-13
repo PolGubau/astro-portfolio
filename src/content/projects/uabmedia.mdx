@@ -18,6 +18,11 @@ tech:
   - JQUERY
   - AWS
 ---
+import { Image } from 'astro:assets';
+import computer from "../../assets/media/projects/uabmedia/uabMediaComputer.png"
+import phone from "../../assets/media/projects/uabmedia/uabMediaPhone.png"
+import phone2 from "../../assets/media/projects/uabmedia/uabMediaPhone2.png"
+
 
 ## What is UABMèdia
 
@@ -32,7 +37,7 @@ Consists in a web service to consult any media product made there. All podcasts,
     width={700}
     height={500}
     className='show-animation'
-    src="/media/projects/uabMedia/uabMediaComputer.png"
+    src={computer}
   />
   <figcaption>Capture and mockup of the UAB Mèdia landing page.</figcaption>
 </picture>
@@ -55,7 +60,7 @@ For example, if the news are on air you will se them.
  
   <Image
     className="rounded-xl h-full max-h-[500px] object-contain pl-16 show-first-phone"
-    src="/media/projects/uabmedia/uabMediaPhone.png"
+    src={phone}
     alt="UAB Mèdia responsive design on mobile"
   />
 
@@ -64,7 +69,7 @@ For example, if the news are on air you will se them.
   <Image
   alt="UAB Mèdia responsive design on mobile"
     className="rounded-xl h-full max-h-[500px] object-contain show-second-phone"
-    src="/media/projects/uabmedia/uabMediaPhone2.png"
+    src={phone2}
   />
 </div>
 

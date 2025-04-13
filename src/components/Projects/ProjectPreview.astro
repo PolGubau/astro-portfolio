@@ -4,11 +4,13 @@ import type { ProjectMetadata } from "../../lib/utils";
 
 interface Props {
   project: ProjectMetadata;
+  index: number;
 }
 
-const { project } = Astro.props;
+const { project, index } = Astro.props;
 const { data, id: slug } = project;
 const { title, color, cover: src } = data;
+const isFirstLoad = index < 6;
 ---
 
 <div
@@ -17,7 +19,7 @@ const { title, color, cover: src } = data;
   <a
     href={`/projects/${slug}`}
     style={{
-      color,
+      backgroundColor: color,
     }}
     title={title}
     class="flex h-full animate-fade-in items-start outline-0 outline-primary transition-all duration-300 hover:brightness-120 focus-visible:outline-1 md:justify-center"
@@ -28,12 +30,15 @@ const { title, color, cover: src } = data;
       }}
       class="pointer-events-none mt-20 h-auto w-full object-cover object-left transition-all md:h-[500px]"
       src={src}
+      priority={isFirstLoad}
+      loading={isFirstLoad ? "eager" : "lazy"}
       title={`Cover Image for ${title}`}
-      alt={`Cover Image for ${title}`}
+      alt={title}
       width={600}
       height={330}
     />
     <h3
+      transition:name={`title-project-${title}`}
       class="absolute top-6 left-6 z-10 mb-3 font-medium text-3xl leading-snug dark:text-neutral-800"
     >
       {title}

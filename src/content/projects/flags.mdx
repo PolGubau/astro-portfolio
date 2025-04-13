@@ -17,6 +17,13 @@ tech:
   -   NPM Package
   -   Tailwind CSS
 ---
+import { Image } from 'astro:assets';
+import flagsOg from "../../assets/media/projects/flags/og.webp"
+import Q3 from "../../assets/media/projects/flags/q3.webp"
+import Q2 from "../../assets/media/projects/flags/q2.webp"
+import Q1 from "../../assets/media/projects/flags/q1.webp"
+import flags1 from "../../assets/media/projects/flags/1.webp"
+
 
 # React Beauty Flags
 **React Beauty Flags** is a simple React library that renders handmade flags for different topics as countries or cities. It provides an easy way to display flags in your React applications with minimal setup.
@@ -26,7 +33,7 @@ tech:
     width={720}
     height={480}
     className="rounded-xl h-full max-h-[300px] md:max-h-[400px] object-contain show-animation"
-    src="/media/projects/flags/og.webp"
+    src={flagsOg}
   />
 
 ## Goal of the project
@@ -72,13 +79,13 @@ As the library exports all **FlagData** objects, I created a showcase page that 
 That means each time the page load, the user will experience a consistent feeling, even if the flags in the library are updated. 
 
 In the top part you will always find the **Country** flags, followed by **World**, **Region**, **City**, and so ... 
-<div className='flex flex-col gap-2'>
+<div className='flex flex-col gap-2 show-animation'>
 <Image
     alt="How flags are grouped by type and then alphabetically"
     width={250}
     height={400}
-    className="rounded-xl h-full max-h-[300px] object-cover show-animation"
-    src="/media/projects/flags/q3.webp"
+    className="rounded-xl h-full max-h-[300px] object-cover"
+    src={Q3}
   />
     <small>How flags are grouped by type and then alphabetically</small>
   </div>
@@ -89,25 +96,26 @@ For additional usability, I added a search bar that allows the user to filter th
 This filter is saved in the URL, so you can share the link with your friends and they will see the same flags you are seeing.
 
 <div className='grid md:grid-cols-2 gap-4'>
-<div className='flex flex-col gap-2'>
+<div className='flex flex-col gap-2 show-animation'>
 <Image
     alt="Example when searching 'Mata'"
     width={550}
     height={400}
-    className="rounded-xl h-full max-h-[350px] w-full object-cover show-animation"
-    src="/media/projects/flags/q2.webp"
+    className="rounded-xl h-full max-h-[350px] w-full object-cover"
+    src={Q2}
   />
   <small>Example when searching "Mata"</small>
   </div>
-  <div className='flex flex-col gap-2'>
+  <div className='flex flex-col gap-2 show-animation'>
 
   <Image
     alt="Direct feedback when no flags are found"
     width={550}
     height={400}
-    className="rounded-xl h-full max-h-[350px] w-full object-cover show-animation"
-    src="/media/projects/flags/q1.webp"
-  />  <small>Direct feedback when no flags are found </small>
+    className="rounded-xl h-full max-h-[350px] w-full object-cover"
+    src={Q1}
+  />  
+  <small>Direct feedback when no flags are found </small>
   </div>
 </div>
 
@@ -132,7 +140,7 @@ Also, all flags in the page will be updated with the new roundness, borders, and
     width={250}
     height={500}
     className="rounded-xl h-full max-h-[500px] show-animation"
-    src="/media/projects/flags/1.webp"
+    src={flags1}
   />
     <small>Flag details with interactive elements and the needed commands</small>
   </div>

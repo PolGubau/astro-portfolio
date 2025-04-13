@@ -21,6 +21,13 @@ tech:
   - Vite
 ---
 
+import At from "../../components/mdx-components/at.astro";
+import { Image } from 'astro:assets';
+
+import cover1 from "../../assets/media/projects/l2024/1.webp"
+import cover2 from "../../assets/media/projects/l2024/2.webp"
+import mapPreview from "../../assets/media/projects/l2024/map-detail.png"
+
 # L2024 Project
 
 ## The Story
@@ -33,14 +40,14 @@ L2024 is a web project to illustrate a personal challenge of walking over all Me
     width={200}
     height={400}
     className="rounded-xl h-full max-h-[300px] md:max-h-[400px] object-contain show-animation -rotate-12"
-    src="/media/projects/l2024/1.webp"
+    src={cover1}
   />
   <Image
     alt="Stickies notes mobile mockup image"
     width={200}
     height={400}
     className="rounded-xl h-full max-h-[300px] md:max-h-[400px] object-contain show-animation rotate-12"
-    src="/media/projects/l2024/3.webp"
+    src={cover2}
   />
 </div>
 
@@ -155,7 +162,7 @@ The stops are clickable and show a popup with the name of the stop and the lines
     width={600}
     height={400}
     className="rounded-2xl h-full object-contain show-animation"
-    src="/media/projects/l2024/map-detail.png"
+    src={mapPreview}
   />
 
 The map development was the most challenging part of the project, I had to learn how to use the library and how to manipulate the GeoJson data to show the lines and stops in the map, the library creates a great output as I don't need any API key or pricings but it has no documentation so I had to read the source code and the examples to understand how to use it.

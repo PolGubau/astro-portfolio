@@ -28,34 +28,32 @@ const { Content } = await render(post);
 ---
 
 <MainLayout>
-	<MdLayout>
-		<section class="w-full prose dark:prose-invert">
+	<section>
+		<a
+			href-lang="en-us"
+			href="/blog"
+			class="text-neutral-500 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300"
+		>
+			← Back
+		</a>
+		<h1 class="balance mt-4 font-semibold text-2xl">{post.data.title}</h1>
+		<p class="text-neutral-600 text-sm dark:text-neutral-400">
+			{formatDate(post.data.publishedAt)}
+		</p>
+
+		<article class="mb-8 flex w-full flex-col gap-6">
+			<MdLayout>
+				<Content />
+			</MdLayout>
+
+			<SimilarBlogs blog={post} />
 			<a
-				href-lang="en-us"
 				href="/blog"
+				href-lang="en-us"
 				class="text-neutral-500 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300"
 			>
-				← Back
+				← Back to blog
 			</a>
-			<h1 class="balance mt-4 font-semibold text-2xl">{post.data.title}</h1>
-			<p class="text-neutral-600 text-sm dark:text-neutral-400">
-				{formatDate(post.data.publishedAt)}
-			</p>
-
-			<article class="mb-8 flex w-full flex-col gap-6">
-				<div>
-					<Content />
-				</div>
-
-				<SimilarBlogs blog={post} />
-				<a
-					href="/blog"
-					href-lang="en-us"
-					class="text-neutral-500 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300"
-				>
-					← Back to blog
-				</a>
-			</article>
-		</section>
-	</MdLayout>
+		</article>
+	</section>
 </MainLayout>

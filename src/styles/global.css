@@ -144,7 +144,7 @@ pre {
   @apply border border-neutral-800 !bg-neutral-900;
 }
 code {
-  @apply text-secondary-800 dark:text-secondary-200 px-1 py-0.5 border border-neutral-100 dark:border-secondary-800 rounded-lg bg-secondary-100 dark:bg-neutral-900 p-0;
+  @apply text-secondary-800 dark:text-secondary-200 px-1 py-0.5 border border-neutral-100 dark:border-secondary-800 rounded-lg dark:bg-neutral-900 p-0;
   border: initial;
   line-height: 1.5;
 }

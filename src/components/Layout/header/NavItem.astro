@@ -23,10 +23,5 @@ const isActive = path === pathname || path === `/${subpath?.[0] || ""}`;
 >
   <span class="relative px-2 py-1">
     {name}
-    {
-      path === pathname ? (
-        <div class="absolute inset-0 z-[-1] h-full rounded-full bg-primary" />
-      ) : null
-    }
   </span>
 </a>

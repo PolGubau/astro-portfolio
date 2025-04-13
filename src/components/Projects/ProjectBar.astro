@@ -26,13 +26,15 @@ const data = project.data;
 
     <ul class="flex items-center gap-2">
       {/* copy url button */}
-      <li>
+      <li class="max-md:hidden">
         <button
+          id="copy-button"
           type="button"
-          class="flex aspect-square rounded-lg p-2 text-secondary-900 transition-all hover:bg-secondary-900/60"
+          class="flex aspect-square rounded-lg p-2 text-secondary-900 transition-all hover:bg-secondary-900/30 cursor-pointer"
           title="Copy project link"
+          onclick={"handleCopyLink"}
         >
-          <CopyIcon />
+          <CopyIcon width={18} height={18} />
         </button>
       </li>
       {
@@ -44,8 +46,8 @@ const data = project.data;
             target="_blank"
             rel="noopener noreferrer"
           >
-            <li class=" flex aspect-square rounded-lg p-2 text-secondary-900 transition-all hover:bg-secondary-900/60">
-              <NpmIcon />
+            <li class=" flex aspect-square rounded-lg p-2 text-secondary-900 transition-all hover:bg-secondary-900/30">
+              <NpmIcon width={18} height={18} />
             </li>
           </a>
         ) : null
@@ -60,8 +62,8 @@ const data = project.data;
             target="_blank"
             rel="noopener noreferrer"
           >
-            <li class="flex aspect-square rounded-lg p-2 text-secondary-900 transition-all hover:bg-secondary-900/60">
-              <GithubIcon />
+            <li class="flex aspect-square rounded-lg p-2 text-secondary-900 transition-all hover:bg-secondary-900/30">
+              <GithubIcon width={18} height={18} />
             </li>
           </a>
         ) : null
@@ -91,3 +93,14 @@ const data = project.data;
     </ul>
   </div>
 </div>
+<script>
+  const btn = document.getElementById("copy-button");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      navigator.clipboard
+        .writeText(window.location.href)
+        .then(() => alert("Project url copied to clipboard!"))
+        .catch(() => alert("Failed to copy link"));
+    });
+  }
+</script>

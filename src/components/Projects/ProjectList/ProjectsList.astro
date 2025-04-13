@@ -10,6 +10,6 @@ type Props = {
 const { projects } = Astro.props;
 ---
 
-<ul class="flex w-full flex-wrap gap-2">
+<ul class="flex w-full flex-wrap gap-2" id="cards">
   {projects.map((p,i) => <ProjectListItem p={p} index={i}/>)}
 </ul>

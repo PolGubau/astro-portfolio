@@ -60,7 +60,7 @@ body{
 }
 
 *::selection {
-  @apply bg-primary/30 text-background;
+  @apply bg-primary/50 text-primary-900 dark:text-secondary-900;
 }
 @keyframes grow-progress {
   from { transform: scaleX(0); }
@@ -406,3 +406,6 @@ animation-fill-mode: both;
   animation-range: entry 20% cover 50%;
   animation-fill-mode: both;
 }
+
+
+

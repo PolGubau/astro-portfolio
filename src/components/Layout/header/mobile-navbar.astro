@@ -1,0 +1,23 @@
+---
+import NavItem from "./NavItem.astro";
+
+const navItems = {
+  "/": { name: "Home" },
+  "/projects": { name: "Projects" },
+  "/ui": { name: "UI" },
+  "/blog": { name: "Blog" },
+};
+---
+
+<nav
+  class="fixed bottom-0 p-4 bg-background/60 backdrop-blur-sm tracking-tight grid grid-cols-4 w-full left-0 right-0 gap-2 justify-items-center items-center md:hidden"
+  style={{
+    zIndex: 999,
+  }}
+>
+  {
+    Object.entries(navItems).map(([path, { name }]) => {
+      return <NavItem path={path} name={name} />;
+    })
+  }
+</nav>

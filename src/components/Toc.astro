@@ -20,7 +20,7 @@ const { headings } = Astro.props;
             aria-label={`Scroll to section: ${text}`}
             class:list={[
               "block",
-              { "mt-2": depth <= 2 },
+              { "mt-2 opacity-90": depth <= 2 },
               { "mt-1 pl-3 text-xs opacity-80": depth > 2 },
             ]}
           >

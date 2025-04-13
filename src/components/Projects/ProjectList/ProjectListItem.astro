@@ -6,17 +6,8 @@ type Props = {
   p: ProjectMetadata;
 };
 const { p } = Astro.props;
-const image = {
-  src: `/media/${p.collection}/${p.id}/${p.data.cover}`,
-  alt: p.data.cover,
-};
 ---
 
 <li class="postGrid">
-  <ProjectPreview
-    backgroundColor={p.data.color}
-    title={p.data.title}
-    slug={p.id}
-    image={image}
-  />
+  <ProjectPreview project={p} />
 </li>

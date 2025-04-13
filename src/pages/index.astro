@@ -1,23 +1,22 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Layout/header/header.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import { getProjects } from "../lib/utils";
 import BlogLink from "../components/BlogLink.astro";
 import ThreePhones from "../components/home/ThreePhones.astro";
+import Header from "../components/Layout/header/header.astro";
 import ProjectsList from "../components/Projects/ProjectList/ProjectsList.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-const imagesPhones = [
-	{
-		src: "/media/other/coiae.png",
-	},
-	{
-		src: "/media/other/santJordi.png",
-	},
-	{
-		src: "/media/other/gymZ.png",
-	},
-];
+import { getProjects } from "../lib/utils";
+
+import coiae from "../assets/media/other/coiae.png";
+import gymZ from "../assets/media/other/gymZ.png";
+import santJordi from "../assets/media/other/santJordi.png";
+import { Image } from "astro:assets";
+
+import example1 from "../assets/media/other/example-1.webp";
+import example2 from "../assets/media/other/example-2.webp";
+import example3 from "../assets/media/other/example-3.webp";
+
+const imagesPhones = [coiae, gymZ, santJordi];
+
 const firstProjects = getProjects(4);
 const thisYear = new Date().getFullYear();
 const yearSince2018 = thisYear - 2018;
@@ -94,27 +93,37 @@ const yearSince2018 = thisYear - 2018;
 				digital project.
 			</p>
 			<div class="md:-space-y-40 flex flex-col max-md:gap-6">
-				<img
-					class="show-animation rounded-3xl border-4 border-secondary-200 object-cover object-top shadow-lg md:h-[300px] md:scale-75 dark:border-secondary-700"
-					alt="A preview of the performance stats in my technical blog"
-					title="A preview of the performance stats in my technical blog"
-					src="/media/other/example-3.webp"
-					width={800}
-					height={600}
-				/>
-				<img
-					class="show-animation rounded-3xl border-4 border-secondary-200 object-cover object-top shadow-lg md:scale-90 dark:border-secondary-700"
-					alt="A preview of the performance stats in my technical blog"
-					title="A preview of the performance stats in my technical blog"
-					src="/media/other/example-2.webp"
-					width={800}
-					height={500}
-				/>
-				<img
+				<div class="md:scale-75">
+					<Image
+						class="show-animation rounded-3xl border-4 border-secondary-200 object-cover object-top shadow-lg md:h-[300px] dark:border-secondary-700"
+						alt="A preview of the performance stats in my technical blog"
+						title="A preview of the performance stats in my technical blog"
+						src={example3}
+						decoding="async"
+						loading="lazy"
+						width={800}
+						height={600}
+					/>
+				</div>
+				<div class="md:scale-90">
+					<Image
+						class="show-animation rounded-3xl border-4 border-secondary-200 object-cover object-top shadow-lg dark:border-secondary-700"
+						alt="A preview of the performance stats in my technical blog"
+						title="A preview of the performance stats in my technical blog"
+						src={example2}
+						decoding="async"
+						loading="lazy"
+						width={800}
+						height={500}
+					/>
+				</div>
+				<Image
 					class="show-animation rounded-3xl border-4 border-secondary-200 object-cover object-top shadow-lg dark:border-secondary-700"
 					alt="A preview of the performance stats in my technical blog"
 					title="A preview of the performance stats in my technical blog"
-					src="/media/other/example-1.webp"
+					src={example1}
+					loading="lazy"
+					decoding="async"
 					width={1000}
 					height={500}
 				/>

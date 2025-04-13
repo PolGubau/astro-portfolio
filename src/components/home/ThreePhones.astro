@@ -1,9 +1,8 @@
 ---
-interface ImageProps {
-	src: string;
-}
+import { Image } from "astro:assets";
+
 interface Props {
-	images: ImageProps[];
+	images: ImageMetadata[];
 }
 
 const { images } = Astro.props;
@@ -16,13 +15,13 @@ const { images } = Astro.props;
 				i === 0 ? "show-first-phone mt-[40px]" : ""
 			} ${i === 1 ? "show-second-phone" : ""} ${i === 2 ? "show-third-phone mt-[80px]" : ""}`;
 			return (
-				<img
+				<Image
 					class={classes}
 					loading="lazy"
 					decoding="async"
 					alt="A preview of the performance stats in my technical blog"
 					title="A preview of the performance stats in my technical blog"
-					src={image.src}
+					src={image}
 					width={250}
 					height={500}
 				/>

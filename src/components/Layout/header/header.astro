@@ -1,17 +1,19 @@
 ---
+import { Image } from "astro:assets";
 import { metadata } from "../../../lib/constants";
 import MainSocials from "../../Social/MainSocials.astro";
- import Avatar from "../avatar/avatar.astro";
+import Avatar from "../avatar/avatar.astro";
 //  import { MainSocials } from "@/components/Social/MainSocials";
 // import { metadata } from "@/lib/constants";
 // import Image from "next/image";
+import me from "../../../assets/media/me.png";
 ---
 
 <header
 	class="mb-8 flex flex-col items-center justify-between gap-8 md:flex-row"
 >
-	<img
-		src="/media/me.png"
+	<Image
+		src={me}
 		class="flex justify-center rounded-3xl bg-primary-300 object-cover object-bottom drop-shadow-md md:hidden"
 		alt="Pol Gubau Amores' profile image"
 		title="Pol Gubau Amores' profile image"

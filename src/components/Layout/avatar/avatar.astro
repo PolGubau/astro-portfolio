@@ -1,8 +1,14 @@
-<img
-  src="/media/me.png"
+---
+import { Image } from "astro:assets";
+import me from "../../../assets/media/me.png";
+---
+
+<Image
+  src={me}
   class="z-30 hidden rounded-full bg-primary-300 md:flex"
   alt="Pol Gubau Amores' profile image"
   width={150}
   height={150}
   title="Pol Gubau Amores' profile image"
+  priority
 />

@@ -1,0 +1,35 @@
+---
+interface Props {
+  src: string;
+  date: string;
+  width: number;
+  style?: {
+    aspectRatio: string;
+  };
+}
+const { src, date, width, style } = Astro.props;
+---
+
+<div
+  class:list={[
+    "project-cascade relative h-full w-full overflow-hidden rounded-lg",
+  ]}
+>
+  <video
+    muted
+    autoplay
+    playsinline
+    loop
+    style={style}
+    width={width}
+    class="h-full w-full object-cover rounded-xl bg-neutral-400/50"
+  >
+    <source src={`/concepts/${src}.mp4`} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <p
+    class="absolute right-2 bottom-2 text-secondary-300 text-sm mix-blend-difference"
+  >
+    {date}
+  </p>
+</div>

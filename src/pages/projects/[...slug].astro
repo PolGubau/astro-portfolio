@@ -24,26 +24,39 @@ type Props = CollectionEntry<"projects">;
 const project = Astro.props;
 
 const PAGE_TITLE = `${project.data.title} - Projects - ${metadata.title}`;
-const { Content } = await render(project);
+const { Content, headings } = await render(project);
 ---
 
+<script>
+	import { applyBlogScrollTopTop } from "../../utils/applyBlogScrollToTop";
+
+	applyBlogScrollTopTop();
+</script>
+
 <MainLayout image={project.data.cover.src} title={PAGE_TITLE}>
-	<section class="relative flex flex-col gap-4 overflow-x-visible">
+	<section class="relative flex flex-col gap-4">
 		<ProjectHeader project={project} />
-		<div class="overflow-visible px-1">
-			<MdLayout>
-				<Content />
-			</MdLayout>
-		</div>
+		<MdLayout headings={headings}>
+			<Content />
+		</MdLayout>
 		<SimilarProjects project={project} />
-		<a
-			title="Back to projects"
-			href="/projects"
-			href-lang="en-us"
-			class="text-neutral-500 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300"
-		>
-			<span class="sr-only">Back to projects</span>← Back
-		</a>
+		<nav class="flex items-center justify-between mt-8">
+			<a
+				title="Back to projects"
+				href="/projects"
+				href-lang="en-us"
+				class="text-neutral-500 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300"
+			>
+				<span class="sr-only">Back to projects</span>← Back
+			</a>
+
+			<button
+				id="to-top-btn"
+				class="text-secondary-500 cursor-pointer hover:text-secondary-600 dark:text-neutral-400 dark:hover:text-neutral-300"
+			>
+				<span class="sr-only">Back to top</span>↑ Go to top
+			</button>
+		</nav>
 		{project.data.link ? <ProjectBar project={project} /> : null}
 	</section>
 </MainLayout>

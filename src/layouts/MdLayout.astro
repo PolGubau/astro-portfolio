@@ -1,3 +1,24 @@
-<div class="prose prose-quoteless prose-neutral dark:prose-invert w-full">
-  <slot />
+---
+import type { MarkdownHeading } from "astro";
+import Toc from "../components/Toc.astro";
+
+type Props = {
+  headings?: MarkdownHeading[];
+};
+const { headings } = Astro.props;
+---
+
+<script>
+  import { applyAnchorHeadings } from "../utils/anchorHeadings";
+
+  applyAnchorHeadings();
+</script>
+
+<div class="flex items-start gap-x-6">
+  {headings?.length && <Toc headings={headings} />}
+  <article
+    class="prose prose-quoteless prose-neutral dark:prose-invert w-full max-md:prose-sm"
+  >
+    <slot />
+  </article>
 </div>

@@ -10,7 +10,10 @@ import metaTags from 'astro-meta-tags';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://polgubau.com',
-    prefetch: true,
+    prefetch: true,  experimental: {
+    headingIdCompat: true,    contentIntellisense: true,
+
+  },
   integrations: [mdx(), sitemap(), metaTags()],
 
   vite: {

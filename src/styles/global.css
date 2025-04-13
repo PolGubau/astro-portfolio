@@ -40,6 +40,7 @@
 --font-main: 'Gabarito', sans-serif;
 }
 :root{
+    scroll-behavior: smooth;
   --background: var(--color-secondary-50);
   --foreground: var(--color-secondary-900);
 }

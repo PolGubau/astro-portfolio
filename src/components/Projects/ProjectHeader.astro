@@ -21,7 +21,7 @@ function formatDate(date: Date) {
 }
 ---
 
-<header class="mb-8 flex flex-col gap-6">
+<header class="flex flex-col gap-2">
   <section class="flex flex-col gap-4">
     <a
       href-lang="en-us"
@@ -32,7 +32,7 @@ function formatDate(date: Date) {
       <span class="sr-only">Back to projects</span>← Back
     </a>
     <header
-      class="relative flex min-h-[200px] items-end justify-between overflow-hidden rounded-2xl md:min-h-[250px]"
+      class="relative flex min-h-[200px] items-end justify-between overflow-hidden rounded-xl md:min-h-[250px]"
       style={{
         backgroundColor: p.data.color ?? "transparent",
       }}
@@ -48,7 +48,7 @@ function formatDate(date: Date) {
             aria-disabled={!p.data.link}
           >
             <h1
-               title="Visit Project"
+              title="Visit Project"
               class="balance z-10 w-fit max-w-[650px] rounded-full p-2 font-semibold text-4xl text-neutral-900 tracking-tighter md:text-7xl"
               style={{
                 backgroundColor: p.data.color ?? "transparent",
@@ -105,7 +105,6 @@ function formatDate(date: Date) {
         style={{
           mixBlendMode: "multiply",
         }}
-        
         title={`Cover Image for the project ${p.data.title}`}
         class="-top-16 -right-60 md:-right-40 absolute opacity-50 md:opacity-100"
         src={p.data.cover}
@@ -117,14 +116,14 @@ function formatDate(date: Date) {
       />
     </header>
   </section>
-  <nav class="flex w-full flex-wrap gap-4">
+  <nav class="flex w-full flex-wrap gap-2">
     {
       p.data.link ? (
         <a
           href={p.data.link}
           href-lang="en-us"
           title="Visit Project"
-          class="flex h-full flex-1 animate-expand-vertically items-center justify-center gap-2 rounded-2xl px-3 py-2 text-secondary-900 text-xl transition-all hover:brightness-90 sm:justify-start"
+          class="flex h-full flex-1 animate-expand-vertically items-center justify-center gap-2 rounded-xl px-3 py-2 text-secondary-900 text-xl transition-all hover:brightness-90 sm:justify-start"
           target="_blank"
           style={{
             backgroundColor: p.data.color ?? "transparent",
@@ -143,7 +142,7 @@ function formatDate(date: Date) {
           title="Link to Github Source"
           href={p.data.githubLink}
           href-lang="en-us"
-          class="flex h-full w-fit animate-expand-vertically items-center gap-2 truncate rounded-2xl px-3 py-2 text-black text-xl transition-all hover:brightness-90"
+          class="flex h-full w-fit animate-expand-vertically items-center gap-2 truncate rounded-xl px-3 py-2 text-black text-xl transition-all hover:brightness-90"
           target="_blank"
           style={{
             backgroundColor: p.data.color ?? "transparent",
@@ -162,7 +161,7 @@ function formatDate(date: Date) {
           title="Link to NPM Package"
           href={p.data.npmLink}
           href-lang="en-us"
-          class="flex h-full w-fit animate-expand-vertically items-center gap-2 truncate rounded-2xl px-3 py-2 text-black text-xl transition-all hover:brightness-90"
+          class="flex h-full w-fit animate-expand-vertically items-center gap-2 truncate rounded-xl px-3 py-2 text-black text-xl transition-all hover:brightness-90"
           target="_blank"
           style={{
             backgroundColor: p.data.color ?? "transparent",

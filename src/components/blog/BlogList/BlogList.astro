@@ -5,6 +5,20 @@ import BlogLink from "../../BlogLink.astro";
 type Props = {
   blogs: BlogMetadata[];
 };
+function formatDate(d: Date) {
+  const fullDate = d.toLocaleString("en-us", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+
+  return fullDate;
+}
+
+const pubAt = (d: Date) => {
+  const date = new Date(d);
+  return formatDate(date);
+};
 
 const { blogs } = Astro.props;
 ---
@@ -14,7 +28,7 @@ const { blogs } = Astro.props;
     blogs.map((post) => (
       <li class=" project-cascade">
         <BlogLink slug={`/blog/${post.id}`} name={post.data.title}>
-          {post.data.publishedAt}
+          {pubAt(post.data.publishedAt)}
         </BlogLink>
       </li>
     ))

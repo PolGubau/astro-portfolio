@@ -5,20 +5,20 @@ import MainSocials from "../../Social/MainSocials.astro";
 ---
 
 <div
-	class="mt-24 mb-20 flex flex-col items-center justify-center gap-6 text-center text-neutral-700 md:justify-start md:text-left dark:text-neutral-300"
+  class="mt-24 mb-[15vh] flex flex-col items-center justify-center gap-6 text-center text-neutral-700 md:justify-start md:text-left dark:text-neutral-300"
 >
-	<a
-		title="Download my CV"
-		href="/files/PolGubau_CV.pdf"
-		download={`${metadata.longName} CV`}
-		target="_blank"
-		class="flex w-fit items-center gap-2 rounded-full border border-secondary-900/30 bg-transparent px-5 py-3 transition-all hover:bg-secondary-900/10 dark:bg-secondary-50/10 dark:hover:bg-secondary-50/20"
-		rel="noreferrer"
-	>
-		<span class="sr-only">Click here to download my CV</span>{" "}
-		<DownloadIcon />
-		Download my CV
-	</a>
+  <a
+    title="Download my CV"
+    href="/files/PolGubau_CV.pdf"
+    download={`${metadata.longName} CV`}
+    target="_blank"
+    class="flex w-fit items-center gap-2 rounded-full border border-secondary-900/30 bg-transparent px-5 py-3 transition-all hover:bg-secondary-900/10 dark:bg-secondary-50/10 dark:hover:bg-secondary-50/20"
+    rel="noreferrer"
+  >
+    <span class="sr-only">Click here to download my CV</span>{" "}
+    <DownloadIcon />
+    Download my CV
+  </a>
 
-	<MainSocials />
+  <MainSocials />
 </div>

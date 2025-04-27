@@ -1,50 +1,49 @@
 @import "tailwindcss";
-@import  "@polgubau/animated";
+@import "@polgubau/animated";
 @plugin "@tailwindcss/typography";
- 
- 
+
 @font-face {
-  font-family: 'Gabarito';
-  src: url('/fonts/Gabarito.ttf') format('truetype');
+  font-family: "Gabarito";
+  src: url("/fonts/Gabarito.ttf") format("truetype");
   font-weight: 100 900; /* Rango de pesos soportado */
-  font-style: normal;   
-  font-display: swap;    
+  font-style: normal;
+  font-display: swap;
 }
 
 /* @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); */
- 
-@theme {
---color-primary-50: #ffffec;
---color-primary-100: #ffffc5;
---color-primary-200: #ffffa9;
---color-primary-300: #ffff82;
---color-primary-400: #ffff69;
---color-primary-500: #ffff44;
---color-primary-600: #e8e83e;
---color-primary-700: #b5b530;
---color-primary-800: #8c8c25;
---color-primary-900: #6b6b1d;
---color-primary-950: #4d4d14;
 
---color-secondary-50: #f7f7f7;
---color-secondary-100: #eaeaea;
---color-secondary-200: #d4d4d4;
---color-secondary-300: #bcbcbc;
---color-secondary-400: #a1a1a1;
---color-secondary-500: #7f7f7f;
---color-secondary-600: #666666;
---color-secondary-700: #4d4d4d;
---color-secondary-800: #333333;
---color-secondary-900: #121212;
---color-secondary-950: #0d0d0d;
---font-main: 'Gabarito', sans-serif;
+@theme {
+  --color-primary-50: #ffffec;
+  --color-primary-100: #ffffc5;
+  --color-primary-200: #ffffa9;
+  --color-primary-300: #ffff82;
+  --color-primary-400: #ffff69;
+  --color-primary-500: #ffff44;
+  --color-primary-600: #e8e83e;
+  --color-primary-700: #b5b530;
+  --color-primary-800: #8c8c25;
+  --color-primary-900: #6b6b1d;
+  --color-primary-950: #4d4d14;
+
+  --color-secondary-50: #f7f7f7;
+  --color-secondary-100: #eaeaea;
+  --color-secondary-200: #d4d4d4;
+  --color-secondary-300: #bcbcbc;
+  --color-secondary-400: #a1a1a1;
+  --color-secondary-500: #7f7f7f;
+  --color-secondary-600: #666666;
+  --color-secondary-700: #4d4d4d;
+  --color-secondary-800: #333333;
+  --color-secondary-900: #121212;
+  --color-secondary-950: #0d0d0d;
+  --font-main: "Gabarito", sans-serif;
 }
-:root{
-    scroll-behavior: smooth;
+:root {
+  scroll-behavior: smooth;
   --background: var(--color-secondary-50);
   --foreground: var(--color-secondary-900);
 }
-@media (prefers-color-scheme: dark) {  
+@media (prefers-color-scheme: dark) {
   :root {
     --background: var(--color-secondary-900);
     --foreground: var(--color-secondary-50);
@@ -56,7 +55,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
-body{
+body {
   @apply bg-background text-foreground antialiased font-main;
 }
 
@@ -64,46 +63,48 @@ body{
   @apply bg-primary/50 text-primary-900 dark:text-secondary-900;
 }
 @keyframes grow-progress {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 body {
-	timeline-scope: --scroll;
+  timeline-scope: --scroll;
 }
 main {
-	view-timeline: --scroll;
+  view-timeline: --scroll;
 }
 
 /* project-bar */
- 
+
 #project-bar {
-   
-    transform: translateX(-50%) translateY(100%);
-    opacity: 0;
+  transform: translateX(-50%) translateY(100%);
+  opacity: 0;
 
-    animation-name: slide-up;
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    animation-timing-function: ease-out;
+  animation-name: slide-up;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-out;
 
-    animation-timeline: --scroll;
-    animation-range: contain 200px contain 550px;
-   }
+  animation-timeline: --scroll;
+  animation-range: contain 200px contain 550px;
+}
 
-  @keyframes slide-up {
-    to {
-      transform: translateX(-50%) translateY(0%);
-      opacity: 1;
-    }
+@keyframes slide-up {
+  to {
+    transform: translateX(-50%) translateY(0%);
+    opacity: 1;
   }
-
-
+}
 
 /* Progress */
 #progress {
   position: fixed;
-  left: 0; top: 0;
-  width: 100%; 
+  left: 0;
+  top: 0;
+  width: 100%;
   height: 2px;
   background: var(--color-primary);
 
@@ -113,10 +114,10 @@ main {
 }
 
 .prose {
-a {
-  transition: all;
-  @apply decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
-}
+  a {
+    transition: all;
+    @apply decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+  }
   .anchor {
     position: absolute;
     visibility: hidden;
@@ -128,49 +129,46 @@ a {
     text-decoration: none;
     @apply text-neutral-300 dark:text-neutral-700;
 
- 
     ::after {
       @apply text-neutral-300 dark:text-neutral-700;
       content: "#";
     }
   }
   .anchor:hover {
- visibility: visible;  }
+    visibility: visible;
+  }
 
-
-*:hover > .anchor {
-  visibility: visible;
+  *:hover > .anchor {
+    visibility: visible;
+  }
+  pre {
+    @apply border border-neutral-800 !bg-neutral-900;
+  }
+  code {
+    @apply text-secondary-800 dark:text-secondary-200 px-1 py-0.5 border border-neutral-100 dark:border-secondary-800 rounded-lg dark:bg-neutral-900 p-0;
+    border: initial;
+    line-height: 1.5;
+  }
+  img {
+    /* Don't apply styles to next/image */
+    @apply m-0;
+  }
+  h1 {
+    @apply font-bold text-xl md:text-3xl;
+  }
+  h2,
+  h3,
+  h4 {
+    @apply font-semibold text-lg md:text-2xl;
+  }
+  .tweet a {
+    text-decoration: inherit;
+    font-weight: inherit;
+  }
+  .callout > p {
+    margin: 0 !important;
+  }
 }
-pre {
-  @apply border border-neutral-800 !bg-neutral-900;
-}
-code {
-  @apply text-secondary-800 dark:text-secondary-200 px-1 py-0.5 border border-neutral-100 dark:border-secondary-800 rounded-lg dark:bg-neutral-900 p-0;
-  border: initial;
-  line-height: 1.5;
-}
-img {
-  /* Don't apply styles to next/image */
-  @apply m-0;
-}
- h1 {
-  @apply font-bold text-xl md:text-3xl;
-}
-h2,
-h3,
-h4 {
-  @apply font-semibold text-lg md:text-2xl;
-}
- .tweet a {
-  text-decoration: inherit;
-  font-weight: inherit;
-} 
- .callout > p {
-  margin: 0 !important;
-}
-}
-  
-
 
 .prose > :first-child {
   /* Override removing top margin, causing layout shift */
@@ -200,14 +198,12 @@ input[type="email"] {
   appearance: none;
 }
 
- 
 table {
   display: block;
   max-width: fit-content;
   overflow-x: auto;
   white-space: nowrap;
 }
-
 
 [data-rehype-pretty-code-fragment] code {
   @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-black;
@@ -227,7 +223,7 @@ table {
   color: gray;
 }
 [data-rehype-pretty-code-fragment] .line--highlighted {
-  @apply bg-secondary-500/10; 
+  @apply bg-secondary-500/10;
   span {
     @apply relative;
   }
@@ -262,12 +258,12 @@ strong {
 }
 
 .show-animation {
-view-timeline: --image;
-view-timeline-axis: block;
-animation-timeline: --image;
-animation-name: show;
-animation-range: entry 25% cover 50%;
-animation-fill-mode: both;
+  view-timeline: --image;
+  view-timeline-axis: block;
+  animation-timeline: --image;
+  animation-name: show;
+  animation-range: entry 25% cover 50%;
+  animation-fill-mode: both;
 }
 
 /* three phones part */
@@ -382,7 +378,6 @@ animation-fill-mode: both;
   animation-range: cover 10% cover 100%;
 }
 
-
 @keyframes cascade-animation {
   from {
     opacity: 0;
@@ -407,6 +402,3 @@ animation-fill-mode: both;
   animation-range: entry 20% cover 50%;
   animation-fill-mode: both;
 }
-
-
-

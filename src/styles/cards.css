@@ -1,0 +1,74 @@
+:root {
+  --card-height: 40vw;
+  --card-margin: 2vw;
+  --card-top-offset: 5em;
+}
+
+#sticked-cards {
+  /* Make place at bottom, as items will slide to that position*/
+  padding-bottom: calc(var(--numcards) * var(--card-top-offset));
+  /* Don't include the --card-margin in padding, as that will affect the scroll-timeline*/
+  margin-bottom: var(--card-margin);
+}
+
+#card_1 {
+  --index: 1;
+}
+
+#card_2 {
+  --index: 2;
+}
+
+#card_3 {
+  --index: 3;
+}
+
+#card_4 {
+  --index: 4;
+}
+
+.card {
+  position: sticky;
+  top: 0;
+  padding-top: calc(var(--index) * var(--card-top-offset));
+}
+
+#sticked-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(var(--numcards), var(--card-height));
+  gap: var(--card-margin);
+}
+
+.card img {
+  border-radius: 1em;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  height: 450px;
+  overflow: hidden;
+  --index0: calc(var(--index) - 1); /* 0-based index */
+  --reverse-index: calc(var(--numcards) - var(--index0)); /* reverse index */
+  --reverse-index0: calc(var(--reverse-index) - 1); /* 0-based reverse index */
+}
+
+/* Animación para reducir las cartas conforme suben */
+@keyframes scale {
+  to {
+    transform: scale(calc(1 - var(--scale-factor)));
+  }
+}
+
+/* Función para reducir las cartas más cercanas a abajo */
+.card {
+  --scale-factor: calc(var(--reverse-index0) * 0.1);
+}
+
+.card img {
+  animation: scale 0.5s ease forwards;
+}
+
+#cards {
+  --numcards: 4;
+  view-timeline-name: --scale;
+}

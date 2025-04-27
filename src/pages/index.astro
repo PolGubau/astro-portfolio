@@ -10,10 +10,11 @@ import coiae from "../assets/media/other/coiae.png";
 import gymZ from "../assets/media/other/gymZ.png";
 import santJordi from "../assets/media/other/santJordi.png";
 import { Image } from "astro:assets";
-
-import example1 from "../assets/media/other/example-1.webp";
-import example2 from "../assets/media/other/example-2.webp";
-import example3 from "../assets/media/other/example-3.webp";
+import "../styles/cards.css";
+import exampleFlags from "../assets/media/other/example-flags.webp";
+import exampleBlog from "../assets/media/other/example-codedByPol.webp";
+import exampleAnimated from "../assets/media/other/example-animated.webp";
+import examplePortfolio from "../assets/media/other/example-portfolio.webp";
 
 const imagesPhones = [coiae, gymZ, santJordi];
 
@@ -23,112 +24,122 @@ const yearSince2018 = thisYear - 2018;
 ---
 
 <MainLayout>
-	<section>
-		<Header />
-		<main class="flex w-full flex-1 flex-col gap-8">
-			<article class="flex flex-col gap-8 pb-10 max-md:pt-10">
-				<div>
-					<p class="inline">
-						👋🏼 Hi, I&apos;m a full time tech enthusiast graduated in <strong
-							>Interactive Communication</strong
-						> and based in Freiburg, DE.
-					</p>
-				</div>
-				<div class="flex flex-col gap-4">
-					<p>
-						With +{yearSince2018} years of experience, I have a strong background
-						in web development and have worked from small websites to <strong
-							>large-scale web applications</strong
-						>.
-					</p>
-				</div>
-				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-					<BlogLink slug="projects" name="Recent projects" />
-					<BlogLink slug="experiments" name="Some cool UI concepts" />
-				</div>
-			</article>
-			<section class="flex flex-col gap-5">
-				<hgroup class="balance mt-16 flex flex-col gap-5 font-medium text-3xl">
-					<p>🎨👨‍💻</p>
-					<h2>Pixel perfectionist, even though I work with vectors.</h2>
-				</hgroup>
+  <section>
+    <Header />
+    <main class="flex w-full flex-1 flex-col gap-8">
+      <article class="flex flex-col gap-8 pb-10 max-md:pt-10">
+        <div>
+          <p class="inline">
+            👋🏼 Hi, I&apos;m a full time tech enthusiast graduated in <strong
+              >Interactive Communication</strong
+            > and based in Freiburg, DE.
+          </p>
+        </div>
+        <div class="flex flex-col gap-4">
+          <p>
+            With +{yearSince2018} years of experience, I have a strong background
+            in web development and have worked from small websites to <strong
+              >large-scale web applications</strong
+            >.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <BlogLink slug="projects" name="Recent projects" />
+          <BlogLink slug="experiments" name="Some cool UI concepts" />
+        </div>
+      </article>
+      <section class="flex flex-col gap-5">
+        <hgroup class="balance mt-16 flex flex-col gap-5 font-medium text-3xl">
+          <p>🎨👨‍💻</p>
+          <h2>Pixel perfectionist, even though I work with vectors.</h2>
+        </hgroup>
 
-				<p>
-					My roots are in arts and design. My passion is in technology and my
-					goal is to combine both in digital products that are <strong
-						>beautiful</strong
-					> and <strong>functional</strong>.
-				</p>
-			</section>
-			<ThreePhones images={imagesPhones} />
+        <p>
+          My roots are in arts and design. My passion is in technology and my
+          goal is to combine both in digital products that are <strong
+            >beautiful</strong
+          > and <strong>functional</strong>.
+        </p>
+      </section>
+      <ThreePhones images={imagesPhones} />
 
-			<hgroup class="balance mt-16 flex flex-col gap-5 font-medium text-3xl">
-				<p>🧪🥼</p>
-				<h2>I love to create personal projects and experiments.</h2>
-			</hgroup>
+      <hgroup class="balance mt-16 flex flex-col gap-5 font-medium text-3xl">
+        <p>🧪🥼</p>
+        <h2>I love to create personal projects and experiments.</h2>
+      </hgroup>
 
-			<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-				<BlogLink
-					slug="blog/whyHaveSideProjects"
-					name="Why you should have a side project"
-				/>
-				<BlogLink
-					slug="blog/chooseSideProjects"
-					name="How to choose a side project"
-				/>
-			</div>
-			<ProjectsList projects={firstProjects} />
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <BlogLink
+          slug="blog/whyHaveSideProjects"
+          name="Why you should have a side project"
+        />
+        <BlogLink
+          slug="blog/chooseSideProjects"
+          name="How to choose a side project"
+        />
+      </div>
+      <ProjectsList projects={firstProjects} />
 
-			<BlogLink slug="/projects" name="See all my projects" />
+      <BlogLink slug="/projects" name="See all my projects" />
 
-			<hgroup class="balance mt-16 flex flex-col gap-5 font-medium text-3xl">
-				<p>🥑🚀</p>
-				<h2>I&apos;m a performance and accessibility advocate.</h2>
-			</hgroup>
-			<p>
-				I&apos;m a big fan of <strong
-					>progressive enhancement and graceful degradation</strong
-				> and I always try to make my websites as accessible as possible. Reaching
-				a professional level in both SEO and performance is the key for a successful
-				digital project.
-			</p>
-			<div class="md:-space-y-40 flex flex-col max-md:gap-6">
-				<div class="md:scale-75">
-					<Image
-						class="show-animation rounded-3xl border-4 border-secondary-200 object-cover object-top shadow-lg md:h-[300px] dark:border-secondary-700"
-						alt="A preview of the performance stats in my technical blog"
-						title="A preview of the performance stats in my technical blog"
-						src={example3}
-						decoding="async"
-						loading="lazy"
-						width={800}
-						height={600}
-					/>
-				</div>
-				<div class="md:scale-90">
-					<Image
-						class="show-animation rounded-3xl border-4 border-secondary-200 object-cover object-top shadow-lg dark:border-secondary-700"
-						alt="A preview of the performance stats in my technical blog"
-						title="A preview of the performance stats in my technical blog"
-						src={example2}
-						decoding="async"
-						loading="lazy"
-						width={800}
-						height={500}
-					/>
-				</div>
-				<Image
-					class="show-animation rounded-3xl border-4 border-secondary-200 object-cover object-top shadow-lg dark:border-secondary-700"
-					alt="A preview of the performance stats in my technical blog"
-					title="A preview of the performance stats in my technical blog"
-					src={example1}
-					loading="lazy"
-					decoding="async"
-					width={1000}
-					height={500}
-				/>
-			</div>
-			<small>My lastest websites are good examples of this.</small>
-		</main>
-	</section>
+      <hgroup class="balance mt-16 flex flex-col gap-5 font-medium text-3xl">
+        <p>🥑🚀</p>
+        <h2>I&apos;m a performance and accessibility advocate.</h2>
+      </hgroup>
+      <p>
+        I&apos;m a big fan of <strong
+          >progressive enhancement and graceful degradation</strong
+        > and I always try to make my websites as accessible as possible. Reaching
+        a professional level in both SEO and performance is the key for a successful
+        digital project.
+      </p>
+
+      <section>
+        <ul class="sticked-cards">
+          <li class="card" id="card_1">
+            <Image
+              alt="A preview of the performance stats in my technical blog"
+              src={exampleAnimated}
+              decoding="async"
+              loading="lazy"
+              width={800}
+              height={600}
+            />
+          </li>
+          <li class="card" id="card_2">
+            <Image
+              alt="A preview of the performance stats in my portfolio"
+              src={examplePortfolio}
+              decoding="async"
+              loading="lazy"
+              width={800}
+              height={600}
+            />
+          </li>
+          <li class="card" id="card_3">
+            <Image
+              alt="A preview of the performance stats in my technical blog"
+              src={exampleBlog}
+              decoding="async"
+              loading="lazy"
+              width={800}
+              height={600}
+            />
+          </li>
+          <li id="card_4" class="card">
+            <Image
+              alt="A preview of the performance stats in my technical blog"
+              src={exampleFlags}
+              decoding="async"
+              loading="lazy"
+              width={800}
+              height={600}
+            />
+          </li>
+        </ul>
+      </section>
+
+      <small>My lastest websites are good examples of this.</small>
+    </main>
+  </section>
 </MainLayout>

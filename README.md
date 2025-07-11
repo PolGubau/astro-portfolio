@@ -24,22 +24,20 @@ Visit my portfolio at **[https://www.polgubau.com](https://www.polgubau.com/)** 
 
 ## **Screenshots**
 
-![Home Page](https://www.polgubau.com/brand/thumbnail.png)
+![Home Page](https://www.polgubau.com/brand/thumbnail.webp)
 
-![Blog Page](https://www.polgubau.com/brand/thumbnail-blog.png)
+![Blog Page](https://www.polgubau.com/brand/thumbnail-blog.webp)
 
-![Projects Page](https://www.polgubau.com/brand/thumbnail-projects.png)
+![Projects Page](https://www.polgubau.com/brand/thumbnail-projects.webp)
 
 ## **Technologies Used**
 
-- [Next.js](https://nextjs.org/)
+- [Astro](https://astro.build/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Framer Motion](https://www.framer.com/motion/)
 - [Markdown](https://www.markdownguide.org/)
-- [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
-- [Jest](https://jestjs.io/)
+- [Biome](https://biomejs.dev/)
+- [Vitest](https://vitest.dev/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
 ## **Installation**

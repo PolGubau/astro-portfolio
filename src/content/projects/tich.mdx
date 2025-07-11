@@ -1,0 +1,103 @@
+---
+title: "Tich"
+startedAt: "2025-06-20"
+endedAt: "2025-07-27"
+category: "web"
+color: "#99CEFF"
+cover: "./img/tich.webp"
+available: true
+
+summary: "Powerful standard to manage your code comments. It allows to track your TODOs, FIXMEs, and other comments in your code, set deadlines for them, and fail pipelines if you have overdue comments."
+
+githubLink: https://github.com/PolGubau/tich
+link: https://tichapp.vercel.app/
+playStoreLink: https://play.google.com/store/apps/details?id=com.polgubau.tich
+
+tech:
+  - expo
+  - react-native
+  - typescript
+  - tailwindcss
+  - vitest
+
+
+---
+
+import { Image } from "astro:assets";
+
+import classDetails from "../../assets/media/projects/tich/class_details.webp";
+import createStudent from "../../assets/media/projects/tich/create_student.webp";
+import dashboard from "../../assets/media/projects/tich/dashboard.webp";
+import dateSelect from "../../assets/media/projects/tich/date_select.webp";
+import preview from "../../assets/media/projects/tich/preview.webp";
+import studentDetails from "../../assets/media/projects/tich/student_details.webp";
+
+# Tich - Private Class Tracker
+
+**Tich** is a clean, minimal mobile app that helps private teachers track their students, classes, earnings and teaching hours.
+<Image src={preview} alt="Tich Preview"  height={700} />
+
+It's split into three main sections:
+
+## 📊 Dashboard
+
+Provides a quick overview of your teaching stats:
+- Total students
+- Total classes taught
+- Hours delivered
+- Revenue earned
+
+You also get a reverse-chronological list of all classes.
+
+<Image src={dashboard} alt="Tich Dashboard"  height={700} class={"show-animation"} />
+
+---
+
+## 🧑‍🎓 Students
+
+Manage all your students from one place:
+- Filterable list with name, photo, email and class count
+- Tap to view details and their class history
+- Edit or delete any student
+- Add new students easily
+
+<div class="grid grid-cols-2 gap-4">
+ 
+    <Image src={studentDetails} alt="Student details" height={700} class={"show-animation"} />
+ 
+    <Image src={createStudent} alt="Create student" height={700} class={"show-animation"} />
+ 
+</div>
+---
+
+## 📝 Create Class
+
+Log each class with full context:
+- Student
+- Topic
+- Notes
+- Duration
+- Price
+- Date and time
+- Payment status
+
+
+<div class="grid grid-cols-2 gap-4">
+    <Image src={classDetails} alt="Class details" height={700} class={"show-animation"} />
+    <Image src={dateSelect} alt="Date selector" height={700} class={"show-animation"} /> 
+</div>
+---
+
+## 🌓 Extras
+
+- Supports **dark mode** (auto-enabled by system settings)
+- Fully **localized**: English, Spanish, Catalan and German
+- Language selection is automatic based on your device preferences
+
+---
+
+## 🔧 Tech
+
+- React Native + Expo
+- TypeScript
+- Native i18n & theming support

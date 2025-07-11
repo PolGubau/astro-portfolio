@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import type { ProjectMetadata } from "../../lib/utils";
 import GithubIcon from "../icons/GithubIcon.astro";
 import NpmIcon from "../icons/NpmIcon.astro";
+import PlayStoreIcon from "../icons/PlayStoreIcon.astro";
 import SearchIcon from "../icons/SearchIcon.astro";
 
 type Props = {
@@ -171,6 +172,25 @@ function formatDate(date: Date) {
           <NpmIcon />
           <span class="sr-only">Link to NPM</span>
           <span class="hidden md:block">View package</span>
+        </a>
+      ) : null
+    }
+    {
+      p.data.playStoreLink ? (
+        <a
+          title="Link to Play Store"
+          href={p.data.playStoreLink}
+          href-lang="en-us"
+          class="flex h-full w-fit animate-expand-vertically items-center gap-2 truncate rounded-xl px-3 py-2 text-black text-xl transition-all hover:brightness-90"
+          target="_blank"
+          style={{
+            backgroundColor: p.data.color ?? "transparent",
+          }}
+          rel="noopener noreferrer"
+        >
+          <PlayStoreIcon />
+          <span class="sr-only">Link to Play store</span>
+          <span class="hidden md:block">Open in Play Store</span>
         </a>
       ) : null
     }

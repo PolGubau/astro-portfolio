@@ -29,7 +29,7 @@ const projects = defineCollection({
 			color: z.string(),
 			link: z.string().optional(),
 			githubLink: z.string().optional(),
-			npmCommand: z.string().optional(),
+			playStoreLink: z.string().optional(),
 			npmLink: z.string().optional(),
 			cover: image(),
 			category: z.string(),

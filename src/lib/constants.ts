@@ -45,5 +45,5 @@ export const metadata = {
 		email: "mailto:gubaupol@gmail.com",
 	},
 
-	homeOgImage: "assets/thumbnail.png",
+	homeOgImage: "assets/thumbnail.webp",
 };

@@ -26,7 +26,6 @@ export const getProjects = (
 	limit = Number.MAX_SAFE_INTEGER,
 ): ProjectMetadata[] => {
 	const limitedProjects = projects.slice(0, limit);
-
 	return limitedProjects;
 };
 

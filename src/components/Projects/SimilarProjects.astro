@@ -14,9 +14,7 @@ const similarTechProjects = (): ProjectMetadata[] => {
 
 	const tech = project.data.tech ?? "";
 
-	const otherProjects = getProjects().filter(
-		(post) => post.id !== `projects/${project.id}`,
-	);
+	const otherProjects = getProjects().filter((post) => post.id !== project.id);
 
 	const similarProjects = otherProjects.filter((post) =>
 		post.data.tech?.some((t) => tech.includes(t)),

@@ -1,0 +1,223 @@
+---
+title: "¿Cómo se jugaba?"
+startedAt: "2025-07-09"
+endedAt: "2025-08-02"
+category: "web"
+color: "#ec6e00"
+cover: "./img/cartas.webp"
+available: true
+
+summary: "Powerful standard to manage your code comments. It allows to track your TODOs, FIXMEs, and other comments in your code, set deadlines for them, and fail pipelines if you have overdue comments."
+
+githubLink: https://github.com/PolGubau/tich
+link: https://tichapp.vercel.app/
+
+tech:
+  - expo
+  - react-native
+  - typescript
+  - tailwindcss
+  - vitest
+
+
+---
+
+import { Image } from "astro:assets";
+
+import pc1 from "../../assets/media/projects/cartas/pc1.webp";
+import pc2 from "../../assets/media/projects/cartas/pc2.webp";
+import pc3 from "../../assets/media/projects/cartas/pc3.webp";
+import phone1 from "../../assets/media/projects/cartas/phone1.webp";
+import phone2 from "../../assets/media/projects/cartas/phone2.webp";
+import ronda from "../../assets/media/projects/cartas/ronda.webp";
+
+
+**¿Cómo se jugaba?** is a modern, content-driven web app that documents and explains traditional Spanish card games in Spanish starting with **El Cuadrado** and **5 Vidas**.
+
+It was born from a personal desire to preserve and share the rules of the games I grew up playing.
+
+Built with **Astro**, **MDX**, **TailwindCSS**, and enriched with ✨hand-made illustrations✨.
+ 
+<figure>
+<Image
+        src={ronda}
+        alt="Example of the illustrations"
+        width={700}
+        height={700}
+        className="rounded-xl h-full max-h-[300px] md:max-h-[400px] object-cover show-animation"
+      />
+  <figcaption className="text-center">Example of the illustrations.</figcaption>
+</figure>
+
+---
+
+## Motivation 🧠 
+
+I've always loved card games, especially traditional Spanish ones. Many of these games aren't well documented online, or their rules vary widely depending on region or family.
+This site is my attempt to:
+
+* 🗂️ Archive my favorite games so I never forget how they're played
+* 📖 Teach others about Spanish card game culture
+* 🎨 Combine a beauty design and a clean code project
+
+---
+
+## 🌍 Live Site
+
+[🔗 cartas.polgubau.com](https://cartas.polgubau.com)
+<figure>
+<Image
+        src={pc1}
+        alt="Landing page of the site"
+        width={700}
+        height={400}
+        className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"
+      />
+  <figcaption>Landing page of the site.</figcaption>
+</figure>
+---
+
+## 📦 Tech Stack
+
+| Tool               | Purpose                            |
+| ------------------ | ---------------------------------- |
+| **Astro**            | Static + server-side rendering     |
+| **MDX**              | Game rules in interactive Markdown |
+| **TailwindCSS**      | Utility-first styling              |
+| **@astrojs/content** | Content collections for games      |
+| **Sharp**            | Image optimization                 |
+
+---
+
+## 🗄 Site Structure
+This project is structured to keep content and code organized, making it easy to add new games or update existing ones. Here's a quick summarized overview of the structure:
+
+```
+├── 📦src
+     ├── 📂assets # Illustrations and media files
+     ├── 📂components # Reusable UI components
+     ├── 📂content # Game content (MDX files)
+          └──📂games
+     ├── 📂layouts  # Layout components
+     ├── 📂lib
+     ├── 📂pages
+          └──📂games
+              └──📜[...slug].astro
+          └──📜index.astro
+     ├── 📂styles
+     ├── 📂utils
+     └── 📜content.config.ts
+├── public/  # Static assets (e.g. illustrations)
+└── astro.config.mjs # Astro config
+```
+
+Games are stored in the `games` collection, defined via `content.config.ts`:
+
+```ts
+// content.config.ts
+import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
+
+const games = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/games" }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      addedAt: z.coerce.date(),
+      coverImage: image(),
+      tags: z.array(z.enum(['cards', "poker", "españolas"])).optional(),
+    })
+});
+
+export const collections = { games };
+```
+
+---
+
+## 🏅 Features
+
+* ✅ Fully responsive UI (TailwindCSS)
+* 🧾 Clean and structured game documentation via MDX
+* 🎭 Custom hand-drawn illustrations
+* ⚡ Fast performance (Astro + server output)
+* 🎡 SEO-ready with sitemap & metadata
+
+<figure>
+  <Image
+    src={pc2}
+    alt="Landing page of the site"
+    width={600}
+    height={400}
+    className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"
+  />
+  <figcaption>Landing page of the site.</figcaption>
+</figure>
+
+---
+
+## 🚀 Getting Started
+
+To run this project locally, you need to have [Node.js](https://nodejs.org) installed. Then, follow these steps:
+
+```bash
+git clone https://github.com/polgubau/como-se-jugaba
+cd como-se-jugaba
+pnpm install
+pnpm dev
+```
+
+
+
+---
+## Screenshots
+
+<figure>
+  <Image
+    src={pc3}
+    alt="Example of game explication"
+    width={600}
+    height={400}
+    className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"
+  />
+  <figcaption>Example of game explication.</figcaption>
+
+  </figure>
+
+<figure>
+  <Image
+    src={phone1}
+    alt="Example of phone view"
+    width={600}
+    height={400}
+    className="rounded-xl max-h-[500px] md:max-h-[600px] w-fit show-animation"
+  />
+  <figcaption>Example of phone view.</figcaption>
+</figure>
+ 
+<figure>
+  <Image
+    src={phone2}
+    alt="Main image of the site"
+    width={600}
+    height={400}
+    className="rounded-xl max-h-[500px] md:max-h-[600px] w-fit show-animation"
+  />
+  <figcaption>Main image of the site.</figcaption>
+</figure>
+ 
+
+---
+
+## 🌟 Future Plans
+
+* Add more games (e.g. Brisca, Mus)
+* Add video explainers
+* Localization (ES/CAT/EN)
+* Comments or rule variants via MDX
+
+---
+
+## ✨ License
+
+MIT

@@ -28,7 +28,7 @@ const { Content, headings } = await render(project);
 ---
 
 <MainLayout image={project.data.cover.src} title={PAGE_TITLE}>
-	<section class="relative flex flex-col gap-4">
+	<section class="relative flex flex-col gap-10">
 		<ProjectHeader project={project} />
 		<MdLayout headings={headings} backTo="/projects">
 			<Content />

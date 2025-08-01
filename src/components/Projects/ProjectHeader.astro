@@ -5,6 +5,7 @@ import GithubIcon from "../icons/GithubIcon.astro";
 import NpmIcon from "../icons/NpmIcon.astro";
 import PlayStoreIcon from "../icons/PlayStoreIcon.astro";
 import SearchIcon from "../icons/SearchIcon.astro";
+import ProjectHeaderLink from "./ProjectHeaderLink.astro";
 
 type Props = {
   project: ProjectMetadata;
@@ -12,17 +13,62 @@ type Props = {
 const { project: p } = Astro.props;
 
 function formatDate(date: Date) {
-  const fullDate = date.toLocaleString("en-us", {
-    month: "long",
+  const fullDate = date.toLocaleString("en-ES", {
     day: "numeric",
+    month: "long",
     year: "numeric",
   });
 
   return fullDate;
 }
+enum Icons {
+  github = "github",
+  npm = "npm",
+  playStore = "playStore",
+}
+const projectButtons: {
+  link: string | undefined;
+  label: string;
+  icon: Icons;
+}[] = [
+  {
+    link: p.data.githubLink,
+    label: "View Source",
+    icon: Icons.github,
+  },
+  {
+    link: p.data.npmLink,
+    label: "Link to NPM",
+    icon: Icons.npm,
+  },
+  {
+    link: p.data.playStoreLink,
+    label: "Link to Play store",
+    icon: Icons.playStore,
+  },
+].filter((p) => Boolean(p.link));
+
+const iconMap: Record<Icons, Function> = {
+  github: GithubIcon,
+  playStore: PlayStoreIcon,
+  npm: NpmIcon,
+};
+
+const projectLinks = projectButtons
+  .map((p) => p.link)
+  .filter((value) => value !== undefined);
+const lastExistingButton = projectLinks[projectLinks.length - 1];
+
+function isLastButton(button: string) {
+  if (lastExistingButton === button) {
+    return true;
+  }
+
+  return false;
+}
 ---
 
-<header class="flex flex-col gap-2">
+<header class="flex flex-col gap-1">
   <section class="flex flex-col gap-4">
     <a
       href-lang="en-us"
@@ -33,24 +79,25 @@ function formatDate(date: Date) {
       <span class="sr-only">Back to projects</span>← Back
     </a>
     <header
-      class="relative flex min-h-[200px] items-end justify-between overflow-hidden rounded-xl md:min-h-[250px]"
+      class="relative flex min-h-[300px] items-end justify-between overflow-hidden rounded-t-xl md:min-h-[270px]"
       style={{
         backgroundColor: p.data.color ?? "transparent",
       }}
     >
-      <div class="flex flex-col px-6 py-6">
-        <span class="group flex gap-4 overflow-hidden">
+      <div class="flex flex-col p-4 md:p-6">
+        <span class="flex gap-4 overflow-hidden">
           <a
             href={p.data.link ?? ""}
             href-lang="en-us"
             target="_blank"
+            rel="noopener noreferrer"
             tab-index={p.data.link ? undefined : -1}
             class={p.data.link ? "" : "pointer-events-none"}
             aria-disabled={!p.data.link}
           >
             <h1
               title="Visit Project"
-              class="balance z-10 w-fit max-w-[650px] rounded-full p-2 font-semibold text-4xl text-neutral-900 tracking-tighter md:text-7xl"
+              class="balance z-10 w-fit max-w-[650px] rounded-full p-2 font-black text-4xl text-neutral-900 tracking-tight md:text-7xl"
               style={{
                 backgroundColor: p.data.color ?? "transparent",
               }}
@@ -60,7 +107,7 @@ function formatDate(date: Date) {
           </a>
         </span>
         <div
-          class="z-10 flex w-fit flex-col gap-1 rounded-xl p-2 py-1 font-medium text-neutral-800 text-sm sm:font-normal md:text-lg dark:text-neutral-800"
+          class="z-10 flex w-fit flex-col rounded-xl p-2 py-1 font-medium text-neutral-800 text-sm sm:font-normal md:text-lg dark:text-neutral-800"
           style={{
             backgroundColor: p.data.color ?? "transparent",
           }}
@@ -73,10 +120,9 @@ function formatDate(date: Date) {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
+              stroke-width="1"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-up-left"
               ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
                 d="M8 16v-8h8"></path></svg
             >
@@ -90,10 +136,9 @@ function formatDate(date: Date) {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
+              stroke-width="1"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down-left"
               ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
                 d="M8 8v8h8"></path></svg
             >
@@ -117,14 +162,14 @@ function formatDate(date: Date) {
       />
     </header>
   </section>
-  <nav class="flex w-full flex-wrap gap-2">
+  <nav class="flex w-full flex-wrap gap-1">
     {
       p.data.link ? (
         <a
           href={p.data.link}
           href-lang="en-us"
           title="Visit Project"
-          class="flex h-full flex-1 animate-expand-vertically items-center justify-center gap-2 rounded-xl px-3 py-2 text-secondary-900 text-xl transition-all hover:brightness-90 sm:justify-start"
+          class="flex h-full flex-1 animate-expand-vertically items-center justify-center gap-2 rounded-bl-xl px-3 py-2 text-secondary-900 text-xl transition-all hover:brightness-90 sm:justify-start"
           target="_blank"
           style={{
             backgroundColor: p.data.color ?? "transparent",
@@ -132,67 +177,26 @@ function formatDate(date: Date) {
           rel="noopener noreferrer"
         >
           <span class="sr-only">Link to the project</span>
-          <SearchIcon />
-          <span>Visit Project</span>
+          <SearchIcon width={20} height={20} />
+          <span class="text-[0.8em]">Visit Project</span>
         </a>
       ) : null
     }
     {
-      p.data.githubLink ? (
-        <a
-          title="Link to Github Source"
-          href={p.data.githubLink}
-          href-lang="en-us"
-          class="flex h-full w-fit animate-expand-vertically items-center gap-2 truncate rounded-xl px-3 py-2 text-black text-xl transition-all hover:brightness-90"
-          target="_blank"
-          style={{
-            backgroundColor: p.data.color ?? "transparent",
-          }}
-          rel="noopener noreferrer"
-        >
-          <GithubIcon />
-          <span class="sr-only">Link to Github Source</span>
-          <span class="hidden md:block">View Source</span>
-        </a>
-      ) : null
-    }
-    {
-      p.data.npmLink ? (
-        <a
-          title="Link to NPM Package"
-          href={p.data.npmLink}
-          href-lang="en-us"
-          class="flex h-full w-fit animate-expand-vertically items-center gap-2 truncate rounded-xl px-3 py-2 text-black text-xl transition-all hover:brightness-90"
-          target="_blank"
-          style={{
-            backgroundColor: p.data.color ?? "transparent",
-          }}
-          rel="noopener noreferrer"
-        >
-          <NpmIcon />
-          <span class="sr-only">Link to NPM</span>
-          <span class="hidden md:block">View package</span>
-        </a>
-      ) : null
-    }
-    {
-      p.data.playStoreLink ? (
-        <a
-          title="Link to Play Store"
-          href={p.data.playStoreLink}
-          href-lang="en-us"
-          class="flex h-full w-fit animate-expand-vertically items-center gap-2 truncate rounded-xl px-3 py-2 text-black text-xl transition-all hover:brightness-90"
-          target="_blank"
-          style={{
-            backgroundColor: p.data.color ?? "transparent",
-          }}
-          rel="noopener noreferrer"
-        >
-          <PlayStoreIcon />
-          <span class="sr-only">Link to Play store</span>
-          <span class="hidden md:block">Open in Play Store</span>
-        </a>
-      ) : null
+      projectButtons.map((b) => {
+        const isLast = isLastButton(b.link ?? "");
+        const Icon = iconMap[b.icon];
+        return (
+          <ProjectHeaderLink
+            label={b.label}
+            isLast={isLast}
+            color={p.data.color}
+            link={b.link ?? ""}
+          >
+            {<Icon width={20} height={20} />}
+          </ProjectHeaderLink>
+        );
+      })
     }
   </nav>
 </header>

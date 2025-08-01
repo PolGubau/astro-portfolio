@@ -1,0 +1,27 @@
+---
+type Props = {
+  link: string;
+  isLast: boolean;
+  color: string;
+  label: string;
+};
+const { link, isLast, color, label } = Astro.props;
+---
+
+<a
+  title="Link to Github Source"
+  href={link}
+  href-lang="en-us"
+  class:list={[
+    "flex h-full w-fit animate-expand-vertically items-center gap-2 truncate px-3 py-2 text-black text-xl transition-all hover:brightness-80",
+    { "rounded-br-xl": isLast },
+  ]}
+  target="_blank"
+  style={{
+    backgroundColor: color ?? "transparent",
+  }}
+  rel="noopener noreferrer"
+>
+  <slot />
+  <span class="hidden text-[0.8em] md:block">{label}</span>
+</a>

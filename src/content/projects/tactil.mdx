@@ -1,0 +1,123 @@
+---
+title: "Tactil"
+startedAt: "2025-05-20"
+# endedAt: "2025-08-27"
+category: "web"
+color: "#b4e600"
+cover: "./img/tactil.webp"
+available: true
+
+summary: "Powerful standard to manage your code comments. It allows to track your TODOs, FIXMEs, and other comments in your code, set deadlines for them, and fail pipelines if you have overdue comments."
+
+githubLink: https://github.com/PolGubau/tactil
+link: https://tactil.vercel.app/
+
+tech:
+  - astro
+  - mdx
+  - tailwindcss
+  - typescript
+---
+
+import { Image } from "astro:assets";
+
+import cards from "../../assets/media/projects/tactil/cards.webp";
+import landing from "../../assets/media/projects/tactil/landing.webp";
+import ticket from "../../assets/media/projects/tactil/ticket.webp";
+
+
+
+## Landing page for a Web + Design Studio
+
+Tactil is a creative studio offering **custom design and development** for ambitious brands seeking **fast**, **scalable**, and **unique** digital experiences. 
+
+It aims to break away from the world of generic templates because **templates are for slideshows, not your website**.
+
+
+<Image src={cards} alt="Tactil Cards"  height={700} class={"show-animation"} />
+
+---
+
+## Vision
+
+Modern websites often fall into two extremes: overdesigned yet underperforming templates, or fast but visually soulless themes. At TTactil, we bridge that gap by delivering handcrafted interfaces, subtle interactions, and performant codebases—all tailored to the brand's DNA.
+<Image src={landing} alt="Tactil Landing"  height={700} class={"show-animation"} />
+
+We build websites that:
+
+* Convert better by being intentional
+* Scale with your business
+* Load blazingly fast
+* Feel alive thanks to motion and detail
+
+Our tagline sums it up:
+
+> Custom **design & development** for ambitious brands.
+> Fast🚀, unique🦄 and scalable📈 digital experiences.
+
+---
+
+## Why Astro?
+
+The web doesn't need more megabytes of JS just to render static content.
+
+We use **[Astro](https://astro.build)** as our foundation to keep shipping:
+
+* **Zero-JS by default**, great for landing pages and SEO
+* **Island architecture**, enabling selective interactivity
+* **Fast build times** and optimizations out-of-the-box
+
+Combined with **React Islands** and **TailwindCSS**, Astro gives us the power to deliver real-time performance *and* expressive interfaces.
+
+---
+
+## Tech Stack
+
+| Tool / Library       | Purpose                               |
+| -------------------- | ------------------------------------- |
+| `Astro`              | Static site generator                 |
+| `React`              | Interactive UI islands                |
+| `TailwindCSS`        | Utility-first styling                 |
+| `@astrojs/mdx`       | Rich content with Markdown & JSX      |
+| `@astrojs/rss`       | RSS support for future blog/posts     |
+| `@astrojs/sitemap`   | SEO-ready sitemap generation          |
+| `@astrojs/react`     | React integration for Astro           |
+| `@polgubau/animated` | My own animation component library   |
+| `astro-meta-tags`    | Dynamic meta tag generation           |
+| `oxlint`             | Fast linter for modern JS/TS projects |
+| `sharp`              | Image processing & optimization       |
+
+---
+
+## Linting
+
+We use [oxlint](https://oxlint.com/) for ultrafast linting, and it's integrated both manually and via Git hooks (`lint-staged`).
+
+### Run lint:
+
+```bash
+pnpm lint
+```
+
+---
+
+## i18n & Translations
+<Image src={ticket} alt="Tactil Ticket section"  height={700} class={"show-animation"} />
+
+
+The website is built with internationalization in mind. Text content is abstracted into language-specific files (`en.ts`, `es.ts`,etc).
+
+This allows easy expansion to other locales and supports dynamic UI rendering per language.
+
+---
+ 
+
+## 🔍 SEO, Performance & Best Practices
+
+* Fully static by default
+* `<meta>` tags auto-generated via `astro-meta-tags`
+* Sitemap via `@astrojs/sitemap`
+* Optimized fonts, images (`sharp`)
+* Zero client JS unless required
+
+ 

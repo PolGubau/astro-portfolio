@@ -45,7 +45,7 @@ const yearSince2018 = thisYear - 2018;
         </div>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
           <BlogLink slug="projects" name="Recent projects" />
-          <BlogLink slug="experiments" name="Some cool UI concepts" />
+          <BlogLink slug="ui" name="Some cool UI concepts" />
         </div>
       </article>
       <section class="flex flex-col gap-5">
@@ -68,16 +68,7 @@ const yearSince2018 = thisYear - 2018;
         <h2>I love to create personal projects and experiments.</h2>
       </hgroup>
 
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <BlogLink
-          slug="blog/whyHaveSideProjects"
-          name="Why you should have a side project"
-        />
-        <BlogLink
-          slug="blog/chooseSideProjects"
-          name="How to choose a side project"
-        />
-      </div>
+       
       <ProjectsList projects={firstProjects} />
 
       <BlogLink slug="/projects" name="See all my projects" />

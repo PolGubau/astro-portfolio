@@ -7,9 +7,9 @@ type Props = {
 const { label, position = "top", className } = Astro.props;
 ---
 
-<span class="relative inline-block w-fit bg-secondary-100 dark:bg-secondary-800 rounded-xl px-2 group">
+<span class="relative inline-block w-fit bg-secondary-100 dark:bg-secondary-900 rounded-xl px-2 group">
   <!-- Label -->
-  <span>{label}</span>
+  <span class="text-foreground">{label}</span>
 
   <!-- Slot tooltip -->
   <span
@@ -17,7 +17,7 @@ const { label, position = "top", className } = Astro.props;
       position === "bottom" ? "top-full mt-[8px]" : "bottom-full mb-[8px]",
       "absolute left-1/2 -translate-x-1/2 w-fit",
       "group-hover:motion-preset-seesaw",
-      "px-1 py-0 rounded-xl bg-secondary-100 dark:bg-secondary-800",
+      "px-1 py-0 rounded-xl bg-secondary-100 dark:bg-secondary-900",
       "motion-scale-in motion-opacity-in-0 motion-ease-spring-bouncier motion-blur-in",
       className,
     ]}
@@ -26,7 +26,7 @@ const { label, position = "top", className } = Astro.props;
 
     <span
     class:list={[
-      "absolute left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-r-[8px] rotate-180 border-secondary-100 dark:border-secondary-800 border-l-transparent border-r-transparent",
+      "absolute left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-r-[8px] rotate-180 border-secondary-100 dark:border-secondary-900 border-l-transparent border-r-transparent",
 
 
       {"border-b-[8px] -bottom-[8px]":position==="top"},

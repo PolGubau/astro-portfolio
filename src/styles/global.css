@@ -37,18 +37,18 @@
   --color-secondary-600: #666666;
   --color-secondary-700: #4d4d4d;
   --color-secondary-800: #333333;
-  --color-secondary-900: #121212;
+  --color-secondary-900: #222222;
   --color-secondary-950: #0d0d0d;
   --font-main: "Gabarito", sans-serif;
 }
 :root {
   scroll-behavior: smooth;
   --background: var(--color-secondary-50);
-  --foreground: var(--color-secondary-900);
+  --foreground: var(--color-secondary-950);
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: var(--color-secondary-900);
+    --background: var(--color-secondary-950);
     --foreground: var(--color-secondary-50);
   }
 }

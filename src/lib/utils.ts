@@ -13,12 +13,26 @@ export const getBlogs = (limit = Number.MAX_SAFE_INTEGER): BlogMetadata[] => {
 
 // ----
 export const projects = (await getCollection("projects"))
-	.sort(
-		(a, b) =>
-			(b.data.endedAt ?? new Date()).valueOf() -
-			(a.data.endedAt ?? new Date()).valueOf(),
-	)
-	.filter((project) => project.data.available === true);
+  .filter((project) => project.data.available === true)
+  .sort((a, b) => {
+    const aEnded = a.data.endedAt;
+    const bEnded = b.data.endedAt;
+
+    // ambos en curso → ordenar por startedAt desc
+    if (!aEnded && !bEnded) {
+      return b.data.startedAt.valueOf() - a.data.startedAt.valueOf();
+    }
+
+    // ambos terminados → ordenar por endedAt desc
+    if (aEnded && bEnded) {
+      return bEnded.valueOf() - aEnded.valueOf();
+    }
+
+    // uno en curso, otro terminado → en curso primero
+    return aEnded ? 1 : -1;
+  });
+
+
 
 export type ProjectMetadata = (typeof projects)[number];
 

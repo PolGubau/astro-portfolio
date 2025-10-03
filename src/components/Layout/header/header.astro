@@ -1,46 +1,77 @@
 ---
 import { Image } from "astro:assets";
+import me from "../../../assets/media/me.webp";
 import { metadata } from "../../../lib/constants";
+import BlogLink from "../../BlogLink.astro";
 import MainSocials from "../../Social/MainSocials.astro";
 import Avatar from "../avatar/avatar.astro";
-//  import { MainSocials } from "@/components/Social/MainSocials";
-// import { metadata } from "@/lib/constants";
-// import Image from "next/image";
-import me from "../../../assets/media/me.webp";
+import { Typewriter } from "./typewriter";
+import Tag from "../../../shared/ui/tags/Tag.astro";
+
+const thisYear = new Date().getFullYear();
+const yearSince2018 = thisYear - 2018;
 ---
 
-<header
-  class="mb-8 flex flex-col items-center justify-between gap-8 md:flex-row"
->
-  <div class="bg-primary w-full flex justify-center md:hidden rounded-xl">
-    <Image
-      src={me}
-      class="flex justify-center bg-primary object-cover object-bottom"
-      alt="Pol Gubau Amores' profile image"
-      title="Pol Gubau Amores' profile image"
-      width={150}
-      height={150}
-    />
-  </div>
-  <div class="flex flex-col gap-3 max-md:items-center">
-    <div class="overflow-hidden">
-      <h1
-        class="w-fit animate-slide-in-bottom overflow-hidden text-3xl leading-[.85] sm:text-4xl md:text-5xl"
-      >
-        <span class="block">{metadata.longName}</span>
-      </h1>
+<header class="flex flex-col gap-8 md:h-dvh md:gap-20">
+  <div
+    class="mb-8 flex flex-col items-center justify-between gap-8 md:flex-row"
+  >
+    <div class="bg-primary w-full flex justify-center md:hidden rounded-xl">
+      <Image
+        src={me}
+        class="flex justify-center bg-primary object-cover object-bottom"
+        alt="Pol Gubau Amores' profile image"
+        title="Pol Gubau Amores' profile image"
+        width={150}
+        height={150}
+      />
     </div>
-    <div class="overflow-hidden max-md:pb-4">
-      <h2
-        class="w-fit animate-slide-in-bottom overflow-hidden opacity-75 md:pb-2"
-      >
-        <span class="block text-md leading-[.85] sm:text-xl md:text-2xl">
-          {metadata.slogan}
-        </span>
-      </h2>
-    </div>
+    <div class="flex flex-col gap-3 max-md:items-center">
+      <div class="overflow-hidden">
+        <h1
+          class="w-fit animate-slide-in-bottom overflow-hidden text-3xl leading-[.85] sm:text-4xl md:text-6xl"
+        >
+          <span class="block">{metadata.longName}</span>
+        </h1>
+      </div>
+      <div class="overflow-hidden max-md:pb-4">
+        <h2
+          class="w-fit animate-slide-in-bottom overflow-hidden opacity-75 md:pb-2"
+        >
+          <span class="block text-md leading-[.85] sm:text-xl md:text-2xl">
+            {metadata.slogan}
+          </span>
+        </h2>
+      </div>
 
-    <MainSocials />
+      <MainSocials />
+    </div>
+    <Avatar />
   </div>
-  <Avatar />
+
+  <article class="flex flex-col gap-8 md:gap-20 pb-10 max-md:pt-10">
+    <div>
+      <p class="max-w-4xl md:text-3xl leading-relaxed">
+        <Tag label={`Hi`} position="top" className=" motion-delay-100">👋🏼</Tag>
+        , I&apos;m a full time tech enthusiast graduated in <br/> 
+        <Tag label="Interactive Communication" position="bottom" className="motion-delay-200">🎓</Tag>
+        and based in
+        <Tag label="Barcelona" position="bottom" className="motion-delay-300">☀️</Tag>  
+         
+      </p>
+    </div>
+ 
+    <div class="flex flex-col gap-4 max-w-xl">
+      <p>
+        With +{yearSince2018} years of experience, I have a strong background in
+        web development 💻 and have worked from small websites to <strong
+          >large-scale web applications
+        </strong>
+      </p>
+    </div>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <BlogLink slug="projects" name="Recent projects" />
+      <BlogLink slug="ui" name="Some cool UI concepts" />
+    </div>
+  </article>
 </header>

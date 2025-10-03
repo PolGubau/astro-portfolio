@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "@polgubau/animated";
+@plugin "tailwindcss-motion";
 @plugin "@tailwindcss/typography";
+@plugin "./typewritter.ts";
+@plugin "./confetti.ts";
+
 
 @font-face {
   font-family: "Gabarito";
@@ -10,7 +14,6 @@
   font-display: swap;
 }
 
-/* @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); */
 
 @theme {
   --color-primary-50: #ffffec;

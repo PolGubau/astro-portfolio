@@ -16,25 +16,19 @@ const { label, position = "top", className } = Astro.props;
     class:list={[
       position === "bottom" ? "top-full mt-[8px]" : "bottom-full mb-[8px]",
       "absolute left-1/2 -translate-x-1/2 w-fit",
-      "group-hover:motion-preset-seesaw",
-      "px-1 py-0 rounded-xl bg-secondary-100 dark:bg-secondary-900",
-      "motion-scale-in motion-opacity-in-0 motion-ease-spring-bouncier motion-blur-in",
+      "px-1 py-0 rounded-lg md:rounded-xl bg-secondary-100 dark:bg-secondary-900",
+      "motion-scale-in group-hover/motion-opacity-in-0 motion-ease-spring-bouncier motion-blur-in animate-fill-forwards",
       className,
     ]}
   >
-    <slot />
-
+     <slot />
+ 
     <span
     class:list={[
       "absolute left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-r-[8px] rotate-180 border-secondary-100 dark:border-secondary-900 border-l-transparent border-r-transparent",
-
-
       {"border-b-[8px] -bottom-[8px]":position==="top"},
-
-
       {"border-t-[8px] -top-[8px] ":position==="bottom"}
-     
     ]}
-  ></span>
+  />
   </span>
 </span>

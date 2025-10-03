@@ -1,15 +1,19 @@
 ---
 interface Props {
   href: string;
+  className?: string;
   label: string;
 }
 
-const { href, label } = Astro.props;
+const { href, label, className } = Astro.props;
 ---
 
 <a
   href={href}
-  class="flex w-fit select-none items-center gap-2 rounded-xl border border-secondary-900/30 px-3 py-1 text-sm transition-all hover:bg-secondary-900/10 dark:bg-secondary-50/10 dark:hover:bg-secondary-50/20"
+  class:list={["flex w-fit select-none items-center gap-2 rounded-xl border border-secondary-900/30 px-3 py-1 text-sm transition-all hover:bg-secondary-900/10 dark:bg-secondary-50/10 dark:hover:bg-secondary-50/20", className]}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={label}
 >
   <slot name="icon" />
   {label}

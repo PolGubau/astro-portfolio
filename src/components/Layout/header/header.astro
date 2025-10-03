@@ -11,7 +11,7 @@ const thisYear = new Date().getFullYear();
 const yearSince2018 = thisYear - 2018;
 ---
 
-<header class="flex flex-col gap-8 md:h-dvh md:gap-20">
+<header class="flex flex-col gap-8 md:gap-18 md:py-20">
   <div
     class="mb-8 flex flex-col items-center justify-between gap-8 md:flex-row"
   >
@@ -65,8 +65,8 @@ const yearSince2018 = thisYear - 2018;
       </p>
      
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <BlogLink slug="projects" name="Recent projects" />
-      <BlogLink slug="ui" name="Some cool UI concepts" />
+      <BlogLink slug="projects" name="Recent projects" class="motion-translate-y-in-100 motion-opacity-in-0 motion-blur-in motion-delay-[2500ms]" />
+      <BlogLink slug="ui" name="Some cool UI concepts" class="motion-translate-y-in-100 motion-opacity-in-0 motion-blur-in motion-delay-[2900ms]"/>
     </div>
   </article>
 </header>

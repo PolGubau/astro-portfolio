@@ -1,0 +1,5 @@
+.nav-gradient-blur {
+  backdrop-filter: blur(20px);
+  -webkit-mask-image: linear-gradient(to top, black, transparent);
+  mask-image: linear-gradient(to top, black, transparent);
+}

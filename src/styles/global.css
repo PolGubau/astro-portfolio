@@ -2,8 +2,6 @@
 @import "@polgubau/animated";
 @plugin "tailwindcss-motion";
 @plugin "@tailwindcss/typography";
-@plugin "./typewritter.ts";
-@plugin "./confetti.ts";
 
 
 @font-face {
@@ -120,7 +118,17 @@ main {
 .prose {
   a {
     transition: all;
-    @apply decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+    @apply decoration-foreground/50 underline-offset-2 decoration-[0.1em];
+  }
+  details{
+    @apply border-l outline-0 mt-10 border-foreground/20 pl-4 max-w-full overflow-auto;
+    summary{
+      @apply cursor-pointer font-semibold text-lg mb-2 outline-0;
+    }
+    b{
+      font-size: 1.2em;
+    }
+     
   }
   .anchor {
     position: absolute;
@@ -146,13 +154,16 @@ main {
     visibility: visible;
   }
   pre {
-    @apply border border-neutral-800 !bg-neutral-900;
+    @apply border border-neutral-800 !bg-neutral-900 overflow-x-auto whitespace-pre rounded-lg px-3 py-2 max-w-[90vw];
   }
+  
   code {
-    @apply text-secondary-800 dark:text-secondary-200 px-1 py-0.5 border border-neutral-100 dark:border-secondary-800 rounded-lg dark:bg-neutral-900 p-0;
+    @apply text-secondary-800 dark:text-secondary-200 font-mono px-1 py-0.5 border border-neutral-100 dark:border-secondary-800 rounded-lg dark:bg-neutral-900 !max-w-sm !overflow-x-auto;
     border: initial;
     line-height: 1.5;
+    white-space: pre;
   }
+  
   img {
     /* Don't apply styles to next/image */
     @apply m-0;

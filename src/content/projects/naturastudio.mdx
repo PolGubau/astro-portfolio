@@ -1,0 +1,95 @@
+---
+title: "Naturastudio"
+startedAt: "2025-08-03"
+endedAt: "2025-11-11"
+category: "web"
+color: "#c0bdb2"
+cover: "./img/naturastudio.webp"
+available: true
+
+summary: "Landing page for Naturastudio, a photography brand by Nuria Fluvia. Focused on natural aesthetics, emotional storytelling, and SEO-first performance with Astro and Tailwind."
+githubLink: https://github.com/PolGubau/naturastudio-landing
+link: https://naturastudio-landing.vercel.app/inicio
+
+tech: 
+  - Astro
+  - Tailwind
+  - Javascript  
+---
+
+import At from "../../components/mdx-components/at.astro";
+import { Image } from 'astro:assets';
+
+import stats from "../../assets/media/projects/naturastudio/stats.webp"
+import contact from "../../assets/media/projects/naturastudio/contact.webp"
+import hero from "../../assets/media/projects/naturastudio/hero.webp"
+import packBook from "../../assets/media/projects/naturastudio/pack-book.webp"
+import packExample from "../../assets/media/projects/naturastudio/pack-example.webp"
+import packList from "../../assets/media/projects/naturastudio/pack-list.webp"
+import sobreMi from "../../assets/media/projects/naturastudio/sobre-mi.webp"
+
+## Landing Page for a Photographer Brand
+
+<ul className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-4 list-none pl-0!">
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-green-800 dark:text-green-200">Astro + Tailwind</h3><small>Lightweight and performant</small></li>
+
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-green-800 dark:text-green-200">100% SEO</h3><small>Optimized for search engines</small></li>
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-green-800 dark:text-green-200"> \<0.5s</h3><small>
+First Contentful Paint</small></li>
+ 
+</ul>
+
+<Image src={hero} alt="Naturastudio hero section" height={700} class={"show-animation rounded-2xl"} />
+
+Naturastudio is the personal brand of <At label='Nuria Fluvia' href='https://www.flickr.com/photos/182279030@N06/'/>, a young photographer and graphic designer passionate about capturing the **authentic and natural beauty** of real moments.  
+The goal was to create a **calm, emotional, and elegant digital space** that reflected her artistic identity while maintaining excellent SEO performance and minimal loading time.
+
+The landing features her most popular photography packs, from weddings to newborn sessions, along with testimonials and a personal “About Me” section that builds trust and connection with potential clients.
+
+### ✨ Highlights
+- Brand identity based on **nature, authenticity, and emotion**.  
+- Clean design with **warm tones and subtle animations**.  
+- Optimized for **fast loading, accessibility, and search discoverability**.  
+- Built for scalability: future-ready to host a booking system and blog.  
+
+<Image src={packList} alt="Naturastudio photography packs list" height={700} class={"show-animation rounded-2xl my-8"} />
+<Image src={packExample} alt="Photography pack example" height={700} class={"show-animation rounded-2xl my-8"} />
+<Image src={sobreMi} alt="About the photographer section" height={700} class={"show-animation rounded-2xl my-8"} />
+
+
+
+<details>
+  <summary> <b>Technical Details</b> <br/><small>For developers & curious minds</small></summary>
+
+  ### 🧰 Tech Stack
+  - **Astro** for lightning-fast static rendering and SEO-first architecture.  
+  - **TailwindCSS** for custom styling and responsive design.  
+  - **Vanilla JavaScript** for interactivity and animations without extra libraries.  
+  - **Vercel** for deployment with automatic build optimizations.  
+
+  ### ⚙️ Structure & Approach
+  The site is structured as a **component-based Astro project** with modular sections:
+  - `components/` → reusable UI pieces (Hero, Packs, Testimonials, Contact).  
+  - `layouts/` → shared layouts for consistent structure and metadata.  
+  - `assets/` → optimized `.webp` images with responsive loading.  
+
+  ### 🚀 Performance & SEO
+  - Fully **SEO-optimized** with meta tags, alt texts, and structured data.  
+  - **Lazy loading** for images and smooth fade-in animations.  
+  - LCP below **1.3s** on desktop and **1.9s** on mobile.  
+
+  <Image src={stats} alt="UI pack detail" height={700} class={"show-animation rounded-2xl my-8"} />
+
+
+</details>
+
+
+
+### 🪶 Outcome
+
+Naturastudio became a **digital extension of Nuria's artistic brand**, minimal, natural, and emotionally engaging.
+  <Image src={packBook} alt="UI pack detail" height={700} class={"show-animation rounded-2xl my-8"} />
+  <Image src={contact} alt="Contact form section" height={700} class={"show-animation rounded-2xl my-8"} />
+It communicates her personality and professionalism, helping her **stand out in a saturated photography market** while maintaining excellent SEO visibility and technical performance.
+
+ 

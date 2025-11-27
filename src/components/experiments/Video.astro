@@ -22,9 +22,9 @@ const { src, date, width, style } = Astro.props;
     loop
     style={style}
     width={width}
-    class="h-full w-full object-cover rounded-xl bg-neutral-400/50"
+    class="h-full w-full object-cover rounded-xl bg-white"
   >
-    <source src={`/concepts/${src}.mp4`} type="video/mp4" />
+    <source src={`src/assets/concepts/${src}.mp4`} type="video/mp4" />
     Your browser does not support the video tag.
   </video>
   <p

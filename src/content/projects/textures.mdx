@@ -1,0 +1,100 @@
+---
+title: "Textures"
+startedAt: "2025-11-20"
+endedAt: "2025-11-27"
+category: "web"
+color: "#cab6a9"
+cover: "./img/textures.webp"
+available: true
+
+summary: "An animated urban textures photo collection"
+githubLink: https://github.com/PolGubau/naturastudio-landing
+link: https://naturastudio-landing.vercel.app/inicio
+
+tech: 
+  - Astro
+  - Gsap
+  - JavaScript
+  - TailwindCSS
+  - Vaul 
+---
+
+import At from "../../components/mdx-components/at.astro";
+import { Image } from 'astro:assets';
+
+import computer from "../../assets/media/projects/textures/computer.webp"
+import phone from "../../assets/media/projects/textures/phone.webp"
+import showcase from "../../assets/media/projects/textures/showcase.mp4"
+import stats from "../../assets/media/projects/textures/stats.webp"
+import thumbnail from "./img/textures.webp"
+ 
+
+## Personal online texture collection
+
+<ul className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-4 list-none pl-0!">
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-green-800 dark:text-green-200">Astro + Tailwind</h3><small>Lightweight and performant</small></li>
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-green-800 dark:text-green-200">GSAP</h3><small>Infinity canvas effect</small></li>
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-green-800 dark:text-green-200"> Vanilla JS</h3><small>Lightweight interactivity</small></li>
+</ul>
+
+<Image src={thumbnail} alt="thumbnail of textures project" height={700} class={"show-animation rounded-2xl"} />
+
+Textures is my own personal online collection of urban textures photography.  
+The idea behind the project is to create a simple and elegant way to publish design textures, they are free to use for personal and commercial projects, with attribution. 
+
+You can easily download them in high resolution and use them in your own designs.
+<figure>
+  <video
+    class="rounded-xl h-full w-full max-h-[400px] md:max-h-[500px] object-cover show-animation"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+    <source src={showcase} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <figcaption class="text-center">Textures project showcase.</figcaption>
+</figure>
+
+The project is also an experiment in creating an infinite canvas effect using **GSAP** and **Vanilla JavaScript**, allowing users to explore the textures in a dynamic and engaging way, all source code is available in GitHub for anyone interested in how it was built.
+
+
+As a coder interested in animated websites, I know that sometimes finding **real projects using GSAP** can be hard, so I wanted to create a project that showcases its capabilities in a practical way, feel free to clone the repo and explore the code!
+
+<Image src={computer} alt="Textures project on a computer screen" height={400} class={"show-animation rounded-2xl my-8"} />
+
+
+ 
+
+Most of my design projects require **textures for backgrounds**, overlays, and other design elements. I found myself constantly searching for high-quality textures online, but many of the available options were either low-resolution or required a subscription.  
+To solve this problem, I decided to grab a camera and a good friend <At label='Marcos Rayo' href='https://www.linkedin.com/in/marcos-rayo-garc%C3%ADa-308342308/'/>  to explore Barcelona and photograph interesting textures we found in urban environments.
+
+
+## How can you download the textures?
+
+Each texture in the canvas can be clicked to open a _beautifully designed ;)_ modal with more information about the texture and a download button to get the high-resolution version. In addition, all textures have a tiling test next to the preview to see how they look when repeated, obviously not all textures are made to be tiled but I tried to edit some of them to make them seamless.
+
+<Image src={phone} alt="Textures project on a phone screen" height={400} class={"show-animation rounded-2xl my-8"} />
+
+
+ 
+<details>
+  <summary> <b> Technical Details</b> <br/><small>For developers & curious minds</small></summary>
+
+  ## Tech Stack
+  - **Astro** for lightning-fast static rendering and SEO-first architecture.  
+  - **TailwindCSS** for custom styling and responsive design.  
+  - **GSAP** for smooth, performant animations, almost all content is generated with it to create an infinite canvas effect.
+  - **Vanilla JavaScript** for interactivity and animations without extra libraries.  
+  - **Vercel** for deployment with automatic build optimizations. 
+
+  ### Performance
+  Textures site is not meant to be an ultra-fast landing page, loads a lot of images and animations. It this was a comercial project I would optimize even more the assets and animations, but for a personal project I focused on the experience and aesthetics. The Best practices results are still very good:
+
+<Image src={stats} alt="Best practices audit screenshot" height={700} class={"show-animation rounded-2xl"} />
+
+</details>
+
+
+ 

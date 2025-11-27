@@ -19,15 +19,15 @@ import "../styles/cards.css";
 const imagesPhones = [coiae, gymZ, santJordi];
 
 const firstProjects = getProjects(4);
-
 ---
 
 <MainLayout>
   <section>
     <Header />
     <main class="flex w-full flex-1 flex-col gap-8">
-    
-      <section class="flex flex-col gap-5 motion-preset-slide-up motion-delay-[3200ms]">
+      <section
+        class="flex flex-col gap-5 motion-preset-slide-up motion-delay-[3200ms]"
+      >
         <hgroup class="balance mt-16 flex flex-col gap-5 font-medium text-3xl">
           <p>🎨👨‍💻</p>
           <h2>Pixel perfectionist, even though I work with vectors✨</h2>
@@ -35,31 +35,37 @@ const firstProjects = getProjects(4);
 
         <p class="max-w-xl">
           My roots are in arts and design. My passion is in technology and my
-          goal is to combine both in digital products that are <strong>beautiful</strong> and <strong>functional</strong>.
+          goal is to combine both in digital products that are <strong
+            >beautiful</strong
+          > and <strong>functional</strong>.
         </p>
       </section>
       <ThreePhones images={imagesPhones} />
 
       <hgroup class="balance mt-16 flex flex-col gap-5 font-medium text-3xl">
         <p>🧪🥼</p>
-        <h2>I love to create personal projects and experiments</h2>
+        <h2>Discover my latest work and projects</h2>
       </hgroup>
 
-       
       <ProjectsList projects={firstProjects} />
 
       <BlogLink slug="/projects" name="See all my projects" />
 
-      <div class="balance mt-16 flex flex-col gap-5 font-medium text-3xl motion-preset-slide-up motion-delay-[2500ms]">
+      <div
+        class="balance mt-16 flex flex-col gap-5 font-medium text-3xl motion-preset-slide-up motion-delay-[2500ms]"
+      >
         <p>🥑🚀</p>
         <h2>I&apos;m a performance and accessibility advocate</h2>
       </div>
       <p class="max-w-xl">
-        I&apos;m a big fan of <strong>progressive enhancement and graceful degradation</strong> and I always try to make my websites as accessible as possible♿. 
+        I&apos;m a big fan of <strong
+          >progressive enhancement and graceful degradation</strong
+        > and I always try to make my websites as accessible as possible♿.
       </p>
       <p class="max-w-xl">
-        Reaching a professional level in both <strong>SEO🔍</strong> and <strong>performance⚡</strong> is the key for a successful
-        digital project.
+        Reaching a professional level in both <strong>SEO🔍</strong> and <strong
+          >performance⚡</strong
+        > is the key for a successful digital project.
       </p>
       <section id="cards">
         <ul class="sticked-cards">

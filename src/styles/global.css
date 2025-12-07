@@ -7,7 +7,14 @@
 @font-face {
   font-family: "Gabarito";
   src: url("/fonts/Gabarito.ttf") format("truetype");
-  font-weight: 100 900; /* Rango de pesos soportado */
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bricolage";
+  src: url("/fonts/Bricolage.ttf") format("truetype");
+  font-weight: 300 700;
   font-style: normal;
   font-display: swap;
 }
@@ -38,6 +45,7 @@
   --color-secondary-900: #222222;
   --color-secondary-950: #0d0d0d;
   --font-main: "Gabarito", sans-serif;
+  --font-title: "Bricolage", sans-serif;
 }
 :root {
   scroll-behavior: smooth;
@@ -169,7 +177,7 @@ main {
     @apply m-0;
   }
   h1 {
-    @apply font-bold text-xl md:text-3xl;
+     @apply font-bold font-title text-xl md:text-3xl;
   }
   h2,
   h3,

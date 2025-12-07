@@ -15,7 +15,7 @@ const { project: p } = Astro.props;
 function formatDate(date: Date) {
   const fullDate = date.toLocaleString("en-ES", {
     day: "numeric",
-    month: "long",
+    month: "numeric",
     year: "numeric",
   });
 
@@ -68,7 +68,7 @@ function isLastButton(button: string) {
 }
 ---
 
-<header class="flex flex-col gap-1">
+<header class="flex flex-col gap-0.5">
   <section class="flex flex-col gap-4">
     <a
       href-lang="en-us"
@@ -79,12 +79,12 @@ function isLastButton(button: string) {
       <span class="sr-only">Back to projects</span>← Back
     </a>
     <header
-      class="relative flex min-h-[300px] items-end justify-between overflow-hidden rounded-t-xl md:min-h-[270px]"
+      class="relative flex min-h-[300px] items-end justify-between overflow-hidden rounded-t-xl md:min-h-[250px]"
       style={{
         backgroundColor: p.data.color ?? "transparent",
       }}
     >
-      <div class="flex flex-col p-4 md:p-6">
+      <div class="flex flex-col p-4 md:p-6 text-neutral-900">
         <span class="flex gap-4 overflow-hidden">
           <a
             href={p.data.link ?? ""}
@@ -97,7 +97,7 @@ function isLastButton(button: string) {
           >
             <h1
               title="Visit Project"
-              class="balance z-10 w-fit max-w-lg rounded-full p-2 font-black text-4xl text-neutral-900 tracking-tight md:text-7xl"
+              class="balance z-10 w-fit max-w-lg rounded-full font-title text-4xl tracking-tight md:text-8xl leading-[0.95] mb-2"
               style={{
                 backgroundColor: p.data.color ?? "transparent",
               }}
@@ -107,42 +107,16 @@ function isLastButton(button: string) {
           </a>
         </span>
         <div
-          class="z-10 flex w-fit flex-col rounded-xl p-2 py-1 font-medium text-neutral-800 text-sm sm:font-normal md:text-lg dark:text-neutral-800"
+          class="z-10 flex w-fit rounded-xl text-neutral-800/80 text-sm md:text-[1em]"
           style={{
             backgroundColor: p.data.color ?? "transparent",
           }}
         >
-          <span class="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-                d="M8 16v-8h8"></path></svg
-            >
+          <span class="flex">
             {formatDate(p.data.startedAt)}
           </span>
-          <span class="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-                d="M8 8v8h8"></path></svg
-            >
-
+          <span class="mx-2"> &rarr; </span>
+          <span class="flex">
             {p.data.endedAt ? formatDate(p.data.endedAt) : "In Progress"}
           </span>
         </div>
@@ -162,14 +136,14 @@ function isLastButton(button: string) {
       />
     </header>
   </section>
-  <nav class="flex w-full flex-wrap gap-1">
+  <nav class="flex w-full flex-wrap gap-0.5">
     {
       p.data.link ? (
         <a
           href={p.data.link}
           href-lang="en-us"
           title="Visit Project"
-          class="flex h-full flex-1 animate-expand-vertically items-center justify-center gap-2 rounded-bl-xl px-3 py-2 text-secondary-900 text-xl transition-all hover:brightness-90 sm:justify-start"
+          class="flex h-full flex-1 animate-expand-vertically items-center justify-center gap-2 rounded-bl-xl px-4 md:px-5 py-2 text-secondary-900 text-xl transition-all hover:brightness-90 sm:justify-start"
           target="_blank"
           style={{
             backgroundColor: p.data.color ?? "transparent",

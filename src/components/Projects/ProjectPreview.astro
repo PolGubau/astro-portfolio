@@ -10,7 +10,6 @@ interface Props {
 const { project, index } = Astro.props;
 const { data, id: slug } = project;
 const { title, color, cover: src } = data;
-const isFirstLoad = index < 6;
 ---
 
 <div
@@ -30,8 +29,7 @@ const isFirstLoad = index < 6;
       }}
       class="pointer-events-none mt-20 h-auto w-full object-cover object-left transition-all md:h-[500px]"
       src={src}
-      priority={isFirstLoad}
-      loading={isFirstLoad ? "eager" : "lazy"}
+      loading={"lazy"}
       title={`Cover Image for ${title}`}
       alt={title}
       width={600}

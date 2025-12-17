@@ -8,7 +8,7 @@ export const baseUrl = "https://polgubau.com";
 export const metadata = {
 	title: "Pol Gubau Amores",
 	description:
-		"👋🏼 Hello! I'm Pol Gubau Amores, a Frontend Developer and UX Designer based in Germany. I love to create beautiful and functional websites and apps.",
+		"Frontend Developer and UX Designer based in Barcelona. I love to create beautiful and functional websites and apps.",
 	name: "Pol",
 	longName: "Pol Gubau Amores",
 	slogan: "Frontend Developer and UX Designer",

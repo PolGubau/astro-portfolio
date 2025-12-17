@@ -69,7 +69,7 @@ body {
 }
 
 *::selection {
-  @apply bg-primary/50 text-primary-900 dark:text-secondary-900;
+  @apply bg-foreground/80 text-background backdrop-blur-md;
 }
 @keyframes grow-progress {
   from {

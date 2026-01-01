@@ -38,10 +38,7 @@ const videoSrc = typeof src === "string" ? src : src.src;
     playsinline
     width={width}
     height={height}
-    class:list={[
-      "w-full h-full object-cover rounded-lg bg-foreground/20",
-      videoClassName,
-    ]}
+    class={`w-full h-full object-cover rounded-lg bg-foreground/20 mt-0 mb-0 ${videoClassName}`}
     aria-label={alt}
   >
     <source src={videoSrc} type="video/webm" />

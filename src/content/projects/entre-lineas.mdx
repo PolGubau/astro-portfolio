@@ -73,7 +73,7 @@ Traditional poetry analysis tools are either outdated PDF documents, static webs
 
 ## The Solution
 
-Entre Líneas brings poetry analysis into the modern web era with a **fully interactive, server-rendered application** built with React 19 and TanStack Start.
+Entre Líneas brings poetry analysis into the modern web era with a **fully interactive, server-rendered application** built with a modern stack, designed as a personal project that merges 2 of my hobbies and solves a common problem I found when studying literature.
 
 <Image 
   src={home} 
@@ -126,15 +126,18 @@ The landing page presents poems as **beautiful, scannable cards**. Each card dis
     
     <Video 
       src={filtersShowcase}
+      class="show-animation"
       alt="Live demonstration of filtering and sorting poems"
-     />
+    />
   
-<div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 items-start">
+<div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] mt-6 gap-6 items-start">
   <Video 
         src={goNextList}
+        class="show-animation"
     videoClassName="object-left"
     alt="Quick navigation between poems with smooth transitions"
    />
+
   <div class="flex flex-col justify-center gap-4">
     <h4 class="text-xl font-semibold">Seamless Navigation</h4>
     <p>Navigate between poems with intuitive next/previous buttons. No page reloads, everything is instant thanks to SSR and smart prefetching.</p>
@@ -158,7 +161,7 @@ Desktop users get a **powerful three-column interface** optimized for deep analy
   alt="Desktop three-column layout showing poem with analysis panel"
   width={300}
   height={700}
-  class="show-animation h-[700px] rounded-xl object-contain w-full"
+  class="show-animation h-[700px] w-[300px]"
 />
 
 ### Interactive Annotations
@@ -167,14 +170,14 @@ Hover over any verse to see **contextual tooltips** with instant information abo
 
 <Video 
   src={tooltips}
-  alt="Hovering over verses reveals contextual information"
-  class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 my-8"
+      alt="Hovering over verses reveals contextual information"
+      class="show-animation aspect-video"
 />
 
 <Video 
   src={verseAnotations}
-  alt="Detailed verse annotations with literary analysis"
-  class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 my-8"
+      alt="Detailed verse annotations with literary analysis"
+      class="show-animation aspect-video mt-6"
 />
 
 ### Rhetorical Figure Highlighting
@@ -184,7 +187,7 @@ Click on any **rhetorical figure** in the analysis panel, and watch as all relat
 <Video 
   src={verseFigureHighlight}
   alt="Clicking rhetorical figures highlights corresponding verses"
-  class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 my-8"
+  class="show-animation aspect-video"
 />
 
 ---
@@ -195,62 +198,68 @@ Click on any **rhetorical figure** in the analysis panel, and watch as all relat
 
 On mobile, the three-column layout transforms into a **streamlined single-column view** with collapsible panels. The analysis panel becomes a drawer that slides up from the bottom.
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-8 ">
   <Image 
     src={narrowPoem} 
     alt="Mobile poem reading view"
     width={400}
     height={800}
-    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 mx-auto"
+    class="show-animation"
   />
   <Image 
     src={narrowFilters} 
     alt="Mobile filters interface"
     width={400}
     height={800}
-    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 mx-auto"
+    class="show-animation"
   />
   <Image 
     src={narrowSort} 
     alt="Mobile sorting options"
     width={400}
     height={800}
-    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 mx-auto"
+    class="show-animation"
   />
 </div>
 
 ### Read Mode
 
 Toggle **Read Mode** to remove all UI distractions and focus purely on the poetry. Perfect for deep reading sessions or classroom presentations.
+<div class="flex max-md:flex-col gap-4">
 
 <Video 
   src={readMode}
-  alt="Clean read mode removes all distractions"
-  class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 my-8"
+        alt="Clean read mode removes all distractions"
+        class="show-animation h-[450px] aspect-video"
+
 />
 
 <Image 
   src={narrowReadMode} 
   alt="Mobile read mode interface"
-  width={400}
-  height={800}
-  class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 mx-auto my-8"
+        width={222}
+  height={450}
+  class="show-animation object-bottom h-[450px] object-contain"
 />
-
+</div>
 ---
 
 ## Advanced Features
 
-### Context Accordions
+<div class="grid grid-cols-[1fr_300px] gap-8">
 
+<div className="">
+### Context Accordions
 Each poem includes **expandable sections** with rich context: historical background, author biography, literary movement, and thematic analysis.
+</div>
 
 <Video 
   src={contextAccordions}
-  alt="Expandable context panels with detailed information"
-  class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 my-8"
+      alt="Expandable context panels with detailed information"
+  class="show-animation h-[500px] w-[300px] object-contain"
 />
 
+</div>
 ### Action Bar & Interactions
 
 The action bar provides quick access to essential functions:
@@ -260,7 +269,7 @@ The action bar provides quick access to essential functions:
   alt="Action bar with favorite, share, and read mode controls"
   width={1200}
   height={200}
-  class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 my-8"
+    class="show-animation"
 />
 
 - **Favorite poems** with a delightful like animation
@@ -271,17 +280,17 @@ The action bar provides quick access to essential functions:
   <Video 
     src={likeAnimation}
     alt="Smooth animation when favoriting a poem"
-    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800"
+    class="show-animation"
   />
   <Video 
     src={shareApi}
     alt="Native share functionality for easy poem sharing"
-    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800"
+    class="show-animation"
   />
   <Video 
     src={shortcutsDrawer}
     alt="Keyboard shortcuts panel for efficient navigation"
-    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800"
+    class="show-animation"
   />
 </div>
 
@@ -295,18 +304,20 @@ Apply multiple filters simultaneously: combine authors, eras, and literary movem
     alt="Applying filters on mobile"
     width={400}
     height={800}
-    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 mx-auto"
+    class="show-animation"
   />
   <Image 
     src={narrowFiltersApplied} 
     alt="Results after filters are applied"
     width={400}
     height={800}
-    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 mx-auto"
+    class="show-animation"
   />
 </div>
 
----
+
+<details>
+  <summary> <b>Technical Details</b> <br/><small>For developers & curious minds</small></summary>
 
 ## Technical Architecture
 
@@ -356,40 +367,7 @@ All data is **statically embedded** at build time, eliminating network requests 
   </div>
 </div>
 
----
-
-## Key Takeaways
-
-### For Recruiters
-
-- **Modern stack**: React 19, TypeScript, TanStack Start (SSR)
-- **Performance-first**: Optimized data structures, static generation, perfect Lighthouse scores
-- **Design systems**: shadcn/ui inspired, fully responsive, dark mode
-- **Accessibility**: WCAG compliant, keyboard navigation, semantic HTML
-- **Production-ready**: Deployed on Vercel with CI/CD pipeline
-
-### For Developers
-
-- **Architecture**: Server-rendered React with client-side hydration
-- **Data strategy**: Static data with Map-based indexes for O(1) lookups
-- **Type safety**: Full end-to-end TypeScript with strict mode
-- **Styling**: Tailwind CSS with custom design tokens
-- **State management**: TanStack Router for URL-driven state
-- **Deployment**: Vercel with automatic preview environments
-
-### For Users
-
-- **Intuitive**: No learning curve—hover, click, explore
-- **Fast**: Instant navigation, no loading spinners
-- **Beautiful**: Clean, modern interface that respects your preferences
-- **Accessible**: Works on any device, any screen size, any input method
-- **Educational**: Makes poetry analysis engaging and approachable
-
----
-
-<details>
-  <summary><b>Technical Deep Dive</b><br/><small>For curious developers</small></summary>
-
+ 
 ## Data Architecture
 
 ### Poem Structure
@@ -476,3 +454,41 @@ No environment variables required—all data is statically embedded. This makes 
 - 📊 Learning analytics for students
 
 </details>
+
+---
+
+## Key Takeaways
+
+### For Recruiters
+
+- **Modern stack**: React 19, TypeScript, TanStack Start (SSR)
+- **Performance-first**: Optimized data structures, static generation, perfect Lighthouse scores
+- **Design systems**: shadcn/ui inspired, fully responsive, dark mode
+- **Accessibility**: WCAG compliant, keyboard navigation, semantic HTML
+- **Production-ready**: Deployed on Vercel with CI/CD pipeline
+
+### For Developers
+
+- **Architecture**: Server-rendered React with client-side hydration
+- **Data strategy**: Static data with Map-based indexes for O(1) lookups
+- **Type safety**: Full end-to-end TypeScript with strict mode
+- **Styling**: Tailwind CSS with custom design tokens
+- **State management**: TanStack Router for URL-driven state
+- **Deployment**: Vercel with automatic preview environments
+
+### For Literature Enthusiasts
+
+- **Intuitive**: No learning curve—hover, click, explore
+- **Fast**: Instant navigation, no loading spinners
+- **Beautiful**: Clean, modern interface that respects your preferences
+- **Accessible**: Works on any device, any screen size, any input method
+- **Educational**: Makes poetry analysis engaging and approachable
+
+---
+
+## Conclusion
+
+Entre Líneas represents the intersection of literature and modern web technology. By applying contemporary UX patterns to classical poetry analysis, it demonstrates how digital tools can enhance rather than replace traditional learning.
+
+The project showcases technical excellence through performance optimization, type safety, and accessibility, while maintaining a focus on user experience and educational value. It's a testament to how thoughtful engineering can make complex subjects more accessible and engaging for everyone.
+

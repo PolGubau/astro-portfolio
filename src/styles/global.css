@@ -271,8 +271,8 @@ strong {
 
 @keyframes show {
   from {
-    opacity: 0;
-    scale: 70%;
+    opacity: 0.4;
+    scale: 85%;
   }
   to {
     opacity: 1;
@@ -282,6 +282,7 @@ strong {
 
 .show-animation {
   view-timeline: --image;
+  @apply will-change-transform rounded-xl;
   view-timeline-axis: block;
   animation-timeline: --image;
   animation-name: show;

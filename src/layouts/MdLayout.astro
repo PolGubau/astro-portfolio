@@ -6,7 +6,7 @@ type Props = {
   headings?: MarkdownHeading[];
   backTo?: string;
 };
-const { headings, backTo } = Astro.props;
+const { backTo } = Astro.props;
 ---
 
 <script>
@@ -70,12 +70,10 @@ const { headings, backTo } = Astro.props;
 
 <div class="grid grid-cols-[1fr_auto] gap-8">
   <article
-  class="prose prose-quoteless prose-neutral dark:prose-invert w-full max-w-full max-md:prose-sm"
+    class="prose prose-quoteless prose-neutral dark:prose-invert w-full max-w-full max-md:prose-sm"
   >
-  <slot />
-</article>  
-{headings?.length && <div class="sticky top-10 h-screen"><Toc headings={headings} /></div>}
-
+    <slot />
+  </article>
 </div>
 <nav class="flex items-center justify-between mt-8">
   <a

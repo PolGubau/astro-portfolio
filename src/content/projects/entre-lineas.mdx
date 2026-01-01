@@ -1,0 +1,478 @@
+---
+title: "Entre Líneas"
+startedAt: "2025-12-12"
+category: "web"
+color: "#e1e1e1"
+cover: "./img/entre-lineas.webp"
+available: true
+summary: "A modern web application to explore Spanish poetry through deep, interactive literary analysis."
+
+githubLink: https://github.com/PolGubau/entre-lineas
+link: https://entrelineas.polgubau.com/
+
+tech:
+  - react
+  - Typescript
+  - tailwindcss
+  - TanStack Stack
+  - SSR
+---
+
+import { Image } from "astro:assets";
+import Video from "../../components/mdx-components/video.astro";
+
+import home from "../../assets/media/projects/entre-lineas/home.webp";
+import actionsBar from "../../assets/media/projects/entre-lineas/actions-bar.webp";
+import narrowAnalysis from "../../assets/media/projects/entre-lineas/narrow-analysis.webp";
+import narrowFilters from "../../assets/media/projects/entre-lineas/narrow-filters.webp";
+import narrowFiltersApplied from "../../assets/media/projects/entre-lineas/narrow-filters-applied.webp";
+import narrowFiltersApply from "../../assets/media/projects/entre-lineas/narrow-filters-apply.webp";
+import narrowHome from "../../assets/media/projects/entre-lineas/narrow-home.webp";
+import narrowPoem from "../../assets/media/projects/entre-lineas/narrow-poem.webp";
+import narrowReadMode from "../../assets/media/projects/entre-lineas/narrow-read-mode.webp";
+import narrowSort from "../../assets/media/projects/entre-lineas/narrow-sort.webp";
+
+import contextAccordions from "../../assets/media/projects/entre-lineas/context-accordions.webm";
+import filtersShowcase from "../../assets/media/projects/entre-lineas/filters-showcase.webm";
+import goNextList from "../../assets/media/projects/entre-lineas/go-next-list.webm";
+import likeAnimation from "../../assets/media/projects/entre-lineas/like-animation.webm";
+import readMode from "../../assets/media/projects/entre-lineas/read-mode.webm";
+import shareApi from "../../assets/media/projects/entre-lineas/share-api.webm";
+import shortcutsDrawer from "../../assets/media/projects/entre-lineas/shortcuts-drawer.webm";
+import tooltips from "../../assets/media/projects/entre-lineas/tooltips.webm";
+import verseAnotations from "../../assets/media/projects/entre-lineas/verse-anotations.webm";
+import verseFigureHighlight from "../../assets/media/projects/entre-lineas/verse-figure-highlight.webm";
+
+# Entre Líneas: Poetry Analysis Reimagined
+
+**What if analyzing poetry could be as intuitive as reading your favorite lyrics on Genius?**
+
+Entre Líneas is a modern web application that transforms Spanish poetry analysis into an interactive, engaging experience. Built for students, teachers, and literature enthusiasts, it combines deep literary analysis with contemporary UX patterns.
+
+
+<ul class="grid grid-cols-1 pl-0 md:grid-cols-3 gap-4 my-8 divide-x divide-foreground/20">
+  <li class="list-none">
+    <strong class="text-3xl font-bold text-primary">React 19</strong>
+    <div class="text-sm text-neutral-600 dark:text-neutral-400">Modern stack</div>
+  </li>
+  <li class="list-none">
+    <strong class="text-3xl font-bold text-primary">TanStack Start</strong>
+    <div class="text-sm text-neutral-600 dark:text-neutral-400">SSR framework</div>
+  </li>
+  <li class="list-none">
+    <strong class="text-3xl font-bold text-primary">TypeScript</strong>
+    <div class="text-sm text-neutral-600 dark:text-neutral-400">End-to-end typesafety</div>
+  </li>
+</ul>
+
+---
+
+## The Challenge
+
+Traditional poetry analysis tools are either outdated PDF documents, static websites with no interactivity, or academic platforms that feel like they're from the early 2000s. Students and teachers deserve better, they need **modern, intuitive tools** that make literary analysis accessible and engaging.
+
+## The Solution
+
+Entre Líneas brings poetry analysis into the modern web era with a **fully interactive, server-rendered application** built with React 19 and TanStack Start.
+
+<Image 
+  src={home} 
+  alt="Entre Líneas home page showing a clean grid of poem cards"
+  width={1200}
+  height={800}
+  class="show-animation"
+  loading="eager"
+/>
+
+### Core Features
+
+- **Verse-by-verse analysis** with identified rhetorical figures
+- **Historical context** and author biographies
+- **Interactive highlights** - click any figure to see related verses
+- **Fully responsive** - from mobile to desktop
+- **Instant search** with real-time filtering
+- **Dark mode** support throughout
+
+---
+
+## Design & User Experience
+
+### Home: Your Poetry Library
+
+The landing page presents poems as **beautiful, scannable cards**. Each card displays the poem's title, author, era, and a preview of metrics like number of verses and rhetorical figures.
+
+<div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 my-8">
+
+  <Image 
+    src={narrowHome} 
+    alt="Mobile view of the home page with responsive cards"
+    width={170}
+    height={500}
+    class="h-[500px] show-animation object-contain w-[170px]"
+  />
+  <Image 
+    src={home} 
+    alt="Mobile view of the home page with responsive cards"
+    width={1000}
+    height={500}
+    class="h-[500px] show-animation w-full object-contain"
+  />
+
+  </div>
+  
+  #### Smart Filtering & Sorting
+  
+  Filter poems by author, era, or literary movement. Sort by title, date, or number of verses. Everything updates in real-time. 
+    
+    <Video 
+      src={filtersShowcase}
+      alt="Live demonstration of filtering and sorting poems"
+     />
+  
+<div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 items-start">
+  <Video 
+        src={goNextList}
+    videoClassName="object-left"
+    alt="Quick navigation between poems with smooth transitions"
+   />
+  <div class="flex flex-col justify-center gap-4">
+    <h4 class="text-xl font-semibold">Seamless Navigation</h4>
+    <p>Navigate between poems with intuitive next/previous buttons. No page reloads, everything is instant thanks to SSR and smart prefetching.</p>
+  </div>
+</div>
+
+---
+
+## Reading Experience
+
+### The Three-Column Layout
+
+Desktop users get a **powerful three-column interface** optimized for deep analysis:
+
+1. **Left sidebar**: Poem navigation and quick actions
+2. **Center**: The poem itself with interactive verse annotations
+3. **Right sidebar**: Analysis panel with context, figures, and metrics
+
+<Image 
+  src={narrowAnalysis} 
+  alt="Desktop three-column layout showing poem with analysis panel"
+  width={300}
+  height={700}
+  class="show-animation h-[700px] rounded-xl object-contain w-full"
+/>
+
+### Interactive Annotations
+
+Hover over any verse to see **contextual tooltips** with instant information about rhetorical figures, historical notes, or vocabulary definitions.
+
+<Video 
+  src={tooltips}
+  alt="Hovering over verses reveals contextual information"
+  class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 my-8"
+/>
+
+<Video 
+  src={verseAnotations}
+  alt="Detailed verse annotations with literary analysis"
+  class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 my-8"
+/>
+
+### Rhetorical Figure Highlighting
+
+Click on any **rhetorical figure** in the analysis panel, and watch as all related verses **light up** in the poem. This creates visual connections that make understanding complex literary devices intuitive.
+
+<Video 
+  src={verseFigureHighlight}
+  alt="Clicking rhetorical figures highlights corresponding verses"
+  class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 my-8"
+/>
+
+---
+
+## Mobile-First Design
+
+### Responsive Layouts
+
+On mobile, the three-column layout transforms into a **streamlined single-column view** with collapsible panels. The analysis panel becomes a drawer that slides up from the bottom.
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
+  <Image 
+    src={narrowPoem} 
+    alt="Mobile poem reading view"
+    width={400}
+    height={800}
+    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 mx-auto"
+  />
+  <Image 
+    src={narrowFilters} 
+    alt="Mobile filters interface"
+    width={400}
+    height={800}
+    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 mx-auto"
+  />
+  <Image 
+    src={narrowSort} 
+    alt="Mobile sorting options"
+    width={400}
+    height={800}
+    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 mx-auto"
+  />
+</div>
+
+### Read Mode
+
+Toggle **Read Mode** to remove all UI distractions and focus purely on the poetry. Perfect for deep reading sessions or classroom presentations.
+
+<Video 
+  src={readMode}
+  alt="Clean read mode removes all distractions"
+  class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 my-8"
+/>
+
+<Image 
+  src={narrowReadMode} 
+  alt="Mobile read mode interface"
+  width={400}
+  height={800}
+  class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 mx-auto my-8"
+/>
+
+---
+
+## Advanced Features
+
+### Context Accordions
+
+Each poem includes **expandable sections** with rich context: historical background, author biography, literary movement, and thematic analysis.
+
+<Video 
+  src={contextAccordions}
+  alt="Expandable context panels with detailed information"
+  class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 my-8"
+/>
+
+### Action Bar & Interactions
+
+The action bar provides quick access to essential functions:
+
+<Image 
+  src={actionsBar} 
+  alt="Action bar with favorite, share, and read mode controls"
+  width={1200}
+  height={200}
+  class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 my-8"
+/>
+
+- **Favorite poems** with a delightful like animation
+- **Share directly** using the native Web Share API
+- **Keyboard shortcuts** for power users
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+  <Video 
+    src={likeAnimation}
+    alt="Smooth animation when favoriting a poem"
+    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800"
+  />
+  <Video 
+    src={shareApi}
+    alt="Native share functionality for easy poem sharing"
+    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800"
+  />
+  <Video 
+    src={shortcutsDrawer}
+    alt="Keyboard shortcuts panel for efficient navigation"
+    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800"
+  />
+</div>
+
+### Smart Filtering
+
+Apply multiple filters simultaneously: combine authors, eras, and literary movements to find exactly what you need.
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+  <Image 
+    src={narrowFiltersApply} 
+    alt="Applying filters on mobile"
+    width={400}
+    height={800}
+    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 mx-auto"
+  />
+  <Image 
+    src={narrowFiltersApplied} 
+    alt="Results after filters are applied"
+    width={400}
+    height={800}
+    class="rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-800 mx-auto"
+  />
+</div>
+
+---
+
+## Technical Architecture
+
+### Why TanStack Start?
+
+I chose **TanStack Start** over Next.js for several technical reasons:
+
+- **End-to-end type safety**: Fully typed router with automatic parameter inference
+- **Zero API overhead**: Direct data access without unnecessary HTTP layers
+- **Lower abstraction**: More control over SSR and rendering strategies
+- **Modern patterns**: Built-in suspense, streaming, and progressive enhancement
+- **Developer experience**: Outstanding DevTools for debugging and optimization
+
+### Performance Optimization
+
+```typescript
+// Map-based indexes for O(1) lookups instead of O(n) filters
+const poemsByAuthor = new Map<string, Poem[]>();
+const figuresByType = new Map<string, Figure[]>();
+```
+
+All data is **statically embedded** at build time, eliminating network requests and ensuring instant responses. This approach provides:
+
+- **Zero latency** for data access
+- **Free hosting** on any CDN (Vercel, Netlify, Cloudflare)
+- **Perfect caching** - immutable content gets cached forever
+- **Offline capability** - works without network once loaded
+
+### Lighthouse Scores
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-8">
+  <div class="p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 text-center">
+    <div class="text-4xl font-bold text-green-500">98</div>
+    <div class="text-sm text-neutral-600 dark:text-neutral-400">Performance</div>
+  </div>
+  <div class="p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 text-center">
+    <div class="text-4xl font-bold text-green-500">100</div>
+    <div class="text-sm text-neutral-600 dark:text-neutral-400">Accessibility</div>
+  </div>
+  <div class="p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 text-center">
+    <div class="text-4xl font-bold text-green-500">100</div>
+    <div class="text-sm text-neutral-600 dark:text-neutral-400">Best Practices</div>
+  </div>
+  <div class="p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 text-center">
+    <div class="text-4xl font-bold text-green-500">100</div>
+    <div class="text-sm text-neutral-600 dark:text-neutral-400">SEO</div>
+  </div>
+</div>
+
+---
+
+## Key Takeaways
+
+### For Recruiters
+
+- **Modern stack**: React 19, TypeScript, TanStack Start (SSR)
+- **Performance-first**: Optimized data structures, static generation, perfect Lighthouse scores
+- **Design systems**: shadcn/ui inspired, fully responsive, dark mode
+- **Accessibility**: WCAG compliant, keyboard navigation, semantic HTML
+- **Production-ready**: Deployed on Vercel with CI/CD pipeline
+
+### For Developers
+
+- **Architecture**: Server-rendered React with client-side hydration
+- **Data strategy**: Static data with Map-based indexes for O(1) lookups
+- **Type safety**: Full end-to-end TypeScript with strict mode
+- **Styling**: Tailwind CSS with custom design tokens
+- **State management**: TanStack Router for URL-driven state
+- **Deployment**: Vercel with automatic preview environments
+
+### For Users
+
+- **Intuitive**: No learning curve—hover, click, explore
+- **Fast**: Instant navigation, no loading spinners
+- **Beautiful**: Clean, modern interface that respects your preferences
+- **Accessible**: Works on any device, any screen size, any input method
+- **Educational**: Makes poetry analysis engaging and approachable
+
+---
+
+<details>
+  <summary><b>Technical Deep Dive</b><br/><small>For curious developers</small></summary>
+
+## Data Architecture
+
+### Poem Structure
+
+```typescript
+interface Poem {
+  id: string;
+  title: string;
+  author: Author;
+  era: Era;
+  verses: Verse[];
+  figures: Figure[];
+  context: Context;
+  metrics: {
+    verseCount: number;
+    figureCount: number;
+    readingTime: number;
+  };
+}
+```
+
+### Figure Highlighting System
+
+```typescript
+const highlightFigure = (figureId: string) => {
+  const relatedVerses = figureToVerseMap.get(figureId) ?? [];
+  
+  // Batch DOM updates for performance
+  requestAnimationFrame(() => {
+    relatedVerses.forEach(verseId => {
+      document
+        .querySelector(`[data-verse-id="${verseId}"]`)
+        ?.classList.add('highlighted');
+    });
+  });
+};
+```
+
+### Responsive Design Breakpoints
+
+```css
+/* Mobile-first approach */
+.layout {
+  grid-template-columns: 1fr; /* Mobile */
+}
+
+@media (min-width: 768px) {
+  .layout {
+    grid-template-columns: 240px 1fr; /* Tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: 280px 1fr 320px; /* Desktop */
+  }
+}
+```
+
+## Deployment
+
+### Vercel Configuration
+
+```json
+{
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "installCommand": "pnpm install"
+}
+```
+
+### Environment Setup
+
+No environment variables required—all data is statically embedded. This makes deployment trivial and eliminates configuration errors.
+
+## Future Enhancements
+
+- 📝 User annotations and notes
+- 👥 Community contributions for new poems
+- 🎓 Study guides and lesson plans for teachers
+- 🔊 Audio recordings of poem recitations
+- 🌍 Multi-language support (Catalan, English)
+- 📊 Learning analytics for students
+
+</details>

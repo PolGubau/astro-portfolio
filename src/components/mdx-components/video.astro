@@ -1,0 +1,51 @@
+---
+interface Props {
+  src: string | { src: string };
+  alt?: string;
+  class?: string;
+  width?: number;
+  height?: number;
+  autoplay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  controls?: boolean;
+  videoClassName?: string;
+}
+
+const {
+  src,
+  alt = "Video demonstration",
+  class: className = "",
+  width,
+  height,
+  autoplay = true,
+  loop = true,
+  muted = true,
+  videoClassName = "",
+  controls = false,
+} = Astro.props;
+
+// Handle both string and imported asset
+const videoSrc = typeof src === "string" ? src : src.src;
+---
+
+<div class:list={["relative overflow-hidden rounded-lg", className]}>
+  <video
+    autoplay={autoplay}
+    loop={loop}
+    muted={muted}
+    controls={controls}
+    playsinline
+    width={width}
+    height={height}
+    class:list={[
+      "w-full h-full object-cover rounded-lg bg-foreground/20",
+      videoClassName,
+    ]}
+    aria-label={alt}
+  >
+    <source src={videoSrc} type="video/webm" />
+    <source src={videoSrc.replace(".webm", ".mp4")} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>

@@ -7,10 +7,26 @@ type Props = {
 const { headings } = Astro.props;
 ---
 
-<aside
-  class="max-lg:hidden z-50 bg-background"
+<details
+  class="bg-background border border-foreground/10 rounded-xl p-3 px-4 group"
 >
-  <h2 class="font-semibold" id="table-of-contents">Table of Contents</h2>
+  <summary
+    class="font-semibold cursor-pointer list-none flex items-center justify-between select-none"
+  >
+    <span>Table of Contents</span>
+    <svg
+      class="w-5 h-5 transition-transform duration-200 group-open:rotate-180"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </summary>
   <ul class="mt-4 text-sm">
     {
       headings.map(({ depth, slug, text }) => (
@@ -26,10 +42,9 @@ const { headings } = Astro.props;
           >
             {text}
             <span class="sr-only">Scroll to section: {text}</span>
-            {/* <span>{"#".repeat(depth)}</span>*/}
           </a>
         </li>
       ))
     }
   </ul>
-</aside>
+</details>

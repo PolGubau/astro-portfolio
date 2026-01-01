@@ -8,6 +8,7 @@ import { getProjects } from "../../lib/utils";
 import SimilarProjects from "../../components/Projects/SimilarProjects.astro";
 import ProjectBar from "../../components/Projects/ProjectBar.astro";
 import { metadata } from "../../lib/constants";
+import Toc from "../../components/Toc.astro";
 
 export async function getStaticPaths() {
 	const projects = getProjects();
@@ -28,8 +29,10 @@ const { Content, headings } = await render(project);
 ---
 
 <MainLayout image={project.data.cover.src} title={PAGE_TITLE}>
-	<section class="relative flex flex-col gap-10">
+	<section class="relative flex flex-col gap-4">
 		<ProjectHeader project={project} />
+		{headings?.length && <Toc headings={headings} />}
+
 		<MdLayout headings={headings} backTo="/projects">
 			<Content />
 		</MdLayout>

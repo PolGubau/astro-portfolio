@@ -1,0 +1,47 @@
+Site: https://polgubau.com
+Owner: Pol Gubau Amores
+Role: Frontend Developer & UX Designer
+Location: Barcelona, Spain
+Email: gubaupol@gmail.com
+
+# Technical Skills
+React, TypeScript, JavaScript, Next.js, Astro, Design Systems, Tailwind CSS, Web Accessibility, Performance Optimization, Component Libraries, Figma, UI/UX Design, HTML5, CSS3, Git, Node.js, PWA, SEO
+
+# Featured Projects
+1. Pol-ui - Open-source React component library (https://polgubau.com/projects/polui)
+2. Entre Líneas - Poetry analysis web platform (https://polgubau.com/projects/entre-lineas)
+3. Personal Portfolio - Astro-based with Swiss Style design (https://polgubau.com)
+
+# Social Profiles
+GitHub: https://github.com/PolGubau
+LinkedIn: https://www.linkedin.com/in/polgubauamores/
+Twitter/X: https://twitter.com/PolGubau
+NPM: https://www.npmjs.com/~polgubau
+
+# Availability
+Open for: Full-time Frontend Developer roles, Freelance projects, Design System consulting, Speaking engagements, Open source collaboration
+
+# Specializations
+- React ecosystem and TypeScript development
+- Design system architecture and implementation
+- Accessible component library creation
+- Web performance optimization
+- UI/UX design with Figma
+- Modern CSS with Tailwind
+
+# Languages
+Spanish (Native), Catalan (Native), English (Professional)
+
+# Blog Topics
+Design Systems, React Patterns, TypeScript Tips, Web Accessibility, Component Libraries, Performance Optimization, Modern CSS
+
+# Contact
+Primary: gubaupol@gmail.com
+Website: https://polgubau.com
+Preferred: Email or LinkedIn
+
+# Keywords
+Frontend Developer Barcelona, React Developer Spain, TypeScript Expert, UX Designer, Design Systems Architect, Pol-ui creator, Web Accessibility, Component Library, Open Source, Tailwind CSS, Next.js Developer
+
+# Last Updated
+January 1, 2026

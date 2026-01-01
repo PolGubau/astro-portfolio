@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "optimize:images": "node scripts/optimize-images.js",
+    "optimize:images:dry": "node scripts/optimize-images.js --dry-run"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.3",

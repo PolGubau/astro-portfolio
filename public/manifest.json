@@ -1,0 +1,28 @@
+{
+  "name": "Pol Gubau Amores - Portfolio",
+  "short_name": "Pol Gubau",
+  "description": "Frontend Developer & UX Designer from Barcelona specializing in React, TypeScript, and Design Systems",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffff44",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/thumbnail.webp",
+      "sizes": "1200x630",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "design", "development"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}

@@ -1,0 +1,57 @@
+---
+// Breadcrumb component for better SEO and navigation
+interface BreadcrumbItem {
+  name: string;
+  url?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+// JSON-LD schema for breadcrumbs
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: item.name,
+    ...(item.url && { item: new URL(item.url, Astro.site).href }),
+  })),
+};
+---
+
+<nav aria-label="Breadcrumb" class="mb-4">
+  <ol
+    class="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400"
+  >
+    {
+      items.map((item, index) => (
+        <li class="flex items-center gap-2">
+          {index > 0 && <span class="text-neutral-400">/</span>}
+          {item.url ? (
+            <a
+              href={item.url}
+              class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+            >
+              {item.name}
+            </a>
+          ) : (
+            <span class="text-neutral-900 dark:text-neutral-100 font-medium">
+              {item.name}
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<!-- JSON-LD for search engines -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(breadcrumbSchema)}
+/>

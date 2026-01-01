@@ -4,6 +4,8 @@ import SimilarBlogs from "../../components/blog/SimilarBlogs.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
 import MdLayout from "../../layouts/MdLayout.astro";
 import { getReadingTime } from "../../lib/utils";
+import { metadata } from "../../lib/constants";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("blog");
@@ -28,10 +30,26 @@ const post = Astro.props;
 const { Content, headings } = await render(post);
 
 const time = getReadingTime(post.body ?? "");
+const PAGE_TITLE = `${post.data.title} - Blog - ${metadata.title}`;
+const publishedTime = post.data.publishedAt.toISOString();
 ---
 
-<MainLayout>
+<MainLayout
+	title={PAGE_TITLE}
+	description={post.data.summary}
+	type="article"
+	publishedTime={publishedTime}
+	tags={post.data.tags}
+>
 	<section>
+		<Breadcrumb
+			items={[
+				{ name: "Home", url: "/" },
+				{ name: "Blog", url: "/blog" },
+				{ name: post.data.title },
+			]}
+		/>
+
 		<a
 			href-lang="en-us"
 			href="/blog"

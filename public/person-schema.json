@@ -1,0 +1,159 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Pol Gubau Amores",
+  "alternateName": ["Pol Gubau", "PolGubau"],
+  "jobTitle": "Frontend Developer & UX Designer",
+  "description": "Frontend Developer and UX Designer from Barcelona specializing in React, TypeScript, and Design Systems. Creator of Pol-ui open-source component library.",
+  "url": "https://polgubau.com",
+  "email": "gubaupol@gmail.com",
+  "image": "https://polgubau.com/thumbnail.webp",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Barcelona",
+    "addressCountry": "Spain"
+  },
+  "sameAs": [
+    "https://github.com/PolGubau",
+    "https://www.linkedin.com/in/polgubauamores/",
+    "https://twitter.com/PolGubau",
+    "https://www.npmjs.com/~polgubau"
+  ],
+  "knowsAbout": [
+    "React",
+    "TypeScript",
+    "JavaScript",
+    "Next.js",
+    "Astro",
+    "Design Systems",
+    "UI/UX Design",
+    "Tailwind CSS",
+    "Web Accessibility",
+    "Performance Optimization",
+    "Component Libraries",
+    "Frontend Architecture",
+    "Responsive Design",
+    "PWA Development",
+    "SEO",
+    "Figma",
+    "Git",
+    "Node.js",
+    "HTML5",
+    "CSS3",
+    "Web Standards"
+  ],
+  "knowsLanguage": [
+    {
+      "@type": "Language",
+      "name": "Spanish",
+      "alternateName": "es"
+    },
+    {
+      "@type": "Language",
+      "name": "Catalan",
+      "alternateName": "ca"
+    },
+    {
+      "@type": "Language",
+      "name": "English",
+      "alternateName": "en"
+    }
+  ],
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Frontend Development Expert",
+      "description": "Specialized in React ecosystem, TypeScript, and modern web development"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "UX Designer",
+      "description": "User experience design with focus on accessibility and usability"
+    }
+  ],
+  "workExample": [
+    {
+      "@type": "CreativeWork",
+      "name": "Pol-ui Component Library",
+      "description": "Open-source React component library with TypeScript and Tailwind CSS",
+      "url": "https://polgubau.com/projects/polui",
+      "keywords": "React, TypeScript, Component Library, Open Source, Design System"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Entre Líneas",
+      "description": "Poetry analysis platform with advanced text analysis features",
+      "url": "https://polgubau.com/projects/entre-lineas",
+      "keywords": "Next.js, TypeScript, Web Application, Literature"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Portfolio Website",
+      "description": "Personal portfolio built with Astro, featuring Swiss Style design",
+      "url": "https://polgubau.com",
+      "keywords": "Astro, React, Portfolio, SEO, PWA"
+    }
+  ],
+  "mainEntityOfPage": {
+    "@type": "ProfilePage",
+    "url": "https://polgubau.com"
+  },
+  "subjectOf": [
+    {
+      "@type": "Blog",
+      "url": "https://polgubau.com/blog",
+      "name": "Pol Gubau's Technical Blog",
+      "description": "Articles about React, TypeScript, Design Systems, and web development"
+    }
+  ],
+  "seeks": {
+    "@type": "Demand",
+    "description": "Frontend Developer, React Developer, UX Engineer, Design Systems roles"
+  },
+  "offers": {
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "Service",
+      "name": "Frontend Development Services",
+      "description": "Web application development, design system creation, UI/UX design, performance optimization"
+    }
+  },
+  "award": [
+    "Creator of Pol-ui open-source library",
+    "Active open source contributor",
+    "Technical writer and educator"
+  ],
+  "interactionStatistic": [
+    {
+      "@type": "InteractionCounter",
+      "interactionType": "https://schema.org/WriteAction",
+      "userInteractionCount": "Multiple technical articles published"
+    },
+    {
+      "@type": "InteractionCounter",
+      "interactionType": "https://schema.org/CreateAction",
+      "userInteractionCount": "20+ web projects completed"
+    }
+  ],
+  "potentialAction": [
+    {
+      "@type": "ContactAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "mailto:gubaupol@gmail.com",
+        "actionPlatform": [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform"
+        ]
+      }
+    },
+    {
+      "@type": "FollowAction",
+      "target": [
+        "https://github.com/PolGubau",
+        "https://twitter.com/PolGubau",
+        "https://www.linkedin.com/in/polgubauamores/"
+      ]
+    }
+  ]
+}

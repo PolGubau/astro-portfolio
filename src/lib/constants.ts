@@ -6,35 +6,60 @@ export const paths = {
 };
 export const baseUrl = "https://polgubau.com";
 export const metadata = {
-	title: "Pol Gubau Amores",
+	title: "Pol Gubau Amores - Frontend Developer & UX Designer | React, TypeScript, Design Systems",
 	description:
-		"Frontend Developer and UX Designer based in Barcelona. I love to create beautiful and functional websites and apps.",
+		"Frontend Developer & UX Designer from Barcelona specializing in React, TypeScript, and Design Systems. Creator of Pol-ui library and passionate about building elegant, accessible web experiences. Explore my projects, articles, and open-source contributions.",
 	name: "Pol",
 	longName: "Pol Gubau Amores",
 	slogan: "Frontend Developer and UX Designer",
 	picture: "/assets/blog/authors/pol.jpg",
 	tags: [
+		// Personal Branding
 		"Pol Gubau Amores",
 		"Pol Gubau",
 		"Pol",
 		"Gubau",
 		"Amores",
+		"Frontend Developer Barcelona",
+		"UX Designer Barcelona",
+		
+		// Core Skills
 		"Frontend Developer",
 		"Frontend",
 		"Developer",
 		"UX Designer",
-		"Barcelona",
-		"Germany",
-		"Spain",
-		"Web Developer",
-		"Mesalvo",
-		"Best React Developer",
-		"React",
-		"React Developer",
-		"UX Designer",
 		"UI Designer",
+		"Web Developer",
+		"React Developer",
+		"Best React Developer",
+		
+		// Technologies & Frameworks
+		"React",
+		"TypeScript",
 		"Next.js developer",
 		"TailwindCSS",
+		"Astro",
+		"Design Systems",
+		"Component Libraries",
+		
+		// Expertise Areas
+		"UI/UX Design",
+		"Web Accessibility",
+		"Performance Optimization",
+		"Responsive Design",
+		"Open Source",
+		
+		// Location & Languages
+		"Barcelona",
+		"Spain",
+		"Germany",
+		"Catalan Developer",
+		"English",
+		"Spanish",
+		
+		// Companies & Projects
+		"Mesalvo",
+		"Pol-ui",
 	],
 
 	links: {
@@ -43,6 +68,7 @@ export const metadata = {
 		github: "http://github.com/polgubau",
 		linkedin: "https://www.linkedin.com/in/polgubauamores/",
 		email: "mailto:gubaupol@gmail.com",
+		npm: "https://www.npmjs.com/~polgubau",
 	},
 
 	homeOgImage: "assets/thumbnail.webp",

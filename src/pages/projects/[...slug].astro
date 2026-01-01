@@ -9,6 +9,7 @@ import SimilarProjects from "../../components/Projects/SimilarProjects.astro";
 import ProjectBar from "../../components/Projects/ProjectBar.astro";
 import { metadata } from "../../lib/constants";
 import Toc from "../../components/Toc.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 
 export async function getStaticPaths() {
 	const projects = getProjects();
@@ -26,10 +27,27 @@ const project = Astro.props;
 
 const PAGE_TITLE = `${project.data.title} - Projects - ${metadata.title}`;
 const { Content, headings } = await render(project);
+const publishedTime = project.data.startedAt.toISOString();
+const tech = project.data.tech || [];
 ---
 
-<MainLayout image={project.data.cover.src} title={PAGE_TITLE}>
+<MainLayout
+	image={project.data.cover.src}
+	title={PAGE_TITLE}
+	description={project.data.summary}
+	type="article"
+	publishedTime={publishedTime}
+	tags={tech}
+>
 	<section class="relative flex flex-col gap-4">
+		<Breadcrumb
+			items={[
+				{ name: "Home", url: "/" },
+				{ name: "Projects", url: "/projects" },
+				{ name: project.data.title },
+			]}
+		/>
+
 		<ProjectHeader project={project} />
 		{headings?.length && <Toc headings={headings} />}
 

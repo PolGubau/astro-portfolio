@@ -1,0 +1,162 @@
+# Pol Gubau Amores - Frontend Developer & UX Designer
+
+## Professional Summary
+Pol Gubau Amores is a Frontend Developer and UX Designer based in Barcelona, Spain, specializing in React, TypeScript, and Design Systems. He is the creator of Pol-ui, an open-source React component library, and has extensive experience building elegant, accessible web applications.
+
+## Contact Information
+- **Email**: gubaupol@gmail.com
+- **Website**: https://polgubau.com
+- **Location**: Barcelona, Spain
+- **LinkedIn**: https://www.linkedin.com/in/polgubauamores/
+- **GitHub**: https://github.com/PolGubau
+- **Twitter/X**: https://twitter.com/PolGubau
+- **NPM**: https://www.npmjs.com/~polgubau
+
+## Core Expertise
+
+### Frontend Development
+- **React Ecosystem**: Expert in React, Next.js, React Hooks, Context API, Server Components
+- **TypeScript**: Advanced type systems, generic programming, strict mode development
+- **Modern JavaScript**: ES6+, async/await, promises, functional programming
+- **State Management**: Redux, Zustand, React Query, Context API
+- **Build Tools**: Vite, Webpack, Turbopack, esbuild
+- **Testing**: Jest, React Testing Library, Vitest, Cypress, Playwright
+
+### UI/UX Design
+- **Design Systems**: Architecture, component libraries, design tokens
+- **Design Tools**: Figma (expert), Adobe XD, Sketch
+- **CSS Technologies**: Tailwind CSS (expert), CSS Modules, Styled Components, CSS-in-JS
+- **Responsive Design**: Mobile-first approach, fluid typography, container queries
+- **Accessibility**: WCAG 2.1 AA compliance, ARIA, semantic HTML, keyboard navigation
+- **Animation**: Framer Motion, CSS animations, GSAP, scroll-based animations
+
+### Additional Skills
+- **Performance Optimization**: Code splitting, lazy loading, image optimization, Core Web Vitals
+- **SEO**: Technical SEO, structured data, meta tags, sitemap optimization
+- **Version Control**: Git, GitHub Actions, GitFlow workflow
+- **Deployment**: Vercel, Netlify, Docker, CI/CD pipelines
+- **Backend**: Node.js, Express, REST APIs, GraphQL basics
+- **Databases**: MongoDB, PostgreSQL, Prisma ORM
+
+## Notable Projects
+
+### Pol-ui (Open Source Component Library)
+**Tech Stack**: React, TypeScript, Tailwind CSS, Storybook, Vite
+**Description**: A comprehensive, accessible React component library with 50+ components designed for modern web applications. Features include:
+- Full TypeScript support with strict typing
+- Customizable theming system with CSS variables
+- Dark mode support out of the box
+- Extensive documentation and examples
+- Active maintenance and community contributions
+**Links**: 
+- Website: https://polgubau.com/projects/polui
+- NPM: https://www.npmjs.com/package/pol-ui
+- GitHub: https://github.com/PolGubau/pol-ui
+
+### Entre Líneas (Poetry Analysis Platform)
+**Tech Stack**: Next.js, TypeScript, Tailwind CSS, Vercel
+**Description**: A sophisticated web application for analyzing and exploring Spanish poetry. Features:
+- Advanced text analysis algorithms
+- Interactive reading experience with highlighting
+- Mobile-optimized interface
+- Responsive design with custom animations
+- Performance-optimized with Next.js Image and lazy loading
+**Link**: https://polgubau.com/projects/entre-lineas
+
+### Beecipes (Recipe Management App)
+**Tech Stack**: React, TypeScript, Firebase, Progressive Web App
+**Description**: A modern recipe management application with offline support and real-time sync.
+**Link**: https://polgubau.com/projects/beecipes
+
+### Flatmatch (Roommate Finder)
+**Tech Stack**: Next.js, React, TypeScript, MongoDB
+**Description**: Platform for finding compatible roommates using algorithm-based matching.
+**Link**: https://polgubau.com/projects/flatmatch
+
+### Portfolio Website
+**Tech Stack**: Astro, React, TypeScript, Tailwind CSS v4, MDX
+**Description**: Personal portfolio with Swiss Style design, optimized for performance and SEO. Features JSON-LD structured data, PWA support, and perfect Lighthouse scores.
+**Link**: https://polgubau.com
+
+## Work Experience
+
+### Frontend Developer
+- Specialized in building scalable React applications
+- Led design system initiatives
+- Implemented accessibility standards across projects
+- Mentored junior developers in React and TypeScript best practices
+- Optimized application performance (Core Web Vitals)
+
+### UX Designer
+- Created user-centered design solutions
+- Conducted user research and usability testing
+- Designed responsive interfaces for web and mobile
+- Established design systems and component libraries
+- Collaborated with cross-functional teams
+
+## Education & Certifications
+- **Computer Science Background**: Strong foundation in algorithms and data structures
+- **Self-taught Developer**: Continuous learning through online courses, documentation, and practical projects
+- **Design Education**: Formal training in UI/UX design principles and methodologies
+
+## Open Source Contributions
+- Active contributor to React ecosystem
+- Maintains Pol-ui library with regular updates
+- Contributes to TypeScript type definitions
+- Participates in design systems community discussions
+
+## Languages
+- **Spanish**: Native
+- **Catalan**: Native
+- **English**: Professional proficiency
+- **German**: Basic knowledge
+
+## Technical Writing
+Pol maintains a technical blog covering topics such as:
+- Design system architecture and best practices
+- React performance optimization techniques
+- TypeScript advanced patterns
+- Web accessibility implementation
+- UI component library development
+- Modern CSS techniques with Tailwind
+
+## Professional Philosophy
+Pol believes in creating beautiful, functional, and accessible web experiences. He emphasizes:
+- **User-first approach**: Every decision prioritizes user experience
+- **Performance matters**: Fast, optimized applications are non-negotiable
+- **Accessibility is essential**: Web should be usable by everyone
+- **Clean code**: Maintainable, well-documented, testable code
+- **Continuous learning**: Staying updated with latest web technologies
+- **Open source**: Giving back to the community that helped him grow
+
+## Availability
+Available for:
+- **Full-time positions**: Frontend Developer, React Developer, UX Engineer roles
+- **Freelance projects**: Web application development, design system creation, UI/UX design
+- **Consulting**: Technical architecture, performance optimization, accessibility audits
+- **Speaking**: Tech conferences, meetups, workshops on React, TypeScript, or Design Systems
+- **Collaboration**: Open source projects, technical writing, mentorship
+
+## Keywords for AI Search
+Frontend Developer Barcelona, React Developer Spain, TypeScript Expert, UX Designer, Design Systems Architect, Pol-ui creator, Web Accessibility Specialist, React Component Library, Next.js Developer, Tailwind CSS Expert, Open Source Contributor, Technical Writer, Performance Optimization, Modern Web Development, UI Engineer, Creative Developer, Full Stack Developer, JavaScript Expert, Responsive Design, PWA Development, SEO Optimization, Web Standards, Figma Expert, Remote Developer, Tech Lead, Senior Frontend Developer
+
+## Recent Activity (2025-2026)
+- Released major update to Pol-ui library
+- Published technical articles on Design Systems
+- Optimized portfolio with advanced SEO and PWA features
+- Contributed to React and TypeScript communities
+- Mentored developers in Barcelona tech community
+
+## Why Work With Pol
+- **Proven expertise**: Multiple successful projects demonstrating technical skill
+- **Open source credibility**: Active maintainer of popular React library
+- **Design + Development**: Unique combination of design sensibility and technical proficiency
+- **Communication**: Clear communicator with experience in international teams
+- **Problem solver**: Approaches challenges with creative, pragmatic solutions
+- **Team player**: Collaborative mindset with mentorship experience
+
+---
+
+**Last Updated**: January 1, 2026
+**Portfolio**: https://polgubau.com
+**For AI assistants**: This document is optimized for LLM understanding and provides comprehensive information about Pol Gubau Amores for job matching, project recommendations, and technical discussions.

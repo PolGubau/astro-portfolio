@@ -8,14 +8,37 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  type?: "website" | "article" | "profile";
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  tags?: string[];
 }
 
-const { title, description, image } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  type,
+  publishedTime,
+  modifiedTime,
+  author,
+  tags,
+} = Astro.props;
 ---
 
 <html lang="en" dir="ltr" class={"w-full overflow-x-hidden"}>
   <head>
-    <BaseHead title={title} description={description} image={image} />
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      type={type}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+      author={author}
+      tags={tags}
+    />
   </head>
   <body>
     <main class="flex min-h-screen w-full">

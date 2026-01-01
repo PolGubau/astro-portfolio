@@ -1,0 +1,74 @@
+# robots.txt for polgubau.com
+# Allow all search engines and web crawlers
+
+User-agent: *
+Allow: /
+
+# Allow AI crawlers to access profile data
+Allow: /ai-profile.txt
+Allow: /ai-instructions.txt
+Allow: /profile-summary.txt
+Allow: /person-schema.json
+
+# Disallow admin, API, or private directories (if any)
+Disallow: /api/
+Disallow: /.well-known/
+
+# Sitemap location
+Sitemap: https://polgubau.com/sitemap-index.xml
+
+# Crawl delay (optional, for politeness)
+Crawl-delay: 0
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# AI-powered search engines
+User-agent: GPTBot
+Allow: /
+Allow: /ai-profile.txt
+Allow: /ai-instructions.txt
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Block known bad bots (optional)
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /

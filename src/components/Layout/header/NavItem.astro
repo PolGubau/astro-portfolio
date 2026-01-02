@@ -13,15 +13,18 @@ const isActive = path === pathname || path === `/${subpath?.[0] || ""}`;
   href={path}
   tabindex={isActive ? -1 : undefined}
   class:list={[
-    "flex rounded-xl align-middle outline-0 outline-primary transition-all focus-visible:outline-1",
-    { "pointer-events-none text-secondary-900 bg-primary": isActive },
+    "flex rounded-xl align-middle outline-0 outline-primary transition-all duration-300 ease-out focus-visible:outline-2 focus-visible:outline-offset-2",
     {
-      "text-secondary-900/70 hover:brightness-150 dark:text-secondary-50/70":
+      "pointer-events-none text-secondary-900 dark:text-secondary-950 bg-primary shadow-md shadow-primary/20 font-medium":
+        isActive,
+    },
+    {
+      "text-secondary-900/70 dark:text-secondary-50/70 hover:text-secondary-900 dark:hover:text-secondary-50 hover:bg-foreground/5 hover:scale-[1.02] active:scale-[0.98]":
         !isActive,
     },
   ]}
 >
-  <span class="relative px-2 py-1">
+  <span class="relative px-3 py-1">
     {name}
   </span>
 </a>

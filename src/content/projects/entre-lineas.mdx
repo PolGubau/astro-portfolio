@@ -50,18 +50,18 @@ import verseFigureHighlight from "../../assets/media/projects/entre-lineas/verse
 Entre Líneas is a modern web application that transforms Spanish poetry analysis into an interactive, engaging experience. Built for students, teachers, and literature enthusiasts, it combines deep literary analysis with contemporary UX patterns.
 
 
-<ul class="grid grid-cols-1 pl-0 md:grid-cols-3 gap-4 my-8 divide-x divide-foreground/20">
+<ul class="grid pl-0 md:grid-cols-3 gap-4 my-8 max-w-full md:divide-x divide-foreground/20">
   <li class="list-none">
     <strong class="text-3xl font-bold">React 19</strong>
-    <div class="text-sm text-neutral-600 dark:text-neutral-400">Modern stack</div>
+    <div class="text-sm text-foreground/80">Modern stack</div>
   </li>
   <li class="list-none">
     <strong class="text-3xl font-bold ">TanStack Start</strong>
-    <div class="text-sm text-neutral-600 dark:text-neutral-400">SSR framework</div>
+    <div class="text-sm text-foreground/80">SSR framework</div>
   </li>
   <li class="list-none">
     <strong class="text-3xl font-bold ">TypeScript</strong>
-    <div class="text-sm text-neutral-600 dark:text-neutral-400">End-to-end typesafety</div>
+    <div class="text-sm text-foreground/80">End-to-end typesafety</div>
   </li>
 </ul>
 
@@ -80,7 +80,7 @@ Entre Líneas brings poetry analysis into the modern web era with a **fully inte
   alt="Entre Líneas home page showing a clean grid of poem cards"
   width={1200}
   height={800}
-  class="show-animation"
+  class="show-animation w-full h-auto"
   loading="eager"
 />
 
@@ -101,21 +101,21 @@ Entre Líneas brings poetry analysis into the modern web era with a **fully inte
 
 The landing page presents poems as **beautiful, scannable cards**. Each card displays the poem's title, author, era, and a preview of metrics like number of verses and rhetorical figures.
 
-<div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 my-8">
+<div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 my-8 max-w-full">
 
   <Image 
     src={narrowHome} 
     alt="Mobile view of the home page with responsive cards"
     width={170}
     height={500}
-    class="h-[500px] show-animation object-contain w-[170px]"
+    class="h-auto md:h-[500px] show-animation object-contain w-full md:w-[170px] max-w-[170px]"
   />
   <Image 
     src={home} 
     alt="Mobile view of the home page with responsive cards"
     width={1000}
     height={500}
-    class="h-[500px] show-animation w-full object-contain"
+    class="h-auto md:h-[500px] show-animation w-full object-contain"
   />
 
   </div>
@@ -126,14 +126,14 @@ The landing page presents poems as **beautiful, scannable cards**. Each card dis
     
     <Video 
       src={filtersShowcase}
-      class="show-animation"
+      class="show-animation w-full max-w-full"
       alt="Live demonstration of filtering and sorting poems"
     />
   
-<div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] mt-6 gap-6 items-start">
+<div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] mt-6 gap-6 items-start max-w-full">
   <Video 
         src={goNextList}
-        class="show-animation"
+        class="show-animation w-full max-w-full"
     videoClassName="object-left"
     alt="Quick navigation between poems with smooth transitions"
    />
@@ -161,7 +161,7 @@ Desktop users get a **powerful three-column interface** optimized for deep analy
   alt="Desktop three-column layout showing poem with analysis panel"
   width={300}
   height={700}
-  class="show-animation h-[700px] w-[300px]"
+  class="show-animation h-auto w-full max-w-[300px] mx-auto"
 />
 
 ### Interactive Annotations
@@ -171,13 +171,13 @@ Hover over any verse to see **contextual tooltips** with instant information abo
 <Video 
   src={tooltips}
       alt="Hovering over verses reveals contextual information"
-      class="show-animation aspect-video"
+      class="show-animation aspect-video w-full max-w-full"
 />
 
 <Video 
   src={verseAnotations}
       alt="Detailed verse annotations with literary analysis"
-      class="show-animation aspect-video mt-6"
+      class="show-animation aspect-video mt-6 w-full max-w-full"
 />
 
 ### Rhetorical Figure Highlighting
@@ -187,7 +187,7 @@ Click on any **rhetorical figure** in the analysis panel, and watch as all relat
 <Video 
   src={verseFigureHighlight}
   alt="Clicking rhetorical figures highlights corresponding verses"
-  class="show-animation aspect-video"
+  class="show-animation aspect-video w-full max-w-full"
 />
 
 ---
@@ -198,39 +198,39 @@ Click on any **rhetorical figure** in the analysis panel, and watch as all relat
 
 On mobile, the three-column layout transforms into a **streamlined single-column view** with collapsible panels. The analysis panel becomes a drawer that slides up from the bottom.
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-8 ">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-8 max-w-full">
   <Image 
     src={narrowPoem} 
     alt="Mobile poem reading view"
     width={400}
     height={800}
-    class="show-animation"
+    class="show-animation w-full h-auto"
   />
   <Image 
     src={narrowFilters} 
     alt="Mobile filters interface"
     width={400}
     height={800}
-    class="show-animation"
+    class="show-animation w-full h-auto"
   />
   <Image 
     src={narrowSort} 
     alt="Mobile sorting options"
     width={400}
     height={800}
-    class="show-animation"
+    class="show-animation w-full h-auto"
   />
 </div>
 
 ### Read Mode
 
 Toggle **Read Mode** to remove all UI distractions and focus purely on the poetry. Perfect for deep reading sessions or classroom presentations.
-<div class="flex max-md:flex-col gap-4">
+<div class="flex max-md:flex-col gap-4 max-w-full">
 
 <Video 
   src={readMode}
         alt="Clean read mode removes all distractions"
-        class="show-animation h-[450px] aspect-video"
+        class="show-animation h-auto md:h-[450px] aspect-video w-full max-w-full"
 
 />
 
@@ -239,14 +239,14 @@ Toggle **Read Mode** to remove all UI distractions and focus purely on the poetr
   alt="Mobile read mode interface"
         width={222}
   height={450}
-  class="show-animation object-bottom h-[450px] object-contain"
+  class="show-animation object-bottom h-auto md:h-[450px] object-contain w-full max-w-[222px]"
 />
 </div>
 ---
 
 ## Advanced Features
 
-<div class="grid max-md:grid-cols-[1fr_300px] gap-8">
+<div class="grid md:grid-cols-[1fr_300px] gap-8 max-w-full">
 
 <div className="">
 ### Context Accordions
@@ -256,7 +256,7 @@ Each poem includes **expandable sections** with rich context: historical backgro
 <Video 
   src={contextAccordions}
       alt="Expandable context panels with detailed information"
-  class="show-animation h-[500px] w-[300px] object-contain"
+  class="show-animation h-auto md:h-[500px] w-full max-w-[300px] object-contain"
 />
 
 </div>
@@ -269,28 +269,28 @@ The action bar provides quick access to essential functions:
   alt="Action bar with favorite, share, and read mode controls"
   width={1200}
   height={200}
-    class="show-animation"
+    class="show-animation w-full h-auto"
 />
 
 - **Favorite poems** with a delightful like animation
 - **Share directly** using the native Web Share API
 - **Keyboard shortcuts** for power users
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8 max-w-full">
   <Video 
         src={likeAnimation}
      alt="Smooth animation when favoriting a poem"
-    class="show-animation"
+    class="show-animation w-full max-w-full"
   />
   <Video 
     src={shareApi}
     alt="Native share functionality for easy poem sharing"
-    class="show-animation"
+    class="show-animation w-full max-w-full"
   />
   <Video 
     src={shortcutsDrawer}
     alt="Keyboard shortcuts panel for efficient navigation"
-    class="show-animation"
+    class="show-animation w-full max-w-full"
   />
 </div>
 
@@ -298,20 +298,20 @@ The action bar provides quick access to essential functions:
 
 Apply multiple filters simultaneously: combine authors, eras, and literary movements to find exactly what you need.
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8 max-w-full">
   <Image 
     src={narrowFiltersApply} 
     alt="Applying filters on mobile"
     width={400}
     height={800}
-    class="show-animation"
+    class="show-animation w-full h-auto"
   />
   <Image 
     src={narrowFiltersApplied} 
     alt="Results after filters are applied"
     width={400}
     height={800}
-    class="show-animation"
+    class="show-animation w-full h-auto"
   />
 </div>
 
@@ -348,7 +348,7 @@ All data is **statically embedded** at build time, eliminating network requests 
 
 ### Lighthouse Scores
 
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-8 max-w-full">
   <div class="p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 text-center">
     <div class="text-4xl font-bold text-green-500">98</div>
     <div class="text-sm text-neutral-600 dark:text-neutral-400">Performance</div>

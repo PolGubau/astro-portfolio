@@ -1,0 +1,237 @@
+---
+import type { BlogMetadata } from "../../lib/utils";
+import BlogListWithMeta from "./BlogListWithMeta.astro";
+
+type Props = {
+  blogs: BlogMetadata[];
+  allTags: string[];
+};
+
+const { blogs, allTags } = Astro.props;
+---
+
+<div class="flex flex-col gap-6">
+  <!-- Search and Filter Controls -->
+  <div class="flex flex-col gap-4">
+    <!-- Search Input -->
+    <div class="relative">
+      <input
+        type="text"
+        id="blog-search"
+        placeholder="Search articles..."
+        class="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-background text-foreground placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+      />
+      <svg
+        class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400 pointer-events-none"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+      </svg>
+    </div>
+
+    <!-- Tag Filter -->
+    <div class="flex flex-col gap-2">
+      <label class="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+        Filter by tag:
+      </label>
+      <div class="flex flex-wrap gap-2" id="tag-filters">
+        <button
+          data-tag="all"
+          class="tag-filter active px-4 py-2 rounded-full text-sm font-semibold transition-all border border-primary bg-primary text-neutral-900 dark:border-primary hover:brightness-110"
+        >
+          All ({blogs.length})
+        </button>
+        {
+          allTags.map((tag) => {
+            const count = blogs.filter((blog) =>
+              blog.data.tags?.includes(tag),
+            ).length;
+            return (
+              <button
+                data-tag={tag}
+                class="tag-filter px-4 py-2 rounded-full text-sm font-medium transition-all border border-neutral-300 dark:border-neutral-700 bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700"
+              >
+                {tag} ({count})
+              </button>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Results Count -->
+  <div
+    id="results-count"
+    class="text-sm text-neutral-600 dark:text-neutral-400"
+  >
+    Showing {blogs.length} articles
+  </div>
+
+  <!-- Blog List -->
+  <BlogListWithMeta blogs={blogs} />
+
+  <!-- No Results Message -->
+  <div
+    id="no-results"
+    class="hidden text-center py-12 text-neutral-600 dark:text-neutral-400"
+  >
+    <p class="text-lg mb-2">No articles found</p>
+    <p class="text-sm">Try adjusting your search or filter</p>
+  </div>
+</div>
+
+<script>
+  // Blog search and filter functionality
+  const searchInput = document.getElementById(
+    "blog-search",
+  ) as HTMLInputElement;
+  const tagFilters = document.querySelectorAll(".tag-filter");
+  const blogList = document.getElementById("blog-list") as HTMLElement;
+  const resultsCount = document.getElementById("results-count") as HTMLElement;
+  const noResults = document.getElementById("no-results") as HTMLElement;
+
+  let currentTag = "all";
+  let currentSearch = "";
+
+  // Get all blog items
+  const blogItems = Array.from(blogList?.children || []) as HTMLElement[];
+
+  // Check URL for tag parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const tagParam = urlParams.get("tag");
+  if (tagParam) {
+    currentTag = tagParam;
+    // Activate the corresponding tag button
+    tagFilters.forEach((btn) => {
+      if (btn.getAttribute("data-tag") === tagParam) {
+        activateButton(btn);
+      } else {
+        deactivateButton(btn);
+      }
+    });
+  }
+
+  function activateButton(btn: Element) {
+    btn.classList.remove(
+      "bg-neutral-100",
+      "text-neutral-700",
+      "dark:bg-neutral-800",
+      "dark:text-neutral-300",
+      "hover:bg-neutral-200",
+      "dark:hover:bg-neutral-700",
+      "border-neutral-300",
+      "dark:border-neutral-700",
+    );
+    btn.classList.add(
+      "bg-primary",
+      "text-neutral-900",
+      "border-primary",
+      "dark:border-primary",
+      "font-semibold",
+      "hover:brightness-110",
+      "active",
+    );
+  }
+
+  function deactivateButton(btn: Element) {
+    btn.classList.remove(
+      "bg-primary",
+      "text-neutral-900",
+      "border-primary",
+      "dark:border-primary",
+      "font-semibold",
+      "hover:brightness-110",
+      "active",
+    );
+    btn.classList.add(
+      "bg-neutral-100",
+      "text-neutral-700",
+      "dark:bg-neutral-800",
+      "dark:text-neutral-300",
+      "hover:bg-neutral-200",
+      "dark:hover:bg-neutral-700",
+      "border-neutral-300",
+      "dark:border-neutral-700",
+    );
+  }
+
+  function filterBlogs() {
+    let visibleCount = 0;
+
+    blogItems.forEach((item) => {
+      const title = item.dataset.title?.toLowerCase() || "";
+      const summary = item.dataset.summary?.toLowerCase() || "";
+      const tags = item.dataset.tags?.toLowerCase() || "";
+
+      const matchesSearch =
+        currentSearch === "" ||
+        title.includes(currentSearch) ||
+        summary.includes(currentSearch) ||
+        tags.includes(currentSearch);
+
+      const matchesTag =
+        currentTag === "all" || tags.includes(currentTag.toLowerCase());
+
+      if (matchesSearch && matchesTag) {
+        item.style.display = "";
+        visibleCount++;
+      } else {
+        item.style.display = "none";
+      }
+    });
+
+    // Update results count
+    resultsCount.textContent = `Showing ${visibleCount} article${visibleCount !== 1 ? "s" : ""}`;
+
+    // Show/hide no results message
+    if (visibleCount === 0) {
+      noResults.classList.remove("hidden");
+      blogList.classList.add("hidden");
+    } else {
+      noResults.classList.add("hidden");
+      blogList.classList.remove("hidden");
+    }
+  }
+
+  // Search input handler
+  searchInput?.addEventListener("input", (e) => {
+    currentSearch = (e.target as HTMLInputElement).value.toLowerCase();
+    filterBlogs();
+  });
+
+  // Tag filter handlers
+  tagFilters.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Deactivate all buttons
+      tagFilters.forEach((btn) => deactivateButton(btn));
+
+      // Activate clicked button
+      activateButton(button);
+
+      // Update current tag
+      currentTag = button.getAttribute("data-tag") || "all";
+
+      // Update URL without reload
+      const newUrl = new URL(window.location.href);
+      if (currentTag === "all") {
+        newUrl.searchParams.delete("tag");
+      } else {
+        newUrl.searchParams.set("tag", currentTag);
+      }
+      window.history.pushState({}, "", newUrl);
+
+      // Filter blogs
+      filterBlogs();
+    });
+  });
+
+  // Initial filter on page load
+  filterBlogs();
+</script>

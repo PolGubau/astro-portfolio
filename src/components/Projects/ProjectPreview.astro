@@ -9,7 +9,7 @@ interface Props {
 
 const { project, index } = Astro.props;
 const { data, id: slug } = project;
-const { title, color, cover: src } = data;
+const { title, color, cover: src, category } = data;
 const isFirstLoad = index < 6;
 ---
 
@@ -37,10 +37,21 @@ const isFirstLoad = index < 6;
       width={600}
       height={330}
     />
-    <h3
-      class="absolute top-6 left-6 z-10 mb-3 font-medium text-3xl leading-snug dark:text-neutral-800"
-    >
-      {title}
-    </h3>
+    <header class="absolute top-6 left-6 z-10 mb-3 flex flex-col">
+      <h3
+        class="font-medium text-3xl leading-snug text-background/80 my-0 py-0"
+      >
+        {title}
+      </h3>
+      <!-- <ul>
+        <li>
+          <span
+            class="text-xs font-medium text-background/60 capitalize bg-background/20 text-foreground px-2 py-1 rounded-lg"
+          >
+            {category}
+          </span>
+        </li>
+      </ul> -->
+    </header>
   </a>
 </div>

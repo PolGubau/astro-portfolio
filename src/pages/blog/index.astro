@@ -1,14 +1,37 @@
 ---
 import BlogList from "../../components/blog/BlogList/BlogList.astro";
+import BlogSearch from "../../components/blog/BlogSearch.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
 import { getBlogs } from "../../lib/utils";
+import { metadata } from "../../lib/constants";
+
+const allBlogs = getBlogs();
+
+// Extract all unique tags from blogs
+const allTags = [
+	...new Set(allBlogs.flatMap((blog) => blog.data.tags || [])),
+].sort();
+
+const PAGE_TITLE = `Blog - ${metadata.title}`;
+const PAGE_DESCRIPTION =
+	"Thoughts on web development, design systems, React, TypeScript, and building better user experiences.";
 ---
 
-<MainLayout>
-	<h1
-		class="mb-8 text-pretty text-center font-medium text-xl md:text-start md:font-semibold md:text-2xl"
-	>
-		Some thoughts written down ✏️
-	</h1>
-	<BlogList blogs={getBlogs()} />
+<MainLayout title={PAGE_TITLE} description={PAGE_DESCRIPTION} type="website">
+	<div class="flex flex-col gap-6">
+		<header>
+			<h1
+				class="mb-4 text-pretty text-center font-medium text-xl md:text-start md:font-semibold md:text-2xl"
+			>
+				Some thoughts written down ✏️
+			</h1>
+			<p
+				class="text-neutral-600 dark:text-neutral-400 text-center md:text-start mb-6"
+			>
+				{allBlogs.length} articles about web development, design, and technology
+			</p>
+		</header>
+
+		<BlogSearch blogs={allBlogs} allTags={allTags} />
+	</div>
 </MainLayout>

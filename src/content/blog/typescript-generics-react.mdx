@@ -1,0 +1,219 @@
+---
+title: "TypeScript Generics in React Components: Complete Guide with Examples 🎯"
+publishedAt: "2025-12-15"
+summary: "Learn how to use TypeScript generics in React components with practical examples. Build reusable, type-safe components for Select, Table, and more. Includes best practices and common pitfalls to avoid."
+tags:
+  - React
+  - Frontend
+  - TypeScript
+---
+
+I'll be honest, I avoided generics for way too long. Every time I saw `<T>` in someone's code, I'd think "that's for library authors, not for me." Turns out, I was wrong. Very wrong.
+
+Last month, while working on Novahair, I had to refactor a `Select` component for the third time because each new use case needed slightly different types. That's when it clicked - I needed generics.
+
+## The Problem I Kept Running Into
+
+Here's what I used to do (and maybe you do too):
+
+```tsx
+interface SelectProps {
+  options: Array<{ label: string; value: string }>;
+  onChange: (value: string) => void;
+  value: string;
+}
+
+function Select({ options, onChange, value }: SelectProps) {
+  // ... component logic
+}
+```
+
+Looks fine, right? Until you need to use it with numbers. Or objects. Or literally anything that isn't a string.
+
+So I'd create `SelectNumber`, `SelectObject`, `SelectWhatever`. Copy-paste hell. Not great.
+
+## The solution
+
+Generics let you write the component once and let TypeScript figure out the types based on usage. Here's the same component, but actually reusable:
+
+```tsx
+interface SelectProps<T> {
+  options: Array<{ label: string; value: T }>;
+  onChange: (value: T) => void;
+  value: T;
+}
+
+function Select<T>({ options, onChange, value }: SelectProps<T>) {
+  return (
+    <select 
+      value={String(value)} 
+      onChange={(e) => {
+        const selected = options.find(
+          opt => String(opt.value) === e.target.value
+        );
+        if (selected) onChange(selected.value);
+      }}
+    >
+      {options.map((opt) => (
+        <option key={String(opt.value)} value={String(opt.value)}>
+          {opt.label}
+        </option>
+      ))}
+    </select>
+  );
+}
+```
+
+Now TypeScript knows what type you're working with:
+
+```tsx
+// TypeScript knows value is a number
+<Select<number>
+  options={[
+    { label: "One", value: 1 },
+    { label: "Two", value: 2 }
+  ]}
+  onChange={(val) => console.log(val + 1)} // val is number!
+  value={1}
+/>
+
+// TypeScript knows value is a User object
+<Select<User>
+  options={users.map(u => ({ label: u.name, value: u }))}
+  onChange={(user) => console.log(user.email)} // user is User!
+  value={currentUser}
+/>
+```
+
+No more `as` casting. No more `any`. Just... works.
+
+## Real-World Example: A Table Component
+
+This is where generics really shine. I built a `Table` component for Pol-UI that works with any data shape:
+
+```tsx
+interface Column<T> {
+  key: keyof T;
+  header: string;
+  render?: (value: T[keyof T], row: T) => React.ReactNode;
+}
+
+interface TableProps<T> {
+  data: T[];
+  columns: Column<T>[];
+  onRowClick?: (row: T) => void;
+}
+
+function Table<T>({ data, columns, onRowClick }: TableProps<T>) {
+  return (
+    <table>
+      <thead>
+        <tr>
+          {columns.map((col) => (
+            <th key={String(col.key)}>{col.header}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((row, idx) => (
+          <tr key={idx} onClick={() => onRowClick?.(row)}>
+            {columns.map((col) => (
+              <td key={String(col.key)}>
+                {col.render 
+                  ? col.render(row[col.key], row)
+                  : String(row[col.key])
+                }
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+```
+
+Usage is beautiful:
+
+```tsx
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  isActive: boolean;
+}
+
+<Table<User>
+  data={users}
+  columns={[
+    { key: "name", header: "Name" },
+    { key: "email", header: "Email" },
+    { 
+      key: "isActive", 
+      header: "Status",
+      render: (isActive) => isActive ? "✅" : "❌"
+    }
+  ]}
+  onRowClick={(user) => navigate(`/users/${user.id}`)}
+/>
+```
+
+TypeScript autocompletes everything. The `key` must be a valid property of `User`. The `render` function gets the right type. The `onRowClick` receives a full `User` object.
+
+It's like magic, but it's just TypeScript doing its job.
+
+## Tips I Wish I Knew Earlier
+
+**1. You can constrain generics:**
+
+```tsx
+// Only allow objects with an 'id' property
+function List<T extends { id: string | number }>(props: { items: T[] }) {
+  return props.items.map(item => <div key={item.id}>...</div>);
+}
+```
+
+**2. Default generic types are your friend:**
+
+```tsx
+// Defaults to string if not specified
+function Input<T = string>({ value, onChange }: {
+  value: T;
+  onChange: (val: T) => void;
+}) {
+  // ...
+}
+```
+
+**3. Multiple generics are totally fine:**
+
+```tsx
+function KeyValueList<K, V>({ items }: { 
+  items: Array<{ key: K; value: V }> 
+}) {
+  // ...
+}
+```
+
+## When NOT to Use Generics
+
+Real talk: don't use generics just because you can. I've seen (and written) over-engineered components that would've been simpler with a union type or just two separate components.
+
+Use generics when:
+- You're repeating the same component with different types
+- You're building a library/design system
+- The component truly doesn't care about the data shape
+
+Don't use generics when:
+- The component has specific business logic for specific types
+- You're only using it in one place
+- It makes the code harder to understand for your team
+
+## Wrapping Up
+
+Generics went from "scary advanced TypeScript" to "how did I live without this" in about a week of actually using them. Start small - maybe a `List` or `Select` component - and you'll quickly see where else they fit.
+
+And hey, if you mess up, TypeScript will tell you. That's the whole point.
+
+Now go make your components actually reusable. Your future self will thank you.
+

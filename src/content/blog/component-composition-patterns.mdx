@@ -1,0 +1,352 @@
+---
+title: "React Component Composition Patterns: Compound Components, Render Props & More 🧩"
+publishedAt: "2026-01-10"
+summary: "Master React component composition patterns with real-world examples. Learn compound components, render props, slots, and context patterns. Reduce props, increase flexibility, and build better design systems."
+tags:
+  - React
+  - Design
+  - Frontend
+---
+
+I used to think good components meant lots of props. I'd end up with components that had 20+ props, half of them optional, and a README longer than the component itself.
+
+Then I learned about composition. Now my components have fewer props, are more flexible, and actually make sense.
+
+## The Problem: Prop Drilling Hell
+
+Here's a `Card` component I wrote in 2023 (don't judge me):
+
+```tsx
+interface CardProps {
+  title: string;
+  subtitle?: string;
+  image?: string;
+  imageAlt?: string;
+  imagePosition?: 'top' | 'left' | 'right';
+  footer?: React.ReactNode;
+  footerAlign?: 'left' | 'center' | 'right';
+  onClick?: () => void;
+  variant?: 'default' | 'outlined' | 'elevated';
+  padding?: 'none' | 'small' | 'medium' | 'large';
+  // ... 10 more props
+}
+```
+
+Every new feature meant a new prop. Want a badge in the corner? New prop. Want custom spacing? New prop. Want to sacrifice a goat to the moon? Probably a new prop.
+
+This doesn't scale. Trust me.
+
+## Pattern 1: Compound Components
+
+This is my favorite pattern. Instead of one mega-component, you build small pieces that work together.
+
+**Before:**
+```tsx
+<Card
+  title="Hello"
+  subtitle="World"
+  footer={<button>Click me</button>}
+  footerAlign="right"
+/>
+```
+
+**After:**
+```tsx
+<Card>
+  <Card.Header>
+    <Card.Title>Hello</Card.Title>
+    <Card.Subtitle>World</Card.Subtitle>
+  </Card.Header>
+  <Card.Footer align="right">
+    <button>Click me</button>
+  </Card.Footer>
+</Card>
+```
+
+More code? Yes. More flexible? Absolutely.
+
+Here's how you build it:
+
+```tsx
+interface CardProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+function Card({ children, className }: CardProps) {
+  return (
+    <div className={`card ${className}`}>
+      {children}
+    </div>
+  );
+}
+
+Card.Header = function CardHeader({ children }: { children: React.ReactNode }) {
+  return <div className="card-header">{children}</div>;
+};
+
+Card.Title = function CardTitle({ children }: { children: React.ReactNode }) {
+  return <h3 className="card-title">{children}</h3>;
+};
+
+Card.Subtitle = function CardSubtitle({ children }: { children: React.ReactNode }) {
+  return <p className="card-subtitle">{children}</p>;
+};
+
+Card.Footer = function CardFooter({ 
+  children, 
+  align = 'left' 
+}: { 
+  children: React.ReactNode;
+  align?: 'left' | 'center' | 'right';
+}) {
+  return (
+    <div className={`card-footer card-footer-${align}`}>
+      {children}
+    </div>
+  );
+};
+```
+
+Now users can compose however they want:
+
+```tsx
+// Just a title
+<Card>
+  <Card.Title>Simple</Card.Title>
+</Card>
+
+// Title and custom content
+<Card>
+  <Card.Header>
+    <Card.Title>Complex</Card.Title>
+    <Badge>New</Badge>
+  </Card.Header>
+  <p>Custom content here</p>
+</Card>
+
+// Whatever you want
+<Card>
+  <img src="..." />
+  <Card.Title>Image card</Card.Title>
+  <Card.Footer>
+    <Button>Action</Button>
+  </Card.Footer>
+</Card>
+```
+
+Zero new props needed. Infinite flexibility.
+
+## Pattern 2: Render Props
+
+When you need to share logic but let users control the UI.
+
+I use this in Pol-UI's `Dropdown` component:
+
+```tsx
+<Dropdown>
+  {({ isOpen, toggle }) => (
+    <>
+      <button onClick={toggle}>
+        Menu {isOpen ? '▲' : '▼'}
+      </button>
+      {isOpen && (
+        <div className="dropdown-menu">
+          <a href="/profile">Profile</a>
+          <a href="/settings">Settings</a>
+        </div>
+      )}
+    </>
+  )}
+</Dropdown>
+```
+
+The `Dropdown` handles the state. You handle the UI. Clean separation.
+
+Implementation:
+
+```tsx
+interface DropdownProps {
+  children: (props: {
+    isOpen: boolean;
+    toggle: () => void;
+    close: () => void;
+  }) => React.ReactNode;
+}
+
+function Dropdown({ children }: DropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const toggle = () => setIsOpen(!isOpen);
+  const close = () => setIsOpen(false);
+  
+  return <>{children({ isOpen, toggle, close })}</>;
+}
+```
+
+Simple, powerful, flexible.
+
+## Pattern 3: Slots (My Secret Weapon)
+
+This is less common but super useful. Instead of `children`, you accept specific named slots.
+
+```tsx
+interface ModalProps {
+  header?: React.ReactNode;
+  body: React.ReactNode;
+  footer?: React.ReactNode;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+function Modal({ header, body, footer, isOpen, onClose }: ModalProps) {
+  if (!isOpen) return null;
+  
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        {header && <div className="modal-header">{header}</div>}
+        <div className="modal-body">{body}</div>
+        {footer && <div className="modal-footer">{footer}</div>}
+      </div>
+    </div>
+  );
+}
+```
+
+Usage:
+
+```tsx
+<Modal
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  header={<h2>Delete Account</h2>}
+  body={<p>Are you sure? This cannot be undone.</p>}
+  footer={
+    <>
+      <Button onClick={() => setIsOpen(false)}>Cancel</Button>
+      <Button variant="danger" onClick={handleDelete}>Delete</Button>
+    </>
+  }
+/>
+```
+
+Each slot is optional. Each slot can be anything. No weird prop names like `footerContent` or `headerElement`.
+
+## Pattern 4: Context for Deep Composition
+
+When compound components need to share state, use Context.
+
+Real example from Pol-UI's `Tabs`:
+
+```tsx
+const TabsContext = createContext<{
+  activeTab: string;
+  setActiveTab: (id: string) => void;
+} | null>(null);
+
+function Tabs({ children, defaultTab }: {
+  children: React.ReactNode;
+  defaultTab: string;
+}) {
+  const [activeTab, setActiveTab] = useState(defaultTab);
+  
+  return (
+    <TabsContext.Provider value={{ activeTab, setActiveTab }}>
+      <div className="tabs">{children}</div>
+    </TabsContext.Provider>
+  );
+}
+
+Tabs.List = function TabsList({ children }: { children: React.ReactNode }) {
+  return <div className="tabs-list">{children}</div>;
+};
+
+Tabs.Tab = function Tab({ id, children }: { 
+  id: string; 
+  children: React.ReactNode;
+}) {
+  const context = useContext(TabsContext);
+  if (!context) throw new Error('Tab must be used within Tabs');
+  
+  const isActive = context.activeTab === id;
+  
+  return (
+    <button
+      className={`tab ${isActive ? 'active' : ''}`}
+      onClick={() => context.setActiveTab(id)}
+    >
+      {children}
+    </button>
+  );
+};
+
+Tabs.Panel = function TabPanel({ id, children }: {
+  id: string;
+  children: React.ReactNode;
+}) {
+  const context = useContext(TabsContext);
+  if (!context) throw new Error('TabPanel must be used within Tabs');
+  
+  if (context.activeTab !== id) return null;
+  
+  return <div className="tab-panel">{children}</div>;
+};
+```
+
+Usage is beautiful:
+
+```tsx
+<Tabs defaultTab="profile">
+  <Tabs.List>
+    <Tabs.Tab id="profile">Profile</Tabs.Tab>
+    <Tabs.Tab id="settings">Settings</Tabs.Tab>
+    <Tabs.Tab id="billing">Billing</Tabs.Tab>
+  </Tabs.List>
+  
+  <Tabs.Panel id="profile">
+    <ProfileForm />
+  </Tabs.Panel>
+  
+  <Tabs.Panel id="settings">
+    <SettingsForm />
+  </Tabs.Panel>
+  
+  <Tabs.Panel id="billing">
+    <BillingInfo />
+  </Tabs.Panel>
+</Tabs>
+```
+
+No prop drilling. No manual state management. It just works.
+
+## When to Use Each Pattern
+
+**Compound Components:** When you have a component with multiple related parts (Card, Tabs, Accordion)
+
+**Render Props:** When you need to share logic but not UI (Dropdown, Toggle, Form validation)
+
+**Slots:** When you have a fixed layout with customizable sections (Modal, Layout, Page)
+
+**Context:** When compound components need to share state (Tabs, Accordion, Stepper)
+
+## The Real Benefit: Less Breaking Changes
+
+Composition patterns make your API more stable.
+
+With my old `Card` component, every new feature was a breaking change. New prop? Gotta update the types. Change a default? Might break someone's UI.
+
+With composition, I can add `Card.Badge` or `Card.Image` without touching existing code. Users opt-in to new features. Nothing breaks.
+
+This matters a lot when you're maintaining a library like Pol-UI.
+
+## Start Small
+
+You don't need to refactor everything. Start with one component. Maybe your `Modal` or `Card`. See how it feels.
+
+I started with `Tabs` in Pol-UI. Then `Accordion`. Then `Card`. Now it's my default approach.
+
+Your components will thank you. Your users will thank you. Your future self will definitely thank you.
+
+Now go compose something beautiful.
+

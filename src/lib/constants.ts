@@ -8,7 +8,7 @@ export const baseUrl = "https://polgubau.com";
 export const metadata = {
 	title: "Pol Gubau Amores - Frontend Developer & UX Designer | React, TypeScript, Design Systems",
 	description:
-		"Frontend Developer & UX Designer from Barcelona specializing in React, TypeScript, and Design Systems. Creator of Pol-ui library and passionate about building elegant, accessible web experiences. Explore my projects, articles, and open-source contributions.",
+		"Frontend Developer based in Barcelona. Founder of Pol-ui library. Building elegant, accessible web experiences. Explore my projects, articles, and open-source contributions.",
 	name: "Pol",
 	longName: "Pol Gubau Amores",
 	slogan: "Frontend Developer and UX Designer",
@@ -17,6 +17,10 @@ export const metadata = {
 		// Personal Branding
 		"Pol Gubau Amores",
 		"Pol Gubau",
+		"polgubau.com",
+		"polgubau",
+		"gubau",
+		"gubaupol",
 		"Pol",
 		"Gubau",
 		"Amores",

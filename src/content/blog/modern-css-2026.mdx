@@ -1,0 +1,382 @@
+---
+title: "Modern CSS Features 2026: Container Queries, :has(), Cascade Layers & More 🎨"
+publishedAt: "2026-01-05"
+summary: "Complete guide to modern CSS features in 2026. Learn container queries, :has() selector, cascade layers, subgrid, OKLCH colors, and view transitions. Practical examples with browser support info."
+tags:
+  - Frontend
+  - Design
+---
+
+I've been writing CSS for more than 7 years. I remember the IE6 days, when flexbox was "too new to use." or when we needed JavaScript for everything.
+
+CSS in 2026 is a different beast, and it's kind of amazing.
+
+Here are the features I use constantly that make me feel like I'm living in the future.
+
+## Container Queries (The One I Waited For)
+
+This helped me specially with Tailwind, as you had to install plugins for it, and it was a bit of a pain to set up. Now it's native and works with any framework.
+
+**The old way (media queries):**
+```css
+/* Breaks at viewport width, not component width */
+@media (min-width: 768px) {
+  .card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+  }
+}
+```
+
+**The new way (container queries):**
+```css
+.sidebar {
+  container-type: inline-size;
+}
+
+.card {
+  display: block;
+}
+
+/* Breaks at CONTAINER width */
+@container (min-width: 500px) {
+  .card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+  }
+}
+```
+
+This means my `Card` component looks good whether it's in a sidebar (narrow) or main content (wide). Same component, different layouts, zero JavaScript.
+
+I use this in Pol-UI for almost every component now. The `Card`, `Table`, `Form`, they all adapt to their container, not the viewport.
+
+**Real example from my portfolio:**
+
+```css
+.project-grid {
+  container-type: inline-size;
+}
+
+.project-card {
+  /* Mobile-first: stacked layout */
+  display: flex;
+  flex-direction: column;
+}
+
+@container (min-width: 400px) {
+  .project-card {
+    /* Enough space: side-by-side */
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+@container (min-width: 600px) {
+  .project-card {
+    /* Lots of space: fancy grid */
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+  }
+}
+```
+
+The same card works in a 3-column grid, a sidebar, or full-width. No props. No classes. Just CSS.
+
+## :has() Selector (The Parent Selector We Deserved)
+
+For years, we couldn't style a parent based on its children. Now we can.
+
+```css
+/* Style a card differently if it has an image */
+.card:has(img) {
+  padding: 0;
+}
+
+.card:has(img) .card-content {
+  padding: 1rem;
+}
+
+/* Style a form differently if it has errors */
+.form:has(.error) {
+  border-color: red;
+}
+
+/* Highlight a row when hovering a button inside it */
+.table-row:has(button:hover) {
+  background: var(--hover-bg);
+}
+```
+
+I use this all the time in Pol-UI. Components can adapt based on their content without JavaScript or extra classes.
+
+**My favorite use case:**
+
+```css
+/* Add spacing between elements, but not if one is missing */
+.header:has(+ .subheader) {
+  margin-bottom: 0.5rem;
+}
+
+.subheader:has(+ .content) {
+  margin-bottom: 1rem;
+}
+```
+
+Automatic spacing that adapts to what's actually rendered.
+
+## Cascade Layers (Organization That Actually Works)
+
+This solved the specificity wars.
+
+```css
+@layer reset, base, components, utilities;
+
+@layer reset {
+  /* Resets have lowest priority */
+  * {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer base {
+  /* Base styles */
+  body {
+    font-family: system-ui;
+  }
+}
+
+@layer components {
+  /* Component styles */
+  .button {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@layer utilities {
+  /* Utilities have highest priority */
+  .mt-0 {
+    margin-top: 0 !important;
+  }
+}
+```
+
+Now I don't need `!important` everywhere. The layer order determines priority, not specificity.
+
+In Pol-UI, I have layers for:
+- `reset` - CSS reset
+- `tokens` - Design tokens
+- `base` - Base component styles
+- `variants` - Component variants
+- `utilities` - Utility classes
+
+It's so much cleaner than the old way.
+
+## Subgrid
+
+Nested grids that align with their parent. Sounds boring. Is actually incredible.
+
+```css
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.card {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+}
+```
+
+Now all cards in the grid have aligned headers, content, and footers - even if the content is different heights.
+
+Before subgrid, I'd use JavaScript or accept misaligned layouts. Now it just works.
+
+## Color Spaces
+
+We're not stuck with sRGB anymore.
+
+```css
+.button {
+  /* Old way: looks different on every screen */
+  background: rgb(100, 150, 200);
+  
+  /* New way: perceptually uniform */
+  background: oklch(70% 0.1 250);
+}
+
+/* Gradients that don't look muddy */
+.gradient {
+  background: linear-gradient(
+    in oklch,
+    oklch(80% 0.15 150),
+    oklch(60% 0.15 250)
+  );
+}
+```
+
+The difference is subtle but real. Colors look more vibrant and gradients don't go through that ugly gray phase.
+
+I converted Pol-UI's color system to OKLCH last month. The blues are bluer, the reds are redder, and everything just pops more.
+
+## Nesting
+
+Native CSS nesting is here and it's great, it's was already a feature from Sass that I missed when I moved to native css.
+
+```css
+.card {
+  padding: 1rem;
+  
+  & .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  & .content {
+    margin-top: 1rem;
+    
+    & p {
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  &.featured {
+    border: 2px solid var(--primary);
+  }
+}
+```
+
+I still use Tailwind for most things, but for custom components, native nesting is perfect. No build step needed.
+
+## View Transitions API
+
+This one's technically JavaScript, but it's so good I have to mention it.
+
+```css
+::view-transition-old(root) {
+  animation: fade-out 0.3s ease-out;
+}
+
+::view-transition-new(root) {
+  animation: fade-in 0.3s ease-in;
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+```
+
+Combined with Astro's `<ViewTransitions />`, my portfolio has smooth page transitions with like 5 lines of code.
+
+You can even do custom transitions per element:
+
+```css
+.hero {
+  view-transition-name: hero;
+}
+
+::view-transition-old(hero) {
+  animation: slide-out-left 0.3s ease-out;
+}
+
+::view-transition-new(hero) {
+  animation: slide-in-right 0.3s ease-in;
+}
+```
+
+The hero section slides across pages. No JavaScript. No library. Just CSS.
+
+## Logical Properties (I18n Made Easy)
+
+Instead of `margin-left`, use `margin-inline-start`. It automatically flips for RTL languages.
+
+```css
+/* Old way: breaks in RTL */
+.card {
+  margin-left: 1rem;
+  padding-right: 2rem;
+  border-left: 2px solid blue;
+}
+
+/* New way: works everywhere */
+.card {
+  margin-inline-start: 1rem;
+  padding-inline-end: 2rem;
+  border-inline-start: 2px solid blue;
+}
+```
+
+
+## The Features I'm Watching
+
+These aren't quite ready but I'm excited:
+
+**Anchor Positioning** - Position tooltips/popovers relative to any element, not just parents. No more JavaScript positioning!
+
+**Scroll-Driven Animations** - Animations that respond to scroll position. Native parallax!
+
+**@scope** - Scope styles to a subtree without specificity hacks.
+
+## What I'm Not Using (Yet)
+
+**CSS Houdini** - Too experimental, not enough browser support.
+
+**CSS Modules in HTML** - The `<style scoped>` proposal. Waiting for better support.
+
+**@property** - Custom properties with types. Cool but niche.
+
+## My 2026 CSS Stack
+
+- **Tailwind** for utilities (still the best DX)
+- **Container queries** for responsive components
+- **:has()** for smart layouts
+- **Cascade layers** for organization
+- **OKLCH** for colors
+- **Native nesting** for custom components
+- **View transitions** for page navigation
+
+No Sass. No Less. No PostCSS plugins (except Tailwind). Just modern CSS.
+
+## Should You Use These?
+
+**Container queries, :has(), nesting** - Yes, now. Browser support is great.
+
+**Cascade layers, subgrid** - Yes, but have fallbacks for older browsers.
+
+**OKLCH, view transitions** - If you can drop old browser support, absolutely.
+
+**Anchor positioning, scroll-driven animations** - Wait a bit longer.
+
+## The Real Benefit: Less JavaScript
+
+I've deleted so much JavaScript this year.
+
+- Responsive components? Container queries.
+- Conditional styling? :has() selector.
+- Smooth transitions? View transitions API.
+- Color manipulation? OKLCH.
+
+My bundle sizes are down, my code is simpler and my users get faster sites.
+
+## Wrapping Up
+
+If you haven't touched CSS in a few years, give it another look. It's not the same language you remember.
+
+We have parent selectors. We have container queries. We have native nesting. We have good colors.
+
+The future is here and it's written in CSS.
+
+Now go delete some JavaScript and write some stylesheets. Your bundle size will thank you.
+

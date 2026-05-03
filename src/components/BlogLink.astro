@@ -12,30 +12,21 @@ const { slug, name, class: className } = Astro.props;
   href={slug}
   class:list={[
     className,
-    "group flex w-full flex-1 select-none items-center justify-between gap-6 rounded-2xl bg-secondary-900/10 px-5 py-4 text-balanced transition-all hover:bg-secondary-900/20 hover:brightness-125 md:p-6 dark:bg-secondary-100/10 dark:hover:bg-secondary-50/20",
+    "group inline-flex w-full items-center justify-between gap-3 rounded-lg border border-foreground/10 bg-foreground/5 px-4 py-3 text-sm font-medium transition-all hover:border-foreground/20 hover:bg-foreground/10 md:gap-4 md:px-5 md:py-3.5 md:text-base",
   ]}
 >
-  <div class="flex flex-col gap-2">
-    <span class="line-clamp-2 w-full text-pretty font-semibold text-md md:text-lg">{name}</span>
-    <span class="w-full"><slot /></span>
-  </div>
+  <span class="line-clamp-1 flex-1 text-left">{name}</span>
 
-  <div
-    class="group-hover:-translate-y-0 transition-all group-hover:translate-x-1"
+  <svg
+    class="h-4 w-4 flex-shrink-0 transition-transform group-hover:translate-x-1"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
   >
-    <svg
-      stroke="currentColor"
-      fill="currentColor"
-      stroke-width="0"
-      viewBox="0 0 448 512"
-      height="1em"
-      width="1em"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <title>Arrow Icon</title>
-      <path
-        d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
-      ></path>
-    </svg>
-  </div>
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M9 5l7 7-7 7"></path>
+  </svg>
 </a>

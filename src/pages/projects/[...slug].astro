@@ -1,15 +1,15 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import ProjectBar from "../../components/Projects/ProjectBar.astro";
 import ProjectHeader from "../../components/Projects/ProjectHeader.astro";
+import SimilarProjects from "../../components/Projects/SimilarProjects.astro";
+import Toc from "../../components/Toc.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
 import MdLayout from "../../layouts/MdLayout.astro";
-import { getProjects } from "../../lib/utils";
-import SimilarProjects from "../../components/Projects/SimilarProjects.astro";
-import ProjectBar from "../../components/Projects/ProjectBar.astro";
 import { metadata } from "../../lib/constants";
-import Toc from "../../components/Toc.astro";
-import Breadcrumb from "../../components/Breadcrumb.astro";
+import { getProjects } from "../../lib/utils";
 
 export async function getStaticPaths() {
 	const projects = getProjects();
@@ -54,6 +54,29 @@ const tech = project.data.tech || [];
 		<MdLayout headings={headings} backTo="/projects">
 			<Content />
 		</MdLayout>
+
+		<!-- Related Projects -->
+		<div class="my-16 flex items-center justify-center gap-4">
+			<a
+				href="/projects"
+				class="inline-flex items-center gap-2 text-foreground/60 transition-colors hover:text-foreground"
+			>
+				<svg
+					class="h-4 w-4"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M15 19l-7-7 7-7"></path>
+				</svg>
+				<span>View All Projects</span>
+			</a>
+		</div>
+
 		<SimilarProjects project={project} />
 
 		{project.data.link ? <ProjectBar project={project} /> : null}

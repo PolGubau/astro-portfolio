@@ -1,20 +1,33 @@
 ---
 import { metadata } from "../../lib/constants";
-import LinkedinIcon from "../icons/LinkedinIcon.astro";
-import GithubIcon from "../icons/GithubIcon.astro";
-import SocialLink from "./SocialLink.astro";
 import EmailIcon from "../icons/EmailIcon.astro";
+import GithubIcon from "../icons/GithubIcon.astro";
+import LinkedinIcon from "../icons/LinkedinIcon.astro";
+import SocialLink from "./SocialLink.astro";
 ---
 
-<div class="flex flex-wrap justify-center gap-2 md:justify-start">
-  <SocialLink href={metadata.links.linkedin} label="Linkedin" className="motion-delay-100 motion-blur-in">
+<div class="flex flex-wrap items-center justify-center gap-3 md:justify-start">
+  <SocialLink
+    href={metadata.links.linkedin}
+    label="LinkedIn — Connect with me professionally"
+    className="motion-delay-100 motion-blur-in hover:scale-110"
+  >
     <LinkedinIcon slot="icon" />
   </SocialLink>
 
-  <SocialLink href={metadata.links.github} label="Github" className="motion-delay-200 motion-blur-in">
+  <SocialLink
+    href={metadata.links.github}
+    label="GitHub — View my open-source work"
+    className="motion-delay-200 motion-blur-in hover:scale-110"
+  >
     <GithubIcon slot="icon" />
   </SocialLink>
-  <SocialLink href={metadata.links.email} label="Email" className="motion-delay-300 motion-blur-in">
+
+  <SocialLink
+    href={metadata.links.email}
+    label="Email — Get in touch directly"
+    className="motion-delay-300 motion-blur-in hover:scale-110"
+  >
     <EmailIcon slot="icon" />
   </SocialLink>
 </div>

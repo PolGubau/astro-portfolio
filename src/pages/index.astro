@@ -1,117 +1,358 @@
 ---
-import BlogLink from "../components/BlogLink.astro";
-import ThreePhones from "../components/home/ThreePhones.astro";
 import Header from "../components/Layout/header/header.astro";
-import ProjectsList from "../components/Projects/ProjectList/ProjectsList.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-import { getProjects } from "../lib/utils";
+import { metadata } from "../lib/constants";
+import { getBlogs, getProjects } from "../lib/utils";
 
-import { Image } from "astro:assets";
-import coiae from "../assets/media/other/coiae.webp";
-import exampleAnimated from "../assets/media/other/example-animated.webp";
-import exampleBlog from "../assets/media/other/example-codedByPol.webp";
-import exampleFlags from "../assets/media/other/example-flags.webp";
-import examplePortfolio from "../assets/media/other/example-portfolio.webp";
-import gymZ from "../assets/media/other/gymZ.webp";
-import santJordi from "../assets/media/other/santJordi.webp";
-import "../styles/cards.css";
+const featuredProjects = getProjects(3);
+const recentBlogs = getBlogs(3);
 
-const imagesPhones = [coiae, gymZ, santJordi];
-const firstProjects = getProjects(4);
+// Organization Schema for Doscientos
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Doscientos",
+  url: "https://doscientos.es",
+  logo: "https://doscientos.es/logo.png",
+  description:
+    "Software Development Agency specializing in web applications, mobile apps, and custom software solutions. Founded in 2018, serving 30+ clients worldwide.",
+  foundingDate: "2018",
+  founder: {
+    "@type": "Person",
+    name: metadata.longName,
+    url: metadata.links.website,
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Barcelona",
+    addressRegion: "Catalunya",
+    addressCountry: "ES",
+  },
+  sameAs: [metadata.links.github, metadata.links.linkedin],
+};
+
+// SoftwareApplication Schema for Pol-UI
+const polUISchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Pol-UI",
+  applicationCategory: "DeveloperApplication",
+  operatingSystem: "Web Browser",
+  description:
+    "Open-source React component library focused on accessibility and developer experience. Built with TypeScript and Tailwind CSS.",
+  url: "https://pol-ui.com",
+  author: {
+    "@type": "Person",
+    name: metadata.longName,
+    url: metadata.links.website,
+  },
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+  softwareVersion: "latest",
+  programmingLanguage: ["TypeScript", "React", "JavaScript"],
+};
 ---
 
 <MainLayout>
-  <section>
-    <Header />
-    <main class="flex w-full flex-1 flex-col gap-8">
-      <section
-        class="flex flex-col gap-5 motion-preset-slide-up motion-delay-[3200ms]"
-      >
-        <hgroup class="balance mt-16 flex flex-col gap-5 font-medium text-3xl">
-          <p>🎨👨‍💻</p>
-          <h2>Pixel perfectionist, even though I work with vectors</h2>
-        </hgroup>
+  <!-- JSON-LD Schemas -->
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(organizationSchema)}
+  />
+  <script type="application/ld+json" set:html={JSON.stringify(polUISchema)} />
+  <!-- Hero Section -->
+  <Header />
 
-        <p class="max-w-xl">
-          My roots are in arts and design. My passion is in technology and my
-          goal is to combine both in digital products that are <strong
-            >beautiful</strong
-          > and <strong>functional</strong>.
-        </p>
-      </section>
-      <ThreePhones images={imagesPhones} />
-
-      <hgroup class="balance mt-16 flex flex-col gap-5 font-medium text-3xl">
-        <p>🧪🥼</p>
-        <h2>Discover my latest work and projects</h2>
-      </hgroup>
-
-      <ProjectsList projects={firstProjects} />
-
-      <BlogLink slug="/projects" name="See all my projects" />
-
-      <div
-        class="balance mt-16 flex flex-col gap-5 font-medium text-3xl motion-preset-slide-up motion-delay-[2500ms]"
-      >
-        <p>🥑🚀</p>
-        <h2>I&apos;m a performance and accessibility advocate</h2>
-      </div>
-      <p class="max-w-xl">
-        I&apos;m a big fan of <strong
-          >progressive enhancement and graceful degradation</strong
-        > and I always try to make my websites as accessible as possible♿.
-      </p>
-      <p class="max-w-xl">
-        Reaching a professional level in both <strong>SEO🔍</strong> and <strong
-          >performance⚡</strong
-        > is the key for a successful digital project.
-      </p>
-      <section id="cards">
-        <ul class="sticked-cards">
-          <li class="card" id="card_1">
-            <Image
-              alt="A preview of the performance stats in my technical blog"
-              src={exampleAnimated}
-              decoding="async"
-              loading="lazy"
-              width={1280}
-              height={1000}
-            />
-          </li>
-          <li class="card" id="card_2">
-            <Image
-              alt="A preview of the performance stats in my portfolio"
-              src={examplePortfolio}
-              decoding="async"
-              loading="lazy"
-              width={1280}
-              height={1000}
-            />
-          </li>
-          <li class="card" id="card_3">
-            <Image
-              alt="A preview of the performance stats in my technical blog"
-              src={exampleBlog}
-              decoding="async"
-              loading="lazy"
-              width={1280}
-              height={1000}
-            />
-          </li>
-          <li id="card_4" class="card">
-            <Image
-              alt="A preview of the performance stats in my technical blog"
-              src={exampleFlags}
-              decoding="async"
-              loading="lazy"
-              width={1280}
-              height={1000}
-            />
-          </li>
-        </ul>
-      </section>
-
-      <small>My lastest websites are good examples of this</small>
-    </main>
+  <!-- SEO Content for LLMs (visually hidden but readable by crawlers) -->
+  <section class="sr-only" aria-label="About Pol Gubau Amores">
+    <h2>Pol Gubau Amores - Frontend Developer & Co-Founder</h2>
+    <p>
+      Pol Gubau Amores is an experienced Frontend Developer and Design Engineer
+      based in Barcelona, Spain, with over 8 years of professional experience
+      building web applications, design systems, and component libraries.
+    </p>
+    <h3>Professional Experience</h3>
+    <p>
+      As Co-Founder of Doscientos since 2018, Pol has led the development of 50+
+      projects for more than 30 clients worldwide. Doscientos specializes in
+      React, TypeScript, Next.js, and modern web technologies, delivering custom
+      software solutions, web applications, and mobile apps.
+    </p>
+    <h3>Open Source Contributions</h3>
+    <p>
+      Pol created Pol-UI, an accessible React component library built with
+      TypeScript and Tailwind CSS. The library is used by developers globally
+      and focuses on accessibility (WCAG compliance), performance, and developer
+      experience.
+    </p>
+    <h3>Technical Expertise</h3>
+    <p>
+      Pol specializes in React.js, TypeScript, Next.js, Astro, Design Systems,
+      Component Libraries, Web Accessibility (WCAG 2.1), Tailwind CSS,
+      Performance Optimization, Responsive Design, and UI/UX Engineering. He has
+      extensive experience with Supabase, Vercel, Git, CI/CD, and modern
+      frontend tooling.
+    </p>
+    <h3>Content & Knowledge Sharing</h3>
+    <p>
+      Pol maintains an active technical blog with 18+ articles covering frontend
+      development, React patterns, TypeScript tips, design system architecture,
+      and web performance optimization. His writing helps developers learn best
+      practices for building scalable, accessible web applications.
+    </p>
   </section>
+
+  <!-- Stats Section -->
+  <section
+    class="mx-auto w-full max-w-4xl py-12 motion-preset-blur-up motion-delay-[700ms]"
+  >
+    <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+      <div class="text-center">
+        <p class="font-title text-4xl font-bold md:text-5xl">30+</p>
+        <p class="mt-2 text-sm text-foreground/60">Clients Served</p>
+      </div>
+      <div class="text-center">
+        <p class="font-title text-4xl font-bold md:text-5xl">50+</p>
+        <p class="mt-2 text-sm text-foreground/60">Projects Delivered</p>
+      </div>
+      <div class="text-center">
+        <p class="font-title text-4xl font-bold md:text-5xl">8+</p>
+        <p class="mt-2 text-sm text-foreground/60">Years Experience</p>
+      </div>
+      <div class="text-center">
+        <p class="font-title text-4xl font-bold md:text-5xl">18</p>
+        <p class="mt-2 text-sm text-foreground/60">Articles Published</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="mx-auto w-full max-w-3xl space-y-32 py-20">
+    <!-- Featured Work Section -->
+    <section class="space-y-12 motion-preset-blur-up motion-delay-[700ms]">
+      <div>
+        <h2 class="font-title text-3xl font-bold tracking-tight md:text-4xl">
+          Selected Work
+        </h2>
+        <p class="mt-3 text-lg text-foreground/60">
+          Recent projects and open-source contributions
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        {
+          featuredProjects.map((project, index) => (
+            <a
+              href={`/projects/${project.id}`}
+              class="group block overflow-hidden rounded-xl border border-foreground/10 bg-foreground/5 transition-all hover:border-foreground/20 hover:bg-foreground/10 motion-preset-blur-up"
+              style={`animation-delay: ${800 + index * 100}ms`}
+            >
+              <div class="flex flex-col md:flex-row">
+                {project.data.cover && (
+                  <div class="w-full md:w-48 flex-shrink-0">
+                    <img
+                      src={project.data.cover.src}
+                      alt={project.data.title}
+                      class="h-48 w-full object-cover md:h-full"
+                    />
+                  </div>
+                )}
+                <div class="flex flex-1 flex-col justify-between p-6">
+                  <div class="space-y-3">
+                    <div class="flex items-start justify-between gap-4">
+                      <h3 class="font-title text-xl font-semibold group-hover:text-primary transition-colors">
+                        {project.data.title}
+                      </h3>
+                      <svg
+                        class="h-5 w-5 flex-shrink-0 text-foreground/30 transition-transform group-hover:translate-x-1 group-hover:text-foreground/60"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </div>
+                    <p class="text-foreground/60 leading-relaxed">
+                      {project.data.summary}
+                    </p>
+                  </div>
+                  {project.data.tech && project.data.tech.length > 0 && (
+                    <div class="mt-4 flex flex-wrap gap-2">
+                      {project.data.tech.slice(0, 4).map((tech: string) => (
+                        <span class="rounded-full bg-foreground/10 px-3 py-1 text-xs text-foreground/70">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <a
+        href="/projects"
+        class="inline-flex items-center gap-2 text-foreground/60 transition-colors hover:text-foreground motion-preset-blur-up motion-delay-[1100ms]"
+      >
+        <span>View all projects</span>
+        <svg
+          class="h-4 w-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </section>
+
+    <!-- Recent Writing Section -->
+    <section class="space-y-12 motion-preset-blur-up motion-delay-[1200ms]">
+      <div>
+        <h2 class="font-title text-3xl font-bold tracking-tight md:text-4xl">
+          Writing
+        </h2>
+        <p class="mt-3 text-lg text-foreground/60">
+          Technical articles on React, TypeScript, and frontend development
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        {
+          recentBlogs.map((post, index) => (
+            <a
+              href={`/blog/${post.id}`}
+              class="group block space-y-3 border-b border-foreground/10 pb-8 last:border-0 transition-all motion-preset-blur-up"
+              style={`animation-delay: ${1300 + index * 100}ms`}
+            >
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1 space-y-2">
+                  <h3 class="font-title text-xl font-semibold group-hover:text-primary transition-colors">
+                    {post.data.title
+                      .replace(/[🎯🚀🧩🎉🎨📚🔥👋🏼🏫🎙✍🏼]/g, "")
+                      .trim()}
+                  </h3>
+                  <p class="text-foreground/60 leading-relaxed">
+                    {post.data.summary}
+                  </p>
+                  <p class="text-sm text-foreground/40">
+                    {new Date(post.data.publishedAt).toLocaleDateString(
+                      "en-US",
+                      {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      },
+                    )}
+                  </p>
+                </div>
+                <svg
+                  class="h-5 w-5 flex-shrink-0 text-foreground/30 transition-transform group-hover:translate-x-1 group-hover:text-foreground/60"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-2 text-foreground/60 transition-colors hover:text-foreground motion-preset-blur-up motion-delay-[1600ms]"
+      >
+        <span>View all posts</span>
+        <svg
+          class="h-4 w-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="space-y-8 motion-preset-blur-up motion-delay-[1700ms]">
+      <div
+        class="rounded-xl border border-foreground/10 bg-foreground/5 p-8 text-center md:p-12"
+      >
+        <h2 class="font-title text-2xl font-bold md:text-3xl">Get in Touch</h2>
+        <p class="mt-3 text-lg text-foreground/60">
+          Interested in my work? Let's connect.
+        </p>
+        <div
+          class="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+        >
+          <a
+            href="mailto:gubaupol@gmail.com"
+            class="inline-flex items-center gap-2 rounded-lg bg-foreground px-6 py-3 font-semibold text-background transition-all hover:scale-105 hover:shadow-lg"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path>
+            </svg>
+            <span>Email Me</span>
+          </a>
+          <a
+            href="/files/PolGubau_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-lg border border-foreground/20 px-6 py-3 font-semibold transition-all hover:border-foreground/40 hover:bg-foreground/10"
+          >
+            <span>View Resume</span>
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 </MainLayout>

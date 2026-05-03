@@ -1,14 +1,25 @@
 ---
 import ProjectsList from "../../components/Projects/ProjectList/ProjectsList.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
+import { metadata } from "../../lib/constants";
 import { projects } from "../../lib/utils";
+
+const PAGE_TITLE = `Work - ${metadata.title}`;
+const PAGE_DESCRIPTION =
+	"Selected projects from Doscientos and personal work. Web applications, design systems, and open-source contributions.";
 ---
 
-<MainLayout>
-	<h1
-		class="mb-8 text-pretty text-center font-medium text-xl md:text-start md:font-semibold md:text-2xl"
-	>
-		Discover my recent Projects 🚀
-	</h1>
-	<ProjectsList projects={projects} />
+<MainLayout title={PAGE_TITLE} description={PAGE_DESCRIPTION} type="website">
+	<div class="py-20">
+		<header class="mb-16 text-center md:text-left">
+			<h1 class="font-title text-4xl font-bold tracking-tight md:text-5xl">
+				Work
+			</h1>
+			<p class="mt-4 text-lg text-foreground/60 max-w-2xl">
+				Selected projects from client work at Doscientos and personal
+				open-source contributions.
+			</p>
+		</header>
+		<ProjectsList projects={projects} />
+	</div>
 </MainLayout>

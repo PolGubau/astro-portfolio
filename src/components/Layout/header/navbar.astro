@@ -1,27 +1,55 @@
 ---
-import NavItem from "./NavItem.astro";
+import ThemeToggle from "../../ThemeToggle.astro";
 
 const navItems = {
   "/": { name: "Home" },
-  "/projects": { name: "Projects" },
+  "/projects": { name: "Work" },
+  "/blog": { name: "Writing" },
   "/ui": { name: "Experiments" },
-  "/blog": { name: "Blog" },
+  "/about": { name: "About" },
 };
+
+const currentPath = Astro.url.pathname;
 ---
 
-<aside
-  class="mb-12 flex justify-center tracking-tight md:justify-start"
-  style={{
-    zIndex: 999,
-  }}
+<nav
+  class="sticky top-0 z-50 border-b border-foreground/10 bg-background/80 backdrop-blur-md motion-preset-blur-up motion-delay-[50ms]"
 >
-  <div class="sticky top-20 flex items-center gap-2">
-    <nav class="relative flex w-full flex-row items-start">
+  <div
+    class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 md:px-10"
+  >
+    <!-- Logo/Name -->
+    <a
+      href="/"
+      class="font-title text-lg font-bold tracking-tight transition-colors hover:text-primary"
+    >
+      Pol Gubau
+    </a>
+
+    <!-- Navigation Links + Theme Toggle -->
+    <div class="flex items-center gap-2">
       {
         Object.entries(navItems).map(([path, { name }]) => {
-          return <NavItem path={path} name={name} />;
+          const isActive =
+            currentPath === path ||
+            (path !== "/" && currentPath.startsWith(path));
+          return (
+            <a
+              href={path}
+              class={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${
+                isActive
+                  ? "bg-foreground/10 text-foreground"
+                  : "text-foreground/60 hover:bg-foreground/5 hover:text-foreground"
+              }`}
+            >
+              {name}
+            </a>
+          );
         })
       }
-    </nav>
+
+      <!-- Theme Toggle -->
+      <ThemeToggle />
+    </div>
   </div>
-</aside>
+</nav>

@@ -6,73 +6,99 @@ export const paths = {
 };
 export const baseUrl = "https://polgubau.com";
 export const metadata = {
-	title: "Pol Gubau Amores - Frontend Developer & UX Designer | React, TypeScript, Design Systems",
+	title: "Pol Gubau Amores — Co-Founder at Doscientos | Frontend Developer",
 	description:
-		"Frontend Developer based in Barcelona. Founder of Pol-ui library. Building elegant, accessible web experiences. Explore my projects, articles, and open-source contributions.",
+		"Co-Founder at Doscientos, a software development agency serving 30+ clients. Frontend Developer & Design Engineer specializing in React, TypeScript, and design systems. Creator of Pol-UI, an open-source React component library with 1000+ downloads. 8+ years building production apps.",
 	name: "Pol",
 	longName: "Pol Gubau Amores",
-	slogan: "Frontend Developer and UX Designer",
-	picture: "/assets/blog/authors/pol.jpg",
+	slogan: "Co-Founder at Doscientos • Frontend Developer & Design Engineer",
+	picture: "/thumbnail.webp",
 	tags: [
-		// Personal Branding
+		// Personal Branding - Natural Language Queries
 		"Pol Gubau Amores",
 		"Pol Gubau",
-		"polgubau.com",
 		"polgubau",
-		"gubau",
+		"who is Pol Gubau",
+		"Pol Gubau portfolio",
+		"Pol Gubau developer",
 		"gubaupol",
-		"Pol",
-		"Gubau",
-		"Amores",
+
+		// Location-based queries
 		"Frontend Developer Barcelona",
-		"UX Designer Barcelona",
-		
-		// Core Skills
+		"React Developer Barcelona",
+		"TypeScript Developer Barcelona",
+		"Barcelona software developer",
+		"Spain frontend developer",
+		"Barcelona web developer",
+
+		// Role-based searches
 		"Frontend Developer",
-		"Frontend",
-		"Developer",
-		"UX Designer",
-		"UI Designer",
-		"Web Developer",
+		"Senior Frontend Developer",
 		"React Developer",
-		"Best React Developer",
-		
-		// Technologies & Frameworks
-		"React",
-		"TypeScript",
-		"Next.js developer",
-		"TailwindCSS",
-		"Astro",
-		"Design Systems",
-		"Component Libraries",
-		
-		// Expertise Areas
-		"UI/UX Design",
-		"Web Accessibility",
+		"TypeScript Developer",
+		"Design Engineer",
+		"UI Engineer",
+		"Full Stack Developer",
+		"JavaScript Developer",
+		"Web Developer",
+
+		// Technology expertise
+		"React specialist",
+		"Next.js expert",
+		"TypeScript expert",
+		"Tailwind CSS developer",
+		"Astro developer",
+		"Design Systems expert",
+		"Component Library creator",
+		"React components",
+		"UI components",
+
+		// Long-tail queries (natural language)
+		"how to build design systems",
+		"React component library tutorial",
+		"frontend architecture best practices",
+		"accessible React components",
+		"TypeScript React patterns",
+		"Next.js performance optimization",
+
+		// Expertise & Skills
+		"Web Accessibility WCAG",
 		"Performance Optimization",
 		"Responsive Design",
-		"Open Source",
-		
-		// Location & Languages
-		"Barcelona",
-		"Spain",
-		"Germany",
-		"Catalan Developer",
-		"English",
-		"Spanish",
-		
+		"Mobile First Design",
+		"SEO optimization",
+		"Open Source contributor",
+		"Technical Writing",
+		"Code Review",
+		"Team Leadership",
+
 		// Companies & Projects
+		"Doscientos",
+		"Doscientos software agency",
+		"Pol-UI",
+		"Pol-UI React library",
+		"open source React components",
+		"NUWE",
 		"Mesalvo",
-		"Pol-ui",
+
+		// Content topics (for blog SEO)
+		"React hooks tutorial",
+		"TypeScript tips",
+		"Design system architecture",
+		"Component library development",
+		"Frontend performance",
+		"Web development blog",
 	],
 
 	links: {
-		website: "https:/polgubau.com",
+		website: "https://polgubau.com",
 		twitter: "https://twitter.com/PolGubau",
-		github: "http://github.com/polgubau",
-		linkedin: "https://www.linkedin.com/in/polgubauamores/",
+		github: "https://github.com/PolGubau",
+		linkedin: "https://www.linkedin.com/in/polgubau/",
 		email: "mailto:gubaupol@gmail.com",
 		npm: "https://www.npmjs.com/~polgubau",
+		polui: "https://pol-ui.com",
+		doscientos: "https://doscientos.es",
 	},
 
 	homeOgImage: "assets/thumbnail.webp",

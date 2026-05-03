@@ -3,451 +3,426 @@
 @plugin "tailwindcss-motion";
 @plugin "@tailwindcss/typography";
 
+
 @font-face {
-	font-family: "Gabarito";
-	src: url("/fonts/Gabarito.ttf") format("truetype");
-	font-weight: 300 900;
-	font-style: normal;
-	font-display: swap;
+  font-family: "Gabarito";
+  src: url("/fonts/Gabarito.ttf") format("truetype");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
 }
 @font-face {
-	font-family: "Bricolage";
-	src: url("/fonts/Bricolage.ttf") format("truetype");
-	font-weight: 300 700;
-	font-style: normal;
-	font-display: swap;
+  font-family: "Bricolage";
+  src: url("/fonts/Bricolage.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
 }
+
 
 @theme {
-	/* Minimalist accent color - subtle yellow for highlights */
-	--color-primary-50: #fffef7;
-	--color-primary-100: #fffceb;
-	--color-primary-200: #fff9d6;
-	--color-primary-300: #fff5c2;
-	--color-primary-400: #fff0a3;
-	--color-primary-500: #ffe066;
-	--color-primary-600: #ffd43b;
-	--color-primary-700: #fcc419;
-	--color-primary-800: #fab005;
-	--color-primary-900: #f59f00;
-	--color-primary-950: #e67700;
+  --color-primary-50: #ffffec;
+  --color-primary-100: #ffffc5;
+  --color-primary-200: #ffffa9;
+  --color-primary-300: #ffff82;
+  --color-primary-400: #ffff69;
+  --color-primary-500: #ffff44;
+  --color-primary-600: #e8e83e;
+  --color-primary-700: #b5b530;
+  --color-primary-800: #8c8c25;
+  --color-primary-900: #6b6b1d;
+  --color-primary-950: #4d4d14;
 
-	/* Clean neutral grays */
-	--color-secondary-50: #fafafa;
-	--color-secondary-100: #f5f5f5;
-	--color-secondary-200: #e5e5e5;
-	--color-secondary-300: #d4d4d4;
-	--color-secondary-400: #a3a3a3;
-	--color-secondary-500: #737373;
-	--color-secondary-600: #525252;
-	--color-secondary-700: #404040;
-	--color-secondary-800: #262626;
-	--color-secondary-900: #171717;
-	--color-secondary-950: #0a0a0a;
-
-	--font-main: "Gabarito", sans-serif;
-	--font-title: "Bricolage", sans-serif;
+  --color-secondary-50: #f7f7f7;
+  --color-secondary-100: #eaeaea;
+  --color-secondary-200: #d4d4d4;
+  --color-secondary-300: #bcbcbc;
+  --color-secondary-400: #a1a1a1;
+  --color-secondary-500: #7f7f7f;
+  --color-secondary-600: #666666;
+  --color-secondary-700: #4d4d4d;
+  --color-secondary-800: #333333;
+  --color-secondary-900: #222222;
+  --color-secondary-950: #0d0d0d;
+  --font-main: "Gabarito", sans-serif;
+  --font-title: "Bricolage", sans-serif;
 }
-
 :root {
-	scroll-behavior: smooth;
-	--background: #ffffff;
-	--foreground: var(--color-secondary-950);
+  scroll-behavior: smooth;
+  --background: var(--color-secondary-50);
+  --foreground: var(--color-secondary-950);
 }
-
-/* Dark mode via system preference */
 @media (prefers-color-scheme: dark) {
-	:root:not(.light) {
-		--background: var(--color-secondary-950);
-		--foreground: var(--color-secondary-50);
-	}
-}
-
-/* Dark mode via manual toggle */
-:root.dark {
-	--background: var(--color-secondary-950);
-	--foreground: var(--color-secondary-50);
+  :root {
+    --background: var(--color-secondary-950);
+    --foreground: var(--color-secondary-50);
+  }
 }
 @theme inline {
-	--color-primary: var(--color-primary-500);
-	--color-secondary: var(--color-secondary-500);
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
+  --color-primary: var(--color-primary-500);
+  --color-secondary: var(--color-secondary-500);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 }
 body {
-	@apply bg-background text-foreground antialiased font-main;
-	font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  @apply bg-background text-foreground antialiased font-main;
 }
 
 *::selection {
-	@apply bg-foreground text-background;
-}
-
-/* Smooth transitions for all interactive elements */
-a,
-button {
-	transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Focus visible for accessibility */
-:focus-visible {
-	outline: 2px solid var(--color-primary-500);
-	outline-offset: 4px;
-	border-radius: 4px;
+  @apply bg-foreground/80 text-background backdrop-blur-md;
 }
 @keyframes grow-progress {
-	from {
-		transform: scaleX(0);
-	}
-	to {
-		transform: scaleX(1);
-	}
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 body {
-	timeline-scope: --scroll;
+  timeline-scope: --scroll;
 }
 main {
-	view-timeline: --scroll;
+  view-timeline: --scroll;
 }
 
 /* project-bar */
 
 #project-bar {
-	transform: translateX(-50%) translateY(100%);
-	opacity: 0;
+  transform: translateX(-50%) translateY(100%);
+  opacity: 0;
 
-	animation-name: slide-up;
-	animation-duration: 1s;
-	animation-fill-mode: both;
-	animation-timing-function: ease-out;
+  animation-name: slide-up;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-out;
 
-	animation-timeline: --scroll;
-	animation-range: contain 200px contain 550px;
+  animation-timeline: --scroll;
+  animation-range: contain 200px contain 550px;
 }
 
 @keyframes slide-up {
-	to {
-		transform: translateX(-50%) translateY(0%);
-		opacity: 1;
-	}
+  to {
+    transform: translateX(-50%) translateY(0%);
+    opacity: 1;
+  }
 }
 
 /* Progress */
 #progress {
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 2px;
-	z-index: 1;
-	background: var(--color-primary);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 1;
+  background: var(--color-primary);
 
-	transform-origin: 0 50%;
-	animation: grow-progress auto linear;
-	animation-timeline: scroll();
+  transform-origin: 0 50%;
+  animation: grow-progress auto linear;
+  animation-timeline: scroll();
 }
 
 .prose {
-	a {
-		transition: all;
-		@apply decoration-foreground/50 underline-offset-2 decoration-[0.1em];
-	}
-	details {
-		@apply border-l outline-0 mt-10 border-foreground/20 pl-4 max-w-full overflow-auto;
-		summary {
-			@apply cursor-pointer font-semibold text-lg mb-2 outline-0;
-		}
-		b {
-			font-size: 1.2em;
-		}
-	}
-	.anchor {
-		position: absolute;
-		visibility: hidden;
-		cursor: pointer;
-		width: 80%;
-		max-width: 700px;
-		margin-left: -1em;
-		padding-right: 0.5em;
-		text-decoration: none;
-		@apply text-neutral-300 dark:text-neutral-700;
+  a {
+    transition: all;
+    @apply decoration-foreground/50 underline-offset-2 decoration-[0.1em];
+  }
+  details{
+    @apply border-l outline-0 mt-10 border-foreground/20 pl-4 max-w-full overflow-auto;
+    summary{
+      @apply cursor-pointer font-semibold text-lg mb-2 outline-0;
+    }
+    b{
+      font-size: 1.2em;
+    }
+     
+  }
+  .anchor {
+    position: absolute;
+    visibility: hidden;
+    cursor: pointer;
+    width: 80%;
+    max-width: 700px;
+    margin-left: -1em;
+    padding-right: 0.5em;
+    text-decoration: none;
+    @apply text-neutral-300 dark:text-neutral-700;
 
-		::after {
-			@apply text-neutral-300 dark:text-neutral-700;
-			content: "#";
-		}
-	}
-	.anchor:hover {
-		visibility: visible;
-	}
+    ::after {
+      @apply text-neutral-300 dark:text-neutral-700;
+      content: "#";
+    }
+  }
+  .anchor:hover {
+    visibility: visible;
+  }
 
-	*:hover > .anchor {
-		visibility: visible;
-	}
-	pre {
-		@apply border border-neutral-800 !bg-neutral-900 overflow-x-auto whitespace-pre rounded-lg px-3 py-2 max-w-[90vw];
-	}
-
-	code {
-		@apply text-secondary-800 dark:text-secondary-200 font-mono px-1 py-0.5 border border-neutral-100 dark:border-secondary-800 rounded-lg dark:bg-neutral-900 !max-w-sm !overflow-x-auto;
-		border: initial;
-		line-height: 1.5;
-		white-space: pre;
-	}
-
-	img {
-		/* Don't apply styles to next/image */
-		@apply m-0;
-	}
-	h1 {
-		@apply font-bold font-title text-xl md:text-3xl;
-	}
-	h2,
-	h3,
-	h4 {
-		@apply font-semibold text-lg md:text-2xl;
-	}
-	.tweet a {
-		text-decoration: inherit;
-		font-weight: inherit;
-	}
-	.callout > p {
-		margin: 0 !important;
-	}
+  *:hover > .anchor {
+    visibility: visible;
+  }
+  pre {
+    @apply border border-neutral-800 !bg-neutral-900 overflow-x-auto whitespace-pre rounded-lg px-3 py-2 max-w-[90vw];
+  }
+  
+  code {
+    @apply text-secondary-800 dark:text-secondary-200 font-mono px-1 py-0.5 border border-neutral-100 dark:border-secondary-800 rounded-lg dark:bg-neutral-900 !max-w-sm !overflow-x-auto;
+    border: initial;
+    line-height: 1.5;
+    white-space: pre;
+  }
+  
+  img {
+    /* Don't apply styles to next/image */
+    @apply m-0;
+  }
+  h1 {
+     @apply font-bold font-title text-xl md:text-3xl;
+  }
+  h2,
+  h3,
+  h4 {
+    @apply font-semibold text-lg md:text-2xl;
+  }
+  .tweet a {
+    text-decoration: inherit;
+    font-weight: inherit;
+  }
+  .callout > p {
+    margin: 0 !important;
+  }
 }
 
 .prose > :first-child {
-	/* Override removing top margin, causing layout shift */
-	margin-top: 1.25em !important;
-	margin-bottom: 1.25em !important;
+  /* Override removing top margin, causing layout shift */
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
 }
 
 code[class*="language-"],
 pre[class*="language-"] {
-	@apply text-neutral-50;
+  @apply text-neutral-50;
 }
 
 pre::-webkit-scrollbar {
-	display: none;
+  display: none;
 }
 
 pre {
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* Remove Safari input shadow on mobile */
 input[type="text"],
 input[type="email"] {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 table {
-	display: block;
-	max-width: fit-content;
-	overflow-x: auto;
-	white-space: nowrap;
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 [data-rehype-pretty-code-fragment] code {
-	@apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-black;
-	counter-reset: line;
-	box-decoration-break: clone;
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-black;
+  counter-reset: line;
+  box-decoration-break: clone;
 }
 [data-rehype-pretty-code-fragment] .line {
-	@apply py-1;
+  @apply py-1;
 }
 [data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
-	counter-increment: line;
-	content: counter(line);
-	display: inline-block;
-	width: 1rem;
-	margin-right: 1rem;
-	text-align: right;
-	color: gray;
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: gray;
 }
 [data-rehype-pretty-code-fragment] .line--highlighted {
-	@apply bg-secondary-500/10;
-	span {
-		@apply relative;
-	}
+  @apply bg-secondary-500/10;
+  span {
+    @apply relative;
+  }
 }
 [data-rehype-pretty-code-fragment] .word--highlighted {
-	@apply rounded-md bg-secondary-500/10 p-1;
+  @apply rounded-md bg-secondary-500/10 p-1;
 }
 [data-rehype-pretty-code-title] {
-	@apply px-4 py-3 font-mono text-xs font-medium border rounded-t-lg text-neutral-200 border-[#333333] bg-[#1c1c1c];
+  @apply px-4 py-3 font-mono text-xs font-medium border rounded-t-lg text-neutral-200 border-[#333333] bg-[#1c1c1c];
 }
 [data-rehype-pretty-code-title] + pre {
-	@apply mt-0 rounded-t-none border-t-0;
+  @apply mt-0 rounded-t-none border-t-0;
 }
 
 .balance {
-	text-wrap: balance;
+  text-wrap: balance;
 }
 
 strong {
-	@apply font-semibold;
+  @apply font-semibold;
 }
 
 @keyframes show {
-	from {
-		opacity: 0.4;
-		scale: 85%;
-	}
-	to {
-		opacity: 1;
-		scale: 100%;
-	}
+  from {
+    opacity: 0.4;
+    scale: 85%;
+  }
+  to {
+    opacity: 1;
+    scale: 100%;
+  }
 }
 
 .show-animation {
-	view-timeline: --image;
-	@apply will-change-transform rounded-xl;
-	view-timeline-axis: block;
-	animation-timeline: --image;
-	animation-name: show;
-	animation-range: entry 25% cover 50%;
-	animation-fill-mode: both;
+  view-timeline: --image;
+  @apply will-change-transform rounded-xl;
+  view-timeline-axis: block;
+  animation-timeline: --image;
+  animation-name: show;
+  animation-range: entry 25% cover 50%;
+  animation-fill-mode: both;
 }
 
 /* three phones part */
 @keyframes first-phone {
-	from {
-		opacity: 0;
-		scale: 25%;
-		rotate: -20deg;
-	}
-	to {
-		opacity: 1;
-		scale: 100%;
-		rotate: 12deg;
-	}
+  from {
+    opacity: 0;
+    scale: 25%;
+    rotate: -20deg;
+  }
+  to {
+    opacity: 1;
+    scale: 100%;
+    rotate: 12deg;
+  }
 }
 .show-first-phone {
-	view-timeline: --phone1;
-	view-timeline-axis: block;
-	animation-timeline: --phone1;
-	animation-name: first-phone;
-	animation-range: entry 25% cover 50%;
-	animation-fill-mode: both;
+  view-timeline: --phone1;
+  view-timeline-axis: block;
+  animation-timeline: --phone1;
+  animation-name: first-phone;
+  animation-range: entry 25% cover 50%;
+  animation-fill-mode: both;
 }
 @keyframes second-phone {
-	from {
-		opacity: 0;
-		scale: 25%;
-		rotate: 0deg;
-	}
-	to {
-		opacity: 1;
-		scale: 100%;
-		rotate: -4deg;
-	}
+  from {
+    opacity: 0;
+    scale: 25%;
+    rotate: 0deg;
+  }
+  to {
+    opacity: 1;
+    scale: 100%;
+    rotate: -4deg;
+  }
 }
 .show-second-phone {
-	view-timeline: --phone2;
-	view-timeline-axis: block;
-	animation-timeline: --phone2;
-	animation-name: second-phone;
-	animation-range: entry 25% cover 70%;
-	animation-fill-mode: both;
+  view-timeline: --phone2;
+  view-timeline-axis: block;
+  animation-timeline: --phone2;
+  animation-name: second-phone;
+  animation-range: entry 25% cover 70%;
+  animation-fill-mode: both;
 }
 @keyframes third-phone {
-	from {
-		opacity: 0;
-		scale: 25%;
-		rotate: 10deg;
-	}
-	to {
-		opacity: 1;
-		scale: 100%;
-		rotate: -20deg;
-	}
+  from {
+    opacity: 0;
+    scale: 25%;
+    rotate: 10deg;
+  }
+  to {
+    opacity: 1;
+    scale: 100%;
+    rotate: -20deg;
+  }
 }
 .show-third-phone {
-	view-timeline: --phone2;
-	view-timeline-axis: block;
-	animation-timeline: --phone2;
-	animation-name: third-phone;
-	animation-range: entry 25% cover 70%;
-	animation-fill-mode: both;
+  view-timeline: --phone2;
+  view-timeline-axis: block;
+  animation-timeline: --phone2;
+  animation-name: third-phone;
+  animation-range: entry 25% cover 70%;
+  animation-fill-mode: both;
 }
 @keyframes width-animation {
-	from {
-		opacity: 0;
-		margin-top: 60px;
-	}
-	to {
-		opacity: 1;
-		margin-top: 0;
-	}
+  from {
+    opacity: 0;
+    margin-top: 60px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
 }
 .width-animation {
-	view-timeline: --width;
-	view-timeline-axis: block;
-	animation-timeline: --width;
-	animation-name: width-animation;
-	animation-range: entry cover 30%;
-	animation-fill-mode: both;
+  view-timeline: --width;
+  view-timeline-axis: block;
+  animation-timeline: --width;
+  animation-name: width-animation;
+  animation-range: entry cover 30%;
+  animation-fill-mode: both;
 }
 
 /* animation to enter from left while fading in*/
 @keyframes width-animation {
-	0% {
-		opacity: 0.5;
-		padding: 30px 0;
-	}
-	20% {
-		opacity: 1;
-		transform: rotateX(0deg);
-		padding: 0px 0;
-	}
-	80% {
-		opacity: 1;
-		transform: rotateX(0deg);
-		padding: 0px 0;
-	}
-	100% {
-		opacity: 0.5;
-		padding: 30px 0;
-	}
+  0% {
+    opacity: 0.5;
+    padding: 30px 0;
+  }
+  20% {
+    opacity: 1;
+    transform: rotateX(0deg);
+    padding: 0px 0;
+  }
+  80% {
+    opacity: 1;
+    transform: rotateX(0deg);
+    padding: 0px 0;
+  }
+  100% {
+    opacity: 0.5;
+    padding: 30px 0;
+  }
 }
 
 /* animation that shows in each Y axis border a width animation where the more external it is, the wider */
 .width-animation-both {
-	view-timeline: --width-animation;
-	view-timeline-axis: block;
-	animation-timeline: --width-animation;
-	animation-name: width-animation;
-	animation-fill-mode: both;
-	animation-range: cover 10% cover 100%;
+  view-timeline: --width-animation;
+  view-timeline-axis: block;
+  animation-timeline: --width-animation;
+  animation-name: width-animation;
+  animation-fill-mode: both;
+  animation-range: cover 10% cover 100%;
 }
 
 @keyframes cascade-animation {
-	from {
-		opacity: 0;
-		scale: 85%;
-		/* margin-right: 200px; */
-		max-height: 20%;
-		border-radius: 40px;
-	}
-	to {
-		opacity: 1;
-		scale: 100%;
-		/* margin-right: 0px;       */
-		max-height: 100%;
-		border-radius: 10px;
-	}
+  from {
+    opacity: 0;
+    scale: 85%;
+    /* margin-right: 200px; */
+    max-height: 20%;
+    border-radius: 40px;
+  }
+  to {
+    opacity: 1;
+    scale: 100%;
+    /* margin-right: 0px;       */
+    max-height: 100%;
+    border-radius: 10px;
+  }
 }
 .project-cascade {
-	view-timeline: --slight;
-	view-timeline-axis: block;
-	animation-timeline: --slight;
-	animation-name: cascade-animation;
-	animation-range: entry 20% cover 50%;
-	animation-fill-mode: both;
+  view-timeline: --slight;
+  view-timeline-axis: block;
+  animation-timeline: --slight;
+  animation-name: cascade-animation;
+  animation-range: entry 20% cover 50%;
+  animation-fill-mode: both;
 }

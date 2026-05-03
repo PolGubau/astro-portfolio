@@ -2,124 +2,34 @@
 interface Props {
   src: string;
   date: string;
-  title: string;
   width: number;
-  height: number;
-  tech?: string[];
   style?: {
     aspectRatio: string;
   };
 }
-const { src, date, title, width, height, tech, style } = Astro.props;
+const { src, date, width, style } = Astro.props;
 ---
 
 <div
-  class="group relative overflow-hidden rounded-xl border border-foreground/10 bg-foreground/5 transition-all hover:border-foreground/20 hover:shadow-lg"
+  class:list={[
+    "project-cascade relative h-full w-full overflow-hidden rounded-lg",
+  ]}
 >
-  <!-- Video Container with Lazy Loading -->
-  <div class="relative overflow-hidden" style={style}>
-    <video
-      muted
-      loop
-      playsinline
-      width={width}
-      height={height}
-      loading="lazy"
-      class="lazy-video h-full w-full object-cover bg-foreground/10"
-      data-src={`src/assets/concepts/${src}.mp4`}
-    >
-      Your browser does not support the video tag.
-    </video>
-
-    <!-- Loading placeholder -->
-    <div
-      class="absolute inset-0 bg-foreground/5 flex items-center justify-center loading-placeholder"
-    >
-      <div
-        class="h-8 w-8 animate-spin rounded-full border-2 border-foreground/20 border-t-foreground/60"
-      >
-      </div>
-    </div>
-  </div>
-
-  <!-- Info Overlay -->
-  <div
-    class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 opacity-0 transition-opacity group-hover:opacity-100"
+  <video
+    muted
+    autoplay
+    playsinline
+    loop
+    style={style}
+    width={width}
+    class="h-full w-full object-cover rounded-xl bg-white"
   >
-    <h3 class="font-semibold text-white capitalize">{title}</h3>
-    {
-      tech && tech.length > 0 && (
-        <div class="mt-2 flex flex-wrap gap-1">
-          {tech.map((t) => (
-            <span class="rounded-full bg-white/20 px-2 py-0.5 text-xs text-white backdrop-blur-sm">
-              {t}
-            </span>
-          ))}
-        </div>
-      )
-    }
-    <p class="mt-1 text-xs text-white/70">{date}</p>
-  </div>
+    <source src={`src/assets/concepts/${src}.mp4`} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <p
+    class="absolute right-2 bottom-2 text-secondary-300 text-sm mix-blend-difference"
+  >
+    {date}
+  </p>
 </div>
-
-<script>
-  // Intersection Observer for lazy loading videos
-  if ("IntersectionObserver" in window) {
-    const videoObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const video = entry.target as HTMLVideoElement;
-            const source = video.getAttribute("data-src");
-
-            if (source) {
-              // Create and append source element
-              const sourceElement = document.createElement("source");
-              sourceElement.src = source;
-              sourceElement.type = "video/mp4";
-              video.appendChild(sourceElement);
-
-              // Load and play the video
-              video.load();
-              video.play().catch(() => {
-                // Autoplay might be blocked, that's ok
-              });
-
-              // Hide loading placeholder
-              const placeholder = video.nextElementSibling;
-              if (placeholder?.classList.contains("loading-placeholder")) {
-                placeholder.classList.add("opacity-0");
-                setTimeout(() => placeholder.remove(), 300);
-              }
-
-              // Stop observing this video
-              videoObserver.unobserve(video);
-            }
-          }
-        });
-      },
-      {
-        rootMargin: "50px", // Start loading 50px before entering viewport
-        threshold: 0.1,
-      },
-    );
-
-    // Observe all lazy videos
-    document.querySelectorAll(".lazy-video").forEach((video) => {
-      videoObserver.observe(video);
-    });
-  } else {
-    // Fallback for browsers without IntersectionObserver
-    document.querySelectorAll(".lazy-video").forEach((video) => {
-      const videoElement = video as HTMLVideoElement;
-      const source = videoElement.getAttribute("data-src");
-      if (source) {
-        const sourceElement = document.createElement("source");
-        sourceElement.src = source;
-        sourceElement.type = "video/mp4";
-        videoElement.appendChild(sourceElement);
-        videoElement.load();
-      }
-    });
-  }
-</script>

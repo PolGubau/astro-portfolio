@@ -7,7 +7,6 @@ type VideoType = {
   title: string;
   height: number;
   width: number;
-  tech?: string[];
 };
 
 const videos: VideoType[] = [
@@ -17,7 +16,6 @@ const videos: VideoType[] = [
     title: "avatar group",
     height: 720,
     width: 960,
-    tech: ["React", "CSS"],
   },
   {
     mp4: "infinity-canvas",
@@ -25,7 +23,6 @@ const videos: VideoType[] = [
     title: "infinity canvas",
     height: 720,
     width: 1260,
-    tech: ["React", "Canvas"],
   },
   {
     mp4: "boolean-card",
@@ -33,7 +30,6 @@ const videos: VideoType[] = [
     title: "Boolean Card",
     height: 720,
     width: 1280,
-    tech: ["React", "Framer Motion"],
   },
   {
     mp4: "carousel",
@@ -41,7 +37,6 @@ const videos: VideoType[] = [
     title: "animated carousel",
     height: 720,
     width: 1280,
-    tech: ["React", "Animation"],
   },
   {
     mp4: "dynamic-number",
@@ -49,7 +44,6 @@ const videos: VideoType[] = [
     title: "Dynamic number",
     height: 720,
     width: 960,
-    tech: ["React", "Animation"],
   },
   {
     mp4: "expand-button",
@@ -57,7 +51,6 @@ const videos: VideoType[] = [
     title: "Expandable button",
     height: 720,
     width: 720,
-    tech: ["React", "CSS"],
   },
   {
     mp4: "follow",
@@ -65,7 +58,6 @@ const videos: VideoType[] = [
     title: "Following Card",
     height: 576,
     width: 576,
-    tech: ["React", "Mouse Events"],
   },
   {
     mp4: "follow-pointer",
@@ -73,7 +65,6 @@ const videos: VideoType[] = [
     title: "Following pointer",
     height: 576,
     width: 1024,
-    tech: ["React", "Mouse Tracking"],
   },
   {
     mp4: "fullscreen-menu",
@@ -81,7 +72,6 @@ const videos: VideoType[] = [
     title: "Fullscreen bar",
     height: 720,
     width: 960,
-    tech: ["React", "CSS"],
   },
   {
     mp4: "grow-number",
@@ -89,7 +79,6 @@ const videos: VideoType[] = [
     title: "Growing number",
     height: 720,
     width: 576,
-    tech: ["React", "Animation"],
   },
   {
     mp4: "hamburguer",
@@ -97,7 +86,6 @@ const videos: VideoType[] = [
     title: "Hamburger",
     height: 576,
     width: 576,
-    tech: ["React", "SVG"],
   },
   {
     mp4: "hold",
@@ -105,7 +93,6 @@ const videos: VideoType[] = [
     title: "Timed button",
     height: 576,
     width: 1024,
-    tech: ["React", "Timer"],
   },
   {
     mp4: "kanban",
@@ -113,15 +100,13 @@ const videos: VideoType[] = [
     title: "complete kanban",
     height: 576,
     width: 1024,
-    tech: ["React", "Drag & Drop"],
   },
   {
     mp4: "langarray",
     date: "2024-11-13",
-    title: "Language Array",
+    title: "Fullscreen bar",
     height: 720,
     width: 1280,
-    tech: ["React", "Animation"],
   },
   {
     mp4: "lang-selector",
@@ -129,7 +114,6 @@ const videos: VideoType[] = [
     title: "language selector",
     height: 720,
     width: 1344,
-    tech: ["React", "i18n"],
   },
   {
     mp4: "magnetic",
@@ -137,7 +121,6 @@ const videos: VideoType[] = [
     title: "magnetic button",
     height: 576,
     width: 1344,
-    tech: ["React", "Mouse Events"],
   },
   {
     mp4: "names",
@@ -145,7 +128,6 @@ const videos: VideoType[] = [
     title: "Names carousel",
     height: 576,
     width: 1344,
-    tech: ["React", "Animation"],
   },
   {
     mp4: "pagination",
@@ -153,7 +135,6 @@ const videos: VideoType[] = [
     title: "Animated pagination",
     height: 576,
     width: 1344,
-    tech: ["React", "Animation"],
   },
   {
     mp4: "pop-images",
@@ -161,7 +142,6 @@ const videos: VideoType[] = [
     title: "Images trigger",
     height: 576,
     width: 1344,
-    tech: ["React", "Hover Effects"],
   },
   {
     mp4: "resize",
@@ -169,7 +149,6 @@ const videos: VideoType[] = [
     title: "Resizable contents",
     height: 864,
     width: 2016,
-    tech: ["React", "Resize API"],
   },
   {
     mp4: "slide-cards",
@@ -177,7 +156,6 @@ const videos: VideoType[] = [
     title: "Sliding cards",
     height: 576,
     width: 768,
-    tech: ["React", "Scroll Animation"],
   },
   {
     mp4: "slider",
@@ -185,7 +163,6 @@ const videos: VideoType[] = [
     title: "Slider",
     height: 576,
     width: 1024,
-    tech: ["React", "Range Input"],
   },
   {
     mp4: "svg-mask",
@@ -193,7 +170,6 @@ const videos: VideoType[] = [
     title: "SVG mask animation",
     height: 720,
     width: 960,
-    tech: ["React", "SVG"],
   },
   {
     mp4: "switch",
@@ -201,7 +177,6 @@ const videos: VideoType[] = [
     title: "friendly switch",
     height: 576,
     width: 1024,
-    tech: ["React", "Toggle"],
   },
   {
     mp4: "toolbar",
@@ -209,7 +184,6 @@ const videos: VideoType[] = [
     title: "animated toolbar",
     height: 576,
     width: 1024,
-    tech: ["React", "Animation"],
   },
   {
     mp4: "trackup",
@@ -217,7 +191,6 @@ const videos: VideoType[] = [
     title: "Timed tabs",
     height: 720,
     width: 1680,
-    tech: ["React", "Tabs"],
   },
 ];
 
@@ -230,17 +203,14 @@ const dateOrdered = () => {
 };
 ---
 
-<div class="columns-1 gap-4 space-y-4 md:columns-2 lg:columns-3">
+<div class="columns-1 gap-4 space-y-4 md:columns-2">
   {
     dateOrdered().map((video) => (
       <div class="mb-4 break-inside-avoid">
         <Video
           src={video.mp4}
-          title={video.title}
-          width={video.width}
-          height={video.height}
+          width={232}
           date={video.date}
-          tech={video.tech}
           style={{
             aspectRatio: `${video.width} / ${video.height}`,
           }}

@@ -1,8 +1,8 @@
 ---
 import BlogSearch from "../../components/blog/BlogSearch.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
-import { metadata } from "../../lib/constants";
 import { getBlogs } from "../../lib/utils";
+import { metadata } from "../../lib/constants";
 
 const allBlogs = getBlogs();
 
@@ -17,28 +17,18 @@ const PAGE_DESCRIPTION =
 ---
 
 <MainLayout title={PAGE_TITLE} description={PAGE_DESCRIPTION} type="website">
-	<div class="py-20">
-		<header class="mb-16 text-center md:text-left">
-			<h1 class="font-title text-4xl font-bold tracking-tight md:text-5xl">
-				Writing
-			</h1>
-			<p class="mt-4 text-lg text-foreground/60 max-w-2xl">
-				{allBlogs.length} articles about web development, design systems, React, TypeScript,
-				and building better user experiences.
-			</p>
-			<a
-				href="/rss.xml"
-				class="mt-4 inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors"
-				target="_blank"
-				rel="noopener noreferrer"
+	<div class="flex flex-col gap-6">
+		<header>
+			<h1
+				class="mb-4 text-pretty text-center font-medium text-xl md:text-start md:font-semibold md:text-2xl"
 			>
-				<svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-					<path
-						d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"
-					></path>
-				</svg>
-				Subscribe via RSS
-			</a>
+				Some thoughts written down ✏️
+			</h1>
+			<p
+				class="text-neutral-600 dark:text-neutral-400 text-center md:text-start mb-6"
+			>
+				{allBlogs.length} articles about web development, design, and technology
+			</p>
 		</header>
 
 		<BlogSearch blogs={allBlogs} allTags={allTags} />

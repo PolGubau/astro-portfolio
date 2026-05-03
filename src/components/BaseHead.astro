@@ -31,121 +31,28 @@ const {
 
 const imageURL = new URL(image, Astro.site);
 
-// JSON-LD Structured Data for Person - Enhanced for LLMs
+// JSON-LD Structured Data for Person
 const personSchema = {
 	"@context": "https://schema.org",
 	"@type": "Person",
 	name: metadata.longName,
-	alternateName: ["Pol Gubau", "polgubau", "gubaupol"],
-	jobTitle: ["Co-Founder", "Frontend Developer", "Design Engineer"],
-	description:
-		"Frontend Developer and Design Engineer with 8+ years of experience. Co-Founder of Doscientos, a software development agency that has served 30+ clients. Creator of Pol-UI, an open-source React component library.",
+	jobTitle: metadata.slogan,
 	url: metadata.links.website,
-	image: imageURL.toString(),
-	email: "gubaupol@gmail.com",
-	telephone: "+34-XXX-XXX-XXX",
-	address: {
-		"@type": "PostalAddress",
-		addressLocality: "Barcelona",
-		addressRegion: "Catalunya",
-		addressCountry: "ES",
-	},
-	nationality: {
-		"@type": "Country",
-		name: "Spain",
-	},
-	knowsLanguage: [
-		{
-			"@type": "Language",
-			name: "English",
-			alternateName: "en",
-		},
-		{
-			"@type": "Language",
-			name: "Spanish",
-			alternateName: "es",
-		},
-		{
-			"@type": "Language",
-			name: "Catalan",
-			alternateName: "ca",
-		},
-	],
 	sameAs: [
 		metadata.links.github,
 		metadata.links.linkedin,
 		metadata.links.twitter,
-		metadata.links.npm,
-		metadata.links.polui,
-		metadata.links.doscientos,
 	],
-	alumniOf: {
-		"@type": "EducationalOrganization",
-		name: "Universitat Autònoma de Barcelona",
-		alternateName: "UAB",
-		url: "https://www.uab.cat",
-	},
-	worksFor: {
-		"@type": "Organization",
-		name: "Doscientos",
-		url: "https://doscientos.es",
-		description:
-			"Software Development Agency specializing in web applications, mobile apps, and custom software solutions. Serving 30+ clients worldwide.",
-		foundingDate: "2018",
-		founder: {
-			"@type": "Person",
-			name: metadata.longName,
-		},
-	},
-	hasOccupation: {
-		"@type": "Occupation",
-		name: "Frontend Developer",
-		occupationalCategory: "15-1254.00", // SOC code for Web Developers
-		skills: [
-			"React.js",
-			"TypeScript",
-			"JavaScript",
-			"Next.js",
-			"Astro",
-			"Tailwind CSS",
-			"Design Systems",
-			"Component Libraries",
-			"Web Accessibility (WCAG)",
-			"Performance Optimization",
-			"Responsive Design",
-			"Git",
-			"CI/CD",
-			"Figma",
-			"UI/UX Design",
-		],
-	},
 	knowsAbout: [
 		"Frontend Development",
-		"React.js Development",
-		"TypeScript Programming",
-		"Design Systems Architecture",
-		"Component Library Development",
-		"Web Accessibility (WCAG 2.1)",
-		"Performance Optimization",
-		"UX Design Principles",
-		"Next.js Framework",
-		"Tailwind CSS",
-		"Astro Framework",
-		"Software Architecture",
-		"Team Leadership",
-		"Code Review",
-		"Technical Writing",
-		"Open Source Development",
-		"Supabase",
-		"Vercel",
-		"Git Version Control",
+		"React",
+		"TypeScript",
+		"UX Design",
+		"Web Performance",
+		"Accessibility",
 	],
-	award: [
-		"Creator of Pol-UI - Open Source React Component Library",
-		"Co-Founder of Doscientos - 30+ clients served",
-		"Published 18+ technical articles",
-		"50+ projects delivered",
-	],
+	image: imageURL.href,
+	email: "gubaupol@gmail.com",
 };
 
 // JSON-LD Structured Data for Website

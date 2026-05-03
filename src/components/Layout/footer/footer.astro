@@ -1,50 +1,24 @@
 ---
-const currentYear = new Date().getFullYear();
+import { metadata } from "../../../lib/constants";
+import DownloadIcon from "../../icons/DownloadIcon.astro";
+import MainSocials from "../../Social/MainSocials.astro";
 ---
 
-<footer class="mt-32 border-t border-foreground/10 py-12">
-  <div class="mx-auto max-w-5xl px-4 md:px-10">
-    <div
-      class="flex flex-col items-center gap-8 text-center md:flex-row md:justify-between md:text-left"
-    >
-      <!-- Left side - Copyright -->
-      <div class="text-sm text-foreground/50">
-        <p>© {currentYear} Pol Gubau Amores. All rights reserved.</p>
-      </div>
+<div
+  class="mt-24 mb-[15vh] flex flex-col items-center justify-center gap-6 text-center text-neutral-700 md:justify-start md:text-left dark:text-neutral-300"
+>
+  <a
+    title="Download my CV"
+    href="/files/PolGubau_CV.pdf"
+    download={`${metadata.longName} CV`}
+    target="_blank"
+    class="flex w-fit items-center gap-2 rounded-full border border-secondary-900/30 bg-transparent px-5 py-3 transition-all hover:bg-secondary-900/10 dark:bg-secondary-50/10 dark:hover:bg-secondary-50/20"
+    rel="noreferrer"
+  >
+    <span class="sr-only">Click here to download my CV</span>{" "}
+    <DownloadIcon />
+    Download my CV
+  </a>
 
-      <!-- Right side - Links -->
-      <div class="flex flex-wrap items-center justify-center gap-6 text-sm">
-        <a
-          href="/files/PolGubau_CV.pdf"
-          target="_blank"
-          rel="noreferrer"
-          class="text-foreground/60 transition-colors hover:text-foreground"
-        >
-          Resume
-        </a>
-        <a
-          href="https://github.com/PolGubau"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-foreground/60 transition-colors hover:text-foreground"
-        >
-          GitHub
-        </a>
-        <a
-          href="https://www.linkedin.com/in/polgubau/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-foreground/60 transition-colors hover:text-foreground"
-        >
-          LinkedIn
-        </a>
-        <a
-          href="mailto:gubaupol@gmail.com"
-          class="text-foreground/60 transition-colors hover:text-foreground"
-        >
-          Email
-        </a>
-      </div>
-    </div>
-  </div>
-</footer>
+  <MainSocials />
+</div>

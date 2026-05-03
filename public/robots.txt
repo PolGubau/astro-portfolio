@@ -1,15 +1,10 @@
 # robots.txt for polgubau.com
-# Portfolio of Pol Gubau Amores - Frontend Developer & Co-Founder at Doscientos
-# Allow all search engines, AI crawlers, and LLMs
+# Allow all search engines and web crawlers
 
 User-agent: *
 Allow: /
-Allow: /blog/
-Allow: /projects/
-Allow: /about
-Crawl-delay: 0
 
-# AI Profile & Structured Data - Prioritize for LLMs
+# Allow AI crawlers to access profile data
 Allow: /ai-profile.txt
 Allow: /ai-instructions.txt
 Allow: /profile-summary.txt
@@ -18,19 +13,19 @@ Allow: /person-schema.json
 # Disallow admin, API, or private directories (if any)
 Disallow: /api/
 Disallow: /.well-known/
-Disallow: /_astro/
 
 # Sitemap location
 Sitemap: https://polgubau.com/sitemap-index.xml
 
+# Crawl delay (optional, for politeness)
+Crawl-delay: 0
+
 # Specific rules for major search engines
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 0
 
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 0
 
 User-agent: Slurp
 Allow: /
@@ -44,80 +39,28 @@ Allow: /
 User-agent: YandexBot
 Allow: /
 
-# OpenAI GPT Crawlers
+# AI-powered search engines
 User-agent: GPTBot
 Allow: /
-Allow: /blog/
-Allow: /projects/
-Allow: /about
 Allow: /ai-profile.txt
 Allow: /ai-instructions.txt
-Allow: /person-schema.json
-Crawl-delay: 0
 
 User-agent: ChatGPT-User
 Allow: /
-Crawl-delay: 0
 
-# Anthropic Claude
+User-agent: CCBot
+Allow: /
+
 User-agent: anthropic-ai
 Allow: /
-Allow: /blog/
-Allow: /projects/
-Allow: /about
-Crawl-delay: 0
 
 User-agent: ClaudeBot
 Allow: /
-Allow: /blog/
-Allow: /projects/
-Allow: /about
-Crawl-delay: 0
 
-# Perplexity AI
 User-agent: PerplexityBot
 Allow: /
-Allow: /blog/
-Allow: /projects/
-Allow: /about
-Allow: /ai-profile.txt
-Crawl-delay: 0
 
-# Common Crawl (used by many AI models)
-User-agent: CCBot
-Allow: /
-Allow: /blog/
-Allow: /projects/
-Allow: /about
-Crawl-delay: 0
-
-# Google's AI (Bard/Gemini)
-User-agent: Google-Extended
-Allow: /
-Allow: /blog/
-Allow: /projects/
-Crawl-delay: 0
-
-# Meta AI
-User-agent: FacebookBot
-Allow: /
-Crawl-delay: 0
-
-User-agent: Meta-ExternalAgent
-Allow: /
-Crawl-delay: 0
-
-# Brave Search
-User-agent: Brave
-Allow: /
-Crawl-delay: 0
-
-# You.com
-User-agent: YouBot
-Allow: /
-Crawl-delay: 0
-
-# Block known bad bots
+# Block known bad bots (optional)
 User-agent: AhrefsBot
 Crawl-delay: 10
 
@@ -128,7 +71,4 @@ User-agent: MJ12bot
 Disallow: /
 
 User-agent: DotBot
-Disallow: /
-
-User-agent: PetalBot
 Disallow: /

@@ -1,20 +1,32 @@
 ---
 import { metadata } from "../../lib/constants";
-import LinkedinIcon from "../icons/LinkedinIcon.astro";
-import GithubIcon from "../icons/GithubIcon.astro";
-import SocialLink from "./SocialLink.astro";
 import EmailIcon from "../icons/EmailIcon.astro";
+import GithubIcon from "../icons/GithubIcon.astro";
+import LinkedinIcon from "../icons/LinkedinIcon.astro";
+import SocialLink from "./SocialLink.astro";
 ---
 
 <div class="flex flex-wrap justify-center gap-2 md:justify-start">
-  <SocialLink href={metadata.links.linkedin} label="Linkedin" className="motion-delay-100 motion-blur-in">
+  <SocialLink
+    href={metadata.links.linkedin}
+    label="Linkedin"
+    className="motion-delay-100 motion-blur-in"
+  >
     <LinkedinIcon slot="icon" />
   </SocialLink>
 
-  <SocialLink href={metadata.links.github} label="Github" className="motion-delay-200 motion-blur-in">
+  <SocialLink
+    href={metadata.links.github}
+    label="Github"
+    className="motion-delay-200 motion-blur-in"
+  >
     <GithubIcon slot="icon" />
   </SocialLink>
-  <SocialLink href={metadata.links.email} label="Email" className="motion-delay-300 motion-blur-in">
+  <SocialLink
+    href={metadata.links.email}
+    label="Email"
+    className="motion-delay-300 motion-blur-in"
+  >
     <EmailIcon slot="icon" />
   </SocialLink>
 </div>

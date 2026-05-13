@@ -1,31 +1,44 @@
 ---
-import NavItem from "./NavItem.astro";
+const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, "");
+const subpath = pathname.match(/[^\/]+/g);
 
-const navItems = {
-  "/": { name: "Home" },
-  "/projects": { name: "Projects" },
-  "/ui": { name: "UI" },
-  "/blog": { name: "Blog" },
-};
+const navItems = [
+  { path: "/", name: "Home" },
+  { path: "/projects", name: "Work" },
+  { path: "/ui", name: "Experiments" },
+  { path: "/blog", name: "Writing" },
+];
 ---
 
 <footer
-  class="fixed bottom-0 w-full left-0 right-0 md:hidden"
+  class="fixed bottom-0 left-0 right-0 md:hidden safe-area-inset-bottom"
   style="z-index: 999;"
 >
   <nav
-    class="bottom-0 w-full left-0 right-0 grid grid-cols-4 p-4 gap-2 justify-items-center items-center md:hidden backdrop-blur-sm relative"
-    style="z-index: 999;"
+    class="mx-auto flex max-w-md items-center justify-around border-t border-foreground/10 bg-background/95 px-2 py-3 backdrop-blur-xl"
   >
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent pointer-events-none"
-    >
-    </div>
-
     {
-      Object.entries(navItems).map(([path, { name }]) => (
-        <NavItem path={path} name={name} />
-      ))
+      navItems.map(({ path, name }) => {
+        const isActive = path === pathname || path === `/${subpath?.[0] || ""}`;
+        return (
+          <a
+            href={path}
+            tabindex={isActive ? -1 : undefined}
+            class:list={[
+              "flex flex-1 flex-col items-center gap-1 rounded-xl px-3 py-2 transition-all duration-200 active:scale-95",
+              {
+                "text-foreground": isActive,
+              },
+              {
+                "text-foreground/50 active:text-foreground/70": !isActive,
+              },
+            ]}
+          >
+            <span class="text-xs font-medium">{name}</span>
+            {isActive && <span class="h-1 w-1 rounded-full bg-foreground" />}
+          </a>
+        );
+      })
     }
   </nav>
 </footer>

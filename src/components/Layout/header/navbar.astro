@@ -3,20 +3,17 @@ import NavItem from "./NavItem.astro";
 
 const navItems = {
   "/": { name: "Home" },
-  "/projects": { name: "Projects" },
+  "/projects": { name: "Work" },
   "/ui": { name: "Experiments" },
-  "/blog": { name: "Blog" },
+  "/blog": { name: "Writing" },
 };
 ---
 
-<aside
-  class="mb-12 flex justify-center tracking-tight md:justify-start"
-  style={{
-    zIndex: 999,
-  }}
->
-  <div class="sticky top-20 flex items-center gap-2">
-    <nav class="relative flex w-full flex-row items-start">
+<aside class="mb-16 flex justify-center tracking-tight md:justify-start">
+  <div class="sticky top-20">
+    <nav
+      class="relative inline-flex items-center gap-1 rounded-full border border-foreground/10 bg-background/80 p-1 shadow-sm backdrop-blur-md"
+    >
       {
         Object.entries(navItems).map(([path, { name }]) => {
           return <NavItem path={path} name={name} />;

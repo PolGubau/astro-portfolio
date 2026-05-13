@@ -1,36 +1,55 @@
 ---
-import BlogSearch from "../../components/blog/BlogSearch.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
-import { getBlogs } from "../../lib/utils";
 import { metadata } from "../../lib/constants";
+import { getBlogs } from "../../lib/utils";
 
 const allBlogs = getBlogs();
 
-// Extract all unique tags from blogs
-const allTags = [
-	...new Set(allBlogs.flatMap((blog) => blog.data.tags || [])),
-].sort();
-
-const PAGE_TITLE = `Blog - ${metadata.title}`;
+const PAGE_TITLE = `Writing - ${metadata.title}`;
 const PAGE_DESCRIPTION =
-	"Thoughts on web development, design systems, React, TypeScript, and building better user experiences.";
+	"Technical writing on web development, design systems, and modern frontend.";
+
+function formatDate(d: Date) {
+	const fullDate = d.toLocaleString("en-us", {
+		month: "short",
+		day: "numeric",
+		year: "numeric",
+	});
+	return fullDate;
+}
 ---
 
 <MainLayout title={PAGE_TITLE} description={PAGE_DESCRIPTION} type="website">
-	<div class="flex flex-col gap-6">
-		<header>
-			<h1
-				class="mb-4 text-pretty text-center font-medium text-xl md:text-start md:font-semibold md:text-2xl"
-			>
-				Some thoughts written down ✏️
-			</h1>
-			<p
-				class="text-neutral-600 dark:text-neutral-400 text-center md:text-start mb-6"
-			>
-				{allBlogs.length} articles about web development, design, and technology
+	<div class="flex flex-col gap-12">
+		<header class="flex flex-col gap-3">
+			<h1 class="text-2xl font-semibold tracking-tight">Writing</h1>
+			<p class="text-foreground/60">
+				Technical articles on web development and design
 			</p>
 		</header>
 
-		<BlogSearch blogs={allBlogs} allTags={allTags} />
+		<ul class="flex flex-col gap-8">
+			{
+				allBlogs.map((post) => (
+					<li>
+						<a
+							href={`/blog/${post.id}`}
+							class="group flex flex-col gap-2 transition-opacity hover:opacity-70"
+						>
+							<h2 class="text-lg font-medium group-hover:text-primary transition-colors">
+								{post.data.title}
+							</h2>
+							<p class="text-sm text-foreground/60">{post.data.summary}</p>
+							<time
+								datetime={post.data.publishedAt.toISOString()}
+								class="text-xs text-foreground/50"
+							>
+								{formatDate(post.data.publishedAt)}
+							</time>
+						</a>
+					</li>
+				))
+			}
+		</ul>
 	</div>
 </MainLayout>

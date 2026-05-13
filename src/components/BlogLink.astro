@@ -12,24 +12,27 @@ const { slug, name, class: className } = Astro.props;
   href={slug}
   class:list={[
     className,
-    "group flex w-full flex-1 select-none items-center justify-between gap-6 rounded-2xl bg-secondary-900/10 px-5 py-4 text-balanced transition-all hover:bg-secondary-900/20 hover:brightness-125 md:p-6 dark:bg-secondary-100/10 dark:hover:bg-secondary-50/20",
+    "group relative flex w-full flex-1 select-none items-center justify-between gap-6 rounded-2xl border border-foreground/10 bg-foreground/5 px-5 py-4 text-balanced transition-all duration-300 hover:border-foreground/20 hover:bg-foreground/10 hover:shadow-lg hover:shadow-foreground/5 active:scale-[0.98] md:p-6",
   ]}
 >
   <div class="flex flex-col gap-2">
-    <span class="line-clamp-2 w-full text-pretty font-semibold text-md md:text-lg">{name}</span>
-    <span class="w-full"><slot /></span>
+    <span
+      class="line-clamp-2 w-full text-pretty font-semibold text-md transition-colors group-hover:text-primary md:text-lg"
+      >{name}</span
+    >
+    <span class="w-full text-sm text-foreground/60"><slot /></span>
   </div>
 
   <div
-    class="group-hover:-translate-y-0 transition-all group-hover:translate-x-1"
+    class="transition-all duration-300 group-hover:translate-x-1 text-foreground/40 group-hover:text-primary"
   >
     <svg
       stroke="currentColor"
       fill="currentColor"
       stroke-width="0"
       viewBox="0 0 448 512"
-      height="1em"
-      width="1em"
+      height="1.25em"
+      width="1.25em"
       xmlns="http://www.w3.org/2000/svg"
     >
       <title>Arrow Icon</title>

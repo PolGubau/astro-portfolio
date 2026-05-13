@@ -1,13 +1,78 @@
 ---
 import MansoryGrid from "../../components/experiments/MansoryGrid.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
+import { metadata } from "../../lib/constants";
+
+const PAGE_TITLE = `Experiments - ${metadata.title}`;
+const PAGE_DESCRIPTION =
+  "A collection of 26 interactive UI experiments and animations built with React, exploring micro-interactions, animations, and creative web patterns.";
+
+// Schema.org for CreativeWork
+const experimentSchema = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: "UI Experiments by Pol Gubau",
+  description: PAGE_DESCRIPTION,
+  author: {
+    "@type": "Person",
+    name: metadata.longName,
+    url: metadata.links.website,
+  },
+  datePublished: "2023-01-01",
+  dateModified: new Date().toISOString(),
+  url: "https://polgubau.com/ui",
+  keywords: [
+    "UI animations",
+    "React experiments",
+    "interactive components",
+    "micro-interactions",
+    "web animations",
+    "UI patterns",
+  ],
+};
 ---
 
-<MainLayout>
-  <h1
-    class="mb-8 text-pretty text-center font-medium text-xl md:text-start md:font-semibold md:text-2xl"
-  >
-    UI Experiments ✨
-  </h1>
-  <MansoryGrid />
+<MainLayout title={PAGE_TITLE} description={PAGE_DESCRIPTION}>
+  <!-- Schema.org -->
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(experimentSchema)}
+  />
+
+  <div class="py-20">
+    <!-- Header -->
+    <header class="mb-12 text-center md:text-left">
+      <h1 class="font-title text-3xl font-bold tracking-tight md:text-4xl">
+        UI Experiments
+      </h1>
+      <p class="mt-3 max-w-2xl text-lg text-foreground/60">
+        A collection of 26 interactive UI components and animations. Each
+        experiment explores different patterns, interactions, and animation
+        techniques built with React.
+      </p>
+      <div
+        class="mt-4 flex flex-wrap items-center gap-2 text-sm text-foreground/50 justify-center md:justify-start"
+      >
+        <span>26 experiments</span>
+        <span>•</span>
+        <span>React</span>
+        <span>•</span>
+        <span>Framer Motion</span>
+        <span>•</span>
+        <span>CSS Animations</span>
+      </div>
+    </header>
+
+    <!-- Grid -->
+    <MansoryGrid />
+
+    <!-- Footer Note -->
+    <div class="mt-16 text-center">
+      <p class="text-sm text-foreground/50">
+        These experiments demonstrate various UI patterns, from drag-and-drop
+        interfaces to complex animations. Hover over each card to see details.
+      </p>
+    </div>
+  </div>
 </MainLayout>

@@ -60,6 +60,7 @@
 }
 body {
   @apply bg-background text-ink antialiased font-main;
+  overflow-x: hidden;
 }
 
 *::selection {
@@ -83,7 +84,7 @@ main {
 /* project-bar */
 
 #project-bar {
-  transform: translateX(-50%) translateY(100%);
+  transform: translateY(100%);
   opacity: 0;
 
   animation-name: slide-up;
@@ -97,7 +98,7 @@ main {
 
 @keyframes slide-up {
   to {
-    transform: translateX(-50%) translateY(0%);
+    transform: translateY(0%);
     opacity: 1;
   }
 }
@@ -156,19 +157,26 @@ main {
     visibility: visible;
   }
   pre {
-    @apply border border-neutral-200 !bg-neutral-50 overflow-x-auto whitespace-pre rounded-lg px-3 py-2 max-w-[90vw];
+    @apply border border-neutral-800 !bg-neutral-950 text-neutral-100 overflow-x-auto whitespace-pre rounded-lg px-3 py-2 max-w-[90vw];
   }
-  
+
   code {
-    @apply text-secondary-800 font-mono px-1 py-0.5 border border-neutral-200 rounded-lg bg-neutral-50 !max-w-sm !overflow-x-auto;
-    border: initial;
+    @apply font-mono px-1.5 py-0.5 rounded-md bg-neutral-100 text-neutral-800 border border-neutral-200 text-[0.85em];
     line-height: 1.5;
-    white-space: pre;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-width: 100%;
+  }
+
+  pre code {
+    @apply bg-transparent border-0 text-inherit p-0 text-sm;
   }
   
   img,
   video {
     @apply m-0 rounded-xl border border-neutral-200 shadow-sm;
+    max-width: 100%;
+    height: auto;
   }
 
   img.mockup,
@@ -217,7 +225,7 @@ main {
 
 code[class*="language-"],
 pre[class*="language-"] {
-  @apply text-neutral-800;
+  @apply text-neutral-100;
 }
 
 pre::-webkit-scrollbar {
@@ -239,13 +247,14 @@ input[type="email"] {
 
 table {
   display: block;
-  max-width: fit-content;
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
   white-space: nowrap;
 }
 
 [data-rehype-pretty-code-fragment] code {
-  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-black;
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-neutral-100;
   counter-reset: line;
   box-decoration-break: clone;
 }

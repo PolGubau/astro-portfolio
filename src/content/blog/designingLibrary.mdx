@@ -1,7 +1,7 @@
 ---
 title: "What I learned building a UI library from scratch (the hard way)"
 publishedAt: "2024-04-05"
-summary: "I spent 1000+ hours building Pol-UI for my thesis. It got a 10/10 and a distinction. Here's what actually made it hard — and what I'd do differently."
+summary: "I spent 1000+ hours building Pol-UI for my thesis. It got a 10/10 and a distinction. Here's what actually made it hard - and what I'd do differently."
 tags:
   - UI Library
   - Design
@@ -12,13 +12,13 @@ tags:
 import { Image } from 'astro:assets';
 import polui from "../projects/img/pol-ui.webp";
 
-My Bachelor's thesis was a React UI library. 150+ components, a documentation site, Storybook, unit tests, and a 100-page written paper — all while working full time at Mesalvo.
+My Bachelor's thesis was a React UI library. 150+ components, a documentation site, Storybook, unit tests, and a 100-page written paper - all while working full time at Mesalvo.
 
 It got a 10/10 and a special distinction from the university. It also taught me more than any job ever has.
 
 <Image src={polui} alt="Pol-UI documentation site" class="rounded-xl show-animation" width={800} height={500} />
 
-Here's what I actually learned — not the theoretical stuff, the things that cost me real time.
+Here's what I actually learned - not the theoretical stuff, the things that cost me real time.
 
 ## The API is the product
 
@@ -31,10 +31,10 @@ A `Button` with 20 props is harder to use than a `Button` with 3, even if the 20
 I rebuilt the API three times before it felt obvious. Each rebuild made the code more complex internally and simpler externally. That's the right tradeoff.
 
 ```tsx
-// Version 1 — too much
+// Version 1 - too much
 <Button variant="filled" size="md" rounded="full" shadow="lg" ripple={true}>
 
-// Version 3 — just right
+// Version 3 - just right
 <Button intent="primary">
 ```
 
@@ -44,7 +44,7 @@ I made the mistake of building components before defining design tokens. Halfway
 
 It took three days.
 
-After that, I built a proper token system — spacing, colors, radii, shadows — and ran everything through CSS variables. Changing the primary color after that took 30 seconds.
+After that, I built a proper token system - spacing, colors, radii, shadows - and ran everything through CSS variables. Changing the primary color after that took 30 seconds.
 
 Design tokens aren't just for big teams. They're the foundation that makes everything else maintainable.
 
@@ -62,11 +62,11 @@ I skipped tests for the first two months. Then I refactored the modal component 
 
 I added Vitest + Testing Library after that. Writing tests for UI is annoying at first, but the feedback loop becomes invaluable once the library grows past ~30 components.
 
-For accessibility specifically, I used Axe — it catches things you'd never find manually, especially focus management and ARIA attribute misuse.
+For accessibility specifically, I used Axe - it catches things you'd never find manually, especially focus management and ARIA attribute misuse.
 
 ## The version number is a promise
 
-Every time I published a patch and something broke, I lost a bit of the trust I was building. Semantic versioning isn't bureaucracy — it's a contract with your users.
+Every time I published a patch and something broke, I lost a bit of the trust I was building. Semantic versioning isn't bureaucracy - it's a contract with your users.
 
 Now I follow it strictly: bugfixes in patch, new features in minor, breaking changes in major. And breaking changes have migration guides.
 

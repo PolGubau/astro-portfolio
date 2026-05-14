@@ -6,7 +6,15 @@ const { backTo } = Astro.props;
 ---
 
 <script>
-  const linkSvg = ` 
+  import mediumZoom from "medium-zoom";
+  mediumZoom(".prose img", {
+    margin: 16,
+    background: "rgba(0,0,0,0.7)",
+  });
+</script>
+
+<script>
+  const linkSvg = `
 <svg 
     xmlns="http://www.w3.org/2000/svg" 
     class="inline-block h-6 w-6 absolute bottom-0 -left-6 top-1.5" 
@@ -74,7 +82,9 @@ const { backTo } = Astro.props;
     class="prose prose-quoteless prose-neutral w-full max-w-full max-md:prose-sm"
   >
     <slot />
+    <slot name="footer" />
   </article>
+  <slot name="toc" />
 </div>
 <nav class="flex items-center justify-between mt-8">
   <a

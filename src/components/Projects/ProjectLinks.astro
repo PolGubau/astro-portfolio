@@ -1,0 +1,90 @@
+---
+import { Icon } from "astro-icon/components";
+import type { ProjectMetadata } from "../../lib/utils";
+
+type Props = { project: ProjectMetadata };
+const { project: p } = Astro.props;
+const { data } = p;
+
+const links = [
+  data.link && {
+    href: data.link,
+    label: "Visit project",
+    sub: "Live site",
+    icon: "lucide:arrow-up-right",
+    primary: true,
+  },
+  data.githubLink && {
+    href: data.githubLink,
+    label: "Source code",
+    sub: "GitHub",
+    icon: "simple-icons:github",
+    primary: false,
+  },
+  data.npmLink && {
+    href: data.npmLink,
+    label: "NPM package",
+    sub: "npm registry",
+    icon: "simple-icons:npm",
+    primary: false,
+  },
+  data.playStoreLink && {
+    href: data.playStoreLink,
+    label: "Download",
+    sub: "Google Play",
+    icon: "simple-icons:googleplay",
+    primary: false,
+  },
+].filter(Boolean) as {
+  href: string;
+  label: string;
+  sub: string;
+  icon: string;
+  primary: boolean;
+}[];
+---
+
+{
+  links.length > 0 && (
+    <section class="mt-10 pt-8 border-t border-ink/10">
+      <p class="text-[11px] uppercase tracking-widest text-ink/35 mb-4 font-medium">
+        Links
+      </p>
+      <div class="flex flex-wrap gap-2">
+        {links.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class:list={[
+              "group flex items-center gap-3 rounded-xl border px-4 py-3 transition-all duration-200",
+              "hover:-translate-y-0.5 hover:shadow-sm",
+              link.primary
+                ? "border-ink/15 bg-ink text-background hover:bg-ink/90"
+                : "border-ink/10 bg-background text-ink hover:border-ink/25",
+            ]}
+          >
+            <Icon
+              name={link.icon}
+              class:list={[
+                "size-4 shrink-0",
+                link.primary ? "text-background/70" : "text-ink/40",
+              ]}
+            />
+            <div class="flex flex-col leading-tight">
+              <span class="text-sm font-medium">{link.label}</span>
+              <span
+                class:list={[
+                  "text-[11px]",
+                  link.primary ? "text-background/50" : "text-ink/40",
+                ]}
+              >
+                {link.sub}
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )
+}

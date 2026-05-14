@@ -12,7 +12,13 @@ const { projects } = Astro.props;
 
 <section class="flex flex-col gap-12">
   <div class="flex items-baseline justify-between gap-4">
-    <h2 class="text-3xl md:text-4xl font-medium">Selected work</h2>
+    <h2
+      data-reveal="bottom"
+      data-speed="fast"
+      class="text-3xl md:text-4xl font-medium"
+    >
+      Selected work
+    </h2>
     <a
       href="/projects"
       class="inline-flex items-center gap-1 text-sm text-ink/50 hover:text-ink transition-colors shrink-0"

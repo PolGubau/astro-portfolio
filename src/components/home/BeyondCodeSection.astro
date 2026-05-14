@@ -24,8 +24,20 @@ const photos = [
 ---
 
 <section class="flex flex-col gap-8">
-  <h2 class="text-3xl md:text-4xl font-medium">Beyond the code</h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    {photos.map((photo) => <MediaFigure {...photo} />)}
+  <h2
+    data-reveal="bottom"
+    data-speed="fast"
+    class="text-3xl md:text-4xl font-medium"
+  >
+    Beyond the code
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4" data-stagger="120">
+    {
+      photos.map((photo) => (
+        <div data-reveal="bottom" data-easing="soft">
+          <MediaFigure {...photo} />
+        </div>
+      ))
+    }
   </div>
 </section>

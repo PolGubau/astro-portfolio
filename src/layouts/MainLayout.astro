@@ -3,6 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Layout/footer/footer.astro";
 import MobileNavbar from "../components/Layout/header/mobile-navbar.astro";
 import Navbar from "../components/Layout/header/navbar.astro";
+import "@polgubau/astro-reveal/styles";
 
 interface Props {
   title?: string;
@@ -60,5 +61,8 @@ const {
         <MobileNavbar />
       </div>
     </main>
+    <script>
+      import "@polgubau/astro-reveal";
+    </script>
   </body>
 </html>

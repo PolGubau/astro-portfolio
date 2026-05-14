@@ -76,6 +76,7 @@ export const metadata = {
 
 	/** Last updated: 2026-05-14 */
 	npmDownloads: "62.6k",
+	vercelViews: "1M+",
 
 	homeOgImage: "assets/thumbnail.webp",
 };

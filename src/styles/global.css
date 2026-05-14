@@ -171,6 +171,11 @@ main {
     @apply m-0 rounded-xl border border-neutral-200 shadow-sm;
   }
 
+  img.mockup,
+  video.mockup {
+    @apply border-0 shadow-none rounded-none bg-transparent;
+  }
+
   figure {
     @apply my-6 flex flex-col gap-2;
 
@@ -186,10 +191,14 @@ main {
   h1 {
      @apply font-bold font-title text-xl md:text-3xl;
   }
-  h2,
-  h3,
+  h2 {
+    @apply font-semibold text-xl md:text-2xl;
+  }
+  h3 {
+    @apply font-semibold text-base md:text-lg;
+  }
   h4 {
-    @apply font-semibold text-lg md:text-2xl;
+    @apply font-medium text-sm md:text-base text-ink/70;
   }
   .tweet a {
     text-decoration: inherit;

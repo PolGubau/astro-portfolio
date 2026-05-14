@@ -10,6 +10,7 @@ import ProjectBar from "../../components/Projects/ProjectBar.astro";
 import { metadata } from "../../lib/constants";
 import Toc from "../../components/Toc.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
+import ProjectLinks from "../../components/Projects/ProjectLinks.astro";
 
 export async function getStaticPaths() {
 	return getProjects().map((project) => ({
@@ -21,7 +22,7 @@ type Props = CollectionEntry<"projects">;
 
 const project = Astro.props;
 
-const PAGE_TITLE = `${project.data.title} — ${metadata.name}`;
+const PAGE_TITLE = `${project.data.title} - ${metadata.name}`;
 const { Content, headings } = await render(project);
 const publishedTime = project.data.startedAt.toISOString();
 const tech = project.data.tech || [];
@@ -45,10 +46,11 @@ const tech = project.data.tech || [];
 		/>
 
 		<ProjectHeader project={project} />
-		{headings?.length && <Toc headings={headings} />}
 
 		<MdLayout backTo="/projects">
 			<Content />
+			{headings?.length > 0 && <Toc slot="toc" headings={headings} />}
+			<ProjectLinks slot="footer" project={project} />
 		</MdLayout>
 		<SimilarProjects project={project} />
 

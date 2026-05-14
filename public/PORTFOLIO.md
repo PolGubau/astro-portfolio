@@ -9,7 +9,7 @@ Email: gubaupol@gmail.com | LinkedIn: linkedin.com/in/polgubauamores | GitHub: g
 Senior Software Engineer specialized in high-performance web technologies, UI/UX, and scalable architectures. Proven track record in building cross-company design systems and mentoring developers. Strong background in Open Source with significant community impact.
 
 ## 📊 Key Highlights & Impact
-* [cite_start]**Open Source Authority**: Authored libraries with **60k+ downloads** on NPM and **1M+ annual requests** on Vercel[cite: 46, 47].
+* [cite_start]**Open Source Authority**: Authored libraries with **62k+ downloads** on NPM and **1M+ annual requests** on Vercel[cite: 46, 47].
 * [cite_start]**Scale**: Delivered **55+ React projects** and managed ecosystems of **270+ reusable components**[cite: 4, 44].
 * [cite_start]**Efficiency**: Optimized CI/CD pipelines, reducing build times by **60%**[cite: 8].
 * [cite_start]**Education**: Mentored **35+ students** in modern web stacks (React, JS, Python)[cite: 10, 47].

@@ -5,44 +5,66 @@ type Props = {
   headings: MarkdownHeading[];
 };
 const { headings } = Astro.props;
+const filtered = headings.filter((h) => h.depth <= 3);
 ---
 
-<details class="bg-background border border-ink/10 rounded-xl p-3 px-4 group">
-  <summary
-    class="font-semibold cursor-pointer list-none flex items-center justify-between select-none"
-  >
-    <span>Table of Contents</span>
-    <svg
-      class="w-5 h-5 transition-transform duration-200 group-open:rotate-180"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M19 9l-7 7-7-7"></path>
-    </svg>
-  </summary>
-  <ul class="mt-4 text-sm">
-    {
-      headings.map(({ depth, slug, text }) => (
-        <li class="hover:text-ink line-clamp-1 transition-colors">
-          <a
-            href={`#${slug}`}
-            aria-label={`Scroll to section: ${text}`}
-            class:list={[
-              "block",
-              { "mt-2 opacity-90": depth <= 2 },
-              { "mt-1 pl-3 text-xs opacity-80": depth > 2 },
-            ]}
-          >
-            {text}
-            <span class="sr-only">Scroll to section: {text}</span>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-</details>
+<nav
+  id="toc"
+  aria-label="Table of contents"
+  class="hidden lg:flex flex-col gap-[6px] sticky top-24 w-10 self-start"
+>
+  {
+    filtered.map(({ depth, slug, text }) => (
+      <a
+        href={`#${slug}`}
+        data-toc-slug={slug}
+        data-toc-depth={depth}
+        aria-label={text}
+        class="toc-item group relative flex items-center"
+      >
+        <span
+          class:list={[
+            "toc-bar block h-[2px] rounded-full transition-all duration-300",
+            "bg-ink/20 group-hover:bg-ink/70",
+            depth === 2 ? "w-7" : "w-4",
+          ]}
+        />
+        <span class="toc-tooltip pointer-events-none absolute left-11 z-50 whitespace-nowrap rounded-md bg-ink px-2.5 py-1 text-xs text-background opacity-0 shadow-md transition-all duration-150 group-hover:opacity-100 group-hover:translate-x-0 -translate-x-1">
+          {text}
+        </span>
+      </a>
+    ))
+  }
+</nav>
+
+<script>
+  const items = document.querySelectorAll<HTMLAnchorElement>("[data-toc-slug]");
+  const slugToEl = new Map<string, HTMLAnchorElement>();
+  items.forEach((el) => slugToEl.set(el.dataset.tocSlug!, el));
+
+  function setActive(slug: string) {
+    slugToEl.forEach((el, s) => {
+      const bar = el.querySelector(".toc-bar") as HTMLElement;
+      const isActive = s === slug;
+      bar.style.opacity = isActive ? "1" : "";
+      bar.style.backgroundColor = isActive ? "var(--color-ink)" : "";
+      bar.style.height = isActive ? "3px" : "";
+      const depth = el.dataset.tocDepth;
+      bar.style.width = isActive ? (depth === "2" ? "36px" : "22px") : "";
+    });
+  }
+
+  const headings = Array.from(
+    document.querySelectorAll<HTMLElement>(".prose h2, .prose h3"),
+  );
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries.filter((e) => e.isIntersecting);
+      if (visible.length) setActive(visible[0].target.id);
+    },
+    { rootMargin: "-10% 0px -75% 0px", threshold: 0 },
+  );
+
+  headings.forEach((h) => observer.observe(h));
+</script>

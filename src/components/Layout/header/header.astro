@@ -1,100 +1,60 @@
 ---
 import { Image } from "astro:assets";
 import me from "../../../assets/media/me.webp";
-import { metadata } from "../../../lib/constants";
-import Tag from "../../../shared/ui/tags/Tag.astro";
-import BlogLink from "../../BlogLink.astro";
-import MainSocials from "../../Social/MainSocials.astro";
-import Avatar from "../avatar/avatar.astro";
 
-const thisYear = new Date().getFullYear();
-const yearSince2018 = thisYear - 2018;
+const stats = [
+  { value: "60k+", label: "NPM downloads" },
+  { value: "1M+", label: "Vercel requests/yr" },
+  { value: "270+", label: "Components shipped" },
+  { value: "55+", label: "React projects" },
+];
 ---
 
-<header class="flex flex-col gap-8 md:gap-18 md:pb-20">
+<header class="flex flex-col gap-12 py-16 md:py-24">
+  <!-- Name + Avatar -->
   <div
-    class="mb-8 flex flex-col items-center justify-between gap-8 md:flex-row"
+    class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
   >
-    <div class="bg-primary w-full flex justify-center md:hidden rounded-xl">
-      <Image
-        src={me}
-        class="flex justify-center bg-primary object-cover object-bottom"
-        alt="Pol Gubau Amores' profile image"
-        title="Pol Gubau Amores' profile image"
-        width={150}
-        height={150}
-      />
+    <div class="flex flex-col gap-4 max-w-2xl">
+      <h1 class="text-5xl md:text-6xl font-medium leading-[0.95]">
+        Frontend Developer<br />& UI Designer
+      </h1>
+      <p class="text-lg text-foreground/60 max-w-lg">
+        Senior Frontend Engineer at <a
+          href="https://mesalvo.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-foreground hover:underline underline-offset-4">Mesalvo</a
+        >. Co-founder of <a
+          href="https://doscientos.studio"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-foreground hover:underline underline-offset-4"
+          >Doscientos</a
+        >. Based in Barcelona.
+      </p>
     </div>
-    <div class="flex flex-col gap-3 max-md:items-center">
-      <div class="overflow-hidden">
-        <h1
-          class="w-fit animate-slide-in-bottom overflow-hidden text-3xl leading-[.85] sm:text-4xl md:text-6xl"
-        >
-          <span class="block">{metadata.longName}</span>
-        </h1>
-      </div>
-      <div class="overflow-hidden max-md:pb-4">
-        <h2
-          class="w-fit animate-slide-in-bottom overflow-hidden opacity-75 md:pb-2"
-        >
-          <span class="block text-md leading-[.85] sm:text-xl md:text-2xl">
-            {metadata.slogan}
-          </span>
-        </h2>
-      </div>
 
-      <MainSocials />
-    </div>
-    <Avatar />
+    <Image
+      src={me}
+      class="rounded-full bg-primary object-cover"
+      alt="Pol Gubau Amores"
+      width={120}
+      height={120}
+    />
   </div>
 
-  <article class="flex flex-col gap-24 md:gap-30 pb-10 md:pt-20">
-    <p
-      class="max-w-4xl md:text-3xl leading-relaxed text-foreground/80 motion-preset-blur-up motion-delay-[500ms]"
-    >
-      <Tag label={`Hi,`} position="top" className=" motion-delay-[1500ms]"
-        >👋🏼</Tag
-      >
-      I&apos;m a full time tech enthusiast graduated in <br />
-      <Tag
-        label="Interactive Communication"
-        position="bottom"
-        className="motion-delay-[1700ms]">🎓</Tag
-      >
-      and based in
-      <Tag label="Barcelona" position="bottom" className="motion-delay-[1900ms]"
-        >☀️</Tag
-      >
-    </p>
-
-    <p
-      class="max-w-4xl md:text-3xl leading-relaxed text-foreground/80 motion-preset-blur-up motion-delay-[1000ms]"
-    >
-      With <Tag
-        label={`+${yearSince2018} years of experience`}
-        position="top"
-        className=" motion-delay-[2100ms]">💼</Tag
-      >
-      , I have a strong background in web development and have worked from small websites
-      to
-      <Tag
-        label="large-scale web applications"
-        position="bottom"
-        className="motion-delay-[2300ms]">🚀</Tag
-      >
-    </p>
-
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <BlogLink
-        slug="projects"
-        name="Recent projects"
-        class="motion-preset-fade motion-delay-[600ms]"
-      />
-      <BlogLink
-        slug="ui"
-        name="Some cool UI concepts"
-        class="motion-preset-fade motion-delay-[800ms]"
-      />
-    </div>
-  </article>
+  <!-- Stats -->
+  <div
+    class="grid grid-cols-2 md:grid-cols-4 gap-px bg-neutral-200 rounded-xl overflow-hidden border border-neutral-200"
+  >
+    {
+      stats.map(({ value, label }) => (
+        <div class="flex flex-col gap-1 px-6 py-5 bg-white">
+          <span class="text-2xl md:text-3xl font-medium">{value}</span>
+          <span class="text-sm text-foreground/50">{label}</span>
+        </div>
+      ))
+    }
+  </div>
 </header>

@@ -30,7 +30,7 @@ const { headings } = Astro.props;
   <ul class="mt-4 text-sm">
     {
       headings.map(({ depth, slug, text }) => (
-        <li class="hover:text-primary-800 dark:hover:text-primary-700 line-clamp-1">
+        <li class="hover:text-primary-700 line-clamp-1 transition-colors">
           <a
             href={`#${slug}`}
             aria-label={`Scroll to section: ${text}`}

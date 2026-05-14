@@ -12,19 +12,22 @@ const { slug, name, class: className } = Astro.props;
   href={slug}
   class:list={[
     className,
-    "group relative flex w-full flex-1 select-none items-center justify-between gap-6 rounded-2xl border border-foreground/10 bg-foreground/5 px-5 py-4 text-balanced transition-all duration-300 hover:border-foreground/20 hover:bg-foreground/10 hover:shadow-lg hover:shadow-foreground/5 active:scale-[0.98] md:p-6",
+    "group relative flex w-full flex-1 select-none items-center justify-between gap-6 rounded-2xl border border-neutral-200 bg-neutral-50 px-5 py-4 text-balanced transition-all duration-300 hover:border-primary hover:bg-primary hover:shadow-lg active:scale-[0.98] md:p-6",
   ]}
 >
   <div class="flex flex-col gap-2">
     <span
-      class="line-clamp-2 w-full text-pretty font-semibold text-md transition-colors group-hover:text-primary md:text-lg"
+      class="line-clamp-2 w-full text-pretty font-semibold text-md transition-colors group-hover:text-foreground md:text-lg"
       >{name}</span
     >
-    <span class="w-full text-sm text-foreground/60"><slot /></span>
+    <span
+      class="w-full text-sm text-foreground/60 group-hover:text-foreground/80"
+      ><slot /></span
+    >
   </div>
 
   <div
-    class="transition-all duration-300 group-hover:translate-x-1 text-foreground/40 group-hover:text-primary"
+    class="transition-all duration-300 group-hover:translate-x-1 text-foreground/40 group-hover:text-foreground"
   >
     <svg
       stroke="currentColor"

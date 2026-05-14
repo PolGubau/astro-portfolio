@@ -4,7 +4,7 @@ const subpath = pathname.match(/[^\/]+/g);
 
 const navItems = [
   { path: "/", name: "Home" },
-  { path: "/projects", name: "Work" },
+  { path: "/projects", name: "Portfolio" },
   { path: "/ui", name: "Experiments" },
   { path: "/blog", name: "Writing" },
 ];
@@ -15,7 +15,7 @@ const navItems = [
   style="z-index: 999;"
 >
   <nav
-    class="mx-auto flex max-w-md items-center justify-around border-t border-foreground/10 bg-background/95 px-2 py-3 backdrop-blur-xl"
+    class="mx-auto flex max-w-md items-center justify-around border-t border-neutral-200 bg-white px-4 py-4 backdrop-blur-xl"
   >
     {
       navItems.map(({ path, name }) => {
@@ -25,17 +25,17 @@ const navItems = [
             href={path}
             tabindex={isActive ? -1 : undefined}
             class:list={[
-              "flex flex-1 flex-col items-center gap-1 rounded-xl px-3 py-2 transition-all duration-200 active:scale-95",
+              "flex flex-col items-center gap-1.5 transition-colors duration-200",
               {
-                "text-foreground": isActive,
+                "text-foreground font-medium": isActive,
               },
               {
-                "text-foreground/50 active:text-foreground/70": !isActive,
+                "text-foreground/40": !isActive,
               },
             ]}
           >
-            <span class="text-xs font-medium">{name}</span>
-            {isActive && <span class="h-1 w-1 rounded-full bg-foreground" />}
+            <span class="text-xs">{name}</span>
+            {isActive && <span class="h-0.5 w-4 rounded-full bg-foreground" />}
           </a>
         );
       })

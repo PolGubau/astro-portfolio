@@ -1,76 +1,103 @@
 ---
-import BlogLink from "../components/BlogLink.astro";
-import ThreePhones from "../components/home/ThreePhones.astro";
+import { Image } from "astro:assets";
 import Header from "../components/Layout/header/header.astro";
 import ProjectsList from "../components/Projects/ProjectList/ProjectsList.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import { getProjects } from "../lib/utils";
-
-import { Image } from "astro:assets";
-import coiae from "../assets/media/other/coiae.webp";
 import exampleAnimated from "../assets/media/other/example-animated.webp";
+import examplePortfolio from "../assets/media/other/example-portfolio.webp";
 import exampleBlog from "../assets/media/other/example-codedByPol.webp";
 import exampleFlags from "../assets/media/other/example-flags.webp";
-import examplePortfolio from "../assets/media/other/example-portfolio.webp";
-import gymZ from "../assets/media/other/gymZ.webp";
-import santJordi from "../assets/media/other/santJordi.webp";
 import "../styles/cards.css";
 
-const imagesPhones = [coiae, gymZ, santJordi];
-const firstProjects = getProjects(4);
+const OSS_IDS = ["polui", "animated", "flags", "fuzzy", "utils", "wisemark"];
+
+const allProjects = getProjects();
+const workProjects = allProjects
+  .filter((p) => !OSS_IDS.includes(p.id))
+  .slice(0, 6);
+const ossProjects = allProjects.filter((p) => OSS_IDS.includes(p.id));
 ---
 
 <MainLayout>
   <section>
     <Header />
-    <main class="flex w-full flex-1 flex-col gap-8">
-      <section
-        class="flex flex-col gap-5 motion-preset-slide-up motion-delay-[3200ms]"
-      >
-        <hgroup class="balance mt-16 flex flex-col gap-5 font-medium text-3xl">
-          <p>🎨👨‍💻</p>
-          <h2>Pixel perfectionist, even though I work with vectors</h2>
-        </hgroup>
-
-        <p class="max-w-xl">
-          My roots are in arts and design. My passion is in technology and my
-          goal is to combine both in digital products that are <strong
-            >beautiful</strong
-          > and <strong>functional</strong>.
-        </p>
+    <main class="flex w-full flex-1 flex-col gap-20 md:gap-32">
+      <!-- Work -->
+      <section class="flex flex-col gap-12">
+        <div class="flex items-baseline justify-between gap-4">
+          <h2 class="text-3xl md:text-4xl font-medium">Selected work</h2>
+          <a
+            href="/projects"
+            class="text-sm text-foreground/50 hover:text-foreground transition-colors shrink-0"
+          >
+            View all →
+          </a>
+        </div>
+        <ProjectsList projects={workProjects} />
       </section>
-      <ThreePhones images={imagesPhones} />
 
-      <hgroup class="balance mt-16 flex flex-col gap-5 font-medium text-3xl">
-        <p>🧪🥼</p>
-        <h2>Discover my latest work and projects</h2>
-      </hgroup>
+      <!-- Open Source -->
+      <section class="flex flex-col gap-12">
+        <div class="flex items-baseline justify-between gap-4">
+          <h2 class="text-3xl md:text-4xl font-medium">Open Source</h2>
+          <a
+            href="https://github.com/PolGubau"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-foreground/50 hover:text-foreground transition-colors shrink-0"
+          >
+            GitHub →
+          </a>
+        </div>
+        <ProjectsList projects={ossProjects} />
+      </section>
 
-      <ProjectsList projects={firstProjects} />
-
-      <BlogLink slug="/projects" name="See all my projects" />
-
-      <div
-        class="balance mt-16 flex flex-col gap-5 font-medium text-3xl motion-preset-slide-up motion-delay-[2500ms]"
+      <!-- Doscientos CTA -->
+      <section
+        class="flex flex-col gap-6 p-8 md:p-12 rounded-2xl border border-neutral-200 bg-neutral-50"
       >
-        <p>🥑🚀</p>
-        <h2>I&apos;m a performance and accessibility advocate</h2>
-      </div>
-      <p class="max-w-xl">
-        I&apos;m a big fan of <strong
-          >progressive enhancement and graceful degradation</strong
-        > and I always try to make my websites as accessible as possible♿.
-      </p>
-      <p class="max-w-xl">
-        Reaching a professional level in both <strong>SEO🔍</strong> and <strong
-          >performance⚡</strong
-        > is the key for a successful digital project.
-      </p>
-      <section id="cards">
-        <ul class="sticked-cards">
+        <div class="flex flex-col gap-4">
+          <h2 class="text-2xl md:text-3xl font-medium">
+            Need custom software?
+          </h2>
+          <p class="text-lg text-foreground/60 max-w-2xl">
+            I co-founded <strong>Doscientos</strong>, a dev agency building web
+            and mobile applications for businesses.
+          </p>
+        </div>
+        <div>
+          <a
+            href="https://doscientos.studio"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-foreground text-background font-medium hover:shadow-lg transition-all"
+          >
+            Visit Doscientos
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- Performance Cards -->
+      <section id="cards" class="flex flex-col gap-8">
+        <h2 class="text-3xl md:text-4xl font-medium">Performance</h2>
+        <ul class="sticked-cards" id="sticked-cards">
           <li class="card" id="card_1">
             <Image
-              alt="A preview of the performance stats in my technical blog"
+              alt="Performance stats showing 100/100 scores"
               src={exampleAnimated}
               decoding="async"
               loading="lazy"
@@ -80,7 +107,7 @@ const firstProjects = getProjects(4);
           </li>
           <li class="card" id="card_2">
             <Image
-              alt="A preview of the performance stats in my portfolio"
+              alt="Lighthouse performance report"
               src={examplePortfolio}
               decoding="async"
               loading="lazy"
@@ -90,7 +117,7 @@ const firstProjects = getProjects(4);
           </li>
           <li class="card" id="card_3">
             <Image
-              alt="A preview of the performance stats in my technical blog"
+              alt="Technical blog performance metrics"
               src={exampleBlog}
               decoding="async"
               loading="lazy"
@@ -100,7 +127,7 @@ const firstProjects = getProjects(4);
           </li>
           <li id="card_4" class="card">
             <Image
-              alt="A preview of the performance stats in my technical blog"
+              alt="Speed and optimization results"
               src={exampleFlags}
               decoding="async"
               loading="lazy"
@@ -110,8 +137,6 @@ const firstProjects = getProjects(4);
           </li>
         </ul>
       </section>
-
-      <small>My lastest websites are good examples of this</small>
     </main>
   </section>
 </MainLayout>

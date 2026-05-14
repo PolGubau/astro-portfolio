@@ -49,14 +49,8 @@
 }
 :root {
   scroll-behavior: smooth;
-  --background: var(--color-secondary-50);
+  --background: #ffffff;
   --foreground: var(--color-secondary-950);
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--color-secondary-950);
-    --foreground: var(--color-secondary-50);
-  }
 }
 @theme inline {
   --color-primary: var(--color-primary-500);
@@ -162,11 +156,11 @@ main {
     visibility: visible;
   }
   pre {
-    @apply border border-neutral-800 !bg-neutral-900 overflow-x-auto whitespace-pre rounded-lg px-3 py-2 max-w-[90vw];
+    @apply border border-neutral-200 !bg-neutral-50 overflow-x-auto whitespace-pre rounded-lg px-3 py-2 max-w-[90vw];
   }
   
   code {
-    @apply text-secondary-800 dark:text-secondary-200 font-mono px-1 py-0.5 border border-neutral-100 dark:border-secondary-800 rounded-lg dark:bg-neutral-900 !max-w-sm !overflow-x-auto;
+    @apply text-secondary-800 font-mono px-1 py-0.5 border border-neutral-200 rounded-lg bg-neutral-50 !max-w-sm !overflow-x-auto;
     border: initial;
     line-height: 1.5;
     white-space: pre;
@@ -201,7 +195,7 @@ main {
 
 code[class*="language-"],
 pre[class*="language-"] {
-  @apply text-neutral-50;
+  @apply text-neutral-800;
 }
 
 pre::-webkit-scrollbar {
@@ -255,7 +249,7 @@ table {
   @apply rounded-md bg-secondary-500/10 p-1;
 }
 [data-rehype-pretty-code-title] {
-  @apply px-4 py-3 font-mono text-xs font-medium border rounded-t-lg text-neutral-200 border-[#333333] bg-[#1c1c1c];
+  @apply px-4 py-3 font-mono text-xs font-medium border rounded-t-lg text-neutral-700 border-neutral-200 bg-neutral-100;
 }
 [data-rehype-pretty-code-title] + pre {
   @apply mt-0 rounded-t-none border-t-0;

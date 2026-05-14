@@ -1,0 +1,175 @@
+---
+title: "Les Santes"
+startedAt: "2026-01-10"
+category: "app"
+color: "#C4341C"
+cover: "../../assets/media/projects/les-santes/landing-thumbnail.avif"
+available: true
+oss: true
+link: https://lessantes.polgubau.com
+tech:
+  - React Native
+  - Expo
+  - Next.js
+  - Supabase
+  - TypeScript
+  - Tailwind CSS
+  - MapLibre
+
+summary: "Unofficial festival guide app for Les Santes — Mataró's biggest yearly festival. Real-time event map, full programme, and offline support. Built solo as a public-good, open-source project."
+---
+
+import { Image } from "astro:assets";
+
+import logo from "../../assets/media/projects/les-santes/icon.svg";
+import landingThumbnail from "../../assets/media/projects/les-santes/landing-thumbnail.avif";
+import landingScreens from "../../assets/media/projects/les-santes/landing-screens.avif";
+import landingPosters from "../../assets/media/projects/les-santes/landing-posters.avif";
+import landing404 from "../../assets/media/projects/les-santes/landing-404.avif";
+import appAgenda from "../../assets/media/projects/les-santes/app-agenda.avif";
+import appAgendaFavs from "../../assets/media/projects/les-santes/app-agenda-favs.avif";
+import appMapa from "../../assets/media/projects/les-santes/app-mapa.avif";
+import appCartells from "../../assets/media/projects/les-santes/app-cartells.avif";
+import appPostals from "../../assets/media/projects/les-santes/app-postals.avif";
+import appRecursos from "../../assets/media/projects/les-santes/app-recursos.avif";
+import adminHome from "../../assets/media/projects/les-santes/admin-home.avif";
+import adminEditEvent from "../../assets/media/projects/les-santes/admin-edit-event.avif";
+
+<div class="not-prose flex items-center gap-4 mb-2">
+  <Image src={logo} alt="Les Santes logo" height={56} class="rounded-xl" />
+  <div>
+    <h1 class="text-2xl font-bold leading-tight">Les Santes</h1>
+    <p class="text-sm text-neutral-500">Mataró's biggest festival — now in your pocket</p>
+  </div>
+</div>
+
+Every summer, Mataró celebrates **Les Santes** — six days of concerts, traditional parades, fire runs, and open-air events across the whole city. Hundreds of things happen simultaneously, spread across dozens of locations.
+
+The problem? The only official programme was a printed PDF.
+
+So I built the app myself.
+
+<Image src={landingThumbnail} alt="Les Santes landing page" class="show-animation rounded-2xl my-6" />
+
+---
+
+## Why this project exists
+
+I live near Mataró and go to Les Santes every year. Each time I found myself — and everyone around me — pulling out their phone to Google *"what time is the correfoc"* or *"where are the Gegants right now"*. Nobody had a clear answer.
+
+The festival deserves better tooling. So I reached out to the city council, built the app, and published everything as **open source under MIT**.
+
+> A solo, public-good project. No client, no budget, no team. Just a problem worth solving.
+
+---
+
+## The app
+
+The mobile app (React Native + Expo) is designed around one central question: **what's happening right now?**
+
+### 🕐 Ara (Now)
+
+The home tab shows a live card with the current event and a strip of upcoming ones. No configuration needed — open the app, know what's on.
+
+### 🗺️ Mapa (Map)
+
+An interactive map powered by MapLibre. Static events appear as pins; moving parades (cercaviles, gegants) show animated route polylines with their real-time estimated position — calculated by interpolating elapsed time along the planned route.
+
+<Image src={appMapa} alt="App map with event routes" class="show-animation rounded-2xl my-6" />
+
+### 📅 Agenda
+
+The full programme, filterable by day, category (family / night / traditional / cultural), type of event, or proximity. Plus a favourites system so you never miss what you care about.
+
+<div class="flex flex-wrap gap-4 my-6">
+  <Image src={appAgenda} alt="Full agenda view" height={600} class="show-animation rounded-2xl" />
+  <Image src={appAgendaFavs} alt="Favourites filter in agenda" height={600} class="show-animation rounded-2xl" />
+</div>
+
+### 🖼️ Recursos (Archive)
+
+A scrollable archive of every official festival poster since 1892, plus a swipeable lightbox of the Gegants (giant folk figures) postcards.
+
+<div class="flex flex-wrap gap-4 my-6">
+  <Image src={appCartells} alt="Poster archive" height={600} class="show-animation rounded-2xl" />
+  <Image src={appPostals} alt="Gegants postcard lightbox" height={600} class="show-animation rounded-2xl" />
+  <Image src={appRecursos} alt="Resources tab" height={600} class="show-animation rounded-2xl" />
+</div>
+
+---
+
+## Key design choices
+
+These are the decisions that made the biggest difference — and the ones I'm most proud of.
+
+### No login. No accounts. Ever.
+
+Festival attendees don't want to register to check what time a parade starts. The app is 100% anonymous — just open it and go. This also simplified App Store and Play Store approval dramatically.
+
+### Offline-first
+
+Festival venues have terrible mobile signal. The app caches all event data locally with a timestamp, so it keeps working even without internet. A banner shows the cache age when offline.
+
+### Catalan as the primary language
+
+Les Santes is a Catalan cultural festival. The app speaks Catalan first, with English as fallback. Not an afterthought — it was the first decision made.
+
+### AVIF everywhere
+
+The full poster archive (from 1892 to today) would be impractical at original quality. Converting to AVIF brought a ~97% size reduction — from 5.2 MB of PNGs down to ~146 KB for all app screenshots.
+
+### MapLibre in a WebView
+
+Instead of pulling in Google Maps or Apple Maps native SDKs (with their privacy implications and setup overhead), the map runs as a MapLibre GL JS instance inside a WebView. Custom MapTiler tiles, full control, no tracking.
+
+---
+
+## The landing page
+
+A Next.js 15 marketing site that converts visitors into app downloads — and doubles as a full admin panel for the festival organiser.
+
+<Image src={landingScreens} alt="Landing page app screens section" class="show-animation rounded-2xl my-6" />
+
+The landing includes an infinite-scroll carousel of historical festival posters and a live programme excerpt — both driven by the same Supabase backend the app uses.
+
+<Image src={landingPosters} alt="Poster marquee on landing page" class="show-animation rounded-2xl my-6" />
+
+Even the 404 page got some love:
+
+<Image src={landing404} alt="Custom 404 page" class="show-animation rounded-2xl my-6" />
+
+---
+
+## The admin panel
+
+A password-protected back-office embedded in the landing. The festival organiser can create, edit, and cancel events — with real-time announcements pushed to all app users.
+
+<Image src={adminHome} alt="Admin panel - event list" class="show-animation rounded-2xl my-6" />
+
+Event creation handles both fixed-location events and moving parades (uploaded as GeoJSON routes from geojson.io). Cancellations require a reason, shown to users inside the app.
+
+<Image src={adminEditEvent} alt="Admin panel - edit event form" class="show-animation rounded-2xl my-6" />
+
+---
+
+## Tech at a glance
+
+| Layer | Stack |
+|---|---|
+| **Mobile app** | React Native, Expo SDK 54, Expo Router |
+| **State & cache** | Zustand, AsyncStorage |
+| **Map** | MapLibre GL JS in a WebView, MapTiler tiles |
+| **Landing** | Next.js 15, Tailwind CSS v4, shadcn/ui |
+| **Backend** | Supabase (PostgreSQL, Auth, Realtime) |
+| **i18n** | Catalan primary, English fallback |
+| **Images** | AVIF for all media |
+
+---
+
+## Status
+
+The festival runs **July 24–29, 2026**. The app is in active development and I'm currently working on official recognition from the Ajuntament de Mataró.
+
+The full codebase is open source — MIT licence with attribution.
+
+🌐 **[lessantes.polgubau.com](https://lessantes.polgubau.com)**

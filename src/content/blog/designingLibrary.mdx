@@ -1,7 +1,7 @@
 ---
-title: "How to Build a UI Library: Lessons from Creating Pol-UI with React 🍬"
+title: "What I learned building a UI library from scratch (the hard way)"
 publishedAt: "2024-04-05"
-summary: "Complete guide to building a React UI component library. Learn architecture decisions, component API design, TypeScript setup, testing strategies, and documentation best practices from real-world experience."
+summary: "I spent 1000+ hours building Pol-UI for my thesis. It got a 10/10 and a distinction. Here's what actually made it hard — and what I'd do differently."
 tags:
   - UI Library
   - Design
@@ -9,42 +9,70 @@ tags:
   - React
 ---
 
- 
-After creating Pol-ui, I have some conclusions to extract strategies for developing a UI Library. This project has been quite a journey, starting from just an idea and ending up with a complete library that's ready for people to use. Along the way, I've learned a lot and picked up some important skills.
+import { Image } from 'astro:assets';
+import polui from "../projects/img/pol-ui.webp";
 
-## 1. Define your goals
+My Bachelor's thesis was a React UI library. 150+ components, a documentation site, Storybook, unit tests, and a 100-page written paper — all while working full time at Mesalvo.
 
-Before you start developing a UI Library, it's important to define your goals. What do you want to achieve with this library? Who is your target audience? What problems are you trying to solve? Having a clear vision of what you want to accomplish will help you stay focused and make better decisions throughout the development process.
+It got a 10/10 and a special distinction from the university. It also taught me more than any job ever has.
 
-For Pol-ui, the main goals were to create a fully complete UI Library that could be used by developers to build beautiful and consistent user interfaces and the complete customization of the components. I wanted to make it easy for developers to use the library and to provide them with all the tools they need to create great-looking interfaces.
+<Image src={polui} alt="Pol-UI documentation site" class="rounded-xl show-animation" width={800} height={500} />
 
-Before touching any code, spend some time thinking about what you want to achieve with your UI Library and write down your goals. This will help you stay on track and make sure that you're building something that's actually useful.
+Here's what I actually learned — not the theoretical stuff, the things that cost me real time.
 
-## 2. Plan your components carefully
+## The API is the product
 
-Once you have a clear vision of what you want to achieve with your UI Library, it's time to start planning your components. Think about the different types of components you want to include in your library and how they will work together. Consider the design patterns you want to use and how you can make your components as flexible and reusable as possible.
+I spent the first month building components. Then I showed them to a friend and watched him struggle to figure out how to use a simple `Button`.
 
-To make Pol-ui as flexible as possible, I decided to use a modular approach to component design. Each component is self-contained and can be easily customized using props. I also made sure to follow best practices for component design, such as using composition over inheritance and keeping components as simple as possible.
+That's when I understood: **the component API is more important than the component implementation.**
 
-When planning your components, think about how they will be used in real-world applications and how you can make them as easy to use as possible. Try to consider all the different use cases and edge cases that might come up and make sure that your components are flexible enough to handle them.
+A `Button` with 20 props is harder to use than a `Button` with 3, even if the 20-prop version is technically more powerful. Complexity hides in interfaces.
 
-You can visit common websites so you can learn about the most used components and how they are used. This will help you to have a better idea of what components you should include in your library.
+I rebuilt the API three times before it felt obvious. Each rebuild made the code more complex internally and simpler externally. That's the right tradeoff.
 
-After the planning phase, use Figma or Sketch to design your components. This will help you visualize how they will look and how they will work together.
+```tsx
+// Version 1 — too much
+<Button variant="filled" size="md" rounded="full" shadow="lg" ripple={true}>
 
-## 3. Write clear documentation
+// Version 3 — just right
+<Button intent="primary">
+```
 
-One of the most important aspects of developing a UI Library is writing clear documentation. Your library could be the best in the world, but if people don't know how to use it, it won't be very useful. Make sure to document every component in your library and provide examples of how to use them.
+## Tokens first, components second
 
-For Pol-ui, I created a [dedicated website](https://ui.polgubau.com) where developers can find all the information they need to get started with the library. I included detailed documentation for each component, along with examples of how to use them in real-world applications. I also provided a getting started guide and a FAQ section to help developers troubleshoot common issues.
+I made the mistake of building components before defining design tokens. Halfway through, I needed to change the primary color across 80 components.
 
-When writing documentation for your UI Library, try to put yourself in the shoes of someone who has never used the library before. Think about what questions they might have and what information they need to get started. Make sure to include plenty of examples and code snippets to help them understand how to use your components.
+It took three days.
 
-## 4. Test your components thoroughly
+After that, I built a proper token system — spacing, colors, radii, shadows — and ran everything through CSS variables. Changing the primary color after that took 30 seconds.
 
-Before releasing your UI Library to the public, it's important to test your components thoroughly. Make sure to test them in a variety of browsers and devices to ensure that they work correctly in all situations. You should also test your components with different data and configurations to make sure that they are flexible enough to handle any use case. Also consider using tools like Storybook to test your components in isolation as I did with Pol-ui.
-Vitest or Jest are also good options to test the logicality of your components, and you can also use tools like Axe to test the accessibility of your components. Try to reach a good coverage percentage (>80%) to ensure that your components are working as expected.
+Design tokens aren't just for big teams. They're the foundation that makes everything else maintainable.
 
-## 5. Get feedback from the community
+## Documentation or it doesn't exist
 
-Finally, once you've developed your UI Library, it's important to get feedback from the community. Share your library with other developers and ask for their opinions. Listen to their feedback and use it to improve your library. You can also consider creating a GitHub repository for your library and accepting contributions from the community.
+Pol-UI has a full documentation site at [ui.polgubau.com](https://ui.polgubau.com). Building it took almost as long as building the library itself.
+
+People don't read README files. They open the docs site, scan for an example close to their use case, copy it, and move on. So that's what the docs need to support: quick scanning, real examples, and code you can copy without modification.
+
+Every component page has: a live demo, the simplest possible usage, all prop variations, and accessibility notes. In that order.
+
+## Testing is not optional
+
+I skipped tests for the first two months. Then I refactored the modal component and broke four other components that depended on it without realizing.
+
+I added Vitest + Testing Library after that. Writing tests for UI is annoying at first, but the feedback loop becomes invaluable once the library grows past ~30 components.
+
+For accessibility specifically, I used Axe — it catches things you'd never find manually, especially focus management and ARIA attribute misuse.
+
+## The version number is a promise
+
+Every time I published a patch and something broke, I lost a bit of the trust I was building. Semantic versioning isn't bureaucracy — it's a contract with your users.
+
+Now I follow it strictly: bugfixes in patch, new features in minor, breaking changes in major. And breaking changes have migration guides.
+
+---
+
+Building a library is one of the best learning exercises I can recommend. It forces you to think from the consumer's perspective, which makes you a better developer everywhere else too.
+
+Pol-UI is [open source on GitHub](https://github.com/PolGubau/pol-ui) and live at [ui.polgubau.com](https://ui.polgubau.com) if you want to see how it turned out.
+

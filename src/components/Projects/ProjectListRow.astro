@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import type { ProjectMetadata } from "../../lib/utils";
+
+interface Props {
+  projects: ProjectMetadata[];
+}
+
+const { projects } = Astro.props;
+---
+
+<ul class="flex flex-col divide-y divide-neutral-200">
+  {
+    projects.map((project) => {
+      const { data, id: slug } = project;
+      const { title, summary, color, cover, tech, endedAt, startedAt } = data;
+      const year = (endedAt ?? startedAt).getFullYear();
+      const tags = (tech ?? []).slice(0, 3);
+
+      return (
+        <li>
+          <a
+            href={`/projects/${slug}`}
+            class="group -mx-3 flex items-center gap-6 rounded-xl px-3 py-5 transition-colors hover:bg-ink/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20 focus-visible:ring-offset-2"
+          >
+            <!-- Thumbnail -->
+            <div
+              class="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl md:h-16 md:w-16"
+              style={{ backgroundColor: color }}
+            >
+              <Image
+                src={cover}
+                alt={title}
+                width={64}
+                height={52}
+                loading="lazy"
+                class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] rounded-t-md object-cover object-top shadow-[0_-4px_12px_rgba(0,0,0,0.15)] transition-transform duration-300 group-hover:-translate-y-0.5"
+              />
+            </div>
+
+            <!-- Info -->
+            <div class="flex min-w-0 flex-1 flex-col gap-1">
+              <h3 class="truncate font-medium leading-tight transition-transform group-hover:translate-x-0.5">
+                {title}
+              </h3>
+              <p class="line-clamp-1 text-sm text-ink/50">{summary}</p>
+            </div>
+
+            <!-- Meta -->
+            <div class="hidden shrink-0 items-center gap-3 md:flex">
+              {tags.length > 0 && (
+                <div class="flex items-center gap-1.5">
+                  {tags.map((tag, i) => (
+                    <>
+                      {i > 0 && <span class="text-ink/20">·</span>}
+                      <span class="text-xs text-ink/40">{tag}</span>
+                    </>
+                  ))}
+                </div>
+              )}
+              <span class="text-xs tabular-nums text-ink/30">{year}</span>
+              <Icon
+                name="lucide:arrow-right"
+                aria-hidden="true"
+                class="w-3.5 h-3.5 text-ink/30 opacity-0 transition-opacity group-hover:opacity-100"
+              />
+            </div>
+
+            <!-- Mobile arrow -->
+            <Icon
+              name="lucide:arrow-right"
+              aria-hidden="true"
+              class="shrink-0 w-3.5 h-3.5 text-ink/30 opacity-0 transition-opacity group-hover:opacity-100 md:hidden"
+            />
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>

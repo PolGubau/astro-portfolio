@@ -9,9 +9,8 @@ const { link, isLast, color, label } = Astro.props;
 ---
 
 <a
-  title="Link to Github Source"
+  title={label}
   href={link}
-  href-lang="en-us"
   class:list={[
     "flex h-full w-fit animate-expand-vertically items-center gap-2 truncate px-3 py-2 text-black text-xl transition-all hover:brightness-80",
     { "rounded-br-xl": isLast },

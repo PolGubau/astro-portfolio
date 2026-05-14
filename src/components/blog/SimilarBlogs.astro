@@ -1,6 +1,7 @@
 ---
 import type { BlogMetadata } from "../../lib/utils";
 import { blogs, getReadingTime } from "../../lib/utils";
+import ClockIcon from "../icons/ClockIcon.astro";
 
 type Props = {
   blog: BlogMetadata;
@@ -42,9 +43,7 @@ const similarPosts = similarTechProjects(blog);
 {
   similarPosts.length > 0 && (
     <section class="mt-16">
-      <h2 class="font-semibold text-2xl text-neutral-900 dark:text-neutral-100 mb-6">
-        Related Articles
-      </h2>
+      <h2 class="font-semibold text-2xl text-ink mb-6">Related Articles</h2>
       <div class="gap-4 grid md:grid-cols-2 lg:grid-cols-3">
         {similarPosts.map((post) => {
           const readingTime = getReadingTime(post.body ?? "");
@@ -56,17 +55,17 @@ const similarPosts = similarTechProjects(blog);
               href={`/blog/${post.id}`}
               class="group flex flex-col gap-3 rounded-xl border border-neutral-200 bg-neutral-50 p-4 transition-all hover:border-neutral-300 hover:bg-neutral-100 hover:scale-[1.01]"
             >
-              <h3 class="font-semibold text-md group-hover:text-primary-700 transition-colors line-clamp-2">
+              <h3 class="font-semibold text-md transition-colors line-clamp-2 group-hover:text-ink">
                 {post.data.title}
               </h3>
-              <p class="text-sm text-neutral-600 line-clamp-2">
+              <p class="text-sm text-ink/60 line-clamp-2">
                 {post.data.summary}
               </p>
 
               {commonTags.length > 0 && (
                 <div class="flex flex-wrap gap-1.5 mt-auto">
                   {commonTags.slice(0, 2).map((tag) => (
-                    <span class="px-2 py-0.5 rounded-full bg-primary/20 text-neutral-700 text-xs font-medium">
+                    <span class="px-2 py-0.5 rounded-full bg-ink/10 text-ink/70 text-xs font-medium">
                       {tag}
                     </span>
                   ))}
@@ -74,20 +73,8 @@ const similarPosts = similarTechProjects(blog);
               )}
 
               {readingTime && (
-                <div class="flex items-center gap-1 text-xs text-neutral-500">
-                  <svg
-                    class="w-3 h-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                <div class="flex items-center gap-1 text-xs text-ink/40">
+                  <ClockIcon width={12} height={12} />
                   {readingTime} min read
                 </div>
               )}

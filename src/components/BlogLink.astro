@@ -1,4 +1,6 @@
 ---
+import RightArrowIcon from "./icons/RightArrowIcon.astro";
+
 type Props = {
   slug: string;
   name: string;
@@ -17,31 +19,17 @@ const { slug, name, class: className } = Astro.props;
 >
   <div class="flex flex-col gap-2">
     <span
-      class="line-clamp-2 w-full text-pretty font-semibold text-md transition-colors group-hover:text-foreground md:text-lg"
+      class="line-clamp-2 w-full text-pretty font-semibold text-md transition-colors group-hover:text-ink md:text-lg"
       >{name}</span
     >
-    <span
-      class="w-full text-sm text-foreground/60 group-hover:text-foreground/80"
+    <span class="w-full text-sm text-ink/60 group-hover:text-ink/80"
       ><slot /></span
     >
   </div>
 
   <div
-    class="transition-all duration-300 group-hover:translate-x-1 text-foreground/40 group-hover:text-foreground"
+    class="text-ink/40 transition-all duration-300 group-hover:translate-x-1 group-hover:text-ink"
   >
-    <svg
-      stroke="currentColor"
-      fill="currentColor"
-      stroke-width="0"
-      viewBox="0 0 448 512"
-      height="1.25em"
-      width="1.25em"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <title>Arrow Icon</title>
-      <path
-        d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
-      ></path>
-    </svg>
+    <RightArrowIcon width={20} height={20} />
   </div>
 </a>

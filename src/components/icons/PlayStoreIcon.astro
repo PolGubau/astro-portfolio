@@ -1,31 +1,15 @@
 ---
+import { Icon } from "astro-icon/components";
 interface Props {
-  width?: number;
-  height?: number;
   class?: string;
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  [key: string]: any; // Para otros atributos dinámicos
+  [key: string]: any;
 }
-
-const { width = 16, height = 16, class: className, ...rest } = Astro.props;
+const { class: className, ...rest } = Astro.props;
 ---
 
-<svg
-  width={width}
+<Icon
+  name="simple-icons:googleplay"
+  class={className}
+  aria-label="Google Play"
   {...rest}
-  height={height}
-  viewBox="0 0 24 24"
-  xmlns="http://www.w3.org/2000/svg"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="1.7"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <title>Play Store Icon</title>
-  <path
-    d="M4 3.71v16.58a.7 .7 0 0 0 1.05 .606l14.622 -8.42a.55 .55 0 0 0 0 -.953l-14.622 -8.419a.7 .7 0 0 0 -1.05 .607z"
-  ></path>
-  <path d="M15 9l-10.5 11.5"></path>
-  <path d="M4.5 3.5l10.5 11.5"></path>
-</svg>
+/>

@@ -49,21 +49,21 @@
 }
 :root {
   scroll-behavior: smooth;
-  --background: #ffffff;
-  --foreground: var(--color-secondary-950);
+  --background: #f6f7f9;
+  --ink: var(--color-secondary-950);
 }
 @theme inline {
   --color-primary: var(--color-primary-500);
   --color-secondary: var(--color-secondary-500);
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
 }
 body {
-  @apply bg-background text-foreground antialiased font-main;
+  @apply bg-background text-ink antialiased font-main;
 }
 
 *::selection {
-  @apply bg-foreground/80 text-background backdrop-blur-md;
+  @apply bg-ink/80 text-background backdrop-blur-md;
 }
 @keyframes grow-progress {
   from {
@@ -120,10 +120,10 @@ main {
 .prose {
   a {
     transition: all;
-    @apply decoration-foreground/50 underline-offset-2 decoration-[0.1em];
+    @apply decoration-ink/50 underline-offset-2 decoration-[0.1em];
   }
   details{
-    @apply border-l outline-0 mt-10 border-foreground/20 pl-4 max-w-full overflow-auto;
+    @apply border-l outline-0 mt-10 border-ink/20 pl-4 max-w-full overflow-auto;
     summary{
       @apply cursor-pointer font-semibold text-lg mb-2 outline-0;
     }
@@ -166,9 +166,22 @@ main {
     white-space: pre;
   }
   
-  img {
-    /* Don't apply styles to next/image */
-    @apply m-0;
+  img,
+  video {
+    @apply m-0 rounded-xl border border-neutral-200 shadow-sm;
+  }
+
+  figure {
+    @apply my-6 flex flex-col gap-2;
+
+    img,
+    video {
+      @apply w-full;
+    }
+
+    figcaption {
+      @apply text-sm text-ink/50 text-center;
+    }
   }
   h1 {
      @apply font-bold font-title text-xl md:text-3xl;
@@ -276,7 +289,7 @@ strong {
 
 .show-animation {
   view-timeline: --image;
-  @apply will-change-transform rounded-xl;
+  @apply will-change-transform;
   view-timeline-axis: block;
   animation-timeline: --image;
   animation-name: show;

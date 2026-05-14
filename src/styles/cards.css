@@ -3,7 +3,14 @@
 :root {
   --card-height: 40vw;
   --card-margin: 2vw;
-  --card-top-offset: 4em;
+  --card-top-offset: 6em;
+}
+
+#cards-header {
+  position: sticky;
+  top: 0;
+  padding-block: 1rem;
+  background-color: var(--color-background, white);
 }
 
 #sticked-cards {
@@ -48,6 +55,8 @@
   object-fit: cover;
   object-position: top;
   overflow: hidden;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.07);
   --index0: calc(var(--index) - 1); /* 0-based index */
   --reverse-index: calc(var(--numCards) - var(--index0)); /* reverse index */
   --reverse-index0: calc(var(--reverse-index) - 1); /* 0-based reverse index */

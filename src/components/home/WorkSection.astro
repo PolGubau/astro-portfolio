@@ -1,0 +1,28 @@
+---
+import { Icon } from "astro-icon/components";
+import ProjectListRow from "../Projects/ProjectListRow.astro";
+import type { ProjectMetadata } from "../../lib/utils";
+
+interface Props {
+  projects: ProjectMetadata[];
+}
+
+const { projects } = Astro.props;
+---
+
+<section class="flex flex-col gap-12">
+  <div class="flex items-baseline justify-between gap-4">
+    <h2 class="text-3xl md:text-4xl font-medium">Selected work</h2>
+    <a
+      href="/projects"
+      class="inline-flex items-center gap-1 text-sm text-ink/50 hover:text-ink transition-colors shrink-0"
+    >
+      View all <Icon
+        name="lucide:arrow-right"
+        class="w-3.5 h-3.5"
+        aria-hidden="true"
+      />
+    </a>
+  </div>
+  <ProjectListRow projects={projects} />
+</section>

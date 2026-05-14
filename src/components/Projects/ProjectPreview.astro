@@ -9,49 +9,56 @@ interface Props {
 
 const { project, index } = Astro.props;
 const { data, id: slug } = project;
-const { title, color, cover: src, category } = data;
+const { title, summary, color, cover: src, tech } = data;
 const isFirstLoad = index < 6;
+const tags = (tech ?? []).slice(0, 3);
 ---
 
 <div
-  class="group project-cascade relative flex h-64 cursor-pointer flex-col gap-1 overflow-hidden bg-transparent md:h-96"
+  class="group project-cascade relative flex h-64 cursor-pointer flex-col overflow-hidden md:h-96"
 >
   <a
     href={`/projects/${slug}`}
-    style={{
-      backgroundColor: color,
-    }}
     title={title}
-    class="flex h-full items-start outline-0 outline-primary transition-all duration-300 hover:brightness-120 focus-visible:outline-1 md:justify-center"
+    class="relative flex h-full flex-col items-center justify-end overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 focus-visible:ring-inset"
+    style={{ backgroundColor: color }}
   >
-    <Image
-      style={{
-        mixBlendMode: "multiply",
-      }}
-      class="pointer-events-none mt-20 h-auto w-full object-cover object-left transition-all md:h-[500px]"
-      src={src}
-      priority={isFirstLoad}
-      loading={isFirstLoad ? "eager" : "lazy"}
-      title={`Cover Image for ${title}`}
-      alt={title}
-      width={600}
-      height={330}
-    />
-    <header class="absolute top-6 left-6 z-10 mb-3 flex flex-col">
-      <h3
-        class="font-medium text-3xl leading-snug text-background/80 my-0 py-0"
-      >
-        {title}
-      </h3>
-      <!-- <ul>
-        <li>
-          <span
-            class="text-xs font-medium text-background/60 capitalize bg-background/20 text-foreground px-2 py-1 rounded-lg"
-          >
-            {category}
-          </span>
-        </li>
-      </ul> -->
+    <!-- Title -->
+    <header class="absolute top-6 left-6 z-10">
+      <h3 class="font-medium text-3xl leading-snug text-ink/80">{title}</h3>
     </header>
+
+    <!-- Screenshot -->
+    <div
+      class="relative w-[90%] transition-transform duration-500 ease-out group-hover:-translate-y-2"
+    >
+      <Image
+        src={src}
+        priority={isFirstLoad}
+        loading={isFirstLoad ? "eager" : "lazy"}
+        alt={title}
+        width={600}
+        height={380}
+        class="pointer-events-none w-full rounded-t-xl object-cover object-top shadow-[0_-8px_40px_rgba(0,0,0,0.18)]"
+      />
+    </div>
+
+    <!-- Summary footer — slides up on hover -->
+    <footer
+      class="absolute bottom-0 left-0 right-0 z-10 translate-y-full bg-gradient-to-t from-black/70 to-transparent px-6 pb-5 pt-12 transition-transform duration-300 group-hover:translate-y-0"
+    >
+      <p class="line-clamp-2 text-sm text-white/90">{summary}</p>
+      {
+        tags.length > 0 && (
+          <div class="mt-2 flex gap-2">
+            {tags.map((tag) => (
+              <span class="rounded-full bg-white/20 capitalize px-2 py-0.5 text-xs text-white/80">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )
+      }
+    </footer>
   </a>
 </div>

@@ -29,7 +29,7 @@ const {
 const videoSrc = typeof src === "string" ? src : src.src;
 ---
 
-<div class:list={["relative overflow-hidden rounded-lg", className]}>
+<div class:list={["relative overflow-hidden", className]}>
   <video
     autoplay={autoplay}
     loop={loop}
@@ -38,7 +38,7 @@ const videoSrc = typeof src === "string" ? src : src.src;
     playsinline
     width={width}
     height={height}
-    class={`w-full h-full object-cover object-center rounded-lg bg-foreground/20 mt-0 mb-0 ${videoClassName}`}
+    class={`w-full h-full object-cover object-center bg-ink/20 mt-0 mb-0 ${videoClassName}`}
     aria-label={alt}
   >
     <source src={videoSrc} type="video/webm" />

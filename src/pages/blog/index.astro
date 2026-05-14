@@ -1,53 +1,54 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import { metadata } from "../../lib/constants";
-import { getBlogs } from "../../lib/utils";
+import { formatDate, getBlogs } from "../../lib/utils";
 
 const allBlogs = getBlogs();
 
-const PAGE_TITLE = `Writing - ${metadata.title}`;
+const PAGE_TITLE = `Writing — ${metadata.name}`;
 const PAGE_DESCRIPTION =
 	"Technical writing on web development, design systems, and modern frontend.";
-
-function formatDate(d: Date) {
-	const fullDate = d.toLocaleString("en-us", {
-		month: "short",
-		day: "numeric",
-		year: "numeric",
-	});
-	return fullDate;
-}
 ---
 
 <MainLayout title={PAGE_TITLE} description={PAGE_DESCRIPTION} type="website">
 	<div class="flex flex-col gap-12">
 		<header class="flex flex-col gap-3">
 			<h1 class="text-2xl font-semibold tracking-tight">Writing</h1>
-			<p class="text-foreground/60">
+			<p class="text-ink/60">
 				Technical articles on web development and design
 			</p>
 		</header>
 
-		<ul class="flex flex-col gap-20">
+		<ul class="flex flex-col divide-y divide-neutral-200">
 			{
 				allBlogs.map((post) => (
 					<li>
 						<a
 							href={`/blog/${post.id}`}
-							class="group flex flex-col gap-2 transition-opacity hover:opacity-70"
+							class="group -mx-3 flex items-start justify-between gap-8 rounded-lg px-3 py-6 transition-colors hover:bg-ink/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20 focus-visible:ring-offset-2"
 						>
-							<h2 class="text-lg font-medium max-w-lg group-hover:text-primary text-pretty transition-colors">
-								{post.data.title}
-							</h2>
-							<p class="text-sm text-foreground/60 max-w-md text-pretty">
-								{post.data.summary}
-							</p>
-							<time
-								datetime={post.data.publishedAt.toISOString()}
-								class="text-xs text-foreground/50"
-							>
-								{formatDate(post.data.publishedAt)}
-							</time>
+							<div class="flex min-w-0 flex-col gap-1.5">
+								<h2 class="text-base font-medium text-ink text-pretty transition-transform group-hover:translate-x-0.5">
+									{post.data.title}
+								</h2>
+								<p class="text-sm text-ink/50 text-pretty">
+									{post.data.summary}
+								</p>
+							</div>
+							<div class="flex shrink-0 items-center gap-2 pt-0.5">
+								<time
+									datetime={post.data.publishedAt.toISOString()}
+									class="text-xs text-ink/40 tabular-nums"
+								>
+									{formatDate(post.data.publishedAt)}
+								</time>
+								<span
+									aria-hidden="true"
+									class="text-ink/30 opacity-0 transition-opacity group-hover:opacity-100"
+								>
+									→
+								</span>
+							</div>
 						</a>
 					</li>
 				))

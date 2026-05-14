@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+import exampleAnimated from "../../assets/media/other/example-animated.webp";
+import examplePortfolio from "../../assets/media/other/example-portfolio.webp";
+import exampleBlog from "../../assets/media/other/example-codedByPol.webp";
+import exampleFlags from "../../assets/media/other/example-flags.webp";
+
+const cards = [
+  {
+    id: "card_1",
+    src: exampleAnimated,
+    alt: "Performance stats showing 100/100 scores",
+  },
+  { id: "card_2", src: examplePortfolio, alt: "Lighthouse performance report" },
+  { id: "card_3", src: exampleBlog, alt: "Technical blog performance metrics" },
+  { id: "card_4", src: exampleFlags, alt: "Speed and optimization results" },
+];
+---
+
+<section id="cards" class="flex flex-col gap-4">
+  <header
+    id="cards-header"
+    class="flex flex-col gap-2 pt-20 items-center text-center w-full"
+  >
+    <h2 class="text-3xl md:text-4xl font-medium">I don't ship slow websites</h2>
+    <p class="text-ink/50">
+      100/100 on Lighthouse isn't a flex, it's the baseline.
+    </p>
+  </header>
+  <ul class="sticked-cards" id="sticked-cards">
+    {
+      cards.map(({ id, src, alt }) => (
+        <li class="card" id={id}>
+          <Image
+            src={src}
+            alt={alt}
+            decoding="async"
+            loading="lazy"
+            width={1280}
+            height={1000}
+          />
+        </li>
+      ))
+    }
+  </ul>
+</section>

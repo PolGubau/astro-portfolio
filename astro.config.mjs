@@ -4,11 +4,13 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import metaTags from 'astro-meta-tags';
+import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://polgubau.com',
+  trailingSlash: 'never',
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport',
@@ -20,6 +22,7 @@ export default defineConfig({
 
   },
   integrations: [
+    icon(),
     mdx(),
     sitemap({
       changefreq: 'weekly',

@@ -43,6 +43,14 @@ export const getProjects = (
 	return limitedProjects;
 };
 
+export function formatDate(d: Date, style: "short" | "long" = "short"): string {
+	return d.toLocaleString("en-us", {
+		month: style,
+		day: "numeric",
+		year: "numeric",
+	});
+}
+
 const WORDS_PER_MINUTE = 200;
 
 export function getReadingTime(content: string): number | undefined {

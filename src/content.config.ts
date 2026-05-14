@@ -21,6 +21,7 @@ const projects = defineCollection({
 			title: z.string(),
 			summary: z.string(),
 			available: z.boolean(),
+		oss: z.boolean().default(false),
 			startedAt: z.string().transform((str) => new Date(str)),
 			endedAt: z
 				.string()

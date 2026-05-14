@@ -3,7 +3,7 @@ import { type CollectionEntry, getCollection, render } from "astro:content";
 import SimilarBlogs from "../../components/blog/SimilarBlogs.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
 import MdLayout from "../../layouts/MdLayout.astro";
-import { getReadingTime } from "../../lib/utils";
+import { formatDate, getReadingTime } from "../../lib/utils";
 import { metadata } from "../../lib/constants";
 import Breadcrumb from "../../components/Breadcrumb.astro";
 
@@ -16,21 +16,11 @@ export async function getStaticPaths() {
 }
 type Props = CollectionEntry<"blog">;
 
-function formatDate(d: Date) {
-	const fullDate = d.toLocaleString("en-us", {
-		month: "long",
-		day: "numeric",
-		year: "numeric",
-	});
-
-	return fullDate;
-}
-
 const post = Astro.props;
-const { Content, headings } = await render(post);
+const { Content } = await render(post);
 
 const time = getReadingTime(post.body ?? "");
-const PAGE_TITLE = `${post.data.title} - Blog - ${metadata.title}`;
+const PAGE_TITLE = `${post.data.title} — ${metadata.name}`;
 const publishedTime = post.data.publishedAt.toISOString();
 const tags = post.data.tags || [];
 ---
@@ -51,16 +41,8 @@ const tags = post.data.tags || [];
 			]}
 		/>
 
-		<a
-			href-lang="en-us"
-			href="/blog"
-			class="text-neutral-500 hover:text-neutral-600 transition-colors"
-		>
-			← Back to Blog
-		</a>
-
 		<header class="mt-6 mb-8">
-			<h1 class="balance font-semibold text-2xl md:text-4xl mb-4">
+			<h1 class="text-balance font-semibold text-2xl md:text-4xl mb-4">
 				{post.data.title}
 			</h1>
 
@@ -126,7 +108,7 @@ const tags = post.data.tags || [];
 		</header>
 
 		<article class="relative flex flex-col gap-4">
-			<MdLayout headings={headings} backTo="/blog">
+			<MdLayout backTo="/blog">
 				<Content />
 			</MdLayout>
 

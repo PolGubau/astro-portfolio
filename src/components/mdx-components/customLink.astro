@@ -10,21 +10,15 @@ interface Props extends HTMLAttributes<"a"> {
 
 const { href, className, target, rel, ...rest } = Astro.props;
 
-// Lógica para determinar los atributos del enlace
+const isExternal =
+  !String(href).startsWith("/") && !String(href).startsWith("#");
+
 const attributes: Record<string, unknown> = {
   ...rest,
   class: className,
   href,
+  ...(isExternal && { target: "_blank", rel: "noopener noreferrer" }),
 };
-
-if (String(href).startsWith("/")) {
-  attributes.hrefLang = "en-us";
-} else if (String(href).startsWith("#")) {
-  attributes.hrefLang = "en-us";
-} else {
-  attributes.target = "_blank";
-  attributes.rel = "noopener noreferrer";
-}
 ---
 
 <a {...attributes}>

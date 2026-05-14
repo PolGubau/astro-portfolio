@@ -14,7 +14,7 @@ const { src, date, title, width, height, tech, style } = Astro.props;
 ---
 
 <div
-  class="group relative overflow-hidden rounded-xl border border-foreground/10 bg-foreground/5 transition-all hover:border-foreground/20 hover:shadow-lg"
+  class="group relative overflow-hidden rounded-xl border border-ink/10 bg-ink/5 transition-all hover:border-ink/20 hover:shadow-lg"
 >
   <!-- Video Container with Lazy Loading -->
   <div class="relative overflow-hidden" style={style}>
@@ -24,7 +24,7 @@ const { src, date, title, width, height, tech, style } = Astro.props;
       playsinline
       width={width}
       height={height}
-      class="lazy-video h-full w-full object-cover bg-foreground/10"
+      class="lazy-video h-full w-full object-cover bg-ink/10"
       data-src={`src/assets/concepts/${src}.mp4`}
     >
       Your browser does not support the video tag.
@@ -32,10 +32,10 @@ const { src, date, title, width, height, tech, style } = Astro.props;
 
     <!-- Loading placeholder -->
     <div
-      class="absolute inset-0 bg-foreground/5 flex items-center justify-center loading-placeholder"
+      class="absolute inset-0 bg-ink/5 flex items-center justify-center loading-placeholder"
     >
       <div
-        class="h-8 w-8 animate-spin rounded-full border-2 border-foreground/20 border-t-foreground/60"
+        class="h-8 w-8 animate-spin rounded-full border-2 border-ink/20 border-t-ink/60"
       >
       </div>
     </div>

@@ -1,0 +1,22 @@
+---
+import arrow from "../../assets/media/branding/arrow.svg";
+import cursor from "../../assets/media/branding/cursor.svg";
+import message from "../../assets/media/branding/message.svg";
+import star from "../../assets/media/branding/star.svg";
+import { Image } from "astro:assets";
+
+const icons = [
+  { src: star, alt: "" },
+  { src: arrow, alt: "" },
+  { src: cursor, alt: "" },
+  { src: message, alt: "" },
+];
+---
+
+<div class="flex items-center gap-2 w-fit rounded-full bg-primary px-4 py-2">
+  {
+    icons.map(({ src, alt }) => (
+      <Image src={src} alt={alt} width={20} height={20} class="w-5 h-5" />
+    ))
+  }
+</div>

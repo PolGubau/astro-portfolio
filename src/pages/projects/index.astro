@@ -4,9 +4,17 @@ import MainLayout from "../../layouts/MainLayout.astro";
 import { projects } from "../../lib/utils";
 ---
 
-<MainLayout>
-	<h1 class="mb-8 text-pretty font-medium text-xl md:font-semibold md:text-2xl">
-		Projects
-	</h1>
-	<ProjectsList projects={projects} />
+<MainLayout
+	title="Projects — Pol Gubau"
+	description="A selection of work across web, mobile, open source and freelance."
+>
+	<div class="flex flex-col gap-12">
+		<header class="flex flex-col gap-3">
+			<h1 class="text-2xl font-semibold tracking-tight">Projects</h1>
+			<p class="text-ink/60">
+				A selection of work across web, mobile, open source and freelance.
+			</p>
+		</header>
+		<ProjectsList projects={projects} />
+	</div>
 </MainLayout>

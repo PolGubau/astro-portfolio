@@ -7,9 +7,7 @@ type Props = {
 const { headings } = Astro.props;
 ---
 
-<details
-  class="bg-background border border-foreground/10 rounded-xl p-3 px-4 group"
->
+<details class="bg-background border border-ink/10 rounded-xl p-3 px-4 group">
   <summary
     class="font-semibold cursor-pointer list-none flex items-center justify-between select-none"
   >
@@ -30,7 +28,7 @@ const { headings } = Astro.props;
   <ul class="mt-4 text-sm">
     {
       headings.map(({ depth, slug, text }) => (
-        <li class="hover:text-primary-700 line-clamp-1 transition-colors">
+        <li class="hover:text-ink line-clamp-1 transition-colors">
           <a
             href={`#${slug}`}
             aria-label={`Scroll to section: ${text}`}

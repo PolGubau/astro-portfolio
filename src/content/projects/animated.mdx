@@ -6,64 +6,75 @@ category: "web"
 color: "#ff8a93"
 cover: "./img/animated.webp"
 available: true
+oss: true
 
-summary: "Easy animations for your next project, thoughtfully designed for modern Tailwind CSS ✨"
+summary: "75+ handcrafted CSS animations for Tailwind CSS 4. One import, zero JavaScript, works everywhere."
 
 githubLink: https://github.com/PolGubau/animated
 npmLink: https://www.npmjs.com/package/@polgubau/animated
-
 link: https://animated.polgubau.com
-tech: 
+
+tech:
   - CSS
   - Tailwind CSS
-  - animations
-  - React
-  - Typescript
+  - TypeScript
 ---
 
-Animated is a npm package that collects +75 handmade modern CSS animations for Tailwind CSS 4, designed to enhance your frontend projects. 🚀  
+import { Image } from "astro:assets";
+import intellisense from "../../assets/media/projects/animated/Intellisense.webp";
+import thumbnail from "../../assets/media/projects/animated/thumbnail.webp";
 
-I also provided a documentation page with all details and examples of the animations so you can easily integrate them into your project.
+I was tired of copying animation keyframes between projects. Every new codebase started with the same paste: fade-in, slide-up, blur-in, bounce. Always slightly different. Always untested.
 
-## 📦 Installation
+So I packaged them properly.
 
-Install the package via npm or pnpm:
+**Animated** is a Tailwind CSS 4 plugin with 75+ handcrafted CSS animations. One import, zero JavaScript, works in any framework.
+
+<figure>
+  <Image src={thumbnail} alt="Animated — CSS animations for Tailwind CSS 4" class="rounded-xl show-animation" width={800} height={500} />
+  <figcaption>The Animated documentation site — every animation previewed live.</figcaption>
+</figure>
+
+---
+
+## Installation
 
 ```sh
 pnpm add @polgubau/animated
 ```
-(You can use yarn if you prefer; the library is available on npm as well.)
-
-
-## 🎨 Usage with tailwind >4
-
-1. Import the CSS file in your index css file:
 
 ```css
-  /* index.css */
-  @import "tailwindcss";
-  @import "@polgubau/animated";
+/* index.css */
+@import "tailwindcss";
+@import "@polgubau/animated";
 ```
 
-2. Use the animations in your Tailwind classes:
+That's it. No config, no plugin registration, no JavaScript.
+
+## Usage
 
 ```html
-  <div class="animate-fade-in">
-    Hello, world!
-  </div>
+<div class="animate-fade-in">Fades in on mount</div>
+<div class="animate-slide-up">Slides up on mount</div>
+<div class="animate-blur-in animate-delay-300">Blur in, 300ms delay</div>
 ```
 
-## 🎨 Usage without tailwind or old majors
+Full IntelliSense support in VS Code and any TypeScript-aware editor:
 
-1. Import the CSS file in your main tsx file:
+<figure>
+  <Image src={intellisense} alt="IntelliSense showing animation class suggestions" class="rounded-xl show-animation" width={800} height={400} />
+  <figcaption>Autocomplete works out of the box — no extra setup needed.</figcaption>
+</figure>
+
+## Without Tailwind
+
+Works standalone too. Import the CSS and use the keyframes directly:
+
 ```css
 import '@polgubau/animated';
-```
-Now you can use all keyframes to build you own animations.
 
-```css
-.fade-in {
-  animation: 3s infinite alternate slide-in-top;
+.my-element {
+  animation: slide-in-top 0.4s ease-out;
 }
 ```
 

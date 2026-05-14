@@ -4,7 +4,6 @@ export const paths = {
 	projects: path.join(process.cwd(), "src", "content", "projects"),
 	blogs: path.join(process.cwd(), "src", "content", "blog"),
 };
-export const baseUrl = "https://polgubau.com";
 export const metadata = {
 	title: "Pol Gubau Amores - Frontend Developer & UX Designer | React, TypeScript, Design Systems",
 	description:
@@ -67,13 +66,16 @@ export const metadata = {
 	],
 
 	links: {
-		website: "https:/polgubau.com",
-		twitter: "https://twitter.com/PolGubau",
-		github: "http://github.com/polgubau",
+		website: "https://polgubau.com",
+		twitter: "https://x.com/PolGubau",
+		github: "https://github.com/polgubau",
 		linkedin: "https://www.linkedin.com/in/polgubauamores/",
 		email: "mailto:gubaupol@gmail.com",
 		npm: "https://www.npmjs.com/~polgubau",
 	},
+
+	/** Last updated: 2026-05-14 */
+	npmDownloads: "62.6k",
 
 	homeOgImage: "assets/thumbnail.webp",
 };

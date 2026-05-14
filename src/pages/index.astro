@@ -1,142 +1,28 @@
 ---
-import { Image } from "astro:assets";
 import Header from "../components/Layout/header/header.astro";
-import ProjectsList from "../components/Projects/ProjectList/ProjectsList.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import { getProjects } from "../lib/utils";
-import exampleAnimated from "../assets/media/other/example-animated.webp";
-import examplePortfolio from "../assets/media/other/example-portfolio.webp";
-import exampleBlog from "../assets/media/other/example-codedByPol.webp";
-import exampleFlags from "../assets/media/other/example-flags.webp";
+import WorkSection from "../components/home/WorkSection.astro";
+import OpenSourceSection from "../components/home/OpenSourceSection.astro";
+import BeyondCodeSection from "../components/home/BeyondCodeSection.astro";
+import DoscientosCTA from "../components/home/DoscientosCTA.astro";
+import PerformanceCards from "../components/home/PerformanceCards.astro";
 import "../styles/cards.css";
 
-const OSS_IDS = ["polui", "animated", "flags", "fuzzy", "utils", "wisemark"];
-
 const allProjects = getProjects();
-const workProjects = allProjects
-  .filter((p) => !OSS_IDS.includes(p.id))
-  .slice(0, 6);
-const ossProjects = allProjects.filter((p) => OSS_IDS.includes(p.id));
+const ossProjects = allProjects.filter((p) => p.data.oss);
+const workProjects = allProjects.filter((p) => !p.data.oss).slice(0, 6);
 ---
 
 <MainLayout>
-  <section>
+  <div>
     <Header />
     <main class="flex w-full flex-1 flex-col gap-20 md:gap-32">
-      <!-- Work -->
-      <section class="flex flex-col gap-12">
-        <div class="flex items-baseline justify-between gap-4">
-          <h2 class="text-3xl md:text-4xl font-medium">Selected work</h2>
-          <a
-            href="/projects"
-            class="text-sm text-foreground/50 hover:text-foreground transition-colors shrink-0"
-          >
-            View all →
-          </a>
-        </div>
-        <ProjectsList projects={workProjects} />
-      </section>
-
-      <!-- Open Source -->
-      <section class="flex flex-col gap-12">
-        <div class="flex items-baseline justify-between gap-4">
-          <h2 class="text-3xl md:text-4xl font-medium">Open Source</h2>
-          <a
-            href="https://github.com/PolGubau"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm text-foreground/50 hover:text-foreground transition-colors shrink-0"
-          >
-            GitHub →
-          </a>
-        </div>
-        <ProjectsList projects={ossProjects} />
-      </section>
-
-      <!-- Doscientos CTA -->
-      <section
-        class="flex flex-col gap-6 p-8 md:p-12 rounded-2xl border border-neutral-200 bg-neutral-50"
-      >
-        <div class="flex flex-col gap-4">
-          <h2 class="text-2xl md:text-3xl font-medium">
-            Need custom software?
-          </h2>
-          <p class="text-lg text-foreground/60 max-w-2xl">
-            I co-founded <strong>Doscientos</strong>, a dev agency building web
-            and mobile applications for businesses.
-          </p>
-        </div>
-        <div>
-          <a
-            href="https://doscientos.studio"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-foreground text-background font-medium hover:shadow-lg transition-all"
-          >
-            Visit Doscientos
-            <svg
-              class="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-              ></path>
-            </svg>
-          </a>
-        </div>
-      </section>
-
-      <!-- Performance Cards -->
-      <section id="cards" class="flex flex-col gap-8">
-        <h2 class="text-3xl md:text-4xl font-medium">Performance</h2>
-        <ul class="sticked-cards" id="sticked-cards">
-          <li class="card" id="card_1">
-            <Image
-              alt="Performance stats showing 100/100 scores"
-              src={exampleAnimated}
-              decoding="async"
-              loading="lazy"
-              width={1280}
-              height={1000}
-            />
-          </li>
-          <li class="card" id="card_2">
-            <Image
-              alt="Lighthouse performance report"
-              src={examplePortfolio}
-              decoding="async"
-              loading="lazy"
-              width={1280}
-              height={1000}
-            />
-          </li>
-          <li class="card" id="card_3">
-            <Image
-              alt="Technical blog performance metrics"
-              src={exampleBlog}
-              decoding="async"
-              loading="lazy"
-              width={1280}
-              height={1000}
-            />
-          </li>
-          <li id="card_4" class="card">
-            <Image
-              alt="Speed and optimization results"
-              src={exampleFlags}
-              decoding="async"
-              loading="lazy"
-              width={1280}
-              height={1000}
-            />
-          </li>
-        </ul>
-      </section>
+      <WorkSection projects={workProjects} />
+      <OpenSourceSection projects={ossProjects} />
+      <BeyondCodeSection />
+      <DoscientosCTA />
+      <PerformanceCards />
     </main>
-  </section>
+  </div>
 </MainLayout>

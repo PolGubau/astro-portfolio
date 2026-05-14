@@ -1,24 +1,12 @@
 ---
-import type { BlogMetadata } from "../../../lib/utils";
+import { formatDate, type BlogMetadata } from "../../../lib/utils";
 import BlogLink from "../../BlogLink.astro";
 
 type Props = {
   blogs: BlogMetadata[];
 };
-function formatDate(d: Date) {
-  const fullDate = d.toLocaleString("en-us", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
 
-  return fullDate;
-}
-
-const pubAt = (d: Date) => {
-  const date = new Date(d);
-  return formatDate(date);
-};
+const pubAt = (d: Date) => formatDate(new Date(d), "long");
 
 const { blogs } = Astro.props;
 ---

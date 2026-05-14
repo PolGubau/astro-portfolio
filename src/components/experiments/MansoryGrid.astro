@@ -13,7 +13,7 @@ type VideoType = {
 const videos: VideoType[] = [
   {
     mp4: "avatar",
-    date: "2024-22-02",
+    date: "2024-02-22",
     title: "avatar group",
     height: 720,
     width: 960,
@@ -37,7 +37,7 @@ const videos: VideoType[] = [
   },
   {
     mp4: "carousel",
-    date: "2024-29-07",
+    date: "2024-07-29",
     title: "animated carousel",
     height: 720,
     width: 1280,
@@ -45,7 +45,7 @@ const videos: VideoType[] = [
   },
   {
     mp4: "dynamic-number",
-    date: "2024-24-07",
+    date: "2024-07-24",
     title: "Dynamic number",
     height: 720,
     width: 960,
@@ -61,7 +61,7 @@ const videos: VideoType[] = [
   },
   {
     mp4: "follow",
-    date: "2024-27-06",
+    date: "2024-06-27",
     title: "Following Card",
     height: 576,
     width: 576,
@@ -69,7 +69,7 @@ const videos: VideoType[] = [
   },
   {
     mp4: "follow-pointer",
-    date: "2024-17-01",
+    date: "2024-01-17",
     title: "Following pointer",
     height: 576,
     width: 1024,
@@ -93,7 +93,7 @@ const videos: VideoType[] = [
   },
   {
     mp4: "hamburguer",
-    date: "2024-15-04",
+    date: "2024-04-15",
     title: "Hamburger",
     height: 576,
     width: 576,
@@ -101,7 +101,7 @@ const videos: VideoType[] = [
   },
   {
     mp4: "hold",
-    date: "2024-13-05",
+    date: "2024-05-13",
     title: "Timed button",
     height: 576,
     width: 1024,
@@ -109,7 +109,7 @@ const videos: VideoType[] = [
   },
   {
     mp4: "kanban",
-    date: "2023-20-11",
+    date: "2023-11-20",
     title: "complete kanban",
     height: 576,
     width: 1024,
@@ -173,7 +173,7 @@ const videos: VideoType[] = [
   },
   {
     mp4: "slide-cards",
-    date: "2023-09-12",
+    date: "2023-12-09",
     title: "Sliding cards",
     height: 576,
     width: 768,
@@ -181,7 +181,7 @@ const videos: VideoType[] = [
   },
   {
     mp4: "slider",
-    date: "2024-20-08",
+    date: "2024-08-20",
     title: "Slider",
     height: 576,
     width: 1024,
@@ -213,7 +213,7 @@ const videos: VideoType[] = [
   },
   {
     mp4: "trackup",
-    date: "2024-26-02",
+    date: "2024-02-26",
     title: "Timed tabs",
     height: 720,
     width: 1680,
@@ -221,18 +221,14 @@ const videos: VideoType[] = [
   },
 ];
 
-const dateOrdered = () => {
-  return videos.sort((a, b) => {
-    const dateA = new Date(a.date).getTime();
-    const dateB = new Date(b.date).getTime();
-    return dateB - dateA;
-  });
-};
+const sortedVideos = [...videos].sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+);
 ---
 
 <div class="columns-1 gap-4 space-y-4 md:columns-2 lg:columns-3">
   {
-    dateOrdered().map((video) => (
+    sortedVideos.map((video) => (
       <div class="mb-4 break-inside-avoid">
         <Video
           src={video.mp4}

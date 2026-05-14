@@ -1,0 +1,31 @@
+---
+import tv3 from "../../assets/media/about/tv3.avif";
+import teaching from "../../assets/media/about/teaching.avif";
+import tfg from "../../assets/media/about/tfg.avif";
+import MediaFigure from "./MediaFigure.astro";
+
+const photos = [
+  {
+    src: tv3,
+    alt: "Pol Gubau being interviewed on TV3",
+    caption: "Interviewed on TV3 about my work",
+  },
+  {
+    src: teaching,
+    alt: "Pol Gubau teaching students",
+    caption: "Teaching Astro & Tailwind to 35+ students",
+  },
+  {
+    src: tfg,
+    alt: "Pol Gubau presenting Pol-UI as his thesis",
+    caption: "Presenting Pol-UI as Bachelor's Thesis",
+  },
+];
+---
+
+<section class="flex flex-col gap-8">
+  <h2 class="text-3xl md:text-4xl font-medium">Beyond the code</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {photos.map((photo) => <MediaFigure {...photo} />)}
+  </div>
+</section>

@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import type { ProjectMetadata } from "../../lib/utils";
+import { formatDate, type ProjectMetadata } from "../../lib/utils";
 import GithubIcon from "../icons/GithubIcon.astro";
 import NpmIcon from "../icons/NpmIcon.astro";
 import PlayStoreIcon from "../icons/PlayStoreIcon.astro";
@@ -12,15 +12,6 @@ type Props = {
 };
 const { project: p } = Astro.props;
 
-function formatDate(date: Date) {
-  const fullDate = date.toLocaleString("en-ES", {
-    day: "numeric",
-    month: "numeric",
-    year: "numeric",
-  });
-
-  return fullDate;
-}
 enum Icons {
   github = "github",
   npm = "npm",
@@ -59,22 +50,15 @@ const projectLinks = projectButtons
   .filter((value) => value !== undefined);
 const lastExistingButton = projectLinks[projectLinks.length - 1];
 
-function isLastButton(button: string) {
-  if (lastExistingButton === button) {
-    return true;
-  }
-
-  return false;
-}
+const isLastButton = (button: string) => lastExistingButton === button;
 ---
 
 <header class="flex flex-col gap-0.5">
   <section class="flex flex-col gap-4">
     <a
-      href-lang="en-us"
       title="Back to projects"
       href="/projects"
-      class="text-neutral-500 hover:text-neutral-600 transition-colors"
+      class="text-ink/50 hover:text-ink transition-colors"
     >
       <span class="sr-only">Back to projects</span>← Back
     </a>
@@ -88,16 +72,15 @@ function isLastButton(button: string) {
         <span class="flex gap-4 overflow-hidden">
           <a
             href={p.data.link ?? ""}
-            href-lang="en-us"
             target="_blank"
             rel="noopener noreferrer"
-            tab-index={p.data.link ? undefined : -1}
+            tabindex={p.data.link ? undefined : -1}
             class={p.data.link ? "" : "pointer-events-none"}
             aria-disabled={!p.data.link}
           >
             <h1
               title="Visit Project"
-              class="balance z-10 w-fit max-w-lg rounded-full font-title text-4xl tracking-tight md:text-8xl leading-[0.95] mb-2"
+              class="text-balance z-10 w-fit max-w-lg rounded-full font-title text-4xl tracking-tight md:text-8xl leading-[0.95] mb-2"
               style={{
                 backgroundColor: p.data.color ?? "transparent",
               }}
@@ -141,7 +124,6 @@ function isLastButton(button: string) {
       p.data.link ? (
         <a
           href={p.data.link}
-          href-lang="en-us"
           title="Visit Project"
           class="flex h-full flex-1 animate-expand-vertically items-center justify-center gap-2 rounded-bl-lg px-4 md:px-5 py-2 text-secondary-900 text-xl transition-all hover:brightness-90 sm:justify-start"
           target="_blank"

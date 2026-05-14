@@ -1,5 +1,6 @@
 ---
-// Breadcrumb component for better SEO and navigation
+import Schema from "./Schema.astro";
+
 interface BreadcrumbItem {
   name: string;
   url?: string;
@@ -11,10 +12,7 @@ interface Props {
 
 const { items } = Astro.props;
 
-// JSON-LD schema for breadcrumbs
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
+const breadcrumbData = {
   itemListElement: items.map((item, index) => ({
     "@type": "ListItem",
     position: index + 1,
@@ -25,24 +23,17 @@ const breadcrumbSchema = {
 ---
 
 <nav aria-label="Breadcrumb" class="mb-4">
-  <ol
-    class="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400"
-  >
+  <ol class="flex items-center gap-2 text-sm text-ink/50">
     {
       items.map((item, index) => (
         <li class="flex items-center gap-2">
-          {index > 0 && <span class="text-neutral-400">/</span>}
+          {index > 0 && <span class="text-ink/30">/</span>}
           {item.url ? (
-            <a
-              href={item.url}
-              class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
-            >
+            <a href={item.url} class="hover:text-ink transition-colors">
               {item.name}
             </a>
           ) : (
-            <span class="text-neutral-900 dark:text-neutral-100 font-medium">
-              {item.name}
-            </span>
+            <span class="font-medium text-ink">{item.name}</span>
           )}
         </li>
       ))
@@ -50,8 +41,4 @@ const breadcrumbSchema = {
   </ol>
 </nav>
 
-<!-- JSON-LD for search engines -->
-<script
-  type="application/ld+json"
-  set:html={JSON.stringify(breadcrumbSchema)}
-/>
+<Schema type="BreadcrumbList" data={breadcrumbData} />

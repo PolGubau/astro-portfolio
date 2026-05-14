@@ -1,11 +1,15 @@
 ---
 import { Image } from "astro:assets";
 import me from "../../../assets/media/me.webp";
+import LogoPill from "../../ui/LogoPill.astro";
 
 const stats = [
   { value: "60k+", label: "NPM downloads" },
   { value: "1M+", label: "Vercel requests/yr" },
-  { value: "270+", label: "Components shipped" },
+  {
+    value: `${new Date().getFullYear() - 2019}+`,
+    label: "Years of experience",
+  },
   { value: "55+", label: "React projects" },
 ];
 ---
@@ -16,22 +20,21 @@ const stats = [
     class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
   >
     <div class="flex flex-col gap-4 max-w-2xl">
-      <h1 class="text-5xl md:text-6xl font-medium leading-[0.95]">
-        Frontend Developer<br />& UI Designer
+      <h1 class="text-5xl md:text-6xl text-balance font-medium leading-[0.95]">
+        I'm Pol, a senior frontend developer
       </h1>
-      <p class="text-lg text-foreground/60 max-w-lg">
+      <p class="text-lg text-ink/60 max-w-lg">
         Senior Frontend Engineer at <a
           href="https://mesalvo.com"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-foreground hover:underline underline-offset-4">Mesalvo</a
+          class="text-ink hover:underline underline-offset-4">Mesalvo</a
         >. Co-founder of <a
-          href="https://doscientos.studio"
+          href="https://doscientos.es"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-foreground hover:underline underline-offset-4"
-          >Doscientos</a
-        >. Based in Barcelona.
+          class="text-ink hover:underline underline-offset-4">Doscientos</a
+        >. Based in Mataró, Barcelona.
       </p>
     </div>
 
@@ -41,6 +44,8 @@ const stats = [
       alt="Pol Gubau Amores"
       width={120}
       height={120}
+      loading="eager"
+      priority
     />
   </div>
 
@@ -50,9 +55,9 @@ const stats = [
   >
     {
       stats.map(({ value, label }) => (
-        <div class="flex flex-col gap-1 px-6 py-5 bg-white">
+        <div class="flex flex-col gap-1 px-6 py-5 bg-background">
           <span class="text-2xl md:text-3xl font-medium">{value}</span>
-          <span class="text-sm text-foreground/50">{label}</span>
+          <span class="text-sm text-ink/50">{label}</span>
         </div>
       ))
     }

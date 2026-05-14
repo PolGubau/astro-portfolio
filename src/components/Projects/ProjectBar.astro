@@ -25,70 +25,61 @@ const data = project.data;
     <h2 class="pl-2 font-semibold text-2xl text-black">{data.title}</h2>
 
     <ul class="flex items-center gap-2">
-      {/* copy url button */}
       <li class="max-md:hidden">
         <button
           id="copy-button"
           type="button"
-          class="flex aspect-square rounded-lg p-2 text-secondary-900 transition-all hover:bg-secondary-900/30 cursor-pointer"
+          class="flex aspect-square cursor-pointer rounded-lg p-2 text-black/70 transition-all hover:bg-black/20"
           title="Copy project link"
-          onclick={"handleCopyLink"}
         >
           <CopyIcon width={18} height={18} />
         </button>
       </li>
       {
-        data.npmLink ? (
-          <a
-            href={data.npmLink}
-            href-lang="en-us"
-            title="Link to the NPM repository"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <li class=" flex aspect-square rounded-lg p-2 text-secondary-900 transition-all hover:bg-secondary-900/30">
+        data.npmLink && (
+          <li>
+            <a
+              href={data.npmLink}
+              title="Link to NPM"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex aspect-square rounded-lg p-2 text-black/70 transition-all hover:bg-black/20"
+            >
               <NpmIcon width={18} height={18} />
-            </li>
-          </a>
-        ) : null
+            </a>
+          </li>
+        )
       }
-
       {
-        data.githubLink ? (
-          <a
-            href={data.githubLink}
-            href-lang="en-us"
-            title="Link to the Github repository"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <li class="flex aspect-square rounded-lg p-2 text-secondary-900 transition-all hover:bg-secondary-900/30">
+        data.githubLink && (
+          <li>
+            <a
+              href={data.githubLink}
+              title="View source on GitHub"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex aspect-square rounded-lg p-2 text-black/70 transition-all hover:bg-black/20"
+            >
               <GithubIcon width={18} height={18} />
-            </li>
-          </a>
-        ) : null
+            </a>
+          </li>
+        )
       }
-
       {
-        data.link ? (
-          <a
-            href={data.link}
-            href-lang="en-us"
-            title="Link to the project"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {" "}
-            <li
-              class="flex aspect-square rounded-lg bg-secondary-900/90 p-2 transition-all hover:bg-secondary-900"
-              style={{
-                color: data.color ?? "#808080",
-              }}
+        data.link && (
+          <li>
+            <a
+              href={data.link}
+              title="Visit project"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex aspect-square rounded-lg bg-black/20 p-2 transition-all hover:bg-black/30"
+              style={{ color: data.color ?? "#808080" }}
             >
               <SearchIcon />
-            </li>
-          </a>
-        ) : null
+            </a>
+          </li>
+        )
       }
     </ul>
   </div>

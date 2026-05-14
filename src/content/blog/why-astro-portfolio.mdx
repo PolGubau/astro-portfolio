@@ -8,6 +8,9 @@ tags:
   - Opinion
 ---
 
+import { Image } from 'astro:assets';
+import lighthouseScore from "../../assets/media/other/example-portfolio.webp";
+
 My portfolio was built with Next.js 14. It worked fine. Looked good. Had all the features I needed. So naturally, I spent two weeks rebuilding it from scratch in Astro.
 
 Was it necessary? Absolutely not. Do I regret it? Not even a little.
@@ -168,6 +171,11 @@ After (Astro):
 - Homepage: 3KB JS, 0.4s FCP
 - Blog post: 8KB JS, 0.5s FCP
 - Lighthouse: 100/100
+
+<figure>
+  <Image src={lighthouseScore} alt="Lighthouse 100/100 score on this portfolio" class="rounded-xl show-animation" width={800} height={450} />
+  <figcaption>100/100 across all categories. The green scores are real.</figcaption>
+</figure>
 
 Is this a fair comparison? Not really, I also optimized images and removed some stuff. But the JS reduction is real.
 

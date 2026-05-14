@@ -11,8 +11,7 @@ const navItems = [
 ---
 
 <footer
-  class="fixed bottom-0 left-0 right-0 md:hidden safe-area-inset-bottom"
-  style="z-index: 999;"
+  class="fixed bottom-0 left-0 right-0 z-[999] md:hidden safe-area-inset-bottom"
 >
   <nav
     class="mx-auto flex max-w-md items-center justify-around border-t border-neutral-200 bg-white px-4 py-4 backdrop-blur-xl"
@@ -27,15 +26,15 @@ const navItems = [
             class:list={[
               "flex flex-col items-center gap-1.5 transition-colors duration-200",
               {
-                "text-foreground font-medium": isActive,
+                "text-ink font-medium": isActive,
               },
               {
-                "text-foreground/40": !isActive,
+                "text-ink/40": !isActive,
               },
             ]}
           >
             <span class="text-xs">{name}</span>
-            {isActive && <span class="h-0.5 w-4 rounded-full bg-foreground" />}
+            {isActive && <span class="h-0.5 w-4 rounded-full bg-ink" />}
           </a>
         );
       })

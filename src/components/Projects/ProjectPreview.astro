@@ -25,23 +25,34 @@ const titleSize = title.length > 14 ? "text-2xl" : "text-3xl";
     class="relative flex h-full flex-col items-center justify-end overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 focus-visible:ring-inset"
     style={{ backgroundColor: color }}
   >
+    <!-- Top gradient: protects title from image overlap -->
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 z-[1] h-28 bg-gradient-to-b from-black/20 to-transparent"
+    >
+    </div>
+
     <!-- Title -->
     <header class="absolute top-5 left-5 z-10 flex flex-col gap-2">
-      <h3 class:list={["font-medium leading-snug text-ink/80", titleSize]}>
+      <h3
+        class:list={[
+          "font-medium leading-snug text-ink/85 drop-shadow-sm",
+          titleSize,
+        ]}
+      >
         {title}
       </h3>
       <div class="flex items-center gap-1.5">
         {
           isActive && (
-            <span class="flex items-center gap-1 rounded-full bg-black/10 px-2 py-0.5">
+            <span class="flex items-center gap-1 rounded-full bg-black/10 px-2 py-0.5 backdrop-blur-sm">
               <span class="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              <span class="text-[10px] font-medium text-ink/60">Active</span>
+              <span class="text-[10px] font-medium text-ink/70">Active</span>
             </span>
           )
         }
         {
           oss && (
-            <span class="rounded-full bg-black/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-ink/50">
+            <span class="rounded-full bg-black/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-ink/60 backdrop-blur-sm">
               OSS
             </span>
           )
@@ -49,9 +60,9 @@ const titleSize = title.length > 14 ? "text-2xl" : "text-3xl";
       </div>
     </header>
 
-    <!-- Screenshot -->
+    <!-- Screenshot: clipped on mobile so it never reaches the title -->
     <div
-      class="relative w-[90%] transition-transform duration-500 ease-out group-hover:-translate-y-2"
+      class="relative w-[90%] max-h-[55%] md:max-h-none overflow-hidden transition-transform duration-500 ease-out group-hover:-translate-y-2"
     >
       <Image
         src={src}

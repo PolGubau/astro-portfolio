@@ -63,6 +63,11 @@ const {
     </main>
     <script>
       import "@polgubau/astro-reveal";
+      import mediumZoom from "medium-zoom";
+      mediumZoom(".prose img, [data-zoom]", {
+        margin: 16,
+        background: "rgba(0,0,0,0.75)",
+      });
     </script>
   </body>
 </html>

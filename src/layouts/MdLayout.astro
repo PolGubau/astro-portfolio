@@ -82,15 +82,67 @@ const { backTo } = Astro.props;
   <a
     title="Return Back"
     href={backTo ?? "/"}
-    class="text-ink/50 hover:text-ink transition-colors"
+    class="text-ink/50 hover:text-ink transition-colors text-sm"
   >
     ← Back
   </a>
 
-  <button
-    id="to-top-btn"
-    class="cursor-pointer text-ink/50 hover:text-ink transition-colors"
-  >
-    ↑ Go to top
-  </button>
+  <div class="flex items-center gap-3">
+    <button
+      id="md-share-btn"
+      type="button"
+      title="Share"
+      class="flex items-center gap-1.5 text-sm text-ink/50 hover:text-ink transition-colors cursor-pointer"
+    >
+      <span class="md-share-default">Share ↗</span>
+      <span class="md-share-done hidden text-emerald-600">Copied ✓</span>
+    </button>
+
+    <button
+      id="to-top-btn"
+      class="cursor-pointer text-sm text-ink/50 hover:text-ink transition-colors"
+    >
+      ↑ Top
+    </button>
+  </div>
 </nav>
+
+<script>
+  const shareBtn = document.getElementById("md-share-btn");
+  if (shareBtn) {
+    const def = shareBtn.querySelector(".md-share-default") as HTMLElement;
+    const done = shareBtn.querySelector(".md-share-done") as HTMLElement;
+    let t: ReturnType<typeof setTimeout>;
+
+    shareBtn.addEventListener("click", async () => {
+      const url = window.location.href;
+      const title = document.title;
+
+      const showDone = () => {
+        def.classList.add("hidden");
+        done.classList.remove("hidden");
+        clearTimeout(t);
+        t = setTimeout(() => {
+          def.classList.remove("hidden");
+          done.classList.add("hidden");
+        }, 2000);
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share({ title, url });
+          showDone();
+        } catch {
+          /* cancelled */
+        }
+      } else {
+        try {
+          await navigator.clipboard.writeText(url);
+          showDone();
+        } catch {
+          /* error */
+        }
+      }
+    });
+  }
+</script>

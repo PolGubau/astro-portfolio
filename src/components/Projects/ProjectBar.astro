@@ -1,6 +1,6 @@
 ---
 import type { ProjectMetadata } from "../../lib/utils";
-import CopyIcon from "../icons/CopyIcon.astro";
+import { Icon } from "astro-icon/components";
 import GithubIcon from "../icons/GithubIcon.astro";
 import NpmIcon from "../icons/NpmIcon.astro";
 import SearchIcon from "../icons/SearchIcon.astro";
@@ -18,80 +18,95 @@ const data = project.data;
 >
   <div
     class="pointer-events-auto flex w-fit max-w-[calc(100vw-2rem)] items-center justify-between gap-4 md:gap-8 rounded-xl p-1 shadow-lg"
-    style={{
-      backgroundColor: data.color ?? "#808080",
-    }}
+    style={{ backgroundColor: data.color ?? "#808080" }}
   >
-    <h2 class="pl-2 font-semibold text-2xl text-black">{data.title}</h2>
+    <h2 class="pl-2 font-semibold text-xl text-black/80">{data.title}</h2>
 
-    <ul class="flex items-center gap-2">
-      <li class="max-md:hidden">
+    <ul class="flex items-center gap-1">
+      <!-- Share button — native share API on mobile, clipboard fallback on desktop -->
+      <li>
         <button
-          id="copy-button"
+          id="share-button"
           type="button"
-          class="flex aspect-square cursor-pointer rounded-lg p-2 text-black/70 transition-all hover:bg-black/20"
-          title="Copy project link"
+          title="Share"
+          class="group relative flex items-center gap-1.5 cursor-pointer rounded-lg px-2.5 py-2 text-black/60 transition-all hover:bg-black/15"
         >
-          <CopyIcon width={18} height={18} />
+          <Icon name="lucide:share-2" class="share-icon w-4 h-4" aria-hidden="true" />
+          <Icon name="lucide:check" class="check-icon w-4 h-4 hidden" aria-hidden="true" />
+          <span class="feedback-label hidden text-xs font-medium">Copied!</span>
         </button>
       </li>
-      {
-        data.npmLink && (
-          <li>
-            <a
-              href={data.npmLink}
-              title="Link to NPM"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex aspect-square rounded-lg p-2 text-black/70 transition-all hover:bg-black/20"
-            >
-              <NpmIcon width={18} height={18} />
-            </a>
-          </li>
-        )
-      }
-      {
-        data.githubLink && (
-          <li>
-            <a
-              href={data.githubLink}
-              title="View source on GitHub"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex aspect-square rounded-lg p-2 text-black/70 transition-all hover:bg-black/20"
-            >
-              <GithubIcon width={18} height={18} />
-            </a>
-          </li>
-        )
-      }
-      {
-        data.link && (
-          <li>
-            <a
-              href={data.link}
-              title="Visit project"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex aspect-square rounded-lg bg-black/20 p-2 transition-all hover:bg-black/30"
-              style={{ color: data.color ?? "#808080" }}
-            >
-              <SearchIcon />
-            </a>
-          </li>
-        )
-      }
+
+      {data.npmLink && (
+        <li>
+          <a href={data.npmLink} title="NPM" target="_blank" rel="noopener noreferrer"
+            class="flex aspect-square rounded-lg p-2 text-black/60 transition-all hover:bg-black/15">
+            <NpmIcon width={16} height={16} />
+          </a>
+        </li>
+      )}
+      {data.githubLink && (
+        <li>
+          <a href={data.githubLink} title="GitHub" target="_blank" rel="noopener noreferrer"
+            class="flex aspect-square rounded-lg p-2 text-black/60 transition-all hover:bg-black/15">
+            <GithubIcon width={16} height={16} />
+          </a>
+        </li>
+      )}
+      {data.link && (
+        <li>
+          <a href={data.link} title="Visit project" target="_blank" rel="noopener noreferrer"
+            class="flex aspect-square rounded-lg bg-black/20 p-2 transition-all hover:bg-black/30"
+            style={{ color: data.color ?? "#808080" }}>
+            <SearchIcon width={16} height={16} />
+          </a>
+        </li>
+      )}
     </ul>
   </div>
 </div>
+
 <script>
-  const btn = document.getElementById("copy-button");
-  if (btn) {
-    btn.addEventListener("click", () => {
-      navigator.clipboard
-        .writeText(window.location.href)
-        .then(() => alert("Project url copied to clipboard!"))
-        .catch(() => alert("Failed to copy link"));
-    });
+  const btn = document.getElementById("share-button");
+  if (!btn) throw new Error("Share button not found");
+
+  const shareIcon = btn.querySelector(".share-icon") as HTMLElement;
+  const checkIcon = btn.querySelector(".check-icon") as HTMLElement;
+  const label = btn.querySelector(".feedback-label") as HTMLElement;
+
+  let timeout: ReturnType<typeof setTimeout>;
+
+  function showFeedback(text: string) {
+    shareIcon.classList.add("hidden");
+    checkIcon.classList.remove("hidden");
+    label.textContent = text;
+    label.classList.remove("hidden");
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      shareIcon.classList.remove("hidden");
+      checkIcon.classList.add("hidden");
+      label.classList.add("hidden");
+    }, 2000);
   }
+
+  btn.addEventListener("click", async () => {
+    const url = window.location.href;
+    const title = document.title;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, url });
+        showFeedback("Shared!");
+      } catch (e) {
+        // User cancelled — do nothing
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(url);
+        showFeedback("Copied!");
+      } catch {
+        showFeedback("Error");
+      }
+    }
+  });
 </script>

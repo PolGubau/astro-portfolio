@@ -60,7 +60,9 @@
 }
 body {
   @apply bg-background text-ink antialiased font-main;
-  overflow-x: hidden;
+  /* overflow-x NOT set here — setting any overflow on body changes the scroll
+     container from the viewport to body itself, which breaks CSS scroll-driven
+     animations (view-timeline-name). The <html> element handles overflow-x. */
 }
 
 *::selection {

@@ -46,7 +46,8 @@ const cards = [
 </section>
 
 <script>
-  if (!CSS.supports("animation-timeline", "scroll()")) {
+  // JS-driven for all browsers — consistent easing, 3D depth, brightness
+  {
     const section = document.getElementById("cards");
     const cards = Array.from(document.querySelectorAll<HTMLElement>(".card"));
     const NUM = cards.length;

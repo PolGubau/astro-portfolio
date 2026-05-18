@@ -48,7 +48,7 @@ Senior Software Engineer specialized in high-performance web technologies, UI/UX
 ---
 
 ## 🌟 Open Source Projects
-* [cite_start]**Pol-UI**: Comprehensive React UI Library (150+ components, 50k+ downloads)[cite: 20].
+* [cite_start]**Pol-UI**: Comprehensive React UI Library (150+ components, 62k+ downloads)[cite: 20].
 * [cite_start]**React Beauty Flags**: Lightweight, handcrafted React flag icon set[cite: 20].
 * [cite_start]**Wisemark**: Smart annotation extension for VS Code[cite: 21].
 

@@ -20,7 +20,7 @@ const post = Astro.props;
 const { Content } = await render(post);
 
 const time = getReadingTime(post.body ?? "");
-const PAGE_TITLE = `${post.data.title} - ${metadata.name}`;
+const PAGE_TITLE = `${post.data.title} — ${metadata.name}`;
 const publishedTime = post.data.publishedAt.toISOString();
 const tags = post.data.tags || [];
 ---
@@ -30,7 +30,7 @@ const tags = post.data.tags || [];
 	description={post.data.summary}
 	type="article"
 	publishedTime={publishedTime}
-	tags={post.data.tags}
+	modifiedTime={publishedTime}
 >
 	<section>
 		<Breadcrumb

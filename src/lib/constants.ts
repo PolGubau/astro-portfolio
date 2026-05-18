@@ -5,12 +5,12 @@ export const paths = {
 	blogs: path.join(process.cwd(), "src", "content", "blog"),
 };
 export const metadata = {
-	title: "Pol Gubau Amores - Frontend Developer & UX Designer | React, TypeScript, Design Systems",
+	title: "Pol Gubau Amores — Frontend Developer & Designer",
 	description:
-		"Frontend Developer based in Barcelona. Founder of Pol-ui library. Building elegant, accessible web experiences. Explore my projects, articles, and open-source contributions.",
-	name: "Pol",
+		"Senior Frontend Engineer based in Barcelona. Creator of Pol UI (62k+ npm downloads). I build fast, accessible web and mobile products — React, TypeScript, Expo.",
+	name: "Pol Gubau",
 	longName: "Pol Gubau Amores",
-	slogan: "Frontend Developer and UX Designer",
+	slogan: "Senior Frontend Engineer & Designer",
 	picture: "/assets/blog/authors/pol.jpg",
 	tags: [
 		// Personal Branding

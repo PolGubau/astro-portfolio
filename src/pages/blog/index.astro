@@ -1,13 +1,12 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
-import { metadata } from "../../lib/constants";
 import { formatDate, getBlogs } from "../../lib/utils";
 
 const allBlogs = getBlogs();
 
-const PAGE_TITLE = `Writing - ${metadata.name}`;
+const PAGE_TITLE = `Writing — Pol Gubau Amores`;
 const PAGE_DESCRIPTION =
-	"Technical writing on web development, design systems, and modern frontend.";
+	"Technical articles on React, TypeScript, frontend architecture, and design systems by Pol Gubau Amores, Senior Frontend Engineer based in Barcelona.";
 ---
 
 <MainLayout title={PAGE_TITLE} description={PAGE_DESCRIPTION} type="website">

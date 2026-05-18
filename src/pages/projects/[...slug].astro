@@ -22,10 +22,12 @@ type Props = CollectionEntry<"projects">;
 
 const project = Astro.props;
 
-const PAGE_TITLE = `${project.data.title} - ${metadata.name}`;
+const PAGE_TITLE = `${project.data.title} — ${metadata.name}`;
 const { Content, headings } = await render(project);
 const publishedTime = project.data.startedAt.toISOString();
-const tech = project.data.tech || [];
+const modifiedTime = (
+	project.data.endedAt ?? project.data.startedAt
+).toISOString();
 ---
 
 <MainLayout
@@ -34,7 +36,7 @@ const tech = project.data.tech || [];
 	description={project.data.summary}
 	type="article"
 	publishedTime={publishedTime}
-	tags={tech}
+	modifiedTime={modifiedTime}
 >
 	<section class="relative flex flex-col gap-4">
 		<Breadcrumb

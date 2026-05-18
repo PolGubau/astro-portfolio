@@ -12,7 +12,6 @@ interface Props {
 	publishedTime?: string;
 	modifiedTime?: string;
 	author?: string;
-	tags?: string[];
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -25,7 +24,6 @@ const {
 	publishedTime,
 	modifiedTime,
 	author = metadata.longName,
-	tags = metadata.tags,
 } = Astro.props;
 
 const imageURL = new URL(image, Astro.site);
@@ -142,7 +140,6 @@ const articleSchema =
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 <meta name="author" content={author} />
-<meta name="keywords" content={tags.join(", ")} />
 <meta
 	name="robots"
 	content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
@@ -161,6 +158,7 @@ const articleSchema =
 <meta property="og:image" content={imageURL} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/webp" />
 <meta property="og:image:alt" content={title} />
 <meta property="og:locale" content="en_US" />
 {

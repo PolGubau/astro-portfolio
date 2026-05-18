@@ -28,6 +28,7 @@ const tags = post.data.tags || [];
 <MainLayout
 	title={PAGE_TITLE}
 	description={post.data.summary}
+	image={`/og/blog/${post.id}.png`}
 	type="article"
 	publishedTime={publishedTime}
 	modifiedTime={publishedTime}

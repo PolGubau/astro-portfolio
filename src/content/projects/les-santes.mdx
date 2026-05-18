@@ -21,6 +21,19 @@ summary: "Unofficial festival guide app for Les Santes - Mataró's biggest yearl
 ---
 
 import { Image } from "astro:assets";
+import Schema from "../../components/Schema.astro";
+
+<Schema type="SoftwareApplication" data={{
+  name: "Les Santes",
+  operatingSystem: "iOS, Android",
+  applicationCategory: "LifestyleApplication",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+  url: "https://lessantes.polgubau.com",
+  author: { "@type": "Person", name: "Pol Gubau Amores" },
+  description: "Unofficial festival guide app for Les Santes — Mataró's biggest yearly festival. Real-time event map, full programme, and offline support.",
+  inLanguage: ["ca", "en"],
+  availableOnDevice: "Mobile",
+}} />
 
 import logo from "../../assets/media/projects/les-santes/icon.svg";
 import landingThumbnail from "../../assets/media/projects/les-santes/landing-thumbnail.avif";

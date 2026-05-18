@@ -13,9 +13,9 @@ const nav = [
 ];
 
 const socials = [
-  { href: metadata.links.email, label: "Email" },
-  { href: metadata.links.linkedin, label: "LinkedIn" },
-  { href: metadata.links.github, label: "GitHub" },
+  { href: metadata.links.email, label: "Email", me: false },
+  { href: metadata.links.linkedin, label: "LinkedIn", me: true },
+  { href: metadata.links.github, label: "GitHub", me: true },
 ];
 ---
 
@@ -41,12 +41,12 @@ const socials = [
     <!-- Right: socials + CV -->
     <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
       {
-        socials.map(({ href, label }) => (
+        socials.map(({ href, label, me }) => (
           <a
             href={href}
             class="text-sm text-ink/50 hover:text-ink transition-colors"
             target="_blank"
-            rel="noopener noreferrer"
+            rel={me ? "me noopener noreferrer" : "noopener noreferrer"}
           >
             {label}
           </a>

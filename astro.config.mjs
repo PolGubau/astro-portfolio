@@ -27,7 +27,6 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
-      lastmod: new Date(),
       customPages: [
         'https://polgubau.com/projects',
         'https://polgubau.com/blog',

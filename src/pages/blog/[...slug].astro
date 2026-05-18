@@ -9,10 +9,12 @@ import Breadcrumb from "../../components/Breadcrumb.astro";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("blog");
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
+	return posts
+		.filter((post) => !post.data.draft)
+		.map((post) => ({
+			params: { slug: post.id },
+			props: post,
+		}));
 }
 type Props = CollectionEntry<"blog">;
 
@@ -20,7 +22,7 @@ const post = Astro.props;
 const { Content } = await render(post);
 
 const time = getReadingTime(post.body ?? "");
-const PAGE_TITLE = `${post.data.title} — ${metadata.name}`;
+const PAGE_TITLE = `${post.data.title} - ${metadata.name}`;
 const publishedTime = post.data.publishedAt.toISOString();
 const tags = post.data.tags || [];
 ---

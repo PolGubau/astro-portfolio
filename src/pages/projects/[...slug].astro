@@ -22,7 +22,7 @@ type Props = CollectionEntry<"projects">;
 
 const project = Astro.props;
 
-const PAGE_TITLE = `${project.data.title} — ${metadata.name}`;
+const PAGE_TITLE = `${project.data.title} - ${metadata.name}`;
 const { Content, headings } = await render(project);
 const publishedTime = project.data.startedAt.toISOString();
 const modifiedTime = (

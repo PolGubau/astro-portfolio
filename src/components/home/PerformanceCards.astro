@@ -46,7 +46,7 @@ const cards = [
 </section>
 
 <script>
-  // JS-driven for all browsers — consistent easing, 3D depth, brightness
+  // JS-driven for all browsers - consistent easing, 3D depth, brightness
   {
     const section = document.getElementById("cards");
     const cards = Array.from(document.querySelectorAll<HTMLElement>(".card"));
@@ -57,7 +57,7 @@ const cards = [
     const clamp = (v: number, lo: number, hi: number) =>
       Math.max(lo, Math.min(hi, v));
 
-    // easeInOutCubic — feels physical
+    // easeInOutCubic - feels physical
     const ease = (t: number) =>
       t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 

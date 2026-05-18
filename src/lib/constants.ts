@@ -5,9 +5,9 @@ export const paths = {
 	blogs: path.join(process.cwd(), "src", "content", "blog"),
 };
 export const metadata = {
-	title: "Pol Gubau Amores — Frontend Developer & Designer",
+	title: "Pol Gubau Amores - Frontend Developer & Designer",
 	description:
-		"Senior Frontend Engineer based in Barcelona. Creator of Pol UI (62k+ npm downloads). I build fast, accessible web and mobile products — React, TypeScript, Expo.",
+		"Senior Frontend Engineer based in Barcelona. Creator of Pol UI (62k+ npm downloads). I build fast, accessible web and mobile products - React, TypeScript, Expo.",
 	name: "Pol Gubau",
 	longName: "Pol Gubau Amores",
 	slogan: "Senior Frontend Engineer & Designer",

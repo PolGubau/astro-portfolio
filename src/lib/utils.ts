@@ -1,8 +1,8 @@
 import { getCollection } from "astro:content";
 
-export const blogs = (await getCollection("blog")).sort(
-	(a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
-);
+export const blogs = (await getCollection("blog"))
+	.filter((post) => !post.data.draft)
+	.sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
 export type BlogMetadata = (typeof blogs)[number];
 
 export const getBlogs = (limit = Number.MAX_SAFE_INTEGER): BlogMetadata[] => {

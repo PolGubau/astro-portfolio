@@ -70,4 +70,4 @@
 }
 
 /* Animation handled entirely by JS (PerformanceCards.astro) for
-   cross-browser consistency — rAF + passive scroll, GPU-composited. */
+   cross-browser consistency - rAF + passive scroll, GPU-composited. */

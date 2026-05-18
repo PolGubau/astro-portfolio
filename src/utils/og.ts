@@ -4,7 +4,7 @@ import { createElement as h } from "react";
 import { Resvg } from "@resvg/resvg-js";
 import satori from "satori";
 
-// Inter from @fontsource/inter (local WOFF files — static, non-variable, works with satori)
+// Inter from @fontsource/inter (local WOFF files - static, non-variable, works with satori)
 const base = join(process.cwd(), "node_modules/@fontsource/inter/files");
 const fontRegular = readFileSync(join(base, "inter-latin-400-normal.woff"));
 const fontBold = readFileSync(join(base, "inter-latin-700-normal.woff"));

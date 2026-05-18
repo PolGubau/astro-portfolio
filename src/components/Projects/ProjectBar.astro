@@ -23,7 +23,7 @@ const data = project.data;
     <h2 class="pl-2 font-semibold text-xl text-black/80">{data.title}</h2>
 
     <ul class="flex items-center gap-1">
-      <!-- Share button — native share API on mobile, clipboard fallback on desktop -->
+      <!-- Share button - native share API on mobile, clipboard fallback on desktop -->
       <li>
         <button
           id="share-button"
@@ -31,37 +31,66 @@ const data = project.data;
           title="Share"
           class="group relative flex items-center gap-1.5 cursor-pointer rounded-lg px-2.5 py-2 text-black/60 transition-all hover:bg-black/15"
         >
-          <Icon name="lucide:share-2" class="share-icon w-4 h-4" aria-hidden="true" />
-          <Icon name="lucide:check" class="check-icon w-4 h-4 hidden" aria-hidden="true" />
+          <Icon
+            name="lucide:share-2"
+            class="share-icon w-4 h-4"
+            aria-hidden="true"
+          />
+          <Icon
+            name="lucide:check"
+            class="check-icon w-4 h-4 hidden"
+            aria-hidden="true"
+          />
           <span class="feedback-label hidden text-xs font-medium">Copied!</span>
         </button>
       </li>
 
-      {data.npmLink && (
-        <li>
-          <a href={data.npmLink} title="NPM" target="_blank" rel="noopener noreferrer"
-            class="flex aspect-square rounded-lg p-2 text-black/60 transition-all hover:bg-black/15">
-            <NpmIcon width={16} height={16} />
-          </a>
-        </li>
-      )}
-      {data.githubLink && (
-        <li>
-          <a href={data.githubLink} title="GitHub" target="_blank" rel="noopener noreferrer"
-            class="flex aspect-square rounded-lg p-2 text-black/60 transition-all hover:bg-black/15">
-            <GithubIcon width={16} height={16} />
-          </a>
-        </li>
-      )}
-      {data.link && (
-        <li>
-          <a href={data.link} title="Visit project" target="_blank" rel="noopener noreferrer"
-            class="flex aspect-square rounded-lg bg-black/20 p-2 transition-all hover:bg-black/30"
-            style={{ color: data.color ?? "#808080" }}>
-            <SearchIcon width={16} height={16} />
-          </a>
-        </li>
-      )}
+      {
+        data.npmLink && (
+          <li>
+            <a
+              href={data.npmLink}
+              title="NPM"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex aspect-square rounded-lg p-2 text-black/60 transition-all hover:bg-black/15"
+            >
+              <NpmIcon width={16} height={16} />
+            </a>
+          </li>
+        )
+      }
+      {
+        data.githubLink && (
+          <li>
+            <a
+              href={data.githubLink}
+              title="GitHub"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex aspect-square rounded-lg p-2 text-black/60 transition-all hover:bg-black/15"
+            >
+              <GithubIcon width={16} height={16} />
+            </a>
+          </li>
+        )
+      }
+      {
+        data.link && (
+          <li>
+            <a
+              href={data.link}
+              title="Visit project"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex aspect-square rounded-lg bg-black/20 p-2 transition-all hover:bg-black/30"
+              style={{ color: data.color ?? "#808080" }}
+            >
+              <SearchIcon width={16} height={16} />
+            </a>
+          </li>
+        )
+      }
     </ul>
   </div>
 </div>
@@ -98,7 +127,7 @@ const data = project.data;
         await navigator.share({ title, url });
         showFeedback("Shared!");
       } catch (e) {
-        // User cancelled — do nothing
+        // User cancelled - do nothing
       }
     } else {
       try {

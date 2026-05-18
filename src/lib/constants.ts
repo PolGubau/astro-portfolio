@@ -70,7 +70,7 @@ export const metadata = {
 		twitter: "https://x.com/PolGubau",
 		github: "https://github.com/polgubau",
 		linkedin: "https://www.linkedin.com/in/polgubauamores/",
-		email: "mailto:gubaupol@gmail.com",
+		email: "mailto:hola@polgubau.com",
 		npm: "https://www.npmjs.com/~polgubau",
 	},
 

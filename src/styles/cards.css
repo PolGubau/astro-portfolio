@@ -68,26 +68,36 @@
   --reverse-index0: calc(var(--reverse-index) - 1); /* 0-based reverse index */
 }
 
+/* ── CSS scroll-driven animation (Chrome 115+, Edge 115+) ─────────────────── */
 @keyframes scale {
-  from {
-    transform: scale(1);
+  from { transform: scale(1); }
+  to   { transform: scale(calc(1.1 - calc(0.1 * var(--reverse-index)))); }
+}
+
+@supports (animation-timeline: scroll()) {
+  #cards {
+    --numCards: 4;
+    view-timeline-name: --cards-element-scrolls-in-body;
   }
-  to {
-    transform: scale(calc(1.1 - calc(0.1 * var(--reverse-index))));
+
+  .card {
+    --start-range: calc(var(--index0) / var(--numCards) * 50%);
+    --end-range: calc((var(--index)) / var(--numCards) * 100%);
+    animation: scale forwards;
+    animation-timeline: --cards-element-scrolls-in-body;
+    animation-range: exit-crossing var(--start-range) exit-crossing var(--end-range);
   }
 }
 
-#cards {
-  --numCards: 4;
-  view-timeline-name: --cards-element-scrolls-in-body;
-}
-
-.card {
-  --start-range: calc(var(--index0) / var(--numCards) * 50%);
-  --end-range: calc((var(--index)) / var(--numCards) * 100%);
-
-  animation: scale forwards;
-  animation-timeline: --cards-element-scrolls-in-body;
-  animation-range: exit-crossing var(--start-range) exit-crossing
-    var(--end-range);
+/* ── Fallback for browsers without scroll-driven animation support ─────────── */
+/* JS in PerformanceCards.astro takes over the scale effect.                    */
+/* This block makes the layout look clean while JS initialises.                 */
+@supports not (animation-timeline: scroll()) {
+  #sticked-cards {
+    padding-bottom: 0;
+  }
+  .card {
+    position: static;
+    padding-top: 0;
+  }
 }

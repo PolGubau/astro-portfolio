@@ -9,6 +9,7 @@
 #cards-header {
   position: sticky;
   top: 0;
+  z-index: 10;
   padding-block: 1rem;
   background-color: var(--color-background, white);
 }
@@ -40,7 +41,7 @@
   position: sticky;
   top: 0;
   padding-top: calc(var(--index) * var(--card-top-offset));
-  transform-origin: top center;
+  transform-origin: center center;
 }
 
 #sticked-cards {

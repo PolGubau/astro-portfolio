@@ -52,7 +52,7 @@ const cards = [
     const cards = Array.from(document.querySelectorAll<HTMLElement>(".card"));
     const NUM = cards.length;
 
-    cards.forEach((c) => (c.style.transformOrigin = "top center"));
+    cards.forEach((c) => (c.style.transformOrigin = "center center"));
 
     const clamp = (v: number, lo: number, hi: number) =>
       Math.max(lo, Math.min(hi, v));
@@ -61,7 +61,8 @@ const cards = [
     const ease = (t: number) =>
       t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
-    const targetScale = (i: number) => 1.1 - 0.1 * (NUM - i);
+    // Gentler scale range: card 0 → 0.85, card 3 → 1.0
+    const targetScale = (i: number) => 1 - 0.05 * (NUM - 1 - i);
 
     let ticking = false;
 
@@ -76,12 +77,11 @@ const cards = [
         const p = ease(clamp((progress - start) / (end - start), 0, 1));
 
         const scale = 1 + (targetScale(i) - 1) * p;
-        const rotateX = 4 * p;
-        const brightness = 1 - 0.22 * ((NUM - 1 - i) / (NUM - 1)) * p;
-        const shadowBlur = 12 + 52 * p;
-        const shadowAlpha = (0.07 + 0.15 * p).toFixed(2);
+        const brightness = 1 - 0.18 * ((NUM - 1 - i) / (NUM - 1)) * p;
+        const shadowBlur = 12 + 40 * p;
+        const shadowAlpha = (0.07 + 0.13 * p).toFixed(2);
 
-        card.style.transform = `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) scale(${scale.toFixed(4)})`;
+        card.style.transform = `scale(${scale.toFixed(4)})`;
         card.style.filter = `brightness(${brightness.toFixed(3)})`;
         const img = card.querySelector("img");
         if (img)

@@ -32,39 +32,14 @@ const PAGE_DESCRIPTION =
     }}
   />
 
-  <div class="py-20">
-    <!-- Header -->
-    <header class="mb-12 text-center md:text-left">
-      <h1 class="font-title text-3xl font-bold tracking-tight md:text-4xl">
-        UI Experiments
-      </h1>
-      <p class="mt-3 max-w-2xl text-lg text-ink/60">
-        A collection of UI components and animations. Each experiment explores
-        different patterns, interactions, and animation techniques built with
-        React.
+  <div class="flex flex-col gap-12">
+    <header class="flex flex-col gap-3">
+      <h1 class="text-2xl font-semibold tracking-tight">Experiments</h1>
+      <p class="text-ink/60">
+        UI components and animations built with React — interactions, motion,
+        and creative patterns.
       </p>
-      <div
-        class="mt-4 flex flex-wrap items-center gap-2 text-sm text-ink/50 justify-center md:justify-start"
-      >
-        <span>26 experiments</span>
-        <span>•</span>
-        <span>React</span>
-        <span>•</span>
-        <span>Framer Motion</span>
-        <span>•</span>
-        <span>CSS Animations</span>
-      </div>
     </header>
-
-    <!-- Grid -->
     <MansoryGrid />
-
-    <!-- Footer Note -->
-    <div class="mt-16 text-center">
-      <p class="text-sm text-ink/50">
-        These experiments demonstrate various UI patterns, from drag-and-drop
-        interfaces to complex animations. Hover over each card to see details.
-      </p>
-    </div>
   </div>
 </MainLayout>

@@ -23,20 +23,33 @@ const breadcrumbData = {
 ---
 
 <nav aria-label="Breadcrumb" class="mb-4">
-  <ol class="flex items-center gap-2 text-sm text-ink/50">
+  <ol class="flex items-center gap-2 text-sm text-ink/50 min-w-0">
     {
-      items.map((item, index) => (
-        <li class="flex items-center gap-2">
-          {index > 0 && <span class="text-ink/30">/</span>}
-          {item.url ? (
-            <a href={item.url} class="hover:text-ink transition-colors">
-              {item.name}
-            </a>
-          ) : (
-            <span class="font-medium text-ink">{item.name}</span>
-          )}
-        </li>
-      ))
+      items.map((item, index) => {
+        const isLast = index === items.length - 1;
+        return (
+          <li
+            class:list={[
+              "flex items-center gap-2 min-w-0",
+              { "shrink-0": !isLast },
+            ]}
+          >
+            {index > 0 && <span class="shrink-0 text-ink/30">/</span>}
+            {item.url ? (
+              <a
+                href={item.url}
+                class="shrink-0 hover:text-ink transition-colors truncate"
+              >
+                {item.name}
+              </a>
+            ) : (
+              <span class="font-medium text-ink truncate min-w-0">
+                {item.name}
+              </span>
+            )}
+          </li>
+        );
+      })
     }
   </ol>
 </nav>

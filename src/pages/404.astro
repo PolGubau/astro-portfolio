@@ -1,0 +1,45 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout
+  title="404 — Pol Gubau"
+  description="This page doesn't exist."
+>
+  <div class="flex flex-col items-center justify-center gap-8 py-32 text-center">
+    <p
+      class="text-[10rem] font-bold font-title leading-none text-ink/8 select-none"
+      aria-hidden="true"
+    >
+      404
+    </p>
+
+    <div class="flex flex-col gap-2 -mt-16">
+      <h1 class="text-2xl font-semibold">Page not found</h1>
+      <p class="text-ink/50 max-w-sm">
+        This URL doesn't exist. The page may have moved or been removed.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap gap-3 justify-center">
+      <a
+        href="/"
+        class="rounded-xl bg-ink text-background px-5 py-2.5 text-sm font-medium transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5 hover:shadow-md hover:bg-ink/85"
+      >
+        Go home
+      </a>
+      <a
+        href="/projects"
+        class="rounded-xl border border-ink/12 px-5 py-2.5 text-sm font-medium text-ink/60 transition-[border-color,color] duration-200 hover:text-ink hover:border-ink/30"
+      >
+        See projects
+      </a>
+      <a
+        href="/blog"
+        class="rounded-xl border border-ink/12 px-5 py-2.5 text-sm font-medium text-ink/60 transition-[border-color,color] duration-200 hover:text-ink hover:border-ink/30"
+      >
+        Read blog
+      </a>
+    </div>
+  </div>
+</MainLayout>

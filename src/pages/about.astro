@@ -1,0 +1,218 @@
+---
+import { Image } from "astro:assets";
+import MainLayout from "../layouts/MainLayout.astro";
+import { metadata } from "../lib/constants";
+import me from "../assets/media/me.webp";
+import tv3 from "../assets/media/about/tv3.avif";
+import teaching from "../assets/media/about/teaching.avif";
+import tfg from "../assets/media/about/tfg.avif";
+---
+
+<MainLayout
+  title="About — Pol Gubau Amores"
+  description="Senior Frontend Engineer based in Mataró, Barcelona. Co-founder of Doscientos. Creator of Pol UI. Designer-turned-developer who cares about craft."
+>
+  <article class="flex flex-col gap-14 py-8 max-w-2xl">
+    <!-- Hero -->
+    <header class="flex flex-col gap-6" data-reveal="bottom" data-speed="fast">
+      <div class="flex items-center gap-5">
+        <Image
+          src={me}
+          alt="Pol Gubau Amores"
+          width={72}
+          height={72}
+          loading="eager"
+          class="rounded-full object-cover bg-primary shrink-0"
+        />
+        <div>
+          <h1 class="text-2xl font-semibold tracking-tight">
+            Pol Gubau Amores
+          </h1>
+          <p class="text-ink/50">
+            Senior Frontend Engineer · Mataró, Barcelona
+          </p>
+        </div>
+      </div>
+      <p class="text-lg leading-relaxed text-ink/80">
+        I build interfaces for a living and can't stop building things outside
+        of work. Currently Senior Frontend at <a
+          href="https://mesalvo.com"
+          class="text-ink hover:underline underline-offset-4"
+          target="_blank"
+          rel="noopener noreferrer">Mesalvo</a
+        > and co-founder of <a
+          href="https://doscientos.es"
+          class="text-ink hover:underline underline-offset-4"
+          target="_blank"
+          rel="noopener noreferrer">Doscientos</a
+        >.
+      </p>
+    </header>
+
+    <!-- Story -->
+    <section
+      class="flex flex-col gap-4 text-ink/75 leading-relaxed"
+      data-reveal="bottom"
+    >
+      <h2 class="text-xl font-semibold text-ink">The story so far</h2>
+      <p>
+        I started as a graphic designer — winning school hackathons, shooting
+        cars for dealerships, creating branding for startups. People kept asking
+        me to build websites after seeing the ones I made for myself, so I
+        learned to code.
+      </p>
+      <p>
+        One thing led to another. WordPress sites became React apps, freelance
+        projects became a full-time job at Mesalvo, and a university thesis
+        became <a
+          href="/projects/polui"
+          class="text-ink underline underline-offset-4 hover:opacity-70"
+          >Pol-UI</a
+        >
+        — a React component library with 150+ components, 50k+ npm downloads, and
+        a 10/10 score with special distinction from UAB.
+      </p>
+      <p>
+        After graduating I moved to Germany to be closer to Mesalvo's
+        headquarters, then came back to Spain and co-founded <a
+          href="/projects/doscientos"
+          class="text-ink underline underline-offset-4 hover:opacity-70"
+          >Doscientos</a
+        > with Gerard — a software studio that ships MVPs and internal tools for companies
+        that have outgrown Excel.
+      </p>
+    </section>
+
+    <!-- Stats -->
+    <div
+      data-reveal="bottom"
+      class="grid grid-cols-2 md:grid-cols-4 gap-px bg-neutral-200 rounded-xl overflow-hidden border border-neutral-200"
+    >
+      {
+        [
+          {
+            value: `${new Date().getFullYear() - 2019}+`,
+            label: "Years building",
+          },
+          { value: "62k+", label: "npm downloads" },
+          { value: "150+", label: "React components" },
+          { value: "50+", label: "Projects shipped" },
+        ].map(({ value, label }) => (
+          <div class="flex flex-col gap-1 px-6 py-5 bg-background">
+            <span class="text-2xl font-medium">{value}</span>
+            <span class="text-sm text-ink/50">{label}</span>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Photos -->
+    <section class="flex flex-col gap-6" data-stagger="100">
+      <h2 class="text-xl font-semibold text-ink" data-reveal="bottom">
+        Beyond the screen
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <figure class="flex flex-col gap-2" data-reveal="bottom">
+          <Image
+            src={tv3}
+            alt="Pol Gubau interviewed on TV3"
+            width={400}
+            height={300}
+            class="w-full aspect-[4/3] object-cover rounded-xl border border-neutral-200"
+          />
+          <figcaption class="text-sm text-ink/50">
+            Interviewed on TV3 about tech & design
+          </figcaption>
+        </figure>
+        <figure class="flex flex-col gap-2" data-reveal="bottom">
+          <Image
+            src={teaching}
+            alt="Pol Gubau teaching students"
+            width={400}
+            height={300}
+            class="w-full aspect-[4/3] object-cover rounded-xl border border-neutral-200"
+          />
+          <figcaption class="text-sm text-ink/50">
+            Teaching Astro & Tailwind to 35+ students
+          </figcaption>
+        </figure>
+        <figure class="flex flex-col gap-2" data-reveal="bottom">
+          <Image
+            src={tfg}
+            alt="Pol Gubau presenting his thesis"
+            width={400}
+            height={300}
+            class="w-full aspect-[4/3] object-cover rounded-xl border border-neutral-200"
+          />
+          <figcaption class="text-sm text-ink/50">
+            Presenting Pol-UI — 10/10 distinction
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Currently -->
+    <section class="flex flex-col gap-4" data-reveal="bottom">
+      <h2 class="text-xl font-semibold text-ink">Currently</h2>
+      <ul class="flex flex-col gap-3 text-ink/70">
+        <li class="flex gap-3">
+          <span class="text-ink/30 shrink-0">→</span><span
+            >Senior Frontend at <strong class="text-ink font-medium"
+              >Mesalvo</strong
+            > — building healthcare products used across Europe</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="text-ink/30 shrink-0">→</span><span
+            >Co-founder at <strong class="text-ink font-medium"
+              >Doscientos</strong
+            > — MVPs and internal tools, fixed price, 6 weeks</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="text-ink/30 shrink-0">→</span><span
+            >Building <a
+              href="/projects/les-santes"
+              class="text-ink underline underline-offset-4 hover:opacity-70"
+              >Les Santes</a
+            > — unofficial app for Mataró's biggest festival</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="text-ink/30 shrink-0">→</span><span
+            >Based in Mataró, Barcelona</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Contact -->
+    <section
+      class="flex flex-col gap-4 pt-6 border-t border-ink/10"
+      data-reveal="bottom"
+    >
+      <h2 class="text-xl font-semibold text-ink">Get in touch</h2>
+      <p class="text-ink/60">
+        Open to interesting projects, freelance work, and good conversations
+        about craft.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href={metadata.links.email}
+          class="inline-flex items-center gap-2 rounded-xl border border-ink/15 bg-ink text-background px-4 py-2.5 text-sm font-medium transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5 hover:shadow-md hover:bg-ink/85"
+          >Email me</a
+        >
+        <a
+          href={metadata.links.linkedin}
+          target="_blank"
+          rel="me noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-xl border border-ink/10 bg-background text-ink px-4 py-2.5 text-sm font-medium transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5 hover:shadow-md hover:border-ink/25"
+          >LinkedIn</a
+        >
+        <a
+          href={metadata.links.github}
+          target="_blank"
+          rel="me noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-xl border border-ink/10 bg-background text-ink px-4 py-2.5 text-sm font-medium transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5 hover:shadow-md hover:border-ink/25"
+          >GitHub</a
+        >
+      </div>
+    </section>
+  </article>
+</MainLayout>

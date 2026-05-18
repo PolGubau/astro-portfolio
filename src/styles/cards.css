@@ -9,13 +9,8 @@
 #cards-header {
   position: sticky;
   top: 0;
-  z-index: 10;
-  padding-block: 1rem;
-  background: linear-gradient(
-    to bottom,
-    var(--color-background, white) 60%,
-    transparent
-  );
+   padding-block: 1rem;
+ 
 }
 
 #sticked-cards {

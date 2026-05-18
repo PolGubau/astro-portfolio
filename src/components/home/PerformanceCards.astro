@@ -46,40 +46,45 @@ const cards = [
 </section>
 
 <script>
-  // JS fallback for browsers without CSS scroll-driven animation support
-  // (Firefox, Safari). Uses passive scroll + rAF — no layout thrashing.
   if (!CSS.supports("animation-timeline", "scroll()")) {
     const section = document.getElementById("cards");
-    const cardImgs = Array.from(
-      document.querySelectorAll<HTMLElement>(".card img"),
-    );
-    const NUM = cardImgs.length;
+    const cards = Array.from(document.querySelectorAll<HTMLElement>(".card"));
+    const NUM = cards.length;
 
-    // Mirror the CSS keyframe: scale = 1.1 - 0.1 * reverseIndex, at progress=1
-    // At progress=0 → scale(1), at progress=1 → target scale
-    function targetScale(i: number) {
-      const reverseIndex = NUM - i; // 1-based reverse
-      return 1.1 - 0.1 * reverseIndex;
-    }
+    cards.forEach((c) => (c.style.transformOrigin = "top center"));
+
+    const clamp = (v: number, lo: number, hi: number) =>
+      Math.max(lo, Math.min(hi, v));
+
+    // easeInOutCubic — feels physical
+    const ease = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const targetScale = (i: number) => 1.1 - 0.1 * (NUM - i);
 
     let ticking = false;
 
     function update() {
       if (!section) return;
       const { top, height } = section.getBoundingClientRect();
-      // progress 0→1 as section scrolls from entering to leaving viewport
-      const progress = Math.max(
-        0,
-        Math.min(1, -top / (height - window.innerHeight)),
-      );
+      const progress = clamp(-top / (height - window.innerHeight), 0, 1);
 
-      cardImgs.forEach((img, i) => {
-        // Each card exits in sequence — map its own window within overall progress
+      cards.forEach((card, i) => {
         const start = (i / NUM) * 0.5;
         const end = (i + 1) / NUM;
-        const p = Math.max(0, Math.min(1, (progress - start) / (end - start)));
+        const p = ease(clamp((progress - start) / (end - start), 0, 1));
+
         const scale = 1 + (targetScale(i) - 1) * p;
-        img.style.transform = `scale(${scale.toFixed(4)})`;
+        const rotateX = 4 * p;
+        const brightness = 1 - 0.22 * ((NUM - 1 - i) / (NUM - 1)) * p;
+        const shadowBlur = 12 + 52 * p;
+        const shadowAlpha = (0.07 + 0.15 * p).toFixed(2);
+
+        card.style.transform = `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) scale(${scale.toFixed(4)})`;
+        card.style.filter = `brightness(${brightness.toFixed(3)})`;
+        const img = card.querySelector("img");
+        if (img)
+          img.style.boxShadow = `0 ${(shadowBlur * 0.5).toFixed(0)}px ${shadowBlur.toFixed(0)}px rgba(0,0,0,${shadowAlpha})`;
       });
 
       ticking = false;
@@ -96,6 +101,6 @@ const cards = [
       { passive: true },
     );
 
-    update(); // initial state
+    update();
   }
 </script>

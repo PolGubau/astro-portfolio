@@ -10,8 +10,8 @@ import PerformanceCards from "../components/home/PerformanceCards.astro";
 import "../styles/cards.css";
 
 const allProjects = getProjects();
-const ossProjects = allProjects.filter((p) => p.data.oss);
-const workProjects = allProjects.filter((p) => !p.data.oss).slice(0, 6);
+const workProjects = allProjects.filter((p) => !!p.data.client).slice(0, 6);
+const sideProjects = allProjects.filter((p) => !p.data.client);
 ---
 
 <MainLayout>
@@ -19,7 +19,7 @@ const workProjects = allProjects.filter((p) => !p.data.oss).slice(0, 6);
     <Header />
     <main class="flex w-full flex-1 flex-col gap-20 md:gap-32">
       <WorkSection projects={workProjects} />
-      <OpenSourceSection projects={ossProjects} />
+      <OpenSourceSection projects={sideProjects} />
       <BeyondCodeSection />
       <DoscientosCTA />
       <PerformanceCards />

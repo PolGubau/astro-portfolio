@@ -103,9 +103,9 @@ const isLastButton = (button: string) => lastExistingButton === button;
           )
         }
         {
-          p.data.oss && (
-            <span class="rounded-full bg-black/10 px-2 py-px text-[10px] uppercase tracking-wider text-ink/50">
-              OSS
+          p.data.client && (
+            <span class="rounded-full bg-black/10 px-2 py-px text-[10px] text-ink/50">
+              {p.data.client}
             </span>
           )
         }

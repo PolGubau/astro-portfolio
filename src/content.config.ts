@@ -22,7 +22,7 @@ const projects = defineCollection({
 			title: z.string(),
 			summary: z.string(),
 			available: z.boolean(),
-		oss: z.boolean().default(false),
+		client: z.string().optional(),
 			startedAt: z.string().transform((str) => new Date(str)),
 			endedAt: z
 				.string()

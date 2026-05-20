@@ -14,7 +14,7 @@ const { projects } = Astro.props;
   {
     projects.map((project, index) => {
       const { data, id: slug } = project;
-      const { title, summary, color, cover, tech, endedAt, startedAt, oss } =
+      const { title, summary, color, cover, tech, endedAt, startedAt, client } =
         data;
       const year = (endedAt ?? startedAt).getFullYear();
       const isActive = !endedAt;
@@ -63,9 +63,9 @@ const { projects } = Astro.props;
                     <span class="text-[10px] text-emerald-600">Active</span>
                   </span>
                 )}
-                {oss && !isActive && (
-                  <span class="hidden shrink-0 rounded border border-ink/10 px-1.5 py-px text-[10px] uppercase tracking-wider text-ink/30 sm:inline">
-                    oss
+                {client && !isActive && (
+                  <span class="hidden shrink-0 rounded border border-ink/10 px-1.5 py-px text-[10px] text-ink/30 sm:inline">
+                    {client}
                   </span>
                 )}
               </div>

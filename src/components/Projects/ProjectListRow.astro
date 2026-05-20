@@ -27,14 +27,14 @@ const { projects } = Astro.props;
           class="group relative border-b border-ink/[0.06] last:border-0"
         >
           {/* Color accent bar */}
-          <div
+          {/* <div
             class="absolute left-0 top-3 bottom-3 w-[2px] rounded-full opacity-0 transition-opacity duration-200 group-hover:opacity-100"
             style={{ backgroundColor: color }}
-          />
+          /> */}
 
           <a
             href={`/projects/${slug}`}
-            class="flex items-center gap-5 py-4 pl-5 pr-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20 focus-visible:ring-offset-2 rounded-r-xl"
+            class="flex items-center gap-5 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20 focus-visible:ring-offset-2 rounded-r-xl"
           >
             {/* Thumbnail */}
             <div

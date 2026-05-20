@@ -17,7 +17,7 @@ const data = project.data;
   id="project-bar"
 >
   <div
-    class="pointer-events-auto flex w-fit max-w-[calc(100vw-2rem)] items-center justify-between gap-4 md:gap-8 rounded-xl p-1 shadow-lg"
+    class="pointer-events-auto flex w-fit max-w-[calc(100vw-2rem)] items-center justify-between gap-4 md:gap-8 rounded-xl p-1 shadow-lg backdrop-blur bg-white/80 border border-neutral-200"
     style={{ backgroundColor: data.color ?? "#808080" }}
   >
     <h2 class="pl-2 font-semibold text-xl text-black/80">{data.title}</h2>
@@ -86,7 +86,7 @@ const data = project.data;
               class="flex aspect-square rounded-lg bg-black/20 p-2 transition-all hover:bg-black/30"
               style={{ color: data.color ?? "#808080" }}
             >
-              <SearchIcon width={16} height={16} />
+              <SearchIcon width={16} height={16} class="text-foreground" />
             </a>
           </li>
         )

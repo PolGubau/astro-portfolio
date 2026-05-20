@@ -11,7 +11,7 @@ import "../styles/cards.css";
 
 const allProjects = getProjects();
 const workProjects = allProjects.filter((p) => !!p.data.client).slice(0, 6);
-const sideProjects = allProjects.filter((p) => !p.data.client);
+const sideProjects = allProjects.filter((p) => !p.data.client).slice(0, 8);
 ---
 
 <MainLayout>

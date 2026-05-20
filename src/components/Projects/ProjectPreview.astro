@@ -25,20 +25,9 @@ const titleSize = title.length > 14 ? "text-2xl" : "text-3xl";
     class="relative flex h-full flex-col items-center justify-end overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 focus-visible:ring-inset"
     style={{ backgroundColor: color }}
   >
-    <!-- Top gradient: protects title from image overlap -->
-    <div
-      class="pointer-events-none absolute inset-x-0 top-0 z-20 h-32 bg-gradient-to-b from-black/30 to-transparent"
-    >
-    </div>
-
     <!-- Title -->
     <header class="absolute top-5 left-5 z-30 flex flex-col gap-2">
-      <h3
-        class:list={[
-          "font-medium leading-snug text-ink/85 drop-shadow-sm",
-          titleSize,
-        ]}
-      >
+      <h3 class:list={["font-medium leading-snug text-ink/90", titleSize]}>
         {title}
       </h3>
       <div class="flex items-center gap-1.5">

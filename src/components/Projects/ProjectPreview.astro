@@ -49,10 +49,8 @@ const titleSize = title.length > 14 ? "text-2xl" : "text-3xl";
       </div>
     </header>
 
-    <!-- Screenshot: always capped so it never reaches the title area -->
-    <div
-      class="relative w-[90%] max-h-[58%] md:max-h-[65%] overflow-hidden transition-transform duration-500 ease-out group-hover:-translate-y-2"
-    >
+    <!-- Screenshot: overflow-hidden clips the image; translate is on the image so no gap appears -->
+    <div class="relative w-[90%] max-h-[58%] md:max-h-[65%] overflow-hidden">
       <Image
         src={src}
         priority={isFirstLoad}
@@ -60,7 +58,7 @@ const titleSize = title.length > 14 ? "text-2xl" : "text-3xl";
         alt={title}
         width={600}
         height={380}
-        class="pointer-events-none w-full rounded-t-xl object-cover object-top"
+        class="pointer-events-none w-full scale-[1.04] rounded-t-xl object-cover object-top transition-transform duration-500 ease-out group-hover:-translate-y-2"
       />
     </div>
 

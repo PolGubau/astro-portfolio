@@ -92,21 +92,34 @@ Mataró deserves better tooling. So I built it — a solo, public-good project w
 
 ## Engineering highlights
 
-The non-obvious decisions that made this technically interesting:
+<div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-3 my-6">
+  <div class="flex flex-col gap-1.5 rounded-xl border border-neutral-200 bg-neutral-50 p-4">
+    <span class="text-sm font-semibold">Live parade position - no GPS needed</span>
+    <span class="text-sm leading-relaxed text-neutral-500">Each parade has a pre-planned GeoJSON route and a start time. The app interpolates their position along that route every second, client-side. No hardware, no server round-trips - just geometry and elapsed time.</span>
+  </div>
+  <div class="flex flex-col gap-1.5 rounded-xl border border-neutral-200 bg-neutral-50 p-4">
+    <span class="text-sm font-semibold">Works offline - festival venues kill signal</span>
+    <span class="text-sm leading-relaxed text-neutral-500">All data is cached on first load with a timestamp. If you open the app with no connection, you still get the full schedule - with a small note showing how old the data is. No spinners, no empty screens.</span>
+  </div>
+  <div class="flex flex-col gap-1.5 rounded-xl border border-neutral-200 bg-neutral-50 p-4">
+    <span class="text-sm font-semibold">Zero accounts, zero data collected</span>
+    <span class="text-sm leading-relaxed text-neutral-500">No login, no sessions, no tokens. This simplified the whole backend and made App Store review straightforward - there was simply nothing to review in terms of data handling.</span>
+  </div>
+  <div class="flex flex-col gap-1.5 rounded-xl border border-neutral-200 bg-neutral-50 p-4">
+    <span class="text-sm font-semibold">Instant cancellations via Supabase Realtime</span>
+    <span class="text-sm leading-relaxed text-neutral-500">When the organiser cancels an event, every connected app instance gets it immediately via Realtime broadcast. Users with notifications enabled get a push with the reason. No polling.</span>
+  </div>
+  <div class="flex flex-col gap-1.5 rounded-xl border border-neutral-200 bg-neutral-50 p-4">
+    <span class="text-sm font-semibold">130 years of posters at 146 KB total</span>
+    <span class="text-sm leading-relaxed text-neutral-500">The full poster archive (1892-present) re-encoded to AVIF. What would have been 5.2 MB of PNGs fits in 146 KB - about 97% smaller, same visual quality.</span>
+  </div>
+  <div class="flex flex-col gap-1.5 rounded-xl border border-neutral-200 bg-neutral-50 p-4">
+    <span class="text-sm font-semibold">MapLibre instead of Google or Apple Maps</span>
+    <span class="text-sm leading-relaxed text-neutral-500">MapLibre GL JS in a sandboxed WebView with MapTiler tiles. No third-party tracking, no native SDK setup, full control over styling. Keeps the privacy policy to one paragraph.</span>
+  </div>
+</div>
 
-**Live parade position interpolation.** Moving parades (gegants, cercaviles) don't carry GPS. Each one has a pre-planned GeoJSON route and a start time. The app estimates the current position by interpolating elapsed time along the route geometry, updating every second client-side. No hardware, no server calls — just math on the client.
-
-**Offline-first with cache timestamping.** All event data is fetched once and written to AsyncStorage with a timestamp. When the user is offline — common in dense festival crowds — the app serves cached data and surfaces a banner showing how old it is. No spinners, no empty states, no crashes.
-
-**Zero-auth architecture.** No accounts, no sessions, no client-side tokens. This wasn't just a UX choice: it eliminated an entire class of backend complexity, simplified App Store and Play Store review, and means zero personal data is ever collected or stored. The app passes privacy review trivially.
-
-**Real-time cancellations via Supabase Realtime.** When the organiser cancels an event in the admin panel, a Supabase Realtime broadcast reaches every connected app instance instantly. Users who opted into notifications receive a push via Expo Notifications with the cancellation reason — no polling, no delays.
-
-**SEO built to compete with the official site.** The Next.js 15 landing ships a full JSON-LD `@graph`: `Festival` with nested `subEvent[]`, `FAQPage`, `WebSite` with `SearchAction`, and `MobileApplication` — alongside keyword-first metadata and explicit allowlisting of AI crawlers (`GPTBot`, `PerplexityBot`, `ClaudeBot`, `Google-Extended`). All targeting the same high-intent queries as the official lessantes.cat domain.
-
-**97% image reduction via AVIF.** The full poster archive (1892-present) was re-encoded to AVIF. 130+ years of festival history that would have been 5.2 MB of PNGs compressed to ~146 KB total.
-
-**MapLibre in a WebView instead of native SDKs.** Avoids Google Maps and Apple Maps entirely — no privacy implications, no native setup, full control over tile providers. MapLibre GL JS runs in a sandboxed WebView with custom MapTiler tiles, keeping the bundle clean and the privacy policy trivial.
+<Image src={appMapa} alt="Live parade map with real-time position tracking" class="max-h-[60vh] w-auto rounded-2xl my-2" />
 
 ---
 
@@ -189,12 +202,16 @@ A scrollable archive of every official festival poster since 1892, plus a swipea
 
 A Next.js 15 App Router site that converts visitors into app downloads and doubles as a full content management system for the festival organiser. Optimised for Core Web Vitals, fully typed, and SEO-structured to compete with the official city domain for high-intent queries.
 
-<Image src={landingScreens} alt="Landing page app screens section" data-reveal="bottom" data-easing="soft" class="rounded-2xl my-6" />
+<div class="flex flex-col gap-1.5">
 
-<Image src={landingPosters} alt="Poster marquee on landing page" data-reveal="bottom" data-easing="soft" class="rounded-2xl my-6" />
 
-<Image src={landing404} alt="Custom 404 page" data-reveal="bottom" data-easing="soft" class="rounded-2xl my-6" />
+  <Image src={landingScreens} alt="Landing page app screens section" data-reveal="bottom" data-easing="soft" class="rounded-2xl my-6" />
 
+  <Image src={landingPosters} alt="Poster marquee on landing page" data-reveal="bottom" data-easing="soft" class="rounded-2xl my-6" />
+
+  <Image src={landing404} alt="Custom 404 page" data-reveal="bottom" data-easing="soft" class="rounded-2xl my-6" />
+
+</div>
 ---
 
 ## The admin panel

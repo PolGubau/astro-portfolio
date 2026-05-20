@@ -40,7 +40,7 @@ By the end of the year we had covered all 12 lines of the network: ~200 km of ci
   alt="Group of people walking one of the metro lines"
   width={400}
   height={600}
-  className="rounded-2xl mx-auto max-h-[500px] w-auto show-animation my-8 shadow-xl"
+  className="rounded-2xl mx-auto max-h-[600px] w-auto show-animation my-8 shadow-xl"
   src={people}
 />
 
@@ -55,6 +55,17 @@ The data pipeline was the most interesting part:
 2. **Cleaning**: Exported GPX files were cleaned in [GPX Studio](https://gpx.studio) to remove GPS drift and fix missing segments.
 3. **Parsing**: Converted to GeoJSON for the map, but also extracted metadata into a custom TypeScript structure to handle the UI.
 
+<div class="grid grid-cols-1 md:grid-cols-[auto_auto] gap-2">
+
+
+<Image
+  alt="Map overview showing all walked metro lines across Barcelona"
+  width={800}
+  height={500}
+  className="rounded-2xl mx-auto max-h-[600px] w-auto show-animation my-8 shadow-xl"
+  src={mapOverview}
+/>
+
 ```typescript
 {
   id: "L1",
@@ -68,14 +79,7 @@ The data pipeline was the most interesting part:
   }
 }
 ```
-
-<Image
-  alt="Map overview showing all walked metro lines across Barcelona"
-  width={800}
-  height={500}
-  className="rounded-2xl w-full object-cover show-animation mt-8 mb-4 border border-neutral-200"
-  src={mapOverview}
-/>
+</div>
 
 ## Building the map
 
@@ -97,7 +101,7 @@ Selecting a line filters the global GeoJSON data and focuses the viewport on tha
   alt="Line detail panel showing stats like distance, time and stations"
   width={800}
   height={500}
-  className="rounded-2xl w-full object-cover show-animation my-4 border border-neutral-200"
+  className="rounded-2xl mx-auto max-h-[600px] w-auto show-animation my-8 shadow-xl"
   src={lineDetails}
 />
 

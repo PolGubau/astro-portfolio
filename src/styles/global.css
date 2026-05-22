@@ -65,6 +65,10 @@ body {
      animations (view-timeline-name). The <html> element handles overflow-x. */
 }
 
+.safe-area-inset-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
 *::selection {
   @apply bg-ink/80 text-background backdrop-blur-md;
 }

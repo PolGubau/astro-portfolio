@@ -29,6 +29,7 @@ const {
 } = Astro.props;
 
 const imageURL = new URL(image, Astro.site);
+const ogImageType = image.endsWith(".png") ? "image/png" : "image/webp";
 const keywordsContent = keywords.join(", ");
 
 // Publisher used across structured data (logo required by search engines)
@@ -80,6 +81,14 @@ const websiteSchema = {
   publisher,
   keywords: keywordsContent,
   inLanguage: "en-US",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${Astro.site?.href}blog?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
 };
 
 // JSON-LD for Article (if it's a blog post)
@@ -87,15 +96,18 @@ const articleSchema =
   type === "article"
     ? {
         "@context": "https://schema.org",
-        "@type": "Article",
+        "@type": "BlogPosting",
         headline: title,
         description: description,
+        url: canonicalURL.href,
         image: imageURL.href,
         datePublished: publishedTime,
         dateModified: modifiedTime || publishedTime,
+        inLanguage: "en-US",
         author: {
           "@type": "Person",
           name: author,
+          url: metadata.links.website,
         },
         publisher,
         keywords: keywordsContent,
@@ -174,7 +186,7 @@ const articleSchema =
 <meta property="og:image" content={imageURL} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:type" content="image/webp" />
+<meta property="og:image:type" content={ogImageType} />
 <meta property="og:image:alt" content={title} />
 <meta property="og:locale" content="en_US" />
 {
@@ -189,6 +201,10 @@ const articleSchema =
 }
 {author && <meta property="article:author" content={author} />}
 <meta property="article:publisher" content={metadata.links.website} />
+{
+  type === "article" &&
+    keywords.map((kw) => <meta property="article:tag" content={kw} />)
+}
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -212,7 +228,6 @@ const articleSchema =
 {
   articleSchema && (
     <script
-      is:inline
       type="application/ld+json"
       set:html={JSON.stringify(articleSchema)}
     />

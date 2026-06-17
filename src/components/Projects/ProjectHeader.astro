@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { formatDate, type ProjectMetadata } from "../../lib/utils";
+import { type ProjectMetadata, formatDate } from "../../lib/utils";
 import GithubIcon from "../icons/GithubIcon.astro";
 import NpmIcon from "../icons/NpmIcon.astro";
 import PlayStoreIcon from "../icons/PlayStoreIcon.astro";
@@ -38,7 +38,7 @@ const projectButtons: {
   },
 ].filter((p) => Boolean(p.link));
 
-const iconMap: Record<Icons, Function> = {
+const iconMap: Record<Icons, (props: Record<string, unknown>) => unknown> = {
   github: GithubIcon,
   playStore: PlayStoreIcon,
   npm: NpmIcon,
@@ -102,14 +102,15 @@ const isLastButton = (button: string) => lastExistingButton === button;
             </span>
           )
         }
+      </div>
+
+      <p>
         {
           p.data.client && (
-            <span class="rounded-full bg-black/10 px-2 py-px text-[10px] text-ink/50">
-              {p.data.client}
-            </span>
+            <span class="py-2 text-sm text-ink/70">{p.data.client}</span>
           )
         }
-      </div>
+      </p>
 
       <!-- Title -->
       <h1

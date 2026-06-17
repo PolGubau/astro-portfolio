@@ -37,6 +37,9 @@ const modifiedTime = (
   type="article"
   publishedTime={publishedTime}
   modifiedTime={modifiedTime}
+  keywords={project.data.tech && project.data.tech.length > 0
+    ? project.data.tech
+    : undefined}
 >
   <section class="relative flex flex-col gap-4">
     <Breadcrumb

@@ -1,5 +1,8 @@
 # build output
 dist/
+
+# OG image cache
+.cache/
 # generated types
 .astro/
 

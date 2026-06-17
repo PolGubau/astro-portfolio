@@ -1,5 +1,5 @@
+import { type InferEntrySchema, defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
-import { defineCollection, z, type InferEntrySchema } from "astro:content";
 
 const blog = defineCollection({
 	// Load Markdown and MDX files in the `src/content/blog/` directory.
@@ -20,9 +20,10 @@ const projects = defineCollection({
 	schema: ({ image }) =>
 		z.object({
 			title: z.string(),
+			seoTitle: z.string().optional(),
 			summary: z.string(),
 			available: z.boolean(),
-		client: z.string().optional(),
+			client: z.string().optional(),
 			startedAt: z.string().transform((str) => new Date(str)),
 			endedAt: z
 				.string()

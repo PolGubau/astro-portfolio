@@ -1,61 +1,61 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import ProjectBar from "../../components/Projects/ProjectBar.astro";
 import ProjectHeader from "../../components/Projects/ProjectHeader.astro";
+import ProjectLinks from "../../components/Projects/ProjectLinks.astro";
+import SimilarProjects from "../../components/Projects/SimilarProjects.astro";
+import Toc from "../../components/Toc.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
 import MdLayout from "../../layouts/MdLayout.astro";
-import { getProjects } from "../../lib/utils";
-import SimilarProjects from "../../components/Projects/SimilarProjects.astro";
-import ProjectBar from "../../components/Projects/ProjectBar.astro";
 import { metadata } from "../../lib/constants";
-import Toc from "../../components/Toc.astro";
-import Breadcrumb from "../../components/Breadcrumb.astro";
-import ProjectLinks from "../../components/Projects/ProjectLinks.astro";
+import { getProjects } from "../../lib/utils";
 
 export async function getStaticPaths() {
-	return getProjects().map((project) => ({
-		params: { slug: project.id },
-		props: project,
-	}));
+  return getProjects().map((project) => ({
+    params: { slug: project.id },
+    props: project,
+  }));
 }
 type Props = CollectionEntry<"projects">;
 
 const project = Astro.props;
 
-const PAGE_TITLE = `${project.data.title} - ${metadata.name}`;
+const PAGE_TITLE = `${project.data.seoTitle ?? project.data.title} - ${metadata.name}`;
 const { Content, headings } = await render(project);
 const publishedTime = project.data.startedAt.toISOString();
 const modifiedTime = (
-	project.data.endedAt ?? project.data.startedAt
+  project.data.endedAt ?? project.data.startedAt
 ).toISOString();
 ---
 
 <MainLayout
-	image={`/og/projects/${project.id}.png`}
-	title={PAGE_TITLE}
-	description={project.data.summary}
-	type="article"
-	publishedTime={publishedTime}
-	modifiedTime={modifiedTime}
+  image={`/og/projects/${project.id}.png`}
+  title={PAGE_TITLE}
+  description={project.data.summary}
+  type="article"
+  publishedTime={publishedTime}
+  modifiedTime={modifiedTime}
 >
-	<section class="relative flex flex-col gap-4">
-		<Breadcrumb
-			items={[
-				{ name: "Home", url: "/" },
-				{ name: "Projects", url: "/projects" },
-				{ name: project.data.title },
-			]}
-		/>
+  <section class="relative flex flex-col gap-4">
+    <Breadcrumb
+      items={[
+        { name: "Home", url: "/" },
+        { name: "Projects", url: "/projects" },
+        { name: project.data.title },
+      ]}
+    />
 
-		<ProjectHeader project={project} />
+    <ProjectHeader project={project} />
 
-		<MdLayout backTo="/projects">
-			<Content />
-			{headings?.length > 0 && <Toc slot="toc" headings={headings} />}
-			<ProjectLinks slot="footer" project={project} />
-		</MdLayout>
-		<SimilarProjects project={project} />
+    <MdLayout backTo="/projects">
+      <Content />
+      {headings?.length > 0 && <Toc slot="toc" headings={headings} />}
+      <ProjectLinks slot="footer" project={project} />
+    </MdLayout>
+    <SimilarProjects project={project} />
 
-		{project.data.link ? <ProjectBar project={project} /> : null}
-	</section>
+    {project.data.link ? <ProjectBar project={project} /> : null}
+  </section>
 </MainLayout>

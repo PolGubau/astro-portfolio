@@ -15,6 +15,7 @@ interface Props {
   author?: string;
   className?: string;
   tags?: string[];
+  keywords?: string[];
 }
 
 const {
@@ -26,6 +27,7 @@ const {
   modifiedTime,
   author,
   tags,
+  keywords,
   className,
 } = Astro.props;
 ---
@@ -41,6 +43,7 @@ const {
       modifiedTime={modifiedTime}
       author={author}
       tags={tags}
+      keywords={keywords}
     />
   </head>
   <body>

@@ -4,46 +4,46 @@ import { formatDate, getBlogs } from "../../lib/utils";
 
 const allBlogs = getBlogs();
 
-const PAGE_TITLE = `Writing - Pol Gubau Amores`;
+const PAGE_TITLE = `Blog - React, TypeScript & Frontend Articles by Pol Gubau`;
 const PAGE_DESCRIPTION =
-	"Technical articles on React, TypeScript, frontend architecture, and design systems by Pol Gubau Amores, Senior Frontend Engineer based in Barcelona.";
+  "Technical articles on React, TypeScript, frontend architecture, performance, and design systems by Pol Gubau Amores, Senior Frontend Engineer based in Barcelona.";
 ---
 
 <MainLayout title={PAGE_TITLE} description={PAGE_DESCRIPTION} type="website">
-	<div class="flex flex-col gap-12 pt-12 md:pt-4">
-		<header class="flex flex-col gap-3">
-			<h1 class="text-2xl font-semibold tracking-tight">Writing</h1>
-			<p class="text-ink/60">
-				Technical articles on web development and design
-			</p>
-		</header>
+  <div class="flex flex-col gap-12 pt-12 md:pt-4">
+    <header class="flex flex-col gap-3">
+      <h1 class="text-2xl font-semibold tracking-tight">Writing</h1>
+      <p class="text-ink/60">
+        Technical articles on web development and design
+      </p>
+    </header>
 
-		<ul class="flex flex-col">
-			{
-				allBlogs.map((post) => (
-					<li class="group border-b border-ink/[0.06] last:border-0">
-						<a
-							href={`/blog/${post.id}`}
-							class="-mx-2 flex flex-col gap-1 rounded-xl px-2 py-4 transition-colors hover:bg-ink/[0.025] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20"
-						>
-							<div class="flex items-baseline justify-between gap-4">
-								<h2 class="font-medium text-ink transition-transform duration-200 group-hover:translate-x-0.5 line-clamp-1">
-									{post.data.title}
-								</h2>
-								<time
-									datetime={post.data.publishedAt.toISOString()}
-									class="shrink-0 text-xs text-ink/35 tabular-nums"
-								>
-									{formatDate(post.data.publishedAt)}
-								</time>
-							</div>
-							<p class="text-sm text-ink/50 line-clamp-2 text-pretty max-w-xl">
-								{post.data.summary}
-							</p>
-						</a>
-					</li>
-				))
-			}
-		</ul>
-	</div>
+    <ul class="flex flex-col">
+      {
+        allBlogs.map((post) => (
+          <li class="group border-b border-ink/[0.06] last:border-0">
+            <a
+              href={`/blog/${post.id}`}
+              class="-mx-2 flex flex-col gap-1 rounded-xl px-2 py-4 transition-colors hover:bg-ink/[0.025] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20"
+            >
+              <div class="flex items-baseline justify-between gap-4">
+                <h2 class="font-medium text-ink transition-transform duration-200 group-hover:translate-x-0.5 line-clamp-1">
+                  {post.data.title}
+                </h2>
+                <time
+                  datetime={post.data.publishedAt.toISOString()}
+                  class="shrink-0 text-xs text-ink/35 tabular-nums"
+                >
+                  {formatDate(post.data.publishedAt)}
+                </time>
+              </div>
+              <p class="text-sm text-ink/50 line-clamp-2 text-pretty max-w-xl">
+                {post.data.summary}
+              </p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </MainLayout>

@@ -4,12 +4,32 @@ import { formatDate, getBlogs } from "../../lib/utils";
 
 const allBlogs = getBlogs();
 
-const PAGE_TITLE = `Blog - React, TypeScript & Frontend Articles by Pol Gubau`;
+const PAGE_TITLE = "Blog - React, TypeScript & Frontend Articles by Pol Gubau";
 const PAGE_DESCRIPTION =
   "Technical articles on React, TypeScript, frontend architecture, performance, and design systems by Pol Gubau Amores, Senior Frontend Engineer based in Barcelona.";
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  url: "https://polgubau.com/blog",
+  numberOfItems: allBlogs.length,
+  itemListElement: allBlogs.map((post, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    url: `https://polgubau.com/blog/${post.id}`,
+    name: post.data.title,
+  })),
+};
 ---
 
 <MainLayout title={PAGE_TITLE} description={PAGE_DESCRIPTION} type="website">
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(itemListSchema)}
+  />
   <div class="flex flex-col gap-12 pt-12 md:pt-4">
     <header class="flex flex-col gap-3">
       <h1 class="text-2xl font-semibold tracking-tight">Writing</h1>

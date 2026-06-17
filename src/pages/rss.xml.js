@@ -1,25 +1,36 @@
-import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
+import rss from '@astrojs/rss';
 import { metadata } from '../lib/constants';
 
 export async function GET(context) {
 	const posts = (await getCollection('blog')).filter((p) => !p.data.draft);
-	const project = await getCollection('projects');
+	const projects = await getCollection('projects');
 
-	const projectsItems = project.map((proj) => ({
-		...proj.data,
-		link: `/project/${proj.id}/`,
+	const projectItems = projects.map((proj) => ({
+		title: proj.data.title,
+		description: proj.data.summary,
+		link: `/projects/${proj.id}`,
+		pubDate: proj.data.startedAt,
+		categories: proj.data.tech ?? [],
 	}));
-	const postsItems = posts.map((post) => ({
-		...post.data,
-		link: `/blog/${post.id}/`,
+
+	const postItems = posts.map((post) => ({
+		title: post.data.title,
+		description: post.data.summary,
+		link: `/blog/${post.id}`,
+		pubDate: post.data.publishedAt,
+		categories: post.data.tags ?? [],
 	}));
-	const allItems = [...postsItems, ...projectsItems];
+
+	const allItems = [...postItems, ...projectItems].sort(
+		(a, b) => b.pubDate.valueOf() - a.pubDate.valueOf()
+	);
 
 	return rss({
 		title: metadata.title,
 		description: metadata.description,
 		site: context.site,
-		items: allItems
+		items: allItems,
+		customData: `<language>en-us</language>`,
 	});
 }

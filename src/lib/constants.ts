@@ -7,7 +7,7 @@ export const paths = {
 export const metadata = {
 	title: "Pol Gubau Amores - Frontend Developer & Designer",
 	description:
-		"Senior Frontend Engineer based in Barcelona. Creator of Pol UI (62k+ npm downloads). I build fast, accessible web and mobile products - React, TypeScript, Expo.",
+		"Senior Frontend Engineer based in Barcelona. Founder of Doscientos. I build fast, accessible web and mobile products - React, TypeScript, Expo.",
 	name: "Pol Gubau",
 	longName: "Pol Gubau Amores",
 	slogan: "Senior Frontend Engineer & Designer",
@@ -25,7 +25,7 @@ export const metadata = {
 		"Amores",
 		"Frontend Developer Barcelona",
 		"UX Designer Barcelona",
-		
+
 		// Core Skills
 		"Frontend Developer",
 		"Frontend",
@@ -35,7 +35,7 @@ export const metadata = {
 		"Web Developer",
 		"React Developer",
 		"Best React Developer",
-		
+
 		// Technologies & Frameworks
 		"React",
 		"TypeScript",
@@ -44,14 +44,14 @@ export const metadata = {
 		"Astro",
 		"Design Systems",
 		"Component Libraries",
-		
+
 		// Expertise Areas
 		"UI/UX Design",
 		"Web Accessibility",
 		"Performance Optimization",
 		"Responsive Design",
 		"Open Source",
-		
+
 		// Location & Languages
 		"Barcelona",
 		"Spain",
@@ -59,7 +59,7 @@ export const metadata = {
 		"Catalan Developer",
 		"English",
 		"Spanish",
-		
+
 		// Companies & Projects
 		"Mesalvo",
 		"Pol-ui",

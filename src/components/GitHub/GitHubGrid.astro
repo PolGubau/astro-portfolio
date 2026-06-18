@@ -1,0 +1,93 @@
+---
+import { metadata } from "../../lib/constants";
+import { getGitHubContributions } from "../../lib/github";
+
+const username = "polgubau";
+const contributions = await getGitHubContributions(username);
+
+const hasData = contributions && contributions.weeks.length > 0;
+const total = hasData ? contributions.totalContributions : 0;
+const weeks = hasData ? contributions.weeks : [];
+
+const getContributionColor = (count: number) => {
+  if (count === 0) return "bg-neutral-200 dark:bg-neutral-800";
+  if (count < 3) return "bg-green-200 dark:bg-green-900";
+  if (count < 6) return "bg-green-400 dark:bg-green-700";
+  if (count < 9) return "bg-green-600 dark:bg-green-500";
+  return "bg-green-800 dark:bg-green-400";
+};
+---
+
+<section class="flex flex-col gap-6 w-full">
+  <div
+    class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
+  >
+    <h2
+      data-reveal="bottom"
+      data-speed="fast"
+      class="text-3xl md:text-4xl font-medium"
+    >
+      GitHub Activity
+    </h2>
+    <a
+      href={metadata.links.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-reveal="bottom"
+      data-speed="fast"
+      class="inline-flex items-center gap-1 text-sm text-ink/50 hover:text-ink transition-colors sm:shrink-0"
+    >
+      {hasData ? `${total} contributions this year` : "View profile"}
+    </a>
+  </div>
+
+  <div class="overflow-x-auto scrollbar-hide" data-reveal="bottom">
+    {
+      !hasData ? (
+        <p class="text-ink/40 text-sm py-4">
+          Set up a GITHUB_TOKEN to see live contributions.
+        </p>
+      ) : (
+        <div class="flex gap-[3px] w-full min-w-[520px] pb-1">
+          {weeks.map((week) => (
+            <div class="flex flex-1 flex-col gap-[3px]">
+              {week.contributionDays.map((day) => (
+                <div
+                  class={`aspect-square w-full rounded-[2px] ${getContributionColor(day.contributionCount)} transition-colors cursor-default`}
+                  title={`${day.contributionCount} contribution${day.contributionCount !== 1 ? "s" : ""} on ${day.date}`}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      )
+    }
+  </div>
+
+  <div class="flex items-center justify-end gap-2 text-[10px] text-ink/40">
+    <span>Less</span>
+    <div class="flex gap-1">
+      <div class="w-2.5 h-2.5 rounded-[1px] bg-neutral-200 dark:bg-neutral-800">
+      </div>
+      <div class="w-2.5 h-2.5 rounded-[1px] bg-green-200 dark:bg-green-900">
+      </div>
+      <div class="w-2.5 h-2.5 rounded-[1px] bg-green-400 dark:bg-green-700">
+      </div>
+      <div class="w-2.5 h-2.5 rounded-[1px] bg-green-600 dark:bg-green-500">
+      </div>
+      <div class="w-2.5 h-2.5 rounded-[1px] bg-green-800 dark:bg-green-400">
+      </div>
+    </div>
+    <span>More</span>
+  </div>
+</section>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

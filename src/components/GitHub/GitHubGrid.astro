@@ -10,8 +10,9 @@ const total = hasData ? contributions.totalContributions : 0;
 const weeks = hasData ? contributions.weeks : [];
 
 const getContributionColor = (count: number) => {
-  if (count === 0) return "bg-neutral-200 dark:bg-neutral-800";
-  if (count < 3) return "bg-green-200 dark:bg-green-900";
+  if (count === 0) return "bg-ink/10";
+  if (count < 2) return "bg-green-200 dark:bg-green-800/20";
+  if (count < 3) return "bg-green-300 dark:bg-green-900";
   if (count < 6) return "bg-green-400 dark:bg-green-700";
   if (count < 9) return "bg-green-600 dark:bg-green-500";
   return "bg-green-800 dark:bg-green-400";
@@ -48,7 +49,7 @@ const getContributionColor = (count: number) => {
           Set up a GITHUB_TOKEN to see live contributions.
         </p>
       ) : (
-        <div class="flex gap-[3px] w-full min-w-[520px] pb-1">
+        <div class="flex gap-[2px] w-full min-w-md pb-1">
           {weeks.map((week) => (
             <div class="flex flex-1 flex-col gap-[3px]">
               {week.contributionDays.map((day) => (

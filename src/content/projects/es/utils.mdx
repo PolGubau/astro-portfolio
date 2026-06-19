@@ -24,110 +24,110 @@ tech:
 
 import { Image } from 'astro:assets';
 
-Utils is a npm package that collects +50 handmade typed Javascript utilities, made to enhance your projects. 🚀  
+Utils es un paquete npm que reúne más de 50 utilidades Javascript tipadas y hechas a mano, diseñadas para potenciar tus proyectos. 🚀
 
-I have also coded a documentation page with all details and examples of the utilities so you can easily integrate them into your project.
+También he desarrollado una página de documentación con todos los detalles y ejemplos de las utilidades para que puedas integrarlas fácilmente en tu proyecto.
 
-## 📦 Installation
+## 📦 Instalación
 
-Install the library via npm or pnpm:
-  
+Instala la librería via npm o pnpm:
+
 ```sh
 npm install @polgubau/utils
-# or
+# o
 pnpm add @polgubau/utils
 ```
 
 
-## What and why
+## Qué es y por qué existe
 
-Over the past few years, TypeScript has become almost my second mother tongue after Spanish.  
-I kept noticing how often I was rewriting the same utilities "debounce", "throttle", or "copy to clipboard" across different projects. Instead of reinventing the wheel every time, I decided to build a small library with the utilities I use the most in my daily work.
+Durante los últimos años, TypeScript se ha convertido casi en mi segunda lengua materna después del español.
+Me fui dando cuenta de con qué frecuencia reescribía las mismas utilidades —"debounce", "throttle" o "copiar al portapapeles"— en distintos proyectos. En lugar de reinventar la rueda cada vez, decidí construir una pequeña librería con las utilidades que más uso en mi trabajo diario.
 
-**@polgubau/utils** is a lightweight utility library designed to simplify common JavaScript and TypeScript tasks. It's modular, framework-agnostic, tree-shakable, and optimized for performance.
+**@polgubau/utils** es una librería de utilidades ligera diseñada para simplificar tareas comunes de JavaScript y TypeScript. Es modular, agnóstica al framework, tree-shakable y optimizada para el rendimiento.
 
-### What this is NOT ⚠️
-- A catch-all library that solves every problem.
-- A replacement for Lodash or Underscore.
-- A package that will unnecessarily inflate your bundle size.
+### Lo que NO es ⚠️
+- Una librería que resuelve todos los problemas.
+- Un reemplazo de Lodash o Underscore.
+- Un paquete que inflará innecesariamente el tamaño de tu bundle.
 
-### What this IS ✅
-- A collection of small, focused utility functions.
-- Modular, tree-shakable and lightweight both for CJS and ESM.
-- Designed to be simple, efficient, and easy to use.
-- Fully typed, with TypeScript definitions included.
+### Lo que SÍ es ✅
+- Una colección de funciones de utilidad pequeñas y enfocadas.
+- Modular, tree-shakable y ligera tanto para CJS como ESM.
+- Diseñada para ser simple, eficiente y fácil de usar.
+- Completamente tipada, con definiciones TypeScript incluidas.
 
-## Installation
+## Instalación
 
-Install the library using your package manager of choice:
+Instala la librería usando el gestor de paquetes de tu elección:
 
 ```sh
 pnpm add @polgubau/utils
 ```
 
-## Usage
+## Uso
 
-Import the utilities you need from the package:
+Importa las utilidades que necesites del paquete:
 
 ```js
 import { copyToClipboard } from "@polgubau/utils";
 ```
 
-For even better optimization, you can import specific modules or functions as needed:
+Para una optimización aún mayor, puedes importar módulos o funciones específicos según sea necesario:
 
 ```js
 import { copyToClipboard } from "@polgubau/utils/functions";
 import { shuffle } from "@polgubau/utils/arrays";
 ```
 
-## Available Modules
+## Módulos disponibles
 
-- **Storage**: Utilities for working with *localStorage* and *sessionStorage*.
-- **Accessibility**: Helpers to improve web accessibility.
-- **Arrays**: Functions to manipulate arrays efficiently.
-- **Comparators**: Utility functions for sorting and comparing data.
-- **Functions**: Higher-order functions and utility methods.
-- **Numbers**: Mathematical and number-related utilities.
-- **Objects**: Object manipulation and transformation helpers.
-- **Parsers**: Functions for parsing different types of data as JSON.
-- **Texts**: String and text processing utilities.
+- **Storage**: Utilidades para trabajar con *localStorage* y *sessionStorage*.
+- **Accessibility**: Helpers para mejorar la accesibilidad web.
+- **Arrays**: Funciones para manipular arrays de forma eficiente.
+- **Comparators**: Funciones de utilidad para ordenar y comparar datos.
+- **Functions**: Funciones de orden superior y métodos de utilidad.
+- **Numbers**: Utilidades matemáticas y relacionadas con números.
+- **Objects**: Helpers para manipular y transformar objetos.
+- **Parsers**: Funciones para analizar diferentes tipos de datos como JSON.
+- **Texts**: Utilidades para el procesamiento de cadenas y texto.
 
-## Example
+## Ejemplo
 
-Using the arrays module:
+Usando el módulo de arrays:
 
 ```js
-import { limitArray } from "@polgubau/utils/arrays"; 
-const { limitedArray } = limitArray([1, 2, 3, 4, 5]); 
+import { limitArray } from "@polgubau/utils/arrays";
+const { limitedArray } = limitArray([1, 2, 3, 4, 5]);
 console.log(limitedArray); // [1, 2]
 ```
 
-## TypeScript Support
+## Soporte para TypeScript
 
-As it should always be, this library includes full TypeScript support with type definitions included.
+Como siempre debería ser, esta librería incluye soporte completo para TypeScript con definiciones de tipos incluidas.
 
 
 
-## 🛠 Development
+## 🛠 Desarrollo
 
-### Building the project
+### Compilar el proyecto
 
-The easiest way to work with the project monorepo is to run
+La forma más sencilla de trabajar con el monorepo del proyecto es ejecutar
 
 ```sh
 pnpm dev
 ```
-in the root directory. This will start a watch build for the package and start a local server to preview the documentation page.
+en el directorio raíz. Esto iniciará un build en modo watch para el paquete y un servidor local para previsualizar la página de documentación.
 
-## 📜 License
+## 📜 Licencia
 
-This project is licensed under the **MIT** License.  
+Este proyecto está licenciado bajo la licencia **MIT**.
 
-## 💡 More info
+## 💡 Más información
 
-- [Documentation](https://utils.polgubau.com)
-- [GitHub Repository](https://github.com/polgubau/utils)
-- [NPM Package](https://www.npmjs.com/package/@polgubau/utils)
+- [Documentación](https://utils.polgubau.com)
+- [Repositorio GitHub](https://github.com/polgubau/utils)
+- [Paquete NPM](https://www.npmjs.com/package/@polgubau/utils)
 
 
 ## Badges

@@ -22,18 +22,18 @@ tech:
 
 import { Image } from "astro:assets";
 
-Your TODOs, with deadline. And consequences.
+Tus TODOs, con fecha límite. Y con consecuencias.
 
-Wisemark is a simple and powerful standard to manage your code comments. It allows to:
+Wisemark es un estándar simple y potente para gestionar los comentarios de tu código. Permite:
 
-1. Track your TODOs, FIXMEs, and other comments in your code.
-2. Set deadlines for your TODOs and FIXMEs.
-3. Fail pipelines if you have overdue comments.
-4. Generate reports of your comments.
+1. Hacer seguimiento de tus TODOs, FIXMEs y otros comentarios en el código.
+2. Establecer fechas límite para tus TODOs y FIXMEs.
+3. Fallar pipelines si tienes comentarios vencidos.
+4. Generar informes de tus comentarios.
 
-Haven't you ever found forgot comments in legacy code? Or have you ever had to deal with a TODO that was never done? Wisemark is here to help you.
+¿Nunca has encontrado comentarios olvidados en código legacy? ¿O has tenido que lidiar con un TODO que nunca se hizo? Wisemark está aquí para ayudarte.
 
-Main usage:
+Uso principal:
 
 ```ts
 // @question What if the numbers are negative?
@@ -43,34 +43,34 @@ function sum(a: number, b: number): number {
 }
 ```
 
-Using the main types:
-| Type | Description |
+Usando los tipos principales:
+| Tipo | Descripción |
 |------|-------------|
-| @todo | A task that needs to be done. |
-| @fixme | A critical issue that needs fixing. |
-| @note | A note or comment. |
-| @question | A question that needs answering. |
-| @refactor | A suggestion to improve the code. |
+| @todo | Una tarea pendiente de realizar. |
+| @fixme | Un problema crítico que necesita corrección. |
+| @note | Una nota o comentario. |
+| @question | Una pregunta que necesita respuesta. |
+| @refactor | Una sugerencia para mejorar el código. |
 
-Wisemark will automatically detect these comments and allow you to manage them.
-![Scan Command](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/example.png?raw=true)
-This is the usual output using the VSCode extension.
+Wisemark detectará automáticamente estos comentarios y te permitirá gestionarlos.
+![Comando Scan](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/example.png?raw=true)
+Esta es la salida habitual usando la extensión de VSCode.
 
-## Packages
+## Paquetes
 
-- [@wisemark/core](https://github.com/PolGubau/wisemark/tree/main/packages/core): The core library for Wisemark. It provides the main functionality and API for managing comments.
-- [@wisemark/cli](https://github.com/PolGubau/wisemark/tree/main/packages/cli): The command-line interface for Wisemark. It allows you to run Wisemark commands from the terminal.
-- [@wisemark/vscode](https://github.com/PolGubau/wisemark/tree/main/packages/vscode): The VSCode extension for Wisemark. It provides a user interface for managing comments directly in the editor.
+- [@wisemark/core](https://github.com/PolGubau/wisemark/tree/main/packages/core): La librería principal de Wisemark. Proporciona la funcionalidad principal y la API para gestionar comentarios.
+- [@wisemark/cli](https://github.com/PolGubau/wisemark/tree/main/packages/cli): La interfaz de línea de comandos de Wisemark. Permite ejecutar comandos de Wisemark desde el terminal.
+- [@wisemark/vscode](https://github.com/PolGubau/wisemark/tree/main/packages/vscode): La extensión de VSCode para Wisemark. Proporciona una interfaz de usuario para gestionar comentarios directamente en el editor.
 
-# Creating Wisemark Comments
+# Crear comentarios Wisemark
 
-A comment can be as simple as:
+Un comentario puede ser tan simple como:
 
 ```ts
-// @<type> <message>
+// @<tipo> <mensaje>
 ```
 
-Examples:
+Ejemplos:
 
 ```ts name="Example.ts"
 // @todo Add a test for negative numbers
@@ -80,18 +80,18 @@ Examples:
 // @refactor Refactor this function
 ```
 
-Some optional parameters can be added to the comment:
+Se pueden añadir parámetros opcionales al comentario:
 
 - severity: low, medium, high
-- tags: any string separated by commas
-- author: the author of the comment
-- due: the due date of the comment (YYYY-MM-DD)
-- id: A unique name for the comment (its generated automatically but you can override it)
+- tags: cualquier cadena separada por comas
+- author: el autor del comentario
+- due: la fecha límite del comentario (YYYY-MM-DD)
+- id: un nombre único para el comentario (se genera automáticamente, pero puedes sobreescribirlo)
 
-Structure of the comment:
+Estructura del comentario:
 
 ```ts
-// @<type> <message> -- severity: <severity> -- tags: <tags> -- author: <author> -- due: <due> -- id: <id>
+// @<tipo> <mensaje> -- severity: <severity> -- tags: <tags> -- author: <author> -- due: <due> -- id: <id>
 ```
 
 ```ts title="Example.ts"
@@ -100,36 +100,36 @@ Structure of the comment:
 // @fixme Fix the bug in the code -- severity: medium -- tags: bug,correct
 ```
 
-# CLI Tool
+# Herramienta CLI
 
-Wisemark CLI is a command-line tool that allows you to manage your comments directly from the terminal. It provides commands for scanning your codebase, generating reports, and managing your TODOs and FIXMEs. (Report generation is not yet implemented)
+Wisemark CLI es una herramienta de línea de comandos que te permite gestionar tus comentarios directamente desde el terminal. Proporciona comandos para escanear tu codebase, generar informes y gestionar tus TODOs y FIXMEs. (La generación de informes aún no está implementada)
 
-### Remote or Local Installation
+### Instalación remota o local
 
-#### Remote Run
+#### Ejecución remota
 
-If you don't want to install Wisemark in you computer just run the following command in your terminal:
+Si no quieres instalar Wisemark en tu ordenador, ejecuta el siguiente comando en tu terminal:
 
 ```bash
 npx @wisemark/cli
 ```
 
-#### Local Installation
+#### Instalación local
 
-You can install Wisemark CLI globally using npm:
+Puedes instalar Wisemark CLI globalmente usando npm:
 
 ```bash
 npm install -g @wisemark/cli
 ```
 
-### Usage
+### Uso
 
-Once installed, you can use the following commands:
+Una vez instalado, puedes usar los siguientes comandos:
 
-#### Scan Wisemark Commands
+#### Escanear comandos Wisemark
 
-This command scans your codebase for Wisemark comments and generates a report of all the TODOs, FIXMEs, and other comments.
-Can be triggered with the default command `wisemark` or `wisemark scan`.
+Este comando escanea tu codebase en busca de comentarios Wisemark y genera un informe de todos los TODOs, FIXMEs y otros comentarios.
+Se puede activar con el comando por defecto `wisemark` o `wisemark scan`.
 
 ```bash
 wisemark [options]
@@ -139,68 +139,68 @@ wisemark [options]
 wisemark lint [options]
 ```
 
-#### Options
+#### Opciones
 
-For these both commands you can use the following options:
+Para ambos comandos puedes usar las siguientes opciones:
 
-    The optional options are:
+    Las opciones disponibles son:
 
-- `--type`: Filter by type (todo, note, fixme)
-- `--path`: Inner path of the project to scan (default: `.`)
-- `--severity`: Filter by severity (low, medium, high)
-- `--json`: Return output in JSON format
-- `--table`: Return output in table format
-- `--showDate`: Show the date of the comment
-- `--withDueDate`: Return only comments with a due date
-- `--due`: Filter by due date (YYYY-MM-DD)
-- `--tags`: Filter by tags (comma separated)
-- `--cwd`: Path to the project (default: current working directory)
-- `--help`: Show help information
-- `--version`: Show version information
+- `--type`: Filtrar por tipo (todo, note, fixme)
+- `--path`: Ruta interna del proyecto a escanear (por defecto: `.`)
+- `--severity`: Filtrar por severidad (low, medium, high)
+- `--json`: Devolver la salida en formato JSON
+- `--table`: Devolver la salida en formato tabla
+- `--showDate`: Mostrar la fecha del comentario
+- `--withDueDate`: Devolver solo comentarios con fecha límite
+- `--due`: Filtrar por fecha límite (YYYY-MM-DD)
+- `--tags`: Filtrar por etiquetas (separadas por comas)
+- `--cwd`: Ruta del proyecto (por defecto: directorio de trabajo actual)
+- `--help`: Mostrar información de ayuda
+- `--version`: Mostrar información de versión
 
-A full example of the command would be:
+Un ejemplo completo del comando sería:
 
 ```bash
 wisemark --type todo --path src --severity high --json --showDate --withDueDate --due 2023-10-01 --tags bug,urgent
 ```
 
-# VSCode Extension
+# Extensión de VSCode
 
-Wisemark is a VSCode extension that helps you manage and scan intelligent commands within your codebase. It enables easy insertion of different types of comments (like TODO, FIXME, Notes, Questions, Refactors) and allows you to quickly navigate and manage these comments. It also provides enhanced token coloring and grouping options for better code organization.
+Wisemark es una extensión de VSCode que te ayuda a gestionar y escanear comandos inteligentes dentro de tu codebase. Permite insertar fácilmente diferentes tipos de comentarios (como TODO, FIXME, Notes, Questions, Refactors) y navegar y gestionar estos comentarios rápidamente. También proporciona coloreado de tokens mejorado y opciones de agrupación para una mejor organización del código.
 
-## Features
+## Funcionalidades
 
-- **Command Insertion**: Insert predefined comments such as:
+- **Inserción de comandos**: Inserta comentarios predefinidos como:
   - Note
   - Todo
   - Fixme
   - Question
   - Refactor
-- **Command Scanning**: Scan and manage your project for specific commands with a quick search functionality.
-- **Grouping**: Toggle grouping of comments for better organization.
-- **Color Customization**: Different colors for each comment type (Note, Todo, etc.) to make your comments more visually distinguishable.
-- **Contextual Menus**: Access all commands directly from the editor's context menu.
-- **Quick Navigation**: Easily navigate between comments and sections in your code.
+- **Escaneo de comandos**: Escanea y gestiona tu proyecto en busca de comandos específicos con una funcionalidad de búsqueda rápida.
+- **Agrupación**: Activa/desactiva la agrupación de comentarios para una mejor organización.
+- **Personalización de colores**: Diferentes colores para cada tipo de comentario (Note, Todo, etc.) para distinguirlos visualmente.
+- **Menús contextuales**: Accede a todos los comandos directamente desde el menú contextual del editor.
+- **Navegación rápida**: Navega fácilmente entre comentarios y secciones de tu código.
 
-## Installation
+## Instalación
 
-1. Open VSCode.
-2. Go to the Extensions view (`Ctrl+Shift+X`).
-3. Search for `Wisemark`.
-4. Click **Install**.
+1. Abre VSCode.
+2. Ve a la vista de Extensiones (`Ctrl+Shift+X`).
+3. Busca `Wisemark`.
+4. Haz clic en **Install**.
 
-Alternatively, you can install it via the terminal:
+Alternativamente, puedes instalarlo desde el terminal:
 
 ```bash
 ext install wisemark
 ```
 
-## Usage
+## Uso
 
-Once installed, you'll be able to use Wisemark to:
+Una vez instalado, podrás usar Wisemark para:
 
-1. **Insert Comments**:  
-   You can insert the following comments in your code:
+1. **Insertar comentarios**:
+   Puedes insertar los siguientes comentarios en tu código:
 
    - **Note**: `ctrl+alt+n`
    - **Todo**: `ctrl+alt+t`
@@ -208,80 +208,80 @@ Once installed, you'll be able to use Wisemark to:
    - **Question**: `ctrl+alt+q`
    - **Refactor**: `ctrl+alt+r`
 
-2. **Command Scanning**:  
-   To scan for all comments, run the **Scan Wisemark Commands** command from the command palette (`Ctrl+Shift+P` > **Scan Wisemark commands**).
+2. **Escaneo de comandos**:
+   Para escanear todos los comentarios, ejecuta el comando **Scan Wisemark Commands** desde la paleta de comandos (`Ctrl+Shift+P` > **Scan Wisemark commands**).
 
-   ![Scan Command](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/example.png?raw=true)
+   ![Comando Scan](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/example.png?raw=true)
 
-3. **Group Comments**:  
-   Toggle grouping for better visibility and organization of your comments using the **Toggle Grouping** command.
+3. **Agrupar comentarios**:
+   Activa la agrupación para una mejor visibilidad y organización de tus comentarios usando el comando **Toggle Grouping**.
 
-   ![Grouping Command](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/fileGroup.png?raw=true)
+   ![Comando de agrupación](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/fileGroup.png?raw=true)
 
-4. **Navigate Between Comments**:  
-   Use the **Select and Open a Comment** command to quickly navigate between comments in your code.
+4. **Navegar entre comentarios**:
+   Usa el comando **Select and Open a Comment** para navegar rápidamente entre comentarios de tu código.
 
-   ![Navigate Comments](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/list.png?raw=true)
+   ![Navegar comentarios](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/list.png?raw=true)
 
-## Configuration
+## Configuración
 
-You can customize the token colors for each comment type. By default, Wisemark uses the following colors:
+Puedes personalizar los colores de los tokens para cada tipo de comentario. Por defecto, Wisemark usa los siguientes colores:
 
-- **Note**: `#ff6347` (italic)
-- **Todo**: `#e5c07b` (bold)
-- **FIXME**: `#f0f0f0` (italic)
-- **Refactor**: `#00bcd4` (bold)
-- **Question**: `#8be9fd` (italic)
+- **Note**: `#ff6347` (cursiva)
+- **Todo**: `#e5c07b` (negrita)
+- **FIXME**: `#f0f0f0` (cursiva)
+- **Refactor**: `#00bcd4` (negrita)
+- **Question**: `#8be9fd` (cursiva)
 
-To customize, open the VSCode settings and modify the `"editor.tokenColorCustomizations"` to your liking.
+Para personalizar, abre la configuración de VSCode y modifica `"editor.tokenColorCustomizations"` a tu gusto.
 
-## Predictive Features
+## Funciones predictivas
 
-Wisemark also predicts the most used comments based on your previous usage, helping you streamline the process.
+Wisemark también predice los comentarios más usados según tu historial de uso, ayudándote a agilizar el proceso.
 
-![Predictive Feature](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/predict.png?raw=true)
+![Función predictiva](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/predict.png?raw=true)
 
-## Quick Pick for Commands
+## Quick Pick para comandos
 
-For even faster insertion of comments, use the **Quick Pick** functionality, which suggests the best options for your current task.
+Para insertar comentarios aún más rápido, usa la funcionalidad **Quick Pick**, que sugiere las mejores opciones para tu tarea actual.
 
 ![Quick Pick](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/quickpick.png?raw=true)
 
-## Group Comments by Type
+## Agrupar comentarios por tipo
 
-Easily group your comments by type for better organization.
+Agrupa fácilmente tus comentarios por tipo para una mejor organización.
 
-![Group Comments](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/typeGroup.png?raw=true)
+![Agrupar comentarios](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/typeGroup.png?raw=true)
 
-# Roadmap
+# Hoja de ruta
 
-| Feature             | Status | Description                                                                  |
+| Funcionalidad       | Estado | Descripción                                                                  |
 | ------------------- | ------ | ---------------------------------------------------------------------------- |
-| Core Functionality  | ✅     | Basic functionality for managing comments.                                   |
-| CLI Tool            | ✅     | Command-line interface for running Wisemark commands (Scan + due date lint). |
-| VSCode Extension    | ✅     | VSCode extension for managing comments directly in the editor.               |
-| Grouping            | ✅     | Group comments by type for better organization.                              |
-| Color Customization | ✅     | Customize colors for different comment types.                                |
-| Predictive Features | ✅     | Predict the most used comments based on previous usage.                      |
-| Quick Pick          | ✅     | Suggest the best options for your current task.                              |
-| Report Generation   | 🟧     | Generate reports of your comments.                                           |
-| Overdue Linting     | 🟧     | Fail pipelines if you have overdue comments.                                 |
-| Customizable Rules  | 🟧     | Allow users to define their own rules for comments. (wisemark.config.ts)     |
+| Funcionalidad core  | ✅     | Funcionalidad básica para gestionar comentarios.                             |
+| Herramienta CLI     | ✅     | Interfaz de línea de comandos para ejecutar comandos Wisemark (Scan + lint de fechas). |
+| Extensión VSCode    | ✅     | Extensión de VSCode para gestionar comentarios directamente en el editor.    |
+| Agrupación          | ✅     | Agrupar comentarios por tipo para una mejor organización.                    |
+| Personalización de colores | ✅ | Personalizar colores para diferentes tipos de comentarios.              |
+| Funciones predictivas | ✅   | Predecir los comentarios más usados según el historial de uso.               |
+| Quick Pick          | ✅     | Sugerir las mejores opciones para la tarea actual.                           |
+| Generación de informes | 🟧  | Generar informes de tus comentarios.                                         |
+| Lint de vencidos    | 🟧     | Fallar pipelines si tienes comentarios vencidos.                             |
+| Reglas personalizables | 🟧  | Permitir a los usuarios definir sus propias reglas de comentarios. (wisemark.config.ts) |
 
-## Contributing
+## Contribuir
 
-If you'd like to contribute to Wisemark, feel free to submit issues and pull requests. Contributions are welcome!
+Si quieres contribuir a Wisemark, no dudes en enviar issues y pull requests. ¡Las contribuciones son bienvenidas!
 
-1. Fork this repository.
-2. Create your branch (`git checkout -b feature/your-feature`).
-3. Commit your changes (`git commit -am 'Add new feature'`).
-4. Push to the branch (`git push origin feature/your-feature`).
-5. Open a pull request.
+1. Haz un fork de este repositorio.
+2. Crea tu rama (`git checkout -b feature/tu-funcionalidad`).
+3. Realiza tus cambios (`git commit -am 'Añadir nueva funcionalidad'`).
+4. Sube a la rama (`git push origin feature/tu-funcionalidad`).
+5. Abre un pull request.
 
-## License
+## Licencia
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
 
 ---
 
-Enjoy organizing your code and comments with Wisemark!
+¡Disfruta organizando tu código y comentarios con Wisemark!

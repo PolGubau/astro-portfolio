@@ -33,155 +33,155 @@ import metrics from "../../../assets/media/projects/novahair/metrics.webp";
 import booking from "../../../assets/media/projects/novahair/book-calendar.webp";
 import landing from "../../../assets/media/projects/novahair/landing.webp";
  
-## Multi-Tenant Salon Management Platform
+## Plataforma de gestión de peluquerías multi-inquilino
 
-**NovaHair** is a production-ready, enterprise-grade monorepo solution for beauty salon management. It combines a **Progressive Web App** admin panel, an **embeddable booking widget**, and **customizable landing pages** into a cohesive, type-safe ecosystem.
+**NovaHair** es una solución monorepo lista para producción y de nivel empresarial para la gestión de salones de belleza. Combina un panel de administración **Progressive Web App**, un **widget de reservas integrable** y **landings personalizables** en un ecosistema cohesivo y tipado.
 
-Built with **React 19**, **TanStack Router**, **TanStack Query**, and following **Clean Architecture** principles, this project demonstrates advanced monorepo management, performance optimization, and scalable frontend architecture.
+Construido con **React 19**, **TanStack Router**, **TanStack Query** y siguiendo los principios de **Clean Architecture**, este proyecto demuestra una gestión avanzada de monorepos, optimización del rendimiento y arquitectura frontend escalable.
 
 <figure>
   <Image
     src={metrics}
-    alt="Admin dashboard showing metrics and analytics"
+    alt="Panel de administración con métricas y análisis"
     width={700}
     height={400}
     className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"
   />
-  <figcaption>Admin dashboard with real-time metrics and KPIs.</figcaption>
+  <figcaption>Panel de administración con métricas e indicadores en tiempo real.</figcaption>
 </figure>
 
 ---
 
-## Project Overview
+## Descripción del proyecto
 
-NovaHair is a **multi-tenant SaaS platform** designed to streamline salon operations. The system consists of three main applications:
+NovaHair es una **plataforma SaaS multi-inquilino** diseñada para optimizar las operaciones de los salones. El sistema consta de tres aplicaciones principales:
 
-* 1. **Admin Panel** - Full-featured PWA for salon management
-* 2. **Booking System** - Embeddable widget for customer appointments
-* 3. **Landing Pages** - Customizable templates for salon websites
+* 1. **Panel de administración** - PWA completa para la gestión del salón
+* 2. **Sistema de reservas** - Widget integrable para citas de clientes
+* 3. **Landings** - Plantillas personalizables para los sitios web del salón
 
-All applications share a common design system and business logic through a **pnpm workspace monorepo**, ensuring consistency and reducing code duplication by **~40%**.
-
----
-
-## Cool Achievements
-
-* **Sub-second load times** - Achieved < 800ms FCP through code splitting and SSR
-* **40% code reduction** - Shared packages eliminate duplication across apps
-* **Real-time sync** - Optimistic updates with TanStack Query reduce perceived latency by 60%
-* **i18n support** - Full English/Spanish localization with automatic detection
-* **PWA capabilities** - Offline-first admin panel with service worker caching
-* **Accessible UI** - WCAG 2.1 AA compliant with Radix UI primitives
-* **Type-safe** - End-to-end TypeScript with 100% coverage in shared packages
+Todas las aplicaciones comparten un sistema de diseño común y lógica de negocio a través de un **monorepo de pnpm workspace**, asegurando consistencia y reduciendo la duplicación de código en un **~40%**.
 
 ---
 
-## Technical Architecture
+## Logros destacados
 
-### Monorepo Structure
+* **Tiempos de carga inferiores a un segundo** - FCP < 800ms mediante code splitting y SSR
+* **40% menos código** - Los paquetes compartidos eliminan la duplicación entre apps
+* **Sincronización en tiempo real** - Las actualizaciones optimistas con TanStack Query reducen la latencia percibida un 60%
+* **Soporte i18n** - Localización completa inglés/español con detección automática
+* **Capacidades PWA** - Panel offline-first con caché de service worker
+* **UI accesible** - Cumple WCAG 2.1 AA con primitivos de Radix UI
+* **Type-safe** - TypeScript end-to-end con cobertura del 100% en paquetes compartidos
+
+---
+
+## Arquitectura técnica
+
+### Estructura del monorepo
 
 ```
 novahair/
 ├── apps/
-│   ├── admin/          # PWA admin panel (Port 3000)
-│   ├── booking/        # Booking widget (Port 3001)
-│   └── landings/       # Landing templates (Port 3002)
+│   ├── admin/          # Panel PWA de administración (Puerto 3000)
+│   ├── booking/        # Widget de reservas (Puerto 3001)
+│   └── landings/       # Plantillas de landing (Puerto 3002)
 └── packages/
-    ├── ui/             # Shared component library (50+ components)
-    ├── client/         # Type-safe API client with React Query
-    ├── utils/          # Shared utilities and hooks
-    └── book-app/       # Reusable booking logic
+    ├── ui/             # Librería de componentes compartidos (50+ componentes)
+    ├── client/         # Cliente API tipado con React Query
+    ├── utils/          # Utilidades y hooks compartidos
+    └── book-app/       # Lógica de reservas reutilizable
 ```
 
-**Why this architecture?**
-- **Centralized dependencies**: Single source of truth for versions
-- **Instant hot reload**: Changes in shared packages reflect immediately
-- **Type safety**: TypeScript works seamlessly across package boundaries
-- **Optimized builds**: pnpm's content-addressable storage reduces install time by 2x
+**¿Por qué esta arquitectura?**
+- **Dependencias centralizadas**: Fuente única de verdad para las versiones
+- **Hot reload instantáneo**: Los cambios en paquetes compartidos se reflejan de inmediato
+- **Type safety**: TypeScript funciona sin problemas entre los límites de los paquetes
+- **Compilaciones optimizadas**: El almacenamiento content-addressable de pnpm reduce el tiempo de instalación 2x
 
 ---
 
-## Live Demo
+## Demo en vivo
 
 [🔗 novahair.polgubau.com](https://novahair.polgubau.com)
 
 <figure>
   <Image
     src={booking}
-    alt="Booking flow interface"
+    alt="Interfaz del flujo de reservas"
     width={700}
     height={400}
     className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"
   />
-  <figcaption>Multi-step booking flow with real-time availability.</figcaption>
+  <figcaption>Flujo de reservas en varios pasos con disponibilidad en tiempo real.</figcaption>
 </figure>
 
 ---
 
-## Core Features
+## Funcionalidades principales
 
-### Admin Panel (PWA)
-* **Real-time dashboard** - Revenue, appointments, and staff performance metrics
-* **Team management** - Staff scheduling with conflict detection
-* **Appointment system** - Drag-and-drop calendar with recurring bookings
-* **Service catalog** - Dynamic pricing and duration management
-* **Offline support** - Service worker caching with background sync
-* **Analytics** - Custom date ranges with trend visualization
+### Panel de administración (PWA)
+* **Dashboard en tiempo real** - Métricas de ingresos, citas y rendimiento del equipo
+* **Gestión de equipo** - Planificación de turnos con detección de conflictos
+* **Sistema de citas** - Calendario drag-and-drop con reservas recurrentes
+* **Catálogo de servicios** - Gestión dinámica de precios y duración
+* **Soporte offline** - Caché de service worker con sincronización en segundo plano
+* **Analíticas** - Rangos de fechas personalizados con visualización de tendencias
 
-### Booking Widget
-* **Embeddable** - Works as iframe or React component
-* **Multi-step flow** - Service → Staff → Time → Confirmation
-* **Responsive** - Mobile-first design with touch gestures
-* **Multi-tenant** - Single deployment serves multiple salons
-* **Anonymous sessions** - Local storage for guest bookings
-* **Optimistic UI** - Instant feedback with rollback on error
+### Widget de reservas
+* **Integrable** - Funciona como iframe o componente React
+* **Flujo multi-paso** - Servicio → Personal → Hora → Confirmación
+* **Responsivo** - Diseño mobile-first con gestos táctiles
+* **Multi-inquilino** - Un solo despliegue sirve a varios salones
+* **Sesiones anónimas** - Almacenamiento local para reservas de invitados
+* **UI optimista** - Respuesta instantánea con rollback en caso de error
 
-### Landing Pages
-* **Customizable** - Template system for brand consistency
-* **Performance** - GSAP animations with 60fps guarantee
-* **Parallax effects** - Smooth scrolling with Lenis
-* **SEO optimized** - SSR with meta tags and sitemap
-* **Deep linking** - Pre-fill booking from URL params
+### Landings
+* **Personalizables** - Sistema de plantillas para consistencia de marca
+* **Rendimiento** - Animaciones GSAP con garantía de 60fps
+* **Efectos parallax** - Scroll suave con Lenis
+* **SEO optimizado** - SSR con meta tags y sitemap
+* **Deep linking** - Precarga de reserva desde parámetros de URL
 
 ---
 
 <details>
-  <summary><b>Technical Deep Dive</b><br/><small>Architecture decisions and performance optimizations</small></summary>
+  <summary><b>Inmersión técnica</b><br/><small>Decisiones de arquitectura y optimizaciones de rendimiento</small></summary>
   <br />
 
-  ### Tech Stack
+  ### Stack tecnológico
 
-  | Layer | Technology | Purpose |
-  |-------|-----------|---------|
-  | **Framework** | React 19 | Latest features (use, compiler optimizations) |
-  | **Routing** | TanStack Router | Type-safe routing with SSR support |
-  | **State** | TanStack Query v5 | Server state with optimistic updates |
-  | **Build** | Vite 7 | Lightning-fast HMR (\<50ms) |
-  | **Monorepo** | pnpm workspaces | Efficient dependency management |
-  | **Styling** | Tailwind CSS 4 | Utility-first with JIT compilation |
-  | **UI Primitives** | Radix UI | Accessible, unstyled components |
-  | **Animations** | GSAP + Framer Motion | High-performance animations |
-  | **i18n** | i18next | Runtime translation switching |
-  | **Testing** | Vitest + Testing Library | Fast unit and integration tests |
-  | **Linting** | Biome | 100x faster than ESLint |
-  | **Type Safety** | TypeScript 5.7 | Strict mode with no implicit any |
-  | **SSR** | Nitro | Universal server rendering |
+  | Capa | Tecnología | Propósito |
+  |------|-----------|---------|
+  | **Framework** | React 19 | Últimas funcionalidades (use, optimizaciones del compilador) |
+  | **Routing** | TanStack Router | Rutas tipadas con soporte SSR |
+  | **Estado** | TanStack Query v5 | Estado del servidor con actualizaciones optimistas |
+  | **Build** | Vite 7 | HMR ultrarrápido (\<50ms) |
+  | **Monorepo** | pnpm workspaces | Gestión eficiente de dependencias |
+  | **Estilos** | Tailwind CSS 4 | Utilidades con compilación JIT |
+  | **Primitivos UI** | Radix UI | Componentes accesibles sin estilos |
+  | **Animaciones** | GSAP + Framer Motion | Animaciones de alto rendimiento |
+  | **i18n** | i18next | Cambio de idioma en tiempo de ejecución |
+  | **Testing** | Vitest + Testing Library | Tests unitarios e integración rápidos |
+  | **Linting** | Biome | 100x más rápido que ESLint |
+  | **Type Safety** | TypeScript 5.7 | Modo estricto sin implicit any |
+  | **SSR** | Nitro | Renderizado universal del servidor |
 
   ---
 
-  ### Performance Optimizations
+  ### Optimizaciones de rendimiento
 
-  #### 1. Code Splitting Strategy
+  #### 1. Estrategia de Code Splitting
   ```typescript
-  // Route-based splitting with TanStack Router
-  defaultPreload: "intent" // Preload on hover/focus
-  defaultViewTransition: true // Native view transitions
+  // Splitting por ruta con TanStack Router
+  defaultPreload: "intent" // Precarga al hacer hover/focus
+  defaultViewTransition: true // Transiciones de vista nativas
   ```
-  **Result**: Initial bundle reduced from 450KB to 180KB (-60%)
+  **Resultado**: Bundle inicial reducido de 450KB a 180KB (-60%)
 
-  #### 2. PWA Caching Strategy
+  #### 2. Estrategia de caché PWA
   ```typescript
-  // Service worker configuration
+  // Configuración del service worker
   runtimeCaching: [
     {
       urlPattern: /^https:\/\/api\.gerardmartinez\.es\/api\/.*/i,
@@ -194,11 +194,11 @@ novahair/
     }
   ]
   ```
-  **Result**: 90% cache hit rate for API calls, offline functionality
+  **Resultado**: 90% de tasa de aciertos en caché para llamadas API, funcionalidad offline
 
-  #### 3. React Query Optimizations
+  #### 3. Optimizaciones de React Query
   ```typescript
-  // Optimistic updates for instant UI feedback
+  // Actualizaciones optimistas para respuesta inmediata en la UI
   const { create } = useAppointmentActions(tenantId);
 
   create.mutate(data, {
@@ -213,58 +213,58 @@ novahair/
     }
   });
   ```
-  **Result**: Perceived latency reduced by 60%
+  **Resultado**: Latencia percibida reducida un 60%
 
-  #### 4. Image Optimization
-  - WebP format with fallbacks
-  - Lazy loading with Intersection Observer
-  - Responsive images with `srcset`
+  #### 4. Optimización de imágenes
+  - Formato WebP con alternativas
+  - Lazy loading con Intersection Observer
+  - Imágenes responsivas con `srcset`
 
-  **Result**: LCP improved from 2.1s to 0.8s
+  **Resultado**: LCP mejorado de 2,1s a 0,8s
 
   ---
 
-  ### Clean Architecture Implementation
+  ### Implementación de Clean Architecture
 
-  Each feature follows a layered architecture:
+  Cada funcionalidad sigue una arquitectura por capas:
 
   ```
   features/dashboard/
-  ├── domain/          # Business logic (pure functions)
+  ├── domain/          # Lógica de negocio (funciones puras)
   │   └── metrics.ts
-  ├── infra/           # External dependencies
+  ├── infra/           # Dependencias externas
   │   ├── metrics-calculator.ts
   │   └── date-range-calculator.ts
-  ├── hooks/           # React integration
+  ├── hooks/           # Integración con React
   │   └── use-dashboard-metrics.ts
-  └── ui/              # Presentation components
+  └── ui/              # Componentes de presentación
       ├── dashboard-view.tsx
       └── metric-card.tsx
   ```
 
-  **Benefits**:
-  - ✅ Testable business logic (100% coverage in domain layer)
-  - ✅ Easy to swap implementations (e.g., API client)
-  - ✅ Clear separation of concerns
-  - ✅ Reusable across applications
+  **Beneficios**:
+  - ✅ Lógica de negocio testeable (100% de cobertura en la capa de dominio)
+  - ✅ Fácil intercambio de implementaciones (p.ej., cliente API)
+  - ✅ Separación clara de responsabilidades
+  - ✅ Reutilizable entre aplicaciones
 
   ---
 
-  ### Type-Safe API Client
+  ### Cliente API tipado
 
-  
+
 
   ```typescript
-  // Unified client with full type inference
+  // Cliente unificado con inferencia de tipos completa
   import { client } from '@novahair/client';
 
   const { useAppointments, useAppointmentActions } = client.appointments;
 
-  // Fully typed, autocomplete works everywhere
+  // Completamente tipado, autocompletado en todas partes
   const { appointments, isLoading } = useAppointments(tenantId);
   const { create, update, delete: deleteAppointment } = useAppointmentActions(tenantId);
 
-  // TypeScript knows the exact shape of appointment
+  // TypeScript conoce la forma exacta de appointment
   create.mutate({
     serviceId: string,
     staffId: string,
@@ -274,45 +274,45 @@ novahair/
   });
   ```
 
-  **Features**:
-  - Zero runtime overhead (types stripped in build)
-  - Automatic refetch on mutations
-  - Optimistic updates with rollback
-  - Anonymous session support for guest bookings
+  **Características**:
+  - Sin coste en tiempo de ejecución (tipos eliminados en el build)
+  - Re-fetch automático en mutaciones
+  - Actualizaciones optimistas con rollback
+  - Soporte de sesión anónima para reservas de invitados
 
   ---
 
-  ### Monorepo Benefits
+  ### Beneficios del monorepo
 
-  **Shared UI Package** (`@novahair/ui`)
-  - 50+ components (Button, Input, Dialog, Table, etc.)
-  - Consistent design tokens
-  - Radix UI primitives for accessibility
-  - Tree-shakeable exports
+  **Paquete UI compartido** (`@novahair/ui`)
+  - 50+ componentes (Button, Input, Dialog, Table, etc.)
+  - Design tokens consistentes
+  - Primitivos de Radix UI para accesibilidad
+  - Exports tree-shakeable
 
-  **Shared Client Package** (`@novahair/client`)
-  - Type-safe API client
-  - React Query integration
-  - Automatic caching and invalidation
-  - 100% test coverage
+  **Paquete Client compartido** (`@novahair/client`)
+  - Cliente API tipado
+  - Integración con React Query
+  - Caché automática e invalidación
+  - Cobertura de tests al 100%
 
-  **Shared Utils Package** (`@novahair/utils`)
-  - Custom hooks (useMobile, useDebounce, etc.)
-  - i18n configuration
-  - Common utilities (cn, formatters, validators)
+  **Paquete Utils compartido** (`@novahair/utils`)
+  - Hooks personalizados (useMobile, useDebounce, etc.)
+  - Configuración de i18n
+  - Utilidades comunes (cn, formatters, validators)
 
-  **Impact**:
-  - 40% reduction in code duplication
-  - Single source of truth for business logic
-  - Instant propagation of changes across apps
-  - Unified testing strategy
+  **Impacto**:
+  - Reducción del 40% en duplicación de código
+  - Fuente única de verdad para la lógica de negocio
+  - Propagación instantánea de cambios entre apps
+  - Estrategia de testing unificada
 
   ---
 
-  ### Internationalization
+  ### Internacionalización
 
   ```typescript
-  // Automatic language detection with cookie persistence
+  // Detección automática de idioma con persistencia en cookie
   i18n.use(LanguageDetector).init({
     supportedLngs: ['en', 'es'],
     fallbackLng: 'es',
@@ -320,93 +320,93 @@ novahair/
       order: ['cookie'],
       lookupCookie: 'novahair_i18n',
       caches: ['cookie'],
-      cookieMinutes: 525600 // 1 year
+      cookieMinutes: 525600 // 1 año
     }
   });
 
-  // Type-safe translations
+  // Traducciones tipadas
   import { t } from 'i18next';
-  <h1>{t('welcome_message')}</h1> // TypeScript knows all keys
+  <h1>{t('welcome_message')}</h1> // TypeScript conoce todas las claves
   ```
 
-  **Features**:
-  - Runtime language switching (no reload)
-  - Namespace merging (common + app-specific)
-  - Pluralization and interpolation
-  - CLI for extracting missing keys
+  **Características**:
+  - Cambio de idioma en tiempo de ejecución (sin recarga)
+  - Fusión de namespaces (comunes + específicos de app)
+  - Pluralización e interpolación
+  - CLI para extraer claves faltantes
 
   ---
 
-  ### Testing Strategy
+  ### Estrategia de testing
 
   ```bash
-  # Unit tests for business logic
-  pnpm test                    # Run all tests
-  pnpm coverage                # Generate coverage report
+  # Tests unitarios para lógica de negocio
+  pnpm test                    # Ejecutar todos los tests
+  pnpm coverage                # Generar informe de cobertura
 
-  # Integration tests for features
-  pnpm test --watch            # Watch mode for TDD
+  # Tests de integración para funcionalidades
+  pnpm test --watch            # Modo watch para TDD
   ```
 
-  **Coverage**:
-  - Domain layer: 100%
-  - Infrastructure layer: 85%
-  - UI components: 70%
-  - Overall: 82%
+  **Cobertura**:
+  - Capa de dominio: 100%
+  - Capa de infraestructura: 85%
+  - Componentes UI: 70%
+  - Total: 82%
 
-  **Tools**:
-  - Vitest (20x faster than Jest)
-  - Testing Library (user-centric tests)
-  - jsdom (lightweight DOM simulation)
+  **Herramientas**:
+  - Vitest (20x más rápido que Jest)
+  - Testing Library (tests centrados en el usuario)
+  - jsdom (simulación DOM ligera)
 
   ---
 
-  ### Build & Deployment
+  ### Build y despliegue
 
   ```bash
-  # Development
-  pnpm dev                     # All apps in parallel
-  pnpm dev:admin               # Single app
+  # Desarrollo
+  pnpm dev                     # Todas las apps en paralelo
+  pnpm dev:admin               # App individual
 
-  # Production
-  pnpm build                   # Optimized builds
-  # Output: dist/ (SSR-ready with Nitro)
+  # Producción
+  pnpm build                   # Builds optimizados
+  # Salida: dist/ (listo para SSR con Nitro)
   ```
 
-  **Build Metrics**:
-  - Admin: 220KB gzipped (initial bundle)
-  - Booking: 180KB gzipped
-  - Landing: 150KB gzipped
-  - Build time: ~12s (cold), ~2s (cached)
+  **Métricas de build**:
+  - Admin: 220KB comprimido (bundle inicial)
+  - Booking: 180KB comprimido
+  - Landing: 150KB comprimido
+  - Tiempo de build: ~12s (en frío), ~2s (con caché)
 
-  **Deployment**:
-  - Vercel (recommended) - Zero config
-  - Nitro server for SSR
-  - Automatic preview deployments
-  - Edge functions for API routes
+  **Despliegue**:
+  - Vercel (recomendado) - Sin configuración
+  - Servidor Nitro para SSR
+  - Despliegues de preview automáticos
+  - Edge functions para rutas API
 
   ---
 
-  ### Local Setup
+  ### Configuración local
 
   ```bash
-  # Clone repository
+  # Clonar repositorio
   git clone https://github.com/polgubau/novahair
   cd novahair
 
-  # Install dependencies (pnpm required)
+  # Instalar dependencias (se requiere pnpm)
   pnpm install
 
-  # Start all apps
+  # Iniciar todas las apps
   pnpm dev
 
-  # Or start individual apps
+  # O iniciar apps individuales
   pnpm dev:admin    # http://localhost:3000
   pnpm dev:booking  # http://localhost:3001
   pnpm dev:landing  # http://localhost:3002
   ```
 
-  **Requirements**:
+  **Requisitos**:
   - Node.js ≥ 20.0.0
   - pnpm ≥ 9.0.0
 
@@ -418,69 +418,69 @@ novahair/
 <figure>
   <Image
     src={landing}
-    alt="Metrics dashboard with revenue and appointment trends"
+    alt="Dashboard de métricas con tendencias de ingresos y citas"
     width={700}
     height={400}
     className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"
   />
-  <figcaption>Landing page with GSAP parallax animations.</figcaption>
+  <figcaption>Landing page con animaciones parallax de GSAP.</figcaption>
 </figure>
  
 
 ---
 
-## Key Learnings
+## Aprendizajes clave
 
-### 1. Monorepo Management
-Managing a monorepo with multiple apps taught me the importance of:
-- **Dependency boundaries**: Preventing circular dependencies between packages
-- **Build orchestration**: Ensuring packages build in the correct order
-- **Version alignment**: Keeping shared dependencies in sync
+### 1. Gestión del monorepo
+Gestionar un monorepo con múltiples apps me enseñó la importancia de:
+- **Límites de dependencias**: Prevenir dependencias circulares entre paquetes
+- **Orquestación del build**: Asegurar que los paquetes se compilan en el orden correcto
+- **Alineación de versiones**: Mantener las dependencias compartidas sincronizadas
 
-### 2. Performance at Scale
-Optimizing for performance across three applications required:
-- **Strategic code splitting**: Route-based + component-based splitting
-- **Caching strategies**: Multi-layer caching (browser, service worker, React Query)
-- **Bundle analysis**: Regular audits to prevent bloat
+### 2. Rendimiento a escala
+Optimizar el rendimiento en tres aplicaciones requirió:
+- **Code splitting estratégico**: Splitting por ruta + por componente
+- **Estrategias de caché**: Caché multicapa (navegador, service worker, React Query)
+- **Análisis de bundle**: Auditorías regulares para prevenir el aumento de tamaño
 
-### 3. Type Safety
-Achieving end-to-end type safety involved:
-- **Shared types**: Single source of truth for domain models
-- **Generic utilities**: Reusable type-safe hooks and functions
-- **Strict TypeScript**: No escape hatches, full type coverage
+### 3. Type safety
+Lograr type safety de extremo a extremo implicó:
+- **Tipos compartidos**: Fuente única de verdad para los modelos de dominio
+- **Utilidades genéricas**: Hooks y funciones reutilizables y tipadas
+- **TypeScript estricto**: Sin escotillas de escape, cobertura de tipos completa
 
-### 4. Developer Experience
-Creating a great DX required:
-- **Fast feedback loops**: HMR in \<50ms, tests in \<2s
-- **Clear documentation**: README files for each package
-- **Automated tooling**: Biome for instant linting/formatting
-
----
- 
-## Challenges I found with this project
-
-NovaHair was not easy to implement, I found multiple steps that need multiple hours to solve as:
-
-* **Architect complex systems** - Multi-app monorepo with shared packages was harded to setup but the reward is incredible
-* **Optimize performance** - Sub-second load times with strategic caching and using modern frontend technologies
-* **Write maintainable code** - Clean Architecture with 82% test coverage to ensure a good funcionality
-* **Choose the right tools** - Modern stack with proven technologies as React, Typescript and TanStack solutions
-* **Document thoroughly** - Clear README files and inline documentation as the work was splitted into multiple coworkers
-* **Ship production code** - Deployed and running in production
-
+### 4. Experiencia del desarrollador
+Crear una gran DX requirió:
+- **Ciclos de retroalimentación rápidos**: HMR en \<50ms, tests en \<2s
+- **Documentación clara**: Archivos README para cada paquete
+- **Herramientas automatizadas**: Biome para linting/formato instantáneo
 
 ---
 
-## License
+## Desafíos que encontré en este proyecto
 
-This project is a commercial product and is not open source. All rights reserved by the author.
+NovaHair no fue fácil de implementar; encontré múltiples pasos que requirieron muchas horas de solución, como:
+
+* **Arquitectar sistemas complejos** - Un monorepo multi-app con paquetes compartidos fue difícil de configurar, pero la recompensa es increíble
+* **Optimizar el rendimiento** - Tiempos de carga inferiores a un segundo con caché estratégica y tecnologías frontend modernas
+* **Escribir código mantenible** - Clean Architecture con 82% de cobertura de tests para garantizar una buena funcionalidad
+* **Elegir las herramientas correctas** - Stack moderno con tecnologías probadas como React, TypeScript y las soluciones de TanStack
+* **Documentar en profundidad** - README claros y documentación en línea, ya que el trabajo se dividió entre varios colaboradores
+* **Entregar código en producción** - Desplegado y funcionando en producción
+
 
 ---
 
-## Contact
+## Licencia
 
-Built by:
-- Design & Frontend Development: **Pol Gubau Amores** - [polgubau.com](https://polgubau.com)
-- Database and Backend Development: **Gerard Martínez Alcocer** - [gerardmartinez.es](https://gerardmartinez.es)
+Este proyecto es un producto comercial y no es de código abierto. Todos los derechos reservados por el autor.
 
-Interested in discussing this project or potential opportunities? Feel free to reach out!
+---
+
+## Contacto
+
+Construido por:
+- Diseño y desarrollo frontend: **Pol Gubau Amores** - [polgubau.com](https://polgubau.com)
+- Base de datos y desarrollo backend: **Gerard Martínez Alcocer** - [gerardmartinez.es](https://gerardmartinez.es)
+
+¿Interesado en hablar sobre este proyecto o posibles oportunidades? ¡No dudes en ponerte en contacto!

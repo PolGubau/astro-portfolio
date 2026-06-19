@@ -44,7 +44,9 @@ const t = useTranslations(locale);
             class="check-icon w-4 h-4 hidden"
             aria-hidden="true"
           />
-          <span class="feedback-label hidden text-xs font-medium">Copied!</span>
+          <span class="feedback-label hidden text-xs font-medium"
+            >{t("bar.copied")}</span
+          >
         </button>
       </li>
 
@@ -83,7 +85,7 @@ const t = useTranslations(locale);
           <li>
             <a
               href={data.link}
-              title="Visit project"
+              title={t("bar.visitProject")}
               target="_blank"
               rel="noopener noreferrer"
               class="flex aspect-square rounded-lg bg-black/20 p-2 transition-all hover:bg-black/30"

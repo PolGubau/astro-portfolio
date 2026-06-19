@@ -30,20 +30,20 @@ import stats from "../../../assets/media/projects/textures/stats.webp"
 import thumbnail from "../img/textures.webp"
  
 
-## Personal online texture collection
+## Colección personal de texturas en línea
 
 <ul className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-4 list-none pl-0!">
-<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80">Astro + Tailwind</h3><small>Lightweight and performant</small></li>
-<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80">GSAP</h3><small>Infinity canvas effect</small></li>
-<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80"> Vanilla JS</h3><small>Lightweight interactivity</small></li>
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80">Astro + Tailwind</h3><small>Ligero y eficiente</small></li>
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80">GSAP</h3><small>Efecto de canvas infinito</small></li>
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80"> Vanilla JS</h3><small>Interactividad ligera</small></li>
 </ul>
 
-<Image src={thumbnail} alt="thumbnail of textures project" height={700} class={"show-animation rounded-2xl"} />
+<Image src={thumbnail} alt="Miniatura del proyecto Texturas" height={700} class={"show-animation rounded-2xl"} />
 
-Textures is my own personal online collection of urban textures photography.  
-The idea behind the project is to create a simple and elegant way to publish design textures, they are free to use for personal and commercial projects, with attribution. 
+Texturas es mi colección personal en línea de fotografías de texturas urbanas.
+La idea detrás del proyecto es crear una forma sencilla y elegante de publicar texturas de diseño, disponibles de forma gratuita para proyectos personales y comerciales, con atribución.
 
-You can easily download them in high resolution and use them in your own designs.
+Puedes descargarlas fácilmente en alta resolución y usarlas en tus propios diseños.
 <figure>
   <video
     class="rounded-xl h-full w-full max-h-[400px] md:max-h-[500px] object-cover show-animation"
@@ -53,47 +53,47 @@ You can easily download them in high resolution and use them in your own designs
     playsinline
   >
     <source src={showcase} type="video/mp4" />
-    Your browser does not support the video tag.
+    Tu navegador no soporta el elemento de vídeo.
   </video>
-  <figcaption class="text-center">Textures project showcase.</figcaption>
+  <figcaption class="text-center">Demostración del proyecto Texturas.</figcaption>
 </figure>
 
-The project is also an experiment in creating an infinite canvas effect using **GSAP** and **Vanilla JavaScript**, allowing users to explore the textures in a dynamic and engaging way, all source code is available in GitHub for anyone interested in how it was built.
+El proyecto es también un experimento para crear un efecto de canvas infinito usando **GSAP** y **Vanilla JavaScript**, que permite a los usuarios explorar las texturas de forma dinámica y envolvente. Todo el código fuente está disponible en GitHub para quienes tengan curiosidad por cómo está construido.
 
 
-As a coder interested in animated websites, I know that sometimes finding **real projects using GSAP** can be hard, so I wanted to create a project that showcases its capabilities in a practical way, feel free to clone the repo and explore the code!
+Como desarrollador interesado en sitios web animados, sé que a veces es difícil encontrar **proyectos reales que usen GSAP**, así que quería crear un proyecto que mostrara sus capacidades de forma práctica. ¡Siéntete libre de clonar el repositorio y explorar el código!
 
-<Image src={computer} alt="Textures project on a computer screen" height={400} class={"show-animation rounded-2xl my-8"} />
-
-
- 
-
-Most of my design projects require **textures for backgrounds**, overlays, and other design elements. I found myself constantly searching for high-quality textures online, but many of the available options were either low-resolution or required a subscription.  
-To solve this problem, I decided to grab a camera and a good friend <At label='Marcos Rayo' href='https://www.linkedin.com/in/marcos-rayo-garc%C3%ADa-308342308/'/>  to explore Barcelona and photograph interesting textures we found in urban environments.
+<Image src={computer} alt="Proyecto Texturas en una pantalla de ordenador" height={400} class={"show-animation rounded-2xl my-8"} />
 
 
-## How can you download the textures?
-
-Each texture in the canvas can be clicked to open a _beautifully designed ;)_ modal with more information about the texture and a download button to get the high-resolution version. In addition, all textures have a tiling test next to the preview to see how they look when repeated, obviously not all textures are made to be tiled but I tried to edit some of them to make them seamless.
-
-<Image src={phone} alt="Textures project on a phone screen" height={400} class={"show-animation rounded-2xl my-8"} />
 
 
- 
+La mayoría de mis proyectos de diseño requieren **texturas para fondos**, superposiciones y otros elementos visuales. Me encontraba constantemente buscando texturas de alta calidad en línea, pero muchas de las opciones disponibles eran de baja resolución o requerían una suscripción.
+Para resolver este problema, decidí coger una cámara y a un buen amigo <At label='Marcos Rayo' href='https://www.linkedin.com/in/marcos-rayo-garc%C3%ADa-308342308/'/>  para explorar Barcelona y fotografiar texturas interesantes que encontrábamos en entornos urbanos.
+
+
+## ¿Cómo puedes descargar las texturas?
+
+Cada textura del canvas puede clicarse para abrir un modal _bellamente diseñado ;)_ con más información sobre la textura y un botón de descarga para obtener la versión en alta resolución. Además, todas las texturas tienen una prueba de mosaico junto a la vista previa para ver cómo quedan al repetirse. Obviamente no todas las texturas están pensadas para usarse en mosaico, pero intenté editar algunas para hacerlas sin costuras.
+
+<Image src={phone} alt="Proyecto Texturas en una pantalla de móvil" height={400} class={"show-animation rounded-2xl my-8"} />
+
+
+
 <details>
-  <summary> <b> Technical Details</b> <br/><small>For developers & curious minds</small></summary>
+  <summary> <b> Detalles técnicos</b> <br/><small>Para desarrolladores y mentes curiosas</small></summary>
 
-  ## Tech Stack
-  - **Astro** for lightning-fast static rendering and SEO-first architecture.  
-  - **TailwindCSS** for custom styling and responsive design.  
-  - **GSAP** for smooth, performant animations, almost all content is generated with it to create an infinite canvas effect.
-  - **Vanilla JavaScript** for interactivity and animations without extra libraries.  
-  - **Vercel** for deployment with automatic build optimizations. 
+  ## Stack tecnológico
+  - **Astro** para renderizado estático ultrarrápido y arquitectura SEO-first.
+  - **TailwindCSS** para estilos personalizados y diseño responsivo.
+  - **GSAP** para animaciones suaves y eficientes; casi todo el contenido se genera con él para crear el efecto de canvas infinito.
+  - **Vanilla JavaScript** para interactividad y animaciones sin librerías adicionales.
+  - **Vercel** para el despliegue con optimizaciones automáticas de compilación.
 
-  ### Performance
-  Textures site is not meant to be an ultra-fast landing page, loads a lot of images and animations. It this was a comercial project I would optimize even more the assets and animations, but for a personal project I focused on the experience and aesthetics. The Best practices results are still very good:
+  ### Rendimiento
+  El sitio de Texturas no está pensado para ser una landing page ultrarrápida: carga muchas imágenes y animaciones. Si fuera un proyecto comercial optimizaría aún más los recursos y animaciones, pero como proyecto personal me centré en la experiencia y la estética. Los resultados de buenas prácticas siguen siendo muy buenos:
 
-<Image src={stats} alt="Best practices audit screenshot" height={700} class={"show-animation rounded-2xl"} />
+<Image src={stats} alt="Captura de pantalla de la auditoría de buenas prácticas" height={700} class={"show-animation rounded-2xl"} />
 
 </details>
 

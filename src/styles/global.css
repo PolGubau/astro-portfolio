@@ -78,6 +78,13 @@ body {
 *::selection {
 	@apply bg-primary/80 text-ink backdrop-blur-md rounded-lg;
 }
+
+/* Global focus-visible ring — keyboard nav accessible on all interactive elements */
+:focus-visible {
+	outline: 2px solid var(--color-ink);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
 @keyframes grow-progress {
 	from {
 		transform: scaleX(0);
@@ -155,7 +162,7 @@ main {
 		text-decoration: none;
 		@apply text-neutral-300 dark:text-neutral-700;
 
-		::after {
+		&::after {
 			@apply text-neutral-300 dark:text-neutral-700;
 			content: "#";
 		}

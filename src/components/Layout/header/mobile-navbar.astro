@@ -40,6 +40,7 @@ const navItems = [
         return (
           <a
             href={localizePath(path, locale)}
+            aria-current={isActive ? "page" : undefined}
             tabindex={isActive ? -1 : undefined}
             class:list={[
               "flex flex-col items-center gap-1.5 transition-colors duration-200",

@@ -91,18 +91,23 @@ const { backTo } = Astro.props;
     <button
       id="md-share-btn"
       type="button"
+      aria-label="Share this page"
       title="Share"
       class="flex items-center gap-1.5 text-sm text-ink/50 hover:text-ink transition-colors cursor-pointer"
     >
-      <span class="md-share-default">Share ↗</span>
-      <span class="md-share-done hidden text-emerald-600">Copied ✓</span>
+      <span class="md-share-default" aria-hidden="true">Share ↗</span>
+      <span class="md-share-done hidden text-emerald-600" aria-hidden="true"
+        >Copied ✓</span
+      >
     </button>
 
     <button
       id="to-top-btn"
+      type="button"
+      aria-label="Scroll to top"
       class="cursor-pointer text-sm text-ink/50 hover:text-ink transition-colors"
     >
-      ↑ Top
+      <span aria-hidden="true">↑ Top</span>
     </button>
   </div>
 </nav>

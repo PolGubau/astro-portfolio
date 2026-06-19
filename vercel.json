@@ -1,14 +1,25 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "headers": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-        }
-      ]
+      "src": "/(.*)",
+      "headers": {
+        "X-Robots-Tag": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      },
+      "continue": true
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "^/es(/.*)?$",
+      "dest": "/es/404",
+      "status": 404
+    },
+    {
+      "src": "^/ca(/.*)?$",
+      "dest": "/ca/404",
+      "status": 404
     }
   ]
 }

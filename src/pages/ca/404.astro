@@ -1,0 +1,107 @@
+---
+import { localizePath } from "../../i18n/utils";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const copy = {
+  docTitle: "404 - Pàgina no trobada",
+  title: "Això és una mica incòmode.",
+  body: "La pàgina que busques va fer les maletes i no va deixar cap adreça de reenviament.",
+  excuses: [
+    "Segurament l'he trencat jo. O el meu gat ha passejat pel teclat.",
+    "Aquesta pàgina es va agafar un any sabàtic i no va tornar.",
+    "Hi ha 404 maneres de construir aquesta pàgina, i has trobat la que no existeix.",
+    "La pàgina és en un altre castell. 🍄",
+    "Ni el meu millor `git blame` troba qui la va esborrar.",
+  ],
+  takeHome: "Porta'm a casa",
+  seeProjects: "Veure projectes",
+  readBlog: "Llegir el blog",
+  homeHref: localizePath("/", "ca"),
+};
+---
+
+<MainLayout title={copy.docTitle} description={copy.body}>
+  <div
+    class="relative flex flex-col items-center justify-center gap-8 py-28 md:py-36 text-center overflow-hidden"
+  >
+    <div class="relative select-none" aria-hidden="true">
+      <p
+        class="glitch text-[7rem] sm:text-[10rem] md:text-[13rem] font-bold font-title leading-none text-ink/8"
+        data-text="404"
+      >
+        404
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-3 -mt-12 md:-mt-20">
+      <h1 class="text-2xl md:text-3xl font-semibold font-title">
+        {copy.title}
+      </h1>
+      <p class="text-ink/50 max-w-md mx-auto leading-relaxed">
+        {copy.body}
+      </p>
+      <p id="nf-excuse" class="text-sm text-ink/35 italic max-w-md mx-auto">
+        {copy.excuses[0]}
+      </p>
+    </div>
+
+    <div class="flex flex-wrap gap-3 justify-center">
+      <a
+        href={copy.homeHref}
+        class="rounded-xl bg-ink text-background px-5 py-2.5 text-sm font-medium transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5 hover:shadow-md hover:bg-ink/85"
+      >
+        {copy.takeHome}
+      </a>
+      <a
+        href="/ca/projects"
+        class="rounded-xl border border-ink/12 px-5 py-2.5 text-sm font-medium text-ink/60 transition-[border-color,color] duration-200 hover:text-ink hover:border-ink/30"
+      >
+        {copy.seeProjects}
+      </a>
+      <a
+        href="/ca/blog"
+        class="rounded-xl border border-ink/12 px-5 py-2.5 text-sm font-medium text-ink/60 transition-[border-color,color] duration-200 hover:text-ink hover:border-ink/30"
+      >
+        {copy.readBlog}
+      </a>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ excuses: copy.excuses }}>
+    const el = document.getElementById("nf-excuse");
+    if (el) el.textContent = excuses[Math.floor(Math.random() * excuses.length)];
+  </script>
+</MainLayout>
+
+<style>
+  .glitch {
+    position: relative;
+  }
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    color: var(--color-ink, currentColor);
+    opacity: 0.06;
+  }
+  .glitch::before {
+    animation: glitch-shift 2.6s infinite linear alternate-reverse;
+    text-shadow: -2px 0 #ff3b3b;
+  }
+  .glitch::after {
+    animation: glitch-shift 3.4s infinite linear alternate-reverse;
+    text-shadow: 2px 0 #3b6bff;
+  }
+  @keyframes glitch-shift {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(2px, -1px); }
+    50% { transform: translate(-2px, 1px); }
+    75% { transform: translate(1px, 2px); }
+    100% { transform: translate(-1px, -2px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .glitch::before,
+    .glitch::after { animation: none; }
+  }
+</style>

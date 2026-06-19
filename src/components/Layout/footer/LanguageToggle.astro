@@ -1,16 +1,22 @@
 ---
-import { type Locale, getLocale, stripLocale } from "../../../i18n/utils";
+import {
+  type Locale,
+  getLocale,
+  localizePath,
+  stripLocale,
+} from "../../../i18n/utils";
 
 const locale = getLocale(Astro.currentLocale);
 const base = stripLocale(Astro.url.pathname);
 
 // Routes that have explicit locale equivalents beyond EN
-const translatedRoutes = ["/", "/about"];
+const translatedRoutes = ["/", "/about", "/ui"];
 
+// Build the destination via localizePath so links honour `trailingSlash: never`
+// (`/es`, not `/es/`). Routes without translations fall back to the home page.
 function getTarget(base: string, targetLocale: Locale): string {
-  if (targetLocale === "en") return base === "/" ? "/" : base;
   const dest = translatedRoutes.includes(base) ? base : "/";
-  return dest === "/" ? `/${targetLocale}/` : `/${targetLocale}${dest}`;
+  return localizePath(dest, targetLocale);
 }
 
 const langs: { locale: Locale; label: string; ariaLabel: string }[] = [

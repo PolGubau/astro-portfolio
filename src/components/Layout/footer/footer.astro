@@ -10,10 +10,12 @@ const t = useTranslations(locale);
 
 const year = new Date().getFullYear();
 
+// "/" and "/ui" have localized variants; projects/blog list English-only
+// content, so they always point to the English route.
 const nav = [
   { href: localizePath("/", locale), label: t("footer.home") },
-  { href: localizePath("/projects", locale), label: t("footer.work") },
-  { href: localizePath("/blog", locale), label: t("footer.writing") },
+  { href: "/projects", label: t("footer.work") },
+  { href: "/blog", label: t("footer.writing") },
   { href: localizePath("/ui", locale), label: t("footer.experiments") },
 ];
 

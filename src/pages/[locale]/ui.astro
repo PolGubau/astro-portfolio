@@ -1,0 +1,12 @@
+---
+// Localized UI experiments routes (/es/ui, /ca/ui, ...). Paths derive from the
+// `locales` array via getLocalePaths(); markup/schema/meta live in UiPage.
+import UiPage from "../../components/pages/UiPage.astro";
+import { getLocalePaths } from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return getLocalePaths();
+}
+---
+
+<UiPage />

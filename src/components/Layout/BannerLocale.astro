@@ -1,9 +1,9 @@
 ---
 // Suggests switching to the visitor's browser language when it differs from
-// the page's locale. Detection and dismissal happen client-side (static site),
-// so English visitors never see layout shift - the bar is hidden until JS
-// confirms a better-matching locale exists. Only routes with real translations
-// are eligible; everything else stays English-only and shows nothing.
+// the page's locale. Detection and dismissal happen client-side (static site).
+// The banner is rendered out of flow (position: fixed) so it never causes
+// layout shift, and animates in/out via opacity + translate. Only routes with
+// real translations are eligible; everything else stays English-only.
 import {
   type Locale,
   getLocale,
@@ -15,7 +15,7 @@ import {
 const locale = getLocale(Astro.currentLocale);
 const base = stripLocale(Astro.url.pathname);
 
-const translatedRoutes = ["/", "/about"];
+const translatedRoutes = ["/", "/about", "/ui"];
 const enabled = translatedRoutes.includes(base);
 
 // Copy is shown in the visitor's language, not the current page's.
@@ -47,45 +47,83 @@ const options = locales.map((l) => ({
 
 {
   enabled && (
-    <div
-      id="locale-banner"
-      data-current={locale}
-      hidden
-      class="flex items-center justify-center gap-3 rounded-full border border-ink/10 bg-ink/[0.03] px-4 py-2 mb-4 text-sm text-ink/70"
-    >
-      <p id="locale-banner-text" class="m-0" />
-      <a
-        id="locale-banner-link"
-        href="#"
-        class="font-medium text-ink underline underline-offset-4 hover:opacity-70"
-      />
-      <button
-        id="locale-banner-dismiss"
-        type="button"
-        aria-label={copy[locale].dismiss}
-        class="ml-auto shrink-0 rounded-full p-1 text-ink/40 hover:text-ink hover:bg-ink/5 transition-colors"
+    <div class="pointer-events-none fixed inset-x-0 bottom-24 z-50 flex justify-center px-4 md:bottom-6">
+      <div
+        id="locale-banner"
+        data-current={locale}
+        role="status"
+        aria-live="polite"
+        class="locale-banner flex items-center gap-3 rounded-full border border-ink/10 bg-background/80 px-4 py-2 text-sm text-ink/70 shadow-lg shadow-ink/5 backdrop-blur-md"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-4 w-4"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          aria-hidden="true"
+        <p id="locale-banner-text" class="m-0" />
+        <a
+          id="locale-banner-link"
+          href="#"
+          class="font-medium text-ink underline underline-offset-4 hover:opacity-70"
+        />
+        <button
+          id="locale-banner-dismiss"
+          type="button"
+          aria-label={copy[locale].dismiss}
+          class="ml-auto shrink-0 rounded-full p-1 text-ink/40 transition-colors hover:bg-ink/5 hover:text-ink"
         >
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-      </button>
-      <script
-        type="application/json"
-        id="locale-banner-data"
-        set:html={JSON.stringify(options)}
-      />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <script
+          type="application/json"
+          id="locale-banner-data"
+          set:html={JSON.stringify(options)}
+        />
+      </div>
     </div>
   )
 }
+
+<style>
+  /* Out-of-flow toast: hidden by default (no layout shift, no flash), fades and
+     slides in once JS confirms a better-matching locale. */
+  .locale-banner {
+    opacity: 0;
+    transform: translateY(0.75rem);
+    pointer-events: none;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0s linear 0.3s;
+  }
+  .locale-banner.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .locale-banner {
+      transition:
+        opacity 0.2s ease,
+        visibility 0s linear 0.2s;
+      transform: none;
+    }
+    .locale-banner.is-visible {
+      transform: none;
+    }
+  }
+</style>
 
 <script>
   const banner = document.getElementById("locale-banner");
@@ -123,14 +161,15 @@ const options = locales.map((l) => ({
           link.textContent = match.cta;
           link.setAttribute("href", match.href);
         }
-        banner.hidden = false;
+        // Defer one frame so the transition runs from the hidden base state.
+        requestAnimationFrame(() => banner.classList.add("is-visible"));
       }
     }
 
     document
       .getElementById("locale-banner-dismiss")
       ?.addEventListener("click", () => {
-        banner.hidden = true;
+        banner.classList.remove("is-visible");
         try {
           localStorage.setItem(KEY, "1");
         } catch {}

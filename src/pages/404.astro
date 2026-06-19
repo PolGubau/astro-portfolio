@@ -1,44 +1,199 @@
 ---
+import { type Locale, defaultLocale, localizePath } from "../i18n/utils";
 import MainLayout from "../layouts/MainLayout.astro";
+
+// Single static 404 served for any unmatched route, so it can't know its locale
+// at build time. We render the default (English) copy server-side and swap to
+// the visitor's language client-side based on the URL's locale prefix (/es, /ca).
+// Mirrors the component-level copy map pattern used in BannerLocale.astro.
+type NotFoundCopy = {
+  docTitle: string;
+  title: string;
+  body: string;
+  excuses: string[];
+  takeHome: string;
+  seeProjects: string;
+  readBlog: string;
+  homeHref: string;
+};
+
+const copy: Record<Locale, NotFoundCopy> = {
+  en: {
+    docTitle: "404 - Page not found",
+    title: "Well, this is awkward.",
+    body: "The page you're after packed its bags and left no forwarding address.",
+    excuses: [
+      "I probably broke it. Or my cat walked on the keyboard.",
+      "This page took a sabbatical and never came back.",
+      "404 ways to build this page, and you found the one that doesn't exist.",
+      "The page is in another castle. 🍄",
+      "Even my best `git blame` can't find who deleted this.",
+    ],
+    takeHome: "Take me home",
+    seeProjects: "See projects",
+    readBlog: "Read blog",
+    homeHref: localizePath("/", "en"),
+  },
+  es: {
+    docTitle: "404 - Página no encontrada",
+    title: "Esto es un poco incómodo.",
+    body: "La página que buscas hizo las maletas y no dejó dirección de reenvío.",
+    excuses: [
+      "Seguramente la rompí yo. O mi gato se paseó por el teclado.",
+      "Esta página se cogió un año sabático y nunca volvió.",
+      "Hay 404 formas de construir esta página, y encontraste la que no existe.",
+      "La página está en otro castillo. 🍄",
+      "Ni mi mejor `git blame` encuentra quién la borró.",
+    ],
+    takeHome: "Llévame a casa",
+    seeProjects: "Ver proyectos",
+    readBlog: "Leer el blog",
+    homeHref: localizePath("/", "es"),
+  },
+  ca: {
+    docTitle: "404 - Pàgina no trobada",
+    title: "Això és una mica incòmode.",
+    body: "La pàgina que busques va fer les maletes i no va deixar cap adreça de reenviament.",
+    excuses: [
+      "Segurament l'he trencat jo. O el meu gat ha passejat pel teclat.",
+      "Aquesta pàgina es va agafar un any sabàtic i no va tornar.",
+      "Hi ha 404 maneres de construir aquesta pàgina, i has trobat la que no existeix.",
+      "La pàgina és en un altre castell. 🍄",
+      "Ni el meu millor `git blame` troba qui la va esborrar.",
+    ],
+    takeHome: "Porta'm a casa",
+    seeProjects: "Veure projectes",
+    readBlog: "Llegir el blog",
+    homeHref: localizePath("/", "ca"),
+  },
+};
+
+const en = copy[defaultLocale];
+const excuse = en.excuses[Math.floor(Math.random() * en.excuses.length)];
 ---
 
 <MainLayout title="404 - Pol Gubau" description="This page doesn't exist.">
   <div
-    class="flex flex-col items-center justify-center gap-8 py-32 text-center"
+    class="relative flex flex-col items-center justify-center gap-8 py-28 md:py-36 text-center overflow-hidden"
   >
-    <p
-      class="text-[10rem] font-bold font-title leading-none text-ink/8 select-none"
-      aria-hidden="true"
-    >
-      404
-    </p>
+    <!-- Oversized, glitchy 404 -->
+    <div class="relative select-none" aria-hidden="true">
+      <p
+        class="glitch text-[7rem] sm:text-[10rem] md:text-[13rem] font-bold font-title leading-none text-ink/8"
+        data-text="404"
+      >
+        404
+      </p>
+    </div>
 
-    <div class="flex flex-col gap-2 -mt-16">
-      <h1 class="text-2xl font-semibold">Page not found</h1>
-      <p class="text-ink/50 max-w-sm">
-        This URL doesn't exist. The page may have moved or been removed.
+    <div class="flex flex-col gap-3 -mt-12 md:-mt-20">
+      <h1 id="nf-title" class="text-2xl md:text-3xl font-semibold font-title">
+        {en.title}
+      </h1>
+      <p id="nf-body" class="text-ink/50 max-w-md mx-auto leading-relaxed">
+        {en.body}
+      </p>
+      <p id="nf-excuse" class="text-sm text-ink/35 italic max-w-md mx-auto">
+        {excuse}
       </p>
     </div>
 
     <div class="flex flex-wrap gap-3 justify-center">
       <a
-        href="/"
+        id="nf-home"
+        href={en.homeHref}
         class="rounded-xl bg-ink text-background px-5 py-2.5 text-sm font-medium transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5 hover:shadow-md hover:bg-ink/85"
       >
-        Go home
+        {en.takeHome}
       </a>
       <a
+        id="nf-projects"
         href="/projects"
         class="rounded-xl border border-ink/12 px-5 py-2.5 text-sm font-medium text-ink/60 transition-[border-color,color] duration-200 hover:text-ink hover:border-ink/30"
       >
-        See projects
+        {en.seeProjects}
       </a>
       <a
+        id="nf-blog"
         href="/blog"
         class="rounded-xl border border-ink/12 px-5 py-2.5 text-sm font-medium text-ink/60 transition-[border-color,color] duration-200 hover:text-ink hover:border-ink/30"
       >
-        Read blog
+        {en.readBlog}
       </a>
     </div>
   </div>
+
+  <script is:inline define:vars={{ copy }}>
+    // Detect locale from the URL prefix and localize in place. English visitors
+    // keep the server-rendered copy (no swap, no flash).
+    const seg = location.pathname.split("/").filter(Boolean)[0];
+    const locale = seg === "es" || seg === "ca" ? seg : "en";
+    if (locale !== "en") {
+      const c = copy[locale];
+      const setText = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = value;
+      };
+      document.documentElement.lang = locale;
+      document.title = c.docTitle;
+      setText("nf-title", c.title);
+      setText("nf-body", c.body);
+      setText("nf-home", c.takeHome);
+      setText("nf-projects", c.seeProjects);
+      setText("nf-blog", c.readBlog);
+      const home = document.getElementById("nf-home");
+      if (home) home.setAttribute("href", c.homeHref);
+      const excuse = document.getElementById("nf-excuse");
+      if (excuse && c.excuses.length) {
+        excuse.textContent =
+          c.excuses[Math.floor(Math.random() * c.excuses.length)];
+      }
+    }
+  </script>
 </MainLayout>
+
+<style>
+  /* Subtle RGB-split glitch on the 404 numerals, paused for reduced motion. */
+  .glitch {
+    position: relative;
+  }
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    color: var(--color-ink, currentColor);
+    opacity: 0.06;
+  }
+  .glitch::before {
+    animation: glitch-shift 2.6s infinite linear alternate-reverse;
+    text-shadow: -2px 0 #ff3b3b;
+  }
+  .glitch::after {
+    animation: glitch-shift 3.4s infinite linear alternate-reverse;
+    text-shadow: 2px 0 #3b6bff;
+  }
+  @keyframes glitch-shift {
+    0% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(2px, -1px);
+    }
+    50% {
+      transform: translate(-2px, 1px);
+    }
+    75% {
+      transform: translate(1px, 2px);
+    }
+    100% {
+      transform: translate(-1px, -2px);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .glitch::before,
+    .glitch::after {
+      animation: none;
+    }
+  }
+</style>

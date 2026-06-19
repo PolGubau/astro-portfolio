@@ -1,0 +1,42 @@
+---
+import Schema from "../Schema.astro";
+import MansoryGrid from "../experiments/MansoryGrid.astro";
+import { getLocale, useTranslations } from "../../i18n/utils";
+import MainLayout from "../../layouts/MainLayout.astro";
+import { metadata } from "../../lib/constants";
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+---
+
+<MainLayout title={t("ui.meta.title")} description={t("ui.meta.description")}>
+  <Schema
+    type="CreativeWork"
+    data={{
+      name: "UI Experiments by Pol Gubau",
+      description: t("ui.meta.description"),
+      author: {
+        "@type": "Person",
+        name: metadata.longName,
+        url: metadata.links.website,
+      },
+      datePublished: "2023-01-01",
+      dateModified: new Date().toISOString(),
+      url: "https://polgubau.com/ui",
+      keywords: [
+        "UI animations",
+        "React experiments",
+        "micro-interactions",
+        "web animations",
+      ],
+    }}
+  />
+
+  <div class="flex flex-col gap-12 pt-12 md:pt-4">
+    <header class="flex flex-col gap-3">
+      <h1 class="text-2xl font-semibold tracking-tight">{t("ui.heading")}</h1>
+      <p class="text-ink/60">{t("ui.subtitle")}</p>
+    </header>
+    <MansoryGrid />
+  </div>
+</MainLayout>

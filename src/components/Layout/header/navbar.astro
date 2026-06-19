@@ -8,12 +8,14 @@ const t = useTranslations(locale);
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, "");
 const subpath = pathname.match(/[^\/]+/g);
 
+// "/", "/about" and "/ui" have localized variants; projects/blog list
+// English-only content, so they always point to the English route.
 const navItems = [
   { path: localizePath("/", locale), name: t("nav.home") },
   { path: localizePath("/about", locale), name: t("nav.about") },
-  { path: localizePath("/projects", locale), name: t("nav.portfolio") },
+  { path: "/projects", name: t("nav.portfolio") },
   { path: localizePath("/ui", locale), name: t("nav.experiments") },
-  { path: localizePath("/blog", locale), name: t("nav.writing") },
+  { path: "/blog", name: t("nav.writing") },
 ];
 ---
 

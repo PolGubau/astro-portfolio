@@ -51,6 +51,7 @@ export const es: Record<UiKey, string> = {
 		'Cofundé <strong class="text-secondary-50">Doscientos</strong>, un estudio de software que convierte ideas en productos en seis semanas.',
 	"home.doscientos.stat1": "Productos publicados",
 	"home.doscientos.stat2": "De idea a lanzamiento",
+	"home.doscientos.stat2value": "6 semanas",
 	"home.doscientos.stat3": "El código es tuyo",
 	"home.doscientos.stat4": "Valoración clientes",
 	"home.doscientos.cta": "Visita Doscientos",
@@ -96,4 +97,13 @@ export const es: Record<UiKey, string> = {
 		"Conoce a Pol Gubau Amores, Senior Frontend Engineer en Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI, diseñador reconvertido en desarrollador.",
 	"about.meta.schema":
 		"Conoce a Pol Gubau Amores, Senior Frontend Engineer en Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI.",
+
+	// UI experiments page
+	"ui.heading": "Experimentos",
+	"ui.subtitle":
+		"Componentes de UI y animaciones, interacciones, movimiento y patrones creativos.",
+	"ui.meta.title":
+		"Experimentos de UI - Animaciones y motion con React por Pol Gubau",
+	"ui.meta.description":
+		"Experimentos de UI interactivos y animaciones hechos con React: microinteracciones, motion design y patrones creativos por Pol Gubau Amores.",
 };

@@ -27,9 +27,9 @@ export const ca: Record<UiKey, string> = {
 	"a11y.switchLang": "Canviar idioma",
 
 	// Home hero
-	"home.hero.title": "Soc en Pol, desenvolupador frontend sènior",
+	"home.hero.title": "Sóc en Pol, faig productes digitals",
 	"home.hero.intro":
-		'Senior Frontend Engineer a <a href="https://mesalvo.com" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Mesalvo</a>. Cofundador de <a href="https://doscientos.es" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Doscientos</a>. A Mataró, Barcelona.',
+		'Desenvolupador frontend a <a href="https://mesalvo.com" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Mesalvo</a>. Cofundador de <a href="https://doscientos.es" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Doscientos</a>. Desde Mataró, Barcelona.',
 	"home.stats.npm": "Descàrregues NPM",
 	"home.stats.vercel": "Peticions Vercel/any",
 	"home.stats.years": "Anys d'experiència",
@@ -46,11 +46,12 @@ export const ca: Record<UiKey, string> = {
 	"home.beyond.caption2": "Ensenyant Astro i Tailwind a més de 35 alumnes",
 	"home.beyond.caption3": "Presentant Pol-UI com a Treball de Fi de Grau",
 	"home.doscientos.title":
-		"Necessites programari a mida, fet per enginyers sènior?",
+		"Necessites software a mida, fet per enginyers sènior?",
 	"home.doscientos.body":
-		'Vaig cofundar <strong class="text-secondary-50">Doscientos</strong>, un estudi de programari que converteix idees en productes - preu fix, enginyers sènior des del primer dia, llançat en sis setmanes.',
+		'Vaig cofundar <strong class="text-secondary-50">Doscientos</strong>, un estudi de programari que converteix idees en productes en només sis setmanes.',
 	"home.doscientos.stat1": "Productes publicats",
 	"home.doscientos.stat2": "D'idea a llançament",
+	"home.doscientos.stat2value": "6 setmanes",
 	"home.doscientos.stat3": "El codi és teu",
 	"home.doscientos.stat4": "Valoració clients",
 	"home.doscientos.cta": "Visita Doscientos",
@@ -97,4 +98,13 @@ export const ca: Record<UiKey, string> = {
 		"Coneix en Pol Gubau Amores, Senior Frontend Engineer a Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI, dissenyador reconvertit en desenvolupador.",
 	"about.meta.schema":
 		"Coneix en Pol Gubau Amores, Senior Frontend Engineer a Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI.",
+
+	// UI experiments page
+	"ui.heading": "Experiments",
+	"ui.subtitle":
+		"Components d'UI i animacions, interaccions, moviment i patrons creatius.",
+	"ui.meta.title":
+		"Experiments d'UI - Animacions i motion amb React per Pol Gubau",
+	"ui.meta.description":
+		"Experiments d'UI interactius i animacions fets amb React: microinteraccions, motion design i patrons creatius per Pol Gubau Amores.",
 };

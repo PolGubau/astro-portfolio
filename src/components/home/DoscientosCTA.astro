@@ -7,7 +7,7 @@ const t = useTranslations(locale);
 
 const stats = [
   { value: "30+", label: t("home.doscientos.stat1") },
-  { value: "6 weeks", label: t("home.doscientos.stat2") },
+  { value: t("home.doscientos.stat2value"), label: t("home.doscientos.stat2") },
   { value: "100%", label: t("home.doscientos.stat3") },
 ];
 ---
@@ -25,13 +25,22 @@ const stats = [
   >
   </div>
 
-  {/* Giant "200" - doscientos */}
-  <span
-    class="absolute right-0 -bottom-20 md:-bottom-32 text-[14rem] md:text-[22rem] leading-none font-bold font-title text-white/[0.03] select-none pointer-events-none"
+  {/* Doscientos logo watermark */}
+  <svg
+    width="256"
+    height="256"
+    viewBox="0 0 256 256"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="absolute right-4 md:right-10 bottom-4 md:bottom-8 w-48 h-48 md:w-72 md:h-72 opacity-[0.06] select-none pointer-events-none"
     aria-hidden="true"
   >
-    200
-  </span>
+    <path
+      d="M30 88.0355C40.3711 88.0355 50.3174 92.1554 57.6508 99.4889C64.9843 106.822 69.1041 116.769 69.1041 127.14C69.1041 137.511 64.9843 147.457 57.6508 154.79C50.3174 162.124 40.3711 166.244 30 166.244L30 88.0355Z"
+      fill="var(--brand)"></path>
+    <circle cx="115.632" cy="127.14" r="39.1041" fill="var(--brand)"></circle>
+    <circle cx="201.265" cy="127.14" r="39.1041" fill="var(--brand)"></circle>
+  </svg>
 
   <div class="relative max-w-5xl mx-auto px-4 md:px-10 flex flex-col gap-8">
     <div class="flex flex-col gap-4 max-w-2xl">

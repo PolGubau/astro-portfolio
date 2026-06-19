@@ -48,6 +48,7 @@ export const en = {
 		'I co-founded <strong class="text-secondary-50">Doscientos</strong>, a software studio that turns ideas into working products in six weeks.',
 	"home.doscientos.stat1": "Products shipped",
 	"home.doscientos.stat2": "Idea to launch",
+	"home.doscientos.stat2value": "6 weeks",
 	"home.doscientos.stat3": "You own the code",
 	"home.doscientos.stat4": "Client rating",
 	"home.doscientos.cta": "Visit Doscientos",
@@ -94,6 +95,14 @@ export const en = {
 		"Get to know Pol Gubau Amores, a Senior Frontend Engineer based in Mataró, Barcelona. Co-founder of Doscientos, creator of Pol UI, and a designer-turned-developer who cares about craft, performance, and accessibility.",
 	"about.meta.schema":
 		"Get to know Pol Gubau Amores, a Senior Frontend Engineer based in Mataró, Barcelona. Co-founder of Doscientos, creator of Pol UI.",
+
+	// UI experiments page
+	"ui.heading": "Experiments",
+	"ui.subtitle":
+		"UI components and animations, interactions, motion, and creative patterns.",
+	"ui.meta.title": "UI Experiments - React Animations & Motion by Pol Gubau",
+	"ui.meta.description":
+		"Interactive UI experiments and animations built with React - micro-interactions, motion design, and creative patterns by Pol Gubau Amores.",
 } as const;
 
 export type UiKey = keyof typeof en;

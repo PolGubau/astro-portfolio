@@ -1,7 +1,6 @@
 ---
 import { getLocale, localizePath, useTranslations } from "../../../i18n/utils";
 import LogoPill from "../../ui/LogoPill.astro";
-import LanguageToggle from "./LanguageToggle.astro";
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
@@ -47,9 +46,6 @@ const navItems = [
         );
       })
     }
-
-    <!-- Language toggle -->
-    <LanguageToggle />
 
     <!-- Dark mode toggle -->
     <button

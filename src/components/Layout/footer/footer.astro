@@ -3,6 +3,7 @@ import { getLocale, localizePath, useTranslations } from "../../../i18n/utils";
 import { metadata } from "../../../lib/constants";
 import DownloadIcon from "../../icons/DownloadIcon.astro";
 import LogoPill from "../../ui/LogoPill.astro";
+import LanguageToggle from "./LanguageToggle.astro";
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
@@ -67,5 +68,8 @@ const socials = [
     </div>
   </div>
 
-  <p class="text-xs text-ink/30">© {year} {metadata.longName}</p>
+  <div class="flex items-center justify-between gap-4">
+    <p class="text-xs text-ink/30">© {year} {metadata.longName}</p>
+    <LanguageToggle />
+  </div>
 </footer>

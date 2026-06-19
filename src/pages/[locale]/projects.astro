@@ -1,0 +1,14 @@
+---
+// Localized projects index routes (/es/projects, /ca/projects, ...). Paths
+// derive from the `locales` array via getLocalePaths(); UI chrome/meta/schema
+// live in ProjectsPage. Project detail bodies remain English-only for now and
+// surface a content-language notice.
+import ProjectsPage from "../../components/pages/ProjectsPage.astro";
+import { getLocalePaths } from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return getLocalePaths();
+}
+---
+
+<ProjectsPage />

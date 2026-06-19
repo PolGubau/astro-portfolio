@@ -43,11 +43,12 @@ const locale = localeProp ?? getLocale(Astro.currentLocale);
 const localeTag = localeTags[locale]; // e.g. "en-US"
 const ogLocale = ogLocales[locale]; // e.g. "en_US"
 
-// Hreflang alternates - data-driven from `locales`. Only the home, about and
-// ui pages have localized variants; every other route (blog, projects) is
-// English-only, so we emit a single `en` + `x-default` alternate for those.
+// Hreflang alternates - data-driven from `locales`. Index routes have
+// localized variants and emit alternates for every locale; everything else
+// (blog posts, project details) stays English-only with a single `en` +
+// `x-default` alternate.
 const basePath = stripLocale(Astro.url.pathname);
-const translatedRoutes = ["/", "/about", "/ui"];
+const translatedRoutes = ["/", "/about", "/ui", "/blog", "/projects"];
 const hasTranslations = translatedRoutes.includes(basePath);
 const alternateLocales: readonly Locale[] = hasTranslations ? locales : ["en"];
 const alternates = alternateLocales.map((l) => ({

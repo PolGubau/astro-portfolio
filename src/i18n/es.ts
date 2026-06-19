@@ -106,4 +106,23 @@ export const es: Record<UiKey, string> = {
 		"Experimentos de UI - Animaciones y motion con React por Pol Gubau",
 	"ui.meta.description":
 		"Experimentos de UI interactivos y animaciones hechos con React: microinteracciones, motion design y patrones creativos por Pol Gubau Amores.",
+
+	// Blog index page
+	"blog.heading": "Artículos",
+	"blog.subtitle": "Artículos técnicos sobre desarrollo web y diseño",
+	"blog.notice": "Los artículos están escritos en inglés.",
+	"blog.meta.title":
+		"Blog - Artículos de React, TypeScript y frontend por Pol Gubau",
+	"blog.meta.description":
+		"Artículos técnicos sobre React, TypeScript, arquitectura frontend, rendimiento y design systems por Pol Gubau Amores, Senior Frontend Engineer en Barcelona.",
+
+	// Projects index page
+	"projects.heading": "Proyectos",
+	"projects.subtitle":
+		"Una selección de trabajo en web, móvil, open source y freelance.",
+	"projects.notice": "El detalle de los proyectos está en inglés.",
+	"projects.meta.title":
+		"Proyectos - Trabajo web, móvil y open source de Pol Gubau",
+	"projects.meta.description":
+		"Explora más de 50 proyectos de Pol Gubau Amores en React, TypeScript y React Native: apps web, design systems, apps móviles y trabajo freelance, desde librerías open source hasta productos para clientes.",
 };

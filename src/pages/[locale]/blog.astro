@@ -1,0 +1,13 @@
+---
+// Localized blog index routes (/es/blog, /ca/blog, ...). Paths derive from the
+// `locales` array via getLocalePaths(); UI chrome/meta/schema live in BlogPage.
+// Article bodies remain English-only and surface a content-language notice.
+import BlogPage from "../../components/pages/BlogPage.astro";
+import { getLocalePaths } from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return getLocalePaths();
+}
+---
+
+<BlogPage />

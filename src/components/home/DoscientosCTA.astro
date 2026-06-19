@@ -48,7 +48,7 @@ const stats = [
         {t("home.doscientos.title")}
       </h2>
       <p
-        class="text-lg text-secondary-300 text-pretty"
+        class="text-lg text-secondary-300 text-pretty max-w-lg"
         set:html={t("home.doscientos.body")}
       />
     </div>
@@ -74,7 +74,10 @@ const stats = [
         rel="noopener noreferrer"
         class="flex flex-col gap-1 bg-secondary-950 p-4 group hover:bg-secondary-900 transition-colors"
       >
-        <dt class="flex items-center gap-0.5" aria-label="5 out of 5 stars">
+        <dt
+          class="flex items-center gap-0.5 min-h-[2rem] md:min-h-[2.25rem]"
+          aria-label="5 out of 5 stars"
+        >
           {
             Array.from({ length: 5 }).map(() => (
               <svg

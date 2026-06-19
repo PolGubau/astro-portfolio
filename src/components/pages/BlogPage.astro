@@ -1,0 +1,76 @@
+---
+import { getLocale, localizePath, useTranslations } from "../../i18n/utils";
+import { metadata } from "../../lib/constants";
+import { formatDate, getBlogs } from "../../lib/utils";
+import MainLayout from "../../layouts/MainLayout.astro";
+import ContentLanguageNotice from "../Layout/ContentLanguageNotice.astro";
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+
+const allBlogs = getBlogs();
+
+const pageTitle = t("blog.meta.title");
+const pageDescription = t("blog.meta.description");
+const pageUrl = new URL(localizePath("/blog", locale), metadata.links.website)
+  .href;
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: pageTitle,
+  description: pageDescription,
+  url: pageUrl,
+  inLanguage: locale,
+  numberOfItems: allBlogs.length,
+  itemListElement: allBlogs.map((post, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    url: `https://polgubau.com/blog/${post.id}`,
+    name: post.data.title,
+  })),
+};
+---
+
+<MainLayout title={pageTitle} description={pageDescription} type="website">
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(itemListSchema)}
+  />
+  <div class="flex flex-col gap-12 pt-12 md:pt-4">
+    <header class="flex flex-col gap-3">
+      <h1 class="text-2xl font-semibold tracking-tight">{t("blog.heading")}</h1>
+      <p class="text-ink/60">{t("blog.subtitle")}</p>
+      <ContentLanguageNotice message={t("blog.notice")} />
+    </header>
+
+    <ul class="flex flex-col">
+      {
+        allBlogs.map((post) => (
+          <li class="group border-b border-ink/[0.06] last:border-0">
+            <a
+              href={`/blog/${post.id}`}
+              class="-mx-2 flex flex-col gap-1 rounded-xl px-2 py-4 transition-colors hover:bg-ink/[0.025] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20"
+            >
+              <div class="flex items-baseline justify-between gap-4">
+                <h2 class="font-medium text-ink transition-transform duration-200 group-hover:translate-x-0.5 line-clamp-1">
+                  {post.data.title}
+                </h2>
+                <time
+                  datetime={post.data.publishedAt.toISOString()}
+                  class="shrink-0 text-xs text-ink/35 tabular-nums"
+                >
+                  {formatDate(post.data.publishedAt)}
+                </time>
+              </div>
+              <p class="text-sm text-ink/50 line-clamp-2 text-pretty max-w-xl">
+                {post.data.summary}
+              </p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</MainLayout>

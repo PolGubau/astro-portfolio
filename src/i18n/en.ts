@@ -103,6 +103,25 @@ export const en = {
 	"ui.meta.title": "UI Experiments - React Animations & Motion by Pol Gubau",
 	"ui.meta.description":
 		"Interactive UI experiments and animations built with React - micro-interactions, motion design, and creative patterns by Pol Gubau Amores.",
+
+	// Blog index page
+	"blog.heading": "Writing",
+	"blog.subtitle": "Technical articles on web development and design",
+	"blog.notice": "",
+	"blog.meta.title":
+		"Blog - React, TypeScript & Frontend Articles by Pol Gubau",
+	"blog.meta.description":
+		"Technical articles on React, TypeScript, frontend architecture, performance, and design systems by Pol Gubau Amores, Senior Frontend Engineer based in Barcelona.",
+
+	// Projects index page
+	"projects.heading": "Projects",
+	"projects.subtitle":
+		"A selection of work across web, mobile, open source and freelance.",
+	"projects.notice": "",
+	"projects.meta.title":
+		"Projects - Web, Mobile & Open Source Work by Pol Gubau",
+	"projects.meta.description":
+		"Explore 50+ projects by Pol Gubau Amores across React, TypeScript, and React Native - web apps, design systems, mobile apps, and freelance work, from open source libraries to client products.",
 } as const;
 
 export type UiKey = keyof typeof en;

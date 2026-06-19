@@ -15,7 +15,7 @@ import {
 const locale = getLocale(Astro.currentLocale);
 const base = stripLocale(Astro.url.pathname);
 
-const translatedRoutes = ["/", "/about", "/ui"];
+const translatedRoutes = ["/", "/about", "/ui", "/blog", "/projects"];
 const enabled = translatedRoutes.includes(base);
 
 // Copy is shown in the visitor's language, not the current page's.

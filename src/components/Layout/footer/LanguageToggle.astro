@@ -10,7 +10,7 @@ const locale = getLocale(Astro.currentLocale);
 const base = stripLocale(Astro.url.pathname);
 
 // Routes that have explicit locale equivalents beyond EN
-const translatedRoutes = ["/", "/about", "/ui"];
+const translatedRoutes = ["/", "/about", "/ui", "/blog", "/projects"];
 
 // Build the destination via localizePath so links honour `trailingSlash: never`
 // (`/es`, not `/es/`). Routes without translations fall back to the home page.

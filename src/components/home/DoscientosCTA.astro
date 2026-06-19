@@ -35,84 +35,76 @@ const stats = [
 
   <div class="relative max-w-5xl mx-auto px-4 md:px-10 flex flex-col gap-8">
     <div class="flex flex-col gap-4 max-w-2xl">
-      <span
-        class="inline-flex items-center gap-2 text-sm font-medium text-[var(--brand)]"
-      >
-        <h2 class="text-3xl md:text-4xl font-medium text-balance">
-          {t("home.doscientos.title")}
-        </h2>
-        <p
-          class="text-lg text-secondary-300 text-pretty"
-          set:html={t("home.doscientos.body")}
-        />
+      <h2 class="text-3xl md:text-4xl font-medium text-balance">
+        {t("home.doscientos.title")}
+      </h2>
+      <p
+        class="text-lg text-secondary-300 text-pretty"
+        set:html={t("home.doscientos.body")}
+      />
+    </div>
 
-        {/* Stats */}
-        <dl
-          class="relative grid grid-cols-2 sm:grid-cols-4 gap-px rounded-2xl overflow-hidden bg-white/10"
-        >
+    {/* Stats */}
+    <dl
+      class="relative grid grid-cols-2 sm:grid-cols-4 gap-px rounded-2xl overflow-hidden bg-white/10"
+    >
+      {
+        stats.map((stat) => (
+          <div class="flex flex-col gap-1 bg-secondary-950 p-4">
+            <dt class="text-2xl md:text-3xl font-semibold font-title text-[var(--brand)]">
+              {stat.value}
+            </dt>
+            <dd class="text-xs text-secondary-400">{stat.label}</dd>
+          </div>
+        ))
+      }
+      {/* Stars stat */}
+      <a
+        href="https://share.google/ukhX5ChAt7gFE8MUG"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex flex-col gap-1 bg-secondary-950 p-4 group hover:bg-secondary-900 transition-colors"
+      >
+        <dt class="flex items-center gap-0.5" aria-label="5 out of 5 stars">
           {
-            stats.map((stat) => (
-              <div class="flex flex-col gap-1 bg-secondary-950 p-4">
-                <dt class="text-2xl md:text-3xl font-semibold font-title text-[var(--brand)]">
-                  {stat.value}
-                </dt>
-                <dd class="text-xs text-secondary-400">{stat.label}</dd>
-              </div>
+            Array.from({ length: 5 }).map(() => (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                class="w-5 h-5"
+                fill="var(--brand)"
+                aria-hidden="true"
+              >
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
             ))
           }
-          {/* Stars stat */}
-          <a
-            href="https://share.google/ukhX5ChAt7gFE8MUG"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col gap-1 bg-secondary-950 p-4 group hover:bg-secondary-900 transition-colors"
-          >
-            <dt class="flex items-center gap-0.5" aria-label="5 out of 5 stars">
-              {
-                Array.from({ length: 5 }).map(() => (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    class="w-5 h-5"
-                    fill="var(--brand)"
-                    aria-hidden="true"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                ))
-              }
-            </dt>
-            <dd
-              class="text-xs text-secondary-400 group-hover:text-secondary-200 transition-colors"
-            >
-              {t("home.doscientos.stat4")}
-            </dd>
-          </a>
-        </dl>
+        </dt>
+        <dd
+          class="text-xs text-secondary-400 group-hover:text-secondary-200 transition-colors"
+        >
+          {t("home.doscientos.stat4")}
+        </dd>
+      </a>
+    </dl>
 
-        <div class="relative flex flex-wrap items-center gap-x-6 gap-y-3">
-          <a
-            href="https://doscientos.es"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--brand)] text-secondary-950 font-medium hover:brightness-110 hover:shadow-xl hover:shadow-[var(--brand)]/20 transition-all"
-          >
-            {t("home.doscientos.cta")}
-            <Icon
-              name="lucide:arrow-up-right"
-              class="w-4 h-4"
-              aria-hidden="true"
-            />
-          </a>
-          <a
-            href="mailto:hola@doscientos.es"
-            class="inline-flex items-center gap-2 text-sm text-secondary-300 hover:text-secondary-50 transition-colors"
-          >
-            <Icon name="lucide:mail" class="w-4 h-4" aria-hidden="true" />
-            hola@doscientos.es
-          </a>
-        </div>
-      </span>
+    <div class="relative flex flex-wrap items-center gap-x-6 gap-y-3">
+      <a
+        href="https://doscientos.es"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--brand)] text-secondary-950 font-medium hover:brightness-110 hover:shadow-xl hover:shadow-[var(--brand)]/20 transition-all"
+      >
+        {t("home.doscientos.cta")}
+        <Icon name="lucide:arrow-up-right" class="w-4 h-4" aria-hidden="true" />
+      </a>
+      <a
+        href="mailto:hola@doscientos.es"
+        class="inline-flex items-center gap-2 text-sm text-secondary-300 hover:text-secondary-50 transition-colors"
+      >
+        <Icon name="lucide:mail" class="w-4 h-4" aria-hidden="true" />
+        hola@doscientos.es
+      </a>
     </div>
   </div>
 </section>

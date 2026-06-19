@@ -7,6 +7,7 @@ import {
   type Locale,
   getLocale,
   localeTags,
+  locales,
   localizePath,
   ogLocales,
   stripLocale,
@@ -42,10 +43,18 @@ const locale = localeProp ?? getLocale(Astro.currentLocale);
 const localeTag = localeTags[locale]; // e.g. "en-US"
 const ogLocale = ogLocales[locale]; // e.g. "en_US"
 
-// Hreflang alternate URLs
+// Hreflang alternates — data-driven from `locales`. Only the home and about
+// pages have localized variants; every other route (blog, projects, ui) is
+// English-only, so we emit a single `en` + `x-default` alternate for those.
 const basePath = stripLocale(Astro.url.pathname);
-const enHref = new URL(localizePath(basePath, "en"), Astro.site).href;
-const esHref = new URL(localizePath(basePath, "es"), Astro.site).href;
+const translatedRoutes = ["/", "/about"];
+const hasTranslations = translatedRoutes.includes(basePath);
+const alternateLocales: readonly Locale[] = hasTranslations ? locales : ["en"];
+const alternates = alternateLocales.map((l) => ({
+  hreflang: l,
+  href: new URL(localizePath(basePath, l), Astro.site).href,
+}));
+const xDefaultHref = new URL(localizePath(basePath, "en"), Astro.site).href;
 
 const imageURL = new URL(image, Astro.site);
 const ogImageType = image.endsWith(".png") ? "image/png" : "image/webp";
@@ -153,9 +162,12 @@ const articleSchema =
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Hreflang alternates -->
-<link rel="alternate" hreflang="en" href={enHref} />
-<link rel="alternate" hreflang="es" href={esHref} />
-<link rel="alternate" hreflang="x-default" href={enHref} />
+{
+  alternates.map(({ hreflang, href }) => (
+    <link rel="alternate" hreflang={hreflang} href={href} />
+  ))
+}
+<link rel="alternate" hreflang="x-default" href={xDefaultHref} />
 
 <!-- PWA Manifest -->
 <link rel="manifest" href="/manifest.json" />

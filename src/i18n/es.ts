@@ -89,4 +89,12 @@ export const es: Record<UiKey, string> = {
 	"about.contact.body":
 		"Abierto a proyectos interesantes, trabajo freelance y buenas conversaciones sobre el oficio.",
 	"about.contact.email": "Escríbeme",
+
+	// About page - SEO meta
+	"about.meta.title":
+		"Sobre Pol Gubau Amores - Senior Frontend Engineer & Diseñador",
+	"about.meta.description":
+		"Conoce a Pol Gubau Amores, Senior Frontend Engineer en Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI, diseñador reconvertido en desarrollador.",
+	"about.meta.schema":
+		"Conoce a Pol Gubau Amores, Senior Frontend Engineer en Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI.",
 };

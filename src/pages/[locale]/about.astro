@@ -1,0 +1,12 @@
+---
+// Localized about routes (/es/about, /ca/about, ...). Paths derive from the
+// `locales` array via getLocalePaths(); markup/schema/meta live in AboutPage.
+import AboutPage from "../../components/pages/AboutPage.astro";
+import { getLocalePaths } from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return getLocalePaths();
+}
+---
+
+<AboutPage />

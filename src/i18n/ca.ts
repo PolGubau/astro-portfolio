@@ -56,7 +56,8 @@ export const ca: Record<UiKey, string> = {
 	"home.doscientos.stat4": "Valoració clients",
 	"home.doscientos.cta": "Visita Doscientos",
 	"home.perf.title": "No publico webs lentes",
-	"home.perf.subtitle": "100/100 a Lighthouse no és una fanfarronada, és el mínim.",
+	"home.perf.subtitle":
+		"100/100 a Lighthouse no és una fanfarronada, és el mínim.",
 
 	// About page
 	"about.role": "Senior Frontend Engineer · Mataró, Barcelona",
@@ -89,4 +90,12 @@ export const ca: Record<UiKey, string> = {
 	"about.contact.body":
 		"Obert a projectes interessants, feina freelance i bones converses sobre l'ofici.",
 	"about.contact.email": "Escriu-me",
+
+	// About page - SEO meta
+	"about.meta.title":
+		"Sobre Pol Gubau Amores - Senior Frontend Engineer & Dissenyador",
+	"about.meta.description":
+		"Coneix en Pol Gubau Amores, Senior Frontend Engineer a Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI, dissenyador reconvertit en desenvolupador.",
+	"about.meta.schema":
+		"Coneix en Pol Gubau Amores, Senior Frontend Engineer a Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI.",
 };

@@ -1,0 +1,12 @@
+---
+// Localized home routes (/es, /ca, ...). Paths derive from the `locales` array,
+// so adding a language needs no new file here — just the dictionary + locale.
+import HomePage from "../../components/pages/HomePage.astro";
+import { getLocalePaths } from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return getLocalePaths();
+}
+---
+
+<HomePage />

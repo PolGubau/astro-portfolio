@@ -87,6 +87,14 @@ export const en = {
 	"about.contact.body":
 		"Open to interesting projects, freelance work, and good conversations about craft.",
 	"about.contact.email": "Email me",
+
+	// About page - SEO meta
+	"about.meta.title":
+		"About Pol Gubau Amores - Senior Frontend Engineer & Designer",
+	"about.meta.description":
+		"Get to know Pol Gubau Amores, a Senior Frontend Engineer based in Mataró, Barcelona. Co-founder of Doscientos, creator of Pol UI, and a designer-turned-developer who cares about craft, performance, and accessibility.",
+	"about.meta.schema":
+		"Get to know Pol Gubau Amores, a Senior Frontend Engineer based in Mataró, Barcelona. Co-founder of Doscientos, creator of Pol UI.",
 } as const;
 
 export type UiKey = keyof typeof en;

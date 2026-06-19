@@ -4,7 +4,7 @@ import teaching from "../../assets/media/about/teaching.avif";
 import tfg from "../../assets/media/about/tfg.avif";
 import tv3 from "../../assets/media/about/tv3.avif";
 import me from "../../assets/media/me.webp";
-import { getLocale, useTranslations } from "../../i18n/utils";
+import { getLocale, localizePath, useTranslations } from "../../i18n/utils";
 import MainLayout from "../../layouts/MainLayout.astro";
 import { metadata } from "../../lib/constants";
 
@@ -15,15 +15,16 @@ const profilePageSchema = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
   name: `About ${metadata.longName}`,
-  url: `${metadata.links.website}/ca/about`,
-  description:
-    "Coneix en Pol Gubau Amores, Senior Frontend Engineer a Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI.",
+  url: `${metadata.links.website}${localizePath("/about", locale)}`,
+  description: t("about.meta.schema"),
   mainEntity: {
     "@type": "Person",
     "@id": `${metadata.links.website}/#person`,
     name: metadata.longName,
     alternateName: ["Pol Gubau", "PolGubau"],
     jobTitle: metadata.slogan,
+    description:
+      "Senior Frontend Engineer and designer from Barcelona. Co-founder of Doscientos, creator of the Pol-UI open-source component library.",
     url: metadata.links.website,
     image: `${metadata.links.website}/thumbnail.webp`,
     email: "hola@polgubau.com",
@@ -33,19 +34,40 @@ const profilePageSchema = {
       addressRegion: "Barcelona",
       addressCountry: "ES",
     },
+    worksFor: {
+      "@type": "Organization",
+      name: "Mesalvo",
+      url: "https://mesalvo.com",
+    },
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: "Universitat Autònoma de Barcelona",
+      url: "https://uab.cat",
+    },
     sameAs: [
       metadata.links.github,
       metadata.links.linkedin,
       metadata.links.twitter,
       metadata.links.npm,
     ],
+    knowsAbout: [
+      "Frontend Development",
+      "React",
+      "TypeScript",
+      "UX Design",
+      "Design Systems",
+      "Web Performance",
+      "Accessibility",
+      "Expo",
+      "React Native",
+    ],
   },
 };
 ---
 
 <MainLayout
-  title="Sobre Pol Gubau Amores - Senior Frontend Engineer & Dissenyador"
-  description="Coneix en Pol Gubau Amores, Senior Frontend Engineer a Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI, dissenyador reconvertit en desenvolupador."
+  title={t("about.meta.title")}
+  description={t("about.meta.description")}
 >
   <script
     is:inline
@@ -53,6 +75,7 @@ const profilePageSchema = {
     set:html={JSON.stringify(profilePageSchema)}
   />
   <article class="flex flex-col gap-14 py-8 max-w-2xl">
+    <!-- Hero -->
     <header class="flex flex-col gap-6" data-reveal="bottom" data-speed="fast">
       <div class="flex items-center gap-5">
         <Image
@@ -77,6 +100,7 @@ const profilePageSchema = {
       />
     </header>
 
+    <!-- Story -->
     <section
       class="flex flex-col gap-4 text-ink/75 leading-relaxed"
       data-reveal="bottom"
@@ -87,6 +111,7 @@ const profilePageSchema = {
       <p set:html={t("about.story.p3")} />
     </section>
 
+    <!-- Stats -->
     <div
       data-reveal="bottom"
       class="grid grid-cols-2 md:grid-cols-4 gap-px bg-ink/80 rounded-xl overflow-hidden border border-ink/50"
@@ -109,6 +134,7 @@ const profilePageSchema = {
       }
     </div>
 
+    <!-- Photos -->
     <section class="flex flex-col gap-6" data-stagger="100">
       <h2 class="text-xl font-semibold text-ink" data-reveal="bottom">
         {t("about.beyond.title")}
@@ -156,6 +182,7 @@ const profilePageSchema = {
       </div>
     </section>
 
+    <!-- Currently -->
     <section class="flex flex-col gap-4" data-reveal="bottom">
       <h2 class="text-xl font-semibold text-ink">
         {t("about.currently.title")}
@@ -177,6 +204,7 @@ const profilePageSchema = {
       </ul>
     </section>
 
+    <!-- Contact -->
     <section
       class="flex flex-col gap-4 pt-6 border-t border-ink/10"
       data-reveal="bottom"

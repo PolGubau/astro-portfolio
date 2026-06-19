@@ -31,36 +31,36 @@ import lineDetails from "../../../assets/media/projects/l2024/line-details.avif"
 import people from "../../../assets/media/projects/l2024/people.avif"
 import stopImages from "../../../assets/media/projects/l2024/stop-images.avif"
 
-## The challenge
+## El repte
 
-Every last Saturday of 2024, <At label='Marcos Rayo' href='https://www.linkedin.com/in/marcos-rayo-garc%C3%ADa-308342308/'/> and I walked one full metro line of Barcelona - above ground, on foot, stop to stop. No shortcuts, no metro rides. Just the streets.
+Cada últim dissabte del 2024, en <At label='Marcos Rayo' href='https://www.linkedin.com/in/marcos-rayo-garc%C3%ADa-308342308/'/> i jo vam recórrer una línia de metro completa de Barcelona: a peu, per la superfície, de parada en parada. Sense dreceres, sense pujar al metro. Només els carrers.
 
-By the end of the year we had covered all 12 lines of the network: ~200 km of city at walking pace.
+A finals d'any havíem cobert les 12 línies de la xarxa: uns 200 km de ciutat a pas de vianant.
 
 <Image
-  alt="Group of people walking one of the metro lines"
+  alt="Grup de persones recorrent una de les línies de metro"
   width={400}
   height={600}
   className="rounded-2xl mx-auto max-h-[600px] w-auto show-animation my-8 shadow-xl"
   src={people}
 />
 
-Friends joined on different dates - some for one line, some for several. Each Saturday ended up being its own thing: different neighbourhoods, different weather, and the shared goal of reaching the last station before the sun went down.
+Els amics s'hi anaven unint en diferents dates: alguns per a una línia, altres per a unes quantes. Cada dissabte acabava sent una experiència pròpia: diferents barris, diferent temps meteorològic i l'objectiu compartit d'arribar a l'última estació abans que es pongués el sol.
 
-## Engineering the routes
+## Enginyeria de les rutes
 
-The goal was to document the whole thing - routes, stats, and the photos we took at each stop.
+L'objectiu era documentar-ho tot: rutes, estadístiques i les fotos que fèiem a cada parada.
 
-The data pipeline was the most interesting part:
-1. **Recording**: We tracked each walk on our phones.
-2. **Cleaning**: Exported GPX files were cleaned in [GPX Studio](https://gpx.studio) to remove GPS drift and fix missing segments.
-3. **Parsing**: Converted to GeoJSON for the map, but also extracted metadata into a custom TypeScript structure to handle the UI.
+El pipeline de dades va ser la part més interessant:
+1. **Enregistrament**: Vam rastrejar cada caminada amb els nostres telèfons.
+2. **Neteja**: Els fitxers GPX exportats es van netejar a [GPX Studio](https://gpx.studio) per eliminar les derives del GPS i corregir els segments que faltaven.
+3. **Processament**: Es van convertir a GeoJSON per al mapa, però també en vam extreure metadades en una estructura personalitzada de TypeScript per gestionar la interfície d'usuari.
 
 <div class="grid grid-cols-1 md:grid-cols-[auto_auto] gap-2">
 
 
 <Image
-  alt="Map overview showing all walked metro lines across Barcelona"
+  alt="Vista general del mapa mostrant totes les línies de metro recorregudes a Barcelona"
   width={800}
   height={500}
   className="rounded-2xl mx-auto max-h-[600px] w-auto show-animation my-8 shadow-xl"
@@ -82,42 +82,42 @@ The data pipeline was the most interesting part:
 ```
 </div>
 
-## Building the map
+## Construint el mapa
 
-The map is built with **MapLibre** and **React**. Since it was a side project, I wanted to avoid Google Maps or Mapbox APIs to keep it completely free and privacy-focused.
+El mapa està construït amb **MapLibre** i **React**. Com que era un projecte personal, volia evitar les API de Google Maps o Mapbox per mantenir-lo completament gratuït i centrat en la privadesa.
 
-I used `@mapcomponents/react-maplibre`, which was powerful but had almost zero documentation. I had to dive into the source code to understand how to handle layer interpolation - making the lines grow thicker as you zoom in to keep them visible.
+Vaig utilitzar `@mapcomponents/react-maplibre`, que era potent però pràcticament no tenia documentació. Vaig haver de submergir-me en el codi font per entendre com gestionar la interfície d'usuari.
 
 <Image
-  alt="Map zoomed in showing a single line with stops and route detail"
+  alt="Mapa amb zoom mostrant una única línia amb les parades i el detall de la ruta"
   width={800}
   height={500}
   className="rounded-2xl w-full object-cover show-animation my-4 border border-neutral-200"
   src={mapDetail}
 />
 
-Selecting a line filters the global GeoJSON data and focuses the viewport on that specific route, showing the real-time stats extracted from the metadata.
+En seleccionar una línia es filtren les dades GeoJSON globals i el visor se centra en aquesta ruta específica, mostrant les estadístiques en temps real extretes de les metadades.
 
 <Image
-  alt="Line detail panel showing stats like distance, time and stations"
+  alt="Panell de detalls de la línia mostrant estadístiques com la distància, el temps i les estacions"
   width={800}
   height={500}
   className="rounded-2xl mx-auto max-h-[600px] w-auto show-animation my-8 shadow-xl"
   src={lineDetails}
 />
 
-## Stop photos
+## Fotos de les parades
 
-At every station we took a photo. It was the hardest part to automate: we have hundreds of photos named exactly like the station names.
+A cada estació fèiem una foto. Va ser la part més difícil d'automatitzar: tenim centenars de fotos anomenades exactament com les estacions.
 
-Instead of a database, I opted for a simple naming convention. The app gets the clicked stop name, identifies the line, and dynamically loads the image from a structured public folder: `/images/${line}/${stop}.jpg`.
+En lloc d'una base de dades, vaig optar per una convenció de noms senzilla. L'aplicació obté el nom de la parada seleccionada, identifica la línia i carrega dinàmicament la imatge des d'una carpeta pública estructurada: `/images/${line}/${stop}.jpg`.
 
 <Image
-  alt="Grid of photos taken at metro stops along a line"
+  alt="Graella de fotos fetes a les parades de metro al llarg d'una línia"
   width={400}
   height={600}
   className="rounded-2xl mx-auto max-h-[500px] w-auto show-animation my-8 shadow-xl"
   src={stopImages}
 />
 
-It's a small project, but it captures 2024 perfectly: 12 Saturdays, 12 lines, and a lot of kilometers walked.
+És un projecte petit, però captura perfectament el 2024: 12 dissabtes, 12 línies i molts quilòmetres recorreguts.

@@ -29,13 +29,13 @@ import flags1 from "../../../assets/media/projects/flags/1.webp";
 
 # React Beauty Flags
 
-**React Beauty Flags** is a React library that provides over **250 handcrafted SVG flags** - from countries to cities - designed to bring color and style to modern interfaces.
+**React Beauty Flags** és una llibreria de React que proporciona més de **250 banderes SVG fetes a mà** — des de països fins a ciutats — dissenyades per aportar color i estil a les interfícies modernes.
 
-Born from frustration with dull or over-complicated alternatives, it focuses on **simplicity, visual harmony, and developer experience**.
+Nascuda de la frustració amb alternatives avorrides o massa complicades, se centra en la **simplicitat, l'harmonia visual i l'experiència del desenvolupador**.
 
 <figure>
   <Image
-    alt="React Beauty Flags preview"
+    alt="Vista prèvia de React Beauty Flags"
     width={720}
     height={480}
     className="rounded-xl h-full max-h-[300px] md:max-h-[400px] object-contain show-animation"
@@ -45,59 +45,59 @@ Born from frustration with dull or over-complicated alternatives, it focuses on 
 
 ---
 
-## Motivation
+## Motivació
 
-After reusing flags in dozens of projects, I realized existing solutions were either too heavy or lacked design consistency. Inspired by **Duolingo’s clean and playful visuals**, I decided to design a set that looked great in any modern UI while staying developer-friendly.
+Després de reutilitzar banderes en desenes de projectes, em vaig adonar que les solucions existents eren massa pesades o mancaven de consistència en el disseny. Inspirat pels **visuals nets i divertits de Duolingo**, vaig decidir dissenyar un conjunt que es veiés bé en qualsevol interfície moderna i que fos fàcil d'utilitzar per als desenvolupadors.
 
-> “I wanted something elegant enough for portfolios but simple enough to drop into production.”
+> "Volia alguna cosa prou elegant per a portafolis però prou senzilla per posar-la en producció."
 
-The result is a **library now downloaded over 1,000 times** (and growing!) through NPM, with strong adoption among UI-focused developers and open-source enthusiasts.
+El resultat és una **llibreria que ja s'ha descarregat més de 1.000 vegades** (i sumant!) a través de NPM, amb una forta adopció entre els desenvolupadors centrats en la IU i els entusiastes del codi obert.
 
 ---
 
-## Highlights
+## Punts destacats
 
-* **+250 Handmade Flags** - Countries, cities, and symbols designed in Figma.
-* **Lightweight & Fast** - Zero external dependencies, optimized SVGs.
-* **Customizable** - Supports Tailwind utilities for borders, shadows, and radius.
-* **Search & Filter** - Built-in search experience with sharable URLs.
-* **TypeScript Ready** - Fully typed, autocompletion in your IDE.
+* **+250 banderes fetes a mà** - Països, ciutats i símbols dissenyats a Figma.
+* **Lleuger i ràpid** - Zero dependències externes, SVGs optimitzats.
+* **Personalitzable** - Admet utilitats de Tailwind per a vores, ombres i radis.
+* **Cerca i filtratge** - Experiència de cerca integrada amb URLs compartibles.
+* **Llest per a TypeScript** - Totalment tipat, amb autocompleció al teu IDE.
 
 <details>
-  <summary> <b> Technical Details</b> <br/><small>For developers & curious minds </small></summary>
- 
+  <summary> <b> Detalls Tècnics</b> <br/><small>Per a desenvolupadors i ments curioses </small></summary>
 
-  ### 🧰 Tech Stack
 
-  | Tool | Purpose |
+  ### 🧰 Piló tecnològic
+
+  | Eina | Propòsit |
   |------|----------|
-  | **React** | Core library for rendering components |
-  | **TypeScript** | Static typing and code reliability |
-  | **Tailwind CSS** | Utility-first styling for the demo website |
-  | **Figma API** | Fetch and sync vector flag designs |
-  | **svgo** | SVG optimization for fast loading |
-  | **GitHub Actions** | CI/CD automation for build and NPM publish |
+  | **React** | Llibreria principal per renderitzar components |
+  | **TypeScript** | Tipat estàtic i fiabilitat del codi |
+  | **Tailwind CSS** | Estils basats en utilitats per al lloc web de demostració |
+  | **API de Figma** | Obtenir i sincronitzar dissenys de banderes vectorials |
+  | **svgo** | Optimització d'SVG per a una càrrega ràpida |
+  | **GitHub Actions** | Automatització de CI/CD per a la construcció i publicació a NPM |
 
   ---
 
-  ### 🗂️ Library Structure
+  ### 🗂️ Estructura de la llibreria
 
   ```
   ├── src
-  │   ├── components/   # Flag components
-  │   ├── data/         # Flag metadata and enums
-  │   ├── scripts/      # Automation scripts (get-figma, build-flags, check-flags)
-  │   └── index.ts      # Export entry
-  ├── website/          # Next.js showcase website
-  ├── .github/workflows # CI/CD pipelines
+  │   ├── components/   # Components de les banderes
+  │   ├── data/         # Metadades i enums de les banderes
+  │   ├── scripts/      # Scripts d'automatització (get-figma, build-flags, check-flags)
+  │   └── index.ts      # Punt d'entrada de l'exportació
+  ├── website/          # Lloc web de mostra fet amb Next.js
+  ├── .github/workflows # Pipelines de CI/CD
   └── package.json
   ```
 
   ---
 
-  ### ⚙️ Automation Scripts
+  ### ⚙️ Scripts d'automatització
 
-  **get-figma.ts** - Fetches SVGs from Figma via API and stores them locally.
+  **get-figma.ts** - Obté els SVGs de Figma mitjançant l'API i els emmagatzema localment.
 
   ```ts
   const response = await fetch(`${FIGMA_API_BASE}/files/${fileKey}`, {
@@ -109,70 +109,70 @@ The result is a **library now downloaded over 1,000 times** (and growing!) throu
   );
   ```
 
-  **build-flags.ts** - Optimizes SVGs with svgo, generates React components and enums.
+  **build-flags.ts** - Optimitza els SVGs amb svgo, genera components de React i enums.
 
-  **check-flags.ts** - Validates flag consistency and missing metadata.
+  **check-flags.ts** - Valida la consistència de les banderes i les metadades que falten.
 
   ---
 
-  ### 🚀 CI/CD Workflow
+  ### 🚀 Flux de treball de CI/CD
 
-  Every push to `main` triggers GitHub Actions to:
-  1. Fetch latest Figma flags
-  2. Build & optimize assets
-  3. Publish a new package version to NPM
-  4. Deploy the demo site to Vercel automatically
+  Cada pujada a `main` activa les GitHub Actions per:
+  1. Obtenir les últimes banderes de Figma
+  2. Construir i optimitzar els actius
+  3. Publicar una nova versió del paquet a NPM
+  4. Desplegar el lloc de demostració a Vercel automàticament
 
-  This workflow ensures the library is always up-to-date and deploys in under **2 minutes**.
+  Aquest flux de treball garanteix que la llibreria estigui sempre actualitzada i es desplegui en menys de **2 minuts**.
 
 </details>
 
 ---
 
-## Website Overview
+## Vista general del lloc web
 
-The [official website](https://flags.polgubau.com) - built with **Next.js** and **TailwindCSS** - showcases all flags with live filtering, previews, and instant code copy. Each flag includes:
+El [lloc web oficial](https://flags.polgubau.com) — construït amb **Next.js** i **TailwindCSS** — mostra totes les banderes amb filtratge en viu, previsualitzacions i còpia instantània de codi. Cada bandera inclou:
 
-* Interactive customization (radius, border, shadow)
-* Copy-to-clipboard with prebuilt Tailwind classes
-* Deep-linking via URL for easy sharing
+* Personalització interactiva (radi, vora, ombra)
+* Còpia al porta-retalls amb classes de Tailwind predefinides
+* Enllaços profunds mitjançant URL per compartir-los fàcilment
 
 <figure>
-  <Image alt="Flag grouping view" width={250} height={400} className="rounded-xl h-full max-h-[300px] object-cover" src={Q3} />
-  <figcaption>Flags grouped alphabetically by type.</figcaption>
+  <Image alt="Vista d'agrupació de banderes" width={250} height={400} className="rounded-xl h-full max-h-[300px] object-cover" src={Q3} />
+  <figcaption>Banderes agrupades alfabèticament per tipus.</figcaption>
 </figure>
 
 <figure>
-  <Image alt="Search example" width={550} height={400} className="rounded-xl h-full max-h-[350px] w-full object-cover" src={Q2} />
-  <figcaption>Instant search with URL sync for sharing results.</figcaption>
+  <Image alt="Exemple de cerca" width={550} height={400} className="rounded-xl h-full max-h-[350px] w-full object-cover" src={Q2} />
+  <figcaption>Cerca instantània amb sincronització d'URL per compartir els resultats.</figcaption>
 </figure>
 
 <figure>
-  <Image alt="Empty search feedback" width={550} height={400} className="rounded-xl h-full max-h-[350px] w-full object-cover" src={Q1} />
-  <figcaption>Graceful feedback when no flags match search criteria.</figcaption>
+  <Image alt="Comentaris de cerca buida" width={550} height={400} className="rounded-xl h-full max-h-[350px] w-full object-cover" src={Q1} />
+  <figcaption>Resposta amable quan cap bandera coincideix amb els criteris de cerca.</figcaption>
 </figure>
 
 <figure>
-  <Image alt="Flag details drawer" width={250} height={500} className="rounded-xl h-full max-h-[500px] show-animation" src={flags1} />
-  <figcaption>Interactive drawer with copy-ready code snippets.</figcaption>
+  <Image alt="Calaix de detalls de la bandera" width={250} height={500} className="rounded-xl h-full max-h-[500px] show-animation" src={flags1} />
+  <figcaption>Calaix interactiu amb fragments de codi a punt per copiar.</figcaption>
 </figure>
 
 ---
 
-## Lessons & Impact
+## Lliçons i impacte
 
-Building **React Beauty Flags** reinforced my interest in **developer tooling and DX-first design**. Automating asset pipelines with TypeScript and Figma APIs improved my workflow, saving over **10 hours of manual flag updates per release**.
+Construir **React Beauty Flags** ha reforçat el meu interès en les **eines per a desenvolupadors i el disseny centrat en l'experiència del desenvolupador (DX)**. Automatitzar els canals d'actius amb les APIs de TypeScript i Figma ha millorat el meu flux de treball, estalviant més de **10 hores d'actualitzacions manuals de banderes per versió**.
 
-The project also sparked collaborations from other developers, who contributed designs and new scripts.
+El projecte també ha impulsat col·laboracions d'altres desenvolupadors, que han aportat dissenys i nous scripts.
 
-> Small details make software delightful - and flags, surprisingly, are one of them.
+> Els petits detalls fan que el programari sigui deliciós — i les banderes, sorprenentment, en són un d'ells.
 
 ---
 
-## Future Plans
+## Plans de futur
 
-* Add world organization and event flags
-* Extend utility functions (color palettes, code matching)
-* Add analytics on flag usage
-* Improve accessibility metadata
+* Afegir banderes d'organitzacions mundials i esdeveniments
+* Estendre les funcions d'utilitat (paletes de colors, coincidència de codi)
+* Afegir analítiques sobre l'ús de les banderes
+* Millorar les metadades d'accessibilitat
 

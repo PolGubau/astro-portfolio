@@ -45,200 +45,200 @@ import tooltips from "../../../assets/media/projects/entre-lineas/tooltips.webm"
 import verseAnotations from "../../../assets/media/projects/entre-lineas/verse-anotations.webm";
 import verseFigureHighlight from "../../../assets/media/projects/entre-lineas/verse-figure-highlight.webm";
 
-# Entre Líneas: Poetry Analysis Reimagined
+# Entre Línies: l'anàlisi de poesia reimaginat
 
-**What if analyzing poetry could be as intuitive as reading your favorite lyrics on Genius?**
+**I si analitzar poesia fos tan intuïtiu com llegir les lletres de les teves cançons preferides a Genius?**
 
-Entre Líneas is a modern web application that transforms Spanish poetry analysis into an interactive, engaging experience. Built for students, teachers, and literature enthusiasts, it combines deep literary analysis with contemporary UX patterns.
+Entre Línies és una aplicació web moderna que transforma l'anàlisi de la poesia espanyola en una experiència interactiva i atractiva. Construïda per a estudiants, professors i entusiastes de la literatura, combina una anàlisi literària profunda amb patrons d'UX contemporanis.
 
 
 <ul class="grid pl-0 md:grid-cols-3 gap-4 my-8 max-w-full md:divide-x divide-ink/20">
   <li class="list-none">
     <strong class="text-3xl font-bold">React 19</strong>
-    <div class="text-sm text-ink/80">Modern stack</div>
+    <div class="text-sm text-ink/80">Piló modern</div>
   </li>
   <li class="list-none">
     <strong class="text-3xl font-bold ">TanStack Start</strong>
-    <div class="text-sm text-ink/80">SSR framework</div>
+    <div class="text-sm text-ink/80">Framework d'SSR</div>
   </li>
   <li class="list-none">
     <strong class="text-3xl font-bold ">TypeScript</strong>
-    <div class="text-sm text-ink/80">End-to-end typesafety</div>
+    <div class="text-sm text-ink/80">Seguretat de tipus d'extrem a extrem</div>
   </li>
 </ul>
 
 ---
 
-## The Challenge
+## El Repte
 
-Traditional poetry analysis tools are either outdated PDF documents, static websites with no interactivity, or academic platforms that feel like they're from the early 2000s. Students and teachers deserve better, they need **modern, intuitive tools** that make literary analysis accessible and engaging.
+Les eines tradicionals d'anàlisi de poesia són o bé documents PDF obsolets, llocs web estàtics sense interactivitat, o plataformes acadèmiques que semblen de principis dels anys 2000. Els estudiants i professors mereixen alguna cosa millor, necessiten **eines modernes i intuïtives** que facin que l'anàlisi literària sigui accessible i atractiva.
 
-## The Solution
+## La Solució
 
-Entre Líneas brings poetry analysis into the modern web era with a **fully interactive, server-rendered application** built with a modern stack, designed as a personal project that merges 2 of my hobbies and solves a common problem I found when studying literature.
+Entre Línies porta l'anàlisi de la poesia a l'era de la web moderna amb una **aplicació totalment interactiva i renderitzada al servidor**, construïda amb un piló tecnològic modern. Està dissenyada com un projecte personal que fusiona dues de les meves aficions i soluciona un problema comú que vaig trobar en estudiar literatura.
 
-<Image 
-  src={home} 
-  alt="Entre Líneas home page showing a clean grid of poem cards"
+<Image
+  src={home}
+  alt="Pàgina d'inici d'Entre Línies mostrant una quadrícula neta de targetes de poemes"
   width={1200}
   height={800}
   class="show-animation w-full h-auto"
   loading="eager"
 />
 
-### Core Features
+### Característiques principals
 
-- **Verse-by-verse analysis** with identified rhetorical figures
-- **Historical context** and author biographies
-- **Interactive highlights** - click any figure to see related verses
-- **Fully responsive** - from mobile to desktop
-- **Instant search** with real-time filtering
-- **Dark mode** support throughout
+- **Anàlisi vers a vers** amb figures retòriques identificades
+- **Context històric** i biografies dels autors
+- **Destacats interactius** - fes clic a qualsevol figura per veure els versos relacionats
+- **Totalment adaptatiu** - des de mòbil fins a escriptori
+- **Cerca instantània** amb filtratge en temps real
+- Suport de **mode fosc** a tota l'aplicació
 
 ---
 
-## Design & User Experience
+## Disseny i experiència d'usuari
 
-### Home: Your Poetry Library
+### Inici: la teva biblioteca de poesia
 
-The landing page presents poems as **beautiful, scannable cards**. Each card displays the poem's title, author, era, and a preview of metrics like number of verses and rhetorical figures.
+La pàgina d'inici presenta els poemes com a **targetes boniques i fàcils d'escanejar**. Cada targeta mostra el títol del poema, l'autor, l'època i una vista prèvia de mètriques com el nombre de versos i figures retòriques.
 
 <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 my-8 max-w-full">
 
-  <Image 
-    src={narrowHome} 
-    alt="Mobile view of the home page with responsive cards"
+  <Image
+    src={narrowHome}
+    alt="Vista mòbil de la pàgina d'inici amb targetes adaptatives"
     width={170}
     height={500}
     class="h-auto md:h-[500px] show-animation object-contain w-full md:w-[170px] max-w-[170px]"
   />
-  <Image 
-    src={home} 
-    alt="Mobile view of the home page with responsive cards"
+  <Image
+    src={home}
+    alt="Vista mòbil de la pàgina d'inici amb targetes adaptatives"
     width={1000}
     height={500}
     class="h-auto md:h-[500px] show-animation w-full object-contain"
   />
 
   </div>
-  
-  #### Smart Filtering & Sorting
-  
-  Filter poems by author, era, or literary movement. Sort by title, date, or number of verses. Everything updates in real-time. 
-    
-    <Video 
+
+  #### Filtratge i ordenació intel·ligents
+
+  Filtra els poemes per autor, època o moviment literari. Ordena per títol, data o nombre de versos. Tot s'actualitza en temps real.
+
+    <Video
       src={filtersShowcase}
       class="show-animation w-full max-w-full"
-      alt="Live demonstration of filtering and sorting poems"
+      alt="Demostració en directe del filtratge i l'ordenació de poemes"
     />
-  
+
 <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] mt-6 gap-6 items-start max-w-full">
-  <Video 
+  <Video
         src={goNextList}
         class="show-animation w-full max-w-full"
     videoClassName="object-left"
-    alt="Quick navigation between poems with smooth transitions"
+    alt="Navegació ràpida entre poemes amb transicions suaus"
    />
 
   <div class="flex flex-col justify-center gap-4">
-    <h4 class="text-xl font-semibold">Seamless Navigation</h4>
-    <p>Navigate between poems with intuitive next/previous buttons. No page reloads, everything is instant thanks to SSR and smart prefetching.</p>
+    <h4 class="text-xl font-semibold">Navegació fluida</h4>
+    <p>Navega entre poemes amb botons intuïtius de següent/anterior. Sense recàrregues de pàgina, tot és instantani gràcies a l'SSR i al pre-fetching intel·ligent.</p>
   </div>
 </div>
 
 ---
 
-## Reading Experience
+## Experiència de lectura
 
-### The Three-Column Layout
+### El disseny de tres columnes
 
-Desktop users get a **powerful three-column interface** optimized for deep analysis:
+Els usuaris d'escriptori disposen d'una **potent interfície de tres columnes** optimitzada per a una anàlisi profunda:
 
-1. **Left sidebar**: Poem navigation and quick actions
-2. **Center**: The poem itself with interactive verse annotations
-3. **Right sidebar**: Analysis panel with context, figures, and metrics
+1. **Barra lateral esquerra**: navegació per poemes i accions ràpides
+2. **Centre**: el poema en si amb anotacions de versos interactives
+3. **Barra lateral dreta**: panell d'anàlisi amb context, figures i mètriques
 
-<Image 
-  src={narrowAnalysis} 
-  alt="Desktop three-column layout showing poem with analysis panel"
+<Image
+  src={narrowAnalysis}
+  alt="Disseny de tres columnes per a escriptori que mostra el poema amb el panell d'anàlisi"
   width={300}
   height={700}
   class="show-animation h-auto w-full max-w-[300px] mx-auto"
 />
 
-### Interactive Annotations
+### Anotacions interactives
 
-Hover over any verse to see **contextual tooltips** with instant information about rhetorical figures, historical notes, or vocabulary definitions.
+Passa el cursor per sobre de qualsevol vers per veure **indicacions contextuals** amb informació instantània sobre figures retòriques, notes històriques o definicions de vocabulari.
 
-<Video 
+<Video
   src={tooltips}
-      alt="Hovering over verses reveals contextual information"
+      alt="Passar el cursor per sobre dels versos revela informació contextual"
       class="show-animation aspect-video w-full max-w-full"
 />
 
-<Video 
+<Video
   src={verseAnotations}
-      alt="Detailed verse annotations with literary analysis"
+      alt="Anotacions detallades dels versos amb anàlisi literària"
       class="show-animation aspect-video mt-6 w-full max-w-full"
 />
 
-### Rhetorical Figure Highlighting
+### Destacat de figures retòriques
 
-Click on any **rhetorical figure** in the analysis panel, and watch as all related verses **light up** in the poem. This creates visual connections that make understanding complex literary devices intuitive.
+Fes clic a qualsevol **figura retòrica** del panell d'anàlisi i observa com s'**il·luminen** tots els versos relacionats del poema. Això crea connexions visuals que fan que la comprensió de dispositius literaris complexos sigui intuïtiva.
 
-<Video 
+<Video
   src={verseFigureHighlight}
-  alt="Clicking rhetorical figures highlights corresponding verses"
+  alt="Fer clic a les figures retòriques destaca els versos corresponents"
   class="show-animation aspect-video w-full max-w-full"
 />
 
 ---
 
-## Mobile-First Design
+## Disseny pensat primer per a mòbils
 
-### Responsive Layouts
+### Dissenys adaptatius
 
-On mobile, the three-column layout transforms into a **streamlined single-column view** with collapsible panels. The analysis panel becomes a drawer that slides up from the bottom.
+En el mòbil, el disseny de tres columnes es transforma en una **vista simplificada d'una sola columna** amb panells desplegables. El panell d'anàlisi es converteix en un calaix que llisca des de la part inferior.
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-8 max-w-full">
-  <Image 
-    src={narrowPoem} 
-    alt="Mobile poem reading view"
+  <Image
+    src={narrowPoem}
+    alt="Vista de lectura de poemes al mòbil"
     width={400}
     height={800}
     class="show-animation w-full h-auto"
   />
-  <Image 
-    src={narrowFilters} 
-    alt="Mobile filters interface"
+  <Image
+    src={narrowFilters}
+    alt="Interfície de filtres al mòbil"
     width={400}
     height={800}
     class="show-animation w-full h-auto"
   />
-  <Image 
-    src={narrowSort} 
-    alt="Mobile sorting options"
+  <Image
+    src={narrowSort}
+    alt="Opcions d'ordenació al mòbil"
     width={400}
     height={800}
     class="show-animation w-full h-auto"
   />
 </div>
 
-### Read Mode
+### Mode lectura
 
-Toggle **Read Mode** to remove all UI distractions and focus purely on the poetry. Perfect for deep reading sessions or classroom presentations.
+Activa el **Mode lectura** per eliminar totes les distraccions de la IU i centrar-te exclusivament en la poesia. Perfecte per a sessions de lectura profunda o presentacions a l'aula.
 <div class="flex max-md:flex-col gap-4 max-w-full">
 
-<Video 
+<Video
   src={readMode}
-        alt="Clean read mode removes all distractions"
+        alt="El mode de lectura net elimina totes les distraccions"
         class="show-animation h-auto md:h-[450px] aspect-video w-full max-w-full"
 
 />
 
-<Image 
-  src={narrowReadMode} 
-  alt="Mobile read mode interface"
+<Image
+  src={narrowReadMode}
+  alt="Interfície del mode lectura al mòbil"
         width={222}
   height={450}
   class="show-animation object-bottom h-auto md:h-[450px] object-contain w-full max-w-[222px]"
@@ -246,71 +246,71 @@ Toggle **Read Mode** to remove all UI distractions and focus purely on the poetr
 </div>
 ---
 
-## Advanced Features
+## Funcions avançades
 
 <div class="grid md:grid-cols-[1fr_300px] gap-8 max-w-full">
 
 <div className="">
-### Context Accordions
-Each poem includes **expandable sections** with rich context: historical background, author biography, literary movement, and thematic analysis.
+### Acordions de context
+Cada poema inclou **seccions desplegables** amb un context ric: antecedents històrics, biografia de l'autor, moviment literari i anàlisi temàtica.
 </div>
 
-<Video 
+<Video
   src={contextAccordions}
-      alt="Expandable context panels with detailed information"
+      alt="Panells de context desplegables amb informació detallada"
   class="show-animation h-auto md:h-[500px] w-full max-w-[300px] object-contain"
 />
 
 </div>
-### Action Bar & Interactions
+### Barra d'accions i interaccions
 
-The action bar provides quick access to essential functions:
+La barra d'accions proporciona accés ràpid a funcions essencials:
 
-<Image 
-  src={actionsBar} 
-  alt="Action bar with favorite, share, and read mode controls"
+<Image
+  src={actionsBar}
+  alt="Barra d'accions amb controls de preferits, compartició i mode lectura"
   width={1200}
   height={200}
     class="show-animation w-full h-auto"
 />
 
-- **Favorite poems** with a delightful like animation
-- **Share directly** using the native Web Share API
-- **Keyboard shortcuts** for power users
+- Marca poemes com a **preferits** amb una animació de 'm'agrada' encantadora
+- **Comparteix directament** utilitzant l'API nativa de Web Share
+- **Dreceres de teclat** per a usuaris avançats
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8 max-w-full">
-  <Video 
+  <Video
         src={likeAnimation}
-     alt="Smooth animation when favoriting a poem"
+     alt="Animació suau en marcar un poema com a preferit"
     class="show-animation w-full max-w-full"
   />
-  <Video 
+  <Video
     src={shareApi}
-    alt="Native share functionality for easy poem sharing"
+    alt="Funcionalitat de compartició nativa per compartir poemes fàcilment"
     class="show-animation w-full max-w-full"
   />
-  <Video 
+  <Video
     src={shortcutsDrawer}
-    alt="Keyboard shortcuts panel for efficient navigation"
+    alt="Panell de dreceres de teclat per a una navegació eficient"
     class="show-animation w-full max-w-full"
   />
 </div>
 
-### Smart Filtering
+### Filtratge intel·ligent
 
-Apply multiple filters simultaneously: combine authors, eras, and literary movements to find exactly what you need.
+Aplica diversos filtres simultàniament: combina autors, èpoques i moviments literaris per trobar exactament el que necessites.
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8 max-w-full">
-  <Image 
-    src={narrowFiltersApply} 
-    alt="Applying filters on mobile"
+  <Image
+    src={narrowFiltersApply}
+    alt="Aplicar filtres al mòbil"
     width={400}
     height={800}
     class="show-animation w-full h-auto"
   />
-  <Image 
-    src={narrowFiltersApplied} 
-    alt="Results after filters are applied"
+  <Image
+    src={narrowFiltersApplied}
+    alt="Resultats després d'aplicar els filtres"
     width={400}
     height={800}
     class="show-animation w-full h-auto"
@@ -319,21 +319,21 @@ Apply multiple filters simultaneously: combine authors, eras, and literary movem
 
 
 <details>
-  <summary> <b>Technical Details</b> <br/><small>For developers & curious minds</small></summary>
+  <summary> <b>Detalls Tècnics</b> <br/><small>Per a desenvolupadors i ments curioses</small></summary>
 
-## Technical Architecture
+## Arquitectura tècnica
 
-### Why TanStack Start?
+### Per què TanStack Start?
 
-I chose **TanStack Start** over Next.js for several technical reasons:
+Vaig triar **TanStack Start** en lloc de Next.js per diversos motius tècnics:
 
-- **End-to-end type safety**: Fully typed router with automatic parameter inference
-- **Zero API overhead**: Direct data access without unnecessary HTTP layers
-- **Lower abstraction**: More control over SSR and rendering strategies
-- **Modern patterns**: Built-in suspense, streaming, and progressive enhancement
-- **Developer experience**: Outstanding DevTools for debugging and optimization
+- **Seguretat de tipus d'extrem a extrem**: encaminador totalment tipat amb inferència automàtica de paràmetres
+- **Zero sobrecàrrega d'API**: accés directe a les dades sense capes HTTP innecessàries
+- **Abstracció més baixa**: més control sobre l'SSR i les estratègies de renderitzat
+- **Patrons moderns**: suspense integrat, streaming i millora progressiva
+- **Experiència de desenvolupador**: DevTools excepcionals per a la depuració i l'optimització
 
-### Performance Optimization
+### Optimització del rendiment
 
 ```typescript
 // Map-based indexes for O(1) lookups instead of O(n) filters
@@ -341,27 +341,27 @@ const poemsByAuthor = new Map<string, Poem[]>();
 const figuresByType = new Map<string, Figure[]>();
 ```
 
-All data is **statically embedded** at build time, eliminating network requests and ensuring instant responses. This approach provides:
+Totes les dades estan **incrustades estàticament** en el moment de la construcció, eliminant les sol·licituds de xarxa i garantint respostes instantànies. Aquest enfocament proporciona:
 
-- **Zero latency** for data access
-- **Free hosting** on any CDN (Vercel, Netlify, Cloudflare)
-- **Perfect caching** - immutable content gets cached forever
-- **Offline capability** - works without network once loaded
+- **Latència zero** per a l'accés a les dades
+- **Allotjament gratuït** en qualsevol CDN (Vercel, Netlify, Cloudflare)
+- **Cau perfecte** — el contingut immutable es queda a la memòria cau per sempre
+- **Capacitat fora de línia** — funciona sense xarxa un cop carregat
 
-### Lighthouse Scores
+### Puntuacions de Lighthouse
 
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-8 max-w-full">
   <div class="p-6 rounded-lg border border-neutral-200 text-center">
     <div class="text-4xl font-bold text-green-500">98</div>
-    <div class="text-sm text-neutral-600">Performance</div>
+    <div class="text-sm text-neutral-600">Rendiment</div>
   </div>
   <div class="p-6 rounded-lg border border-neutral-200 text-center">
     <div class="text-4xl font-bold text-green-500">100</div>
-    <div class="text-sm text-neutral-600">Accessibility</div>
+    <div class="text-sm text-neutral-600">Accessibilitat</div>
   </div>
   <div class="p-6 rounded-lg border border-neutral-200 text-center">
     <div class="text-4xl font-bold text-green-500">100</div>
-    <div class="text-sm text-neutral-600">Best Practices</div>
+    <div class="text-sm text-neutral-600">Bones pràctiques</div>
   </div>
   <div class="p-6 rounded-lg border border-neutral-200 text-center">
     <div class="text-4xl font-bold text-green-500">100</div>
@@ -369,10 +369,10 @@ All data is **statically embedded** at build time, eliminating network requests 
   </div>
 </div>
 
- 
-## Data Architecture
 
-### Poem Structure
+## Arquitectura de dades
+
+### Estructura dels poemes
 
 ```typescript
 interface Poem {
@@ -391,12 +391,12 @@ interface Poem {
 }
 ```
 
-### Figure Highlighting System
+### Sistema de destacat de figures
 
 ```typescript
 const highlightFigure = (figureId: string) => {
   const relatedVerses = figureToVerseMap.get(figureId) ?? [];
-  
+
   // Batch DOM updates for performance
   requestAnimationFrame(() => {
     relatedVerses.forEach(verseId => {
@@ -408,7 +408,7 @@ const highlightFigure = (figureId: string) => {
 };
 ```
 
-### Responsive Design Breakpoints
+### Punts de ruptura de disseny adaptatiu
 
 ```css
 /* Mobile-first approach */
@@ -429,9 +429,9 @@ const highlightFigure = (figureId: string) => {
 }
 ```
 
-## Deployment
+## Desplegament
 
-### Vercel Configuration
+### Configuració de Vercel
 
 ```json
 {
@@ -442,55 +442,55 @@ const highlightFigure = (figureId: string) => {
 }
 ```
 
-### Environment Setup
+### Configuració de l'entorn
 
-No environment variables required-all data is statically embedded. This makes deployment trivial and eliminates configuration errors.
+No es requereixen variables d'entorn: totes les dades estan incrustades estàticament. Això fa que el desplegament sigui trivial i elimina els errors de configuració.
 
-## Future Enhancements
+## Millores futures
 
-- 📝 User annotations and notes
-- 👥 Community contributions for new poems
-- 🎓 Study guides and lesson plans for teachers
-- 🔊 Audio recordings of poem recitations
-- 🌍 Multi-language support (Catalan, English)
-- 📊 Learning analytics for students
+- 📝 Anotacions i notes de l'usuari
+- 👥 Contribucions de la comunitat per a nous poemes
+- 🎓 Guies d'estudi i plans de lliçons per a professors
+- 🔊 Enregistraments d'àudio de recitacions de poemes
+- 🌍 Suport multiidioma (català, anglès)
+- 📊 Analítica d'aprenentatge per als estudiants
 
 </details>
 
 ---
 
-## Key Takeaways
+## Punts clau
 
-### For Recruiters
+### Per a reclutadors
 
-- **Modern stack**: React 19, TypeScript, TanStack Start (SSR)
-- **Performance-first**: Optimized data structures, static generation, perfect Lighthouse scores
-- **Design systems**: shadcn/ui inspired, fully responsive, dark mode
-- **Accessibility**: WCAG compliant, keyboard navigation, semantic HTML
-- **Production-ready**: Deployed on Vercel with CI/CD pipeline
+- **Piló modern**: React 19, TypeScript, TanStack Start (SSR)
+- **Prioritat al rendiment**: estructures de dades optimitzades, generació estàtica, puntuacions de Lighthouse perfectes
+- **Sistemes de disseny**: inspirat en shadcn/ui, totalment adaptatiu, mode fosc
+- **Accessibilitat**: compleix amb WCAG, navegació per teclat, HTML semàntic
+- **Llest per a producció**: desplegat a Vercel amb pipeline de CI/CD
 
-### For Developers
+### Per a desenvolupadors
 
-- **Architecture**: Server-rendered React with client-side hydration
-- **Data strategy**: Static data with Map-based indexes for O(1) lookups
-- **Type safety**: Full end-to-end TypeScript with strict mode
-- **Styling**: Tailwind CSS with custom design tokens
-- **State management**: TanStack Router for URL-driven state
-- **Deployment**: Vercel with automatic preview environments
+- **Arquitectura**: React renderitzat al servidor amb hidratació al costat del client
+- **Estratègia de dades**: dades estàtiques amb índexs basats en Map per a cerques O(1)
+- **Seguretat de tipus**: TypeScript complet d'extrem a extrem amb mode estricte
+- **Estil**: Tailwind CSS amb tokens de disseny personalitzats
+- **Gestió d'estat**: TanStack Router per a l'estat gestionat per URL
+- **Desplegament**: Vercel amb entorns de vista prèvia automàtics
 
-### For Literature Enthusiasts
+### Per a entusiastes de la literatura
 
-- **Intuitive**: No learning curve-hover, click, explore
-- **Fast**: Instant navigation, no loading spinners
-- **Beautiful**: Clean, modern interface that respects your preferences
-- **Accessible**: Works on any device, any screen size, any input method
-- **Educational**: Makes poetry analysis engaging and approachable
+- **Intuïtiu**: sense corba d'aprenentatge: passa el cursor, fes clic, explora
+- **Ràpid**: navegació instantània, sense indicadors de càrrega
+- **Bonic**: interfície neta i moderna que respecta les teves preferències
+- **Accessible**: funciona en qualsevol dispositiu, qualsevol mida de pantalla, qualsevol mètode d'entrada
+- **Educatiu**: fa que l'anàlisi de la poesia sigui atractiva i accessible
 
 ---
 
-## Conclusion
+## Conclusió
 
-Entre Líneas represents the intersection of literature and modern web technology. By applying contemporary UX patterns to classical poetry analysis, it demonstrates how digital tools can enhance rather than replace traditional learning.
+Entre Línies representa la intersecció entre la literatura i la tecnologia web moderna. En aplicar patrons d'UX contemporanis a l'anàlisi de la poesia clàssica, demostra com les eines digitals poden millorar, en lloc de substituir, l'aprenentatge tradicional.
 
-The project showcases technical excellence through performance optimization, type safety, and accessibility, while maintaining a focus on user experience and educational value. It's a testament to how thoughtful engineering can make complex subjects more accessible and engaging for everyone.
+El projecte mostra l'excel·lència tècnica a través de l'optimització del rendiment, la seguretat de tipus i l'accessibilitat, mantenint el focus en l'experiència de l'usuari i el valor educatiu. És un testimoni de com l'enginyeria reflexiva pot fer que temes complexos siguin més accessibles i atractius per a tothom.
 

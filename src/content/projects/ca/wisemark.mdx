@@ -22,266 +22,266 @@ tech:
 
 import { Image } from "astro:assets";
 
-Your TODOs, with deadline. And consequences.
+Els teus TODOs, amb termini. I conseqüències.
 
-Wisemark is a simple and powerful standard to manage your code comments. It allows to:
+Wisemark és un estàndard senzill i potent per gestionar els comentaris del teu codi. Permet:
 
-1. Track your TODOs, FIXMEs, and other comments in your code.
-2. Set deadlines for your TODOs and FIXMEs.
-3. Fail pipelines if you have overdue comments.
-4. Generate reports of your comments.
+1. Fer el seguiment dels teus TODOs, FIXMEs i altres comentaris al teu codi.
+2. Establir terminis (deadlines) per als teus TODOs i FIXMEs.
+3. Fer fallar les pipelines si tens comentaris vençuts.
+4. Generar informes dels teus comentaris.
 
-Haven't you ever found forgot comments in legacy code? Or have you ever had to deal with a TODO that was never done? Wisemark is here to help you.
+No t'has trobat mai comentaris oblidats en codi antic? O has hagut de lidiar amb un TODO que mai es va fer? Wisemark és aquí per ajudar-te.
 
-Main usage:
+Ús principal:
 
 ```ts
-// @question What if the numbers are negative?
+// @question I si els números són negatius?
 function sum(a: number, b: number): number {
-  // @todo Add a test for negative numbers
+  // @todo Afegir un test per a números negatius
   return a + b;
 }
 ```
 
-Using the main types:
-| Type | Description |
+Ús dels tipus principals:
+| Tipus | Descripció |
 |------|-------------|
-| @todo | A task that needs to be done. |
-| @fixme | A critical issue that needs fixing. |
-| @note | A note or comment. |
-| @question | A question that needs answering. |
-| @refactor | A suggestion to improve the code. |
+| @todo | Una tasca que s'ha de fer. |
+| @fixme | Un problema crític que cal solucionar. |
+| @note | Una nota o comentari. |
+| @question | Una pregunta que necessita resposta. |
+| @refactor | Una suggerència per millorar el codi. |
 
-Wisemark will automatically detect these comments and allow you to manage them.
-![Scan Command](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/example.png?raw=true)
-This is the usual output using the VSCode extension.
+Wisemark detectarà automàticament aquests comentaris i et permetrà gestionar-los.
+![Comanda d'escaneig](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/example.png?raw=true)
+Aquesta és la sortida habitual utilitzant l'extensió de VSCode.
 
-## Packages
+## Paquets
 
-- [@wisemark/core](https://github.com/PolGubau/wisemark/tree/main/packages/core): The core library for Wisemark. It provides the main functionality and API for managing comments.
-- [@wisemark/cli](https://github.com/PolGubau/wisemark/tree/main/packages/cli): The command-line interface for Wisemark. It allows you to run Wisemark commands from the terminal.
-- [@wisemark/vscode](https://github.com/PolGubau/wisemark/tree/main/packages/vscode): The VSCode extension for Wisemark. It provides a user interface for managing comments directly in the editor.
+- [@wisemark/core](https://github.com/PolGubau/wisemark/tree/main/packages/core): La llibreria principal de Wisemark. Proporciona la funcionalitat base i l'API per gestionar comentaris.
+- [@wisemark/cli](https://github.com/PolGubau/wisemark/tree/main/packages/cli): La interfície de línia de comandes per a Wisemark. Et permet executar comandes de Wisemark des del terminal.
+- [@wisemark/vscode](https://github.com/PolGubau/wisemark/tree/main/packages/vscode): L'extensió de VSCode per a Wisemark. Proporciona una interfície d'usuari per gestionar comentaris directament a l'editor.
 
-# Creating Wisemark Comments
+# Creació de comentaris Wisemark
 
-A comment can be as simple as:
+Un comentari pot ser tan senzill com:
 
 ```ts
-// @<type> <message>
+// @<tipus> <missatge>
 ```
 
-Examples:
+Exemples:
 
 ```ts name="Example.ts"
-// @todo Add a test for negative numbers
-// @fixme Fix the bug in the code
-// @note This is a note
-// @question What if the numbers are negative?
-// @refactor Refactor this function
+// @todo Afegir un test per a números negatius
+// @fixme Arreglar el bug al codi
+// @note Això és una nota
+// @question I si els números són negatius?
+// @refactor Refactoritzar aquesta funció
 ```
 
-Some optional parameters can be added to the comment:
+Es poden afegir alguns paràmetres opcionals al comentari:
 
 - severity: low, medium, high
-- tags: any string separated by commas
-- author: the author of the comment
-- due: the due date of the comment (YYYY-MM-DD)
-- id: A unique name for the comment (its generated automatically but you can override it)
+- tags: qualsevol cadena separada per comes
+- author: l'autor del comentari
+- due: la data de venciment del comentari (YYYY-MM-DD)
+- id: un nom únic per al comentari (es genera automàticament però pots sobreescriure'l)
 
-Structure of the comment:
+Estructura del comentari:
 
 ```ts
-// @<type> <message> -- severity: <severity> -- tags: <tags> -- author: <author> -- due: <due> -- id: <id>
+// @<tipus> <missatge> -- severity: <severitat> -- tags: <etiquetes> -- author: <autor> -- due: <venciment> -- id: <id>
 ```
 
 ```ts title="Example.ts"
-// @todo Add a test for negative numbers -- severity: high -- tags: bug, urgent -- author: Pol Gubau -- due: 2023-10-01 -- id: test-negative-numbers
+// @todo Afegir un test per a números negatius -- severity: high -- tags: bug, urgent -- author: Pol Gubau -- due: 2023-10-01 -- id: test-negative-numbers
 
-// @fixme Fix the bug in the code -- severity: medium -- tags: bug,correct
+// @fixme Arreglar el bug al codi -- severity: medium -- tags: bug,correct
 ```
 
-# CLI Tool
+# Eina CLI
 
-Wisemark CLI is a command-line tool that allows you to manage your comments directly from the terminal. It provides commands for scanning your codebase, generating reports, and managing your TODOs and FIXMEs. (Report generation is not yet implemented)
+Wisemark CLI és una eina de línia de comandes que et permet gestionar els teus comentaris directament des del terminal. Proporciona comandes per escanejar el teu codi, generar informes i gestionar els teus TODOs i FIXMEs. (La generació d'informes encara no està implementada)
 
-### Remote or Local Installation
+### Instal·lació remota o local
 
-#### Remote Run
+#### Execució remota
 
-If you don't want to install Wisemark in you computer just run the following command in your terminal:
+Si no vols instal·lar Wisemark al teu ordinador, només cal que executis la següent comanda al teu terminal:
 
 ```bash
 npx @wisemark/cli
 ```
 
-#### Local Installation
+#### Instal·lació local
 
-You can install Wisemark CLI globally using npm:
+Pots instal·lar Wisemark CLI globalment mitjançant npm:
 
 ```bash
 npm install -g @wisemark/cli
 ```
 
-### Usage
+### Ús
 
-Once installed, you can use the following commands:
+Un cop instal·lat, pots utilitzar les següents comandes:
 
-#### Scan Wisemark Commands
+#### Escanejar comandes de Wisemark
 
-This command scans your codebase for Wisemark comments and generates a report of all the TODOs, FIXMEs, and other comments.
-Can be triggered with the default command `wisemark` or `wisemark scan`.
+Aquesta comanda escaneja el teu codi a la recerca de comentaris de Wisemark i genera un informe de tots els TODOs, FIXMEs i altres comentaris.
+Es pot activar amb la comanda per defecte `wisemark` o `wisemark scan`.
 
 ```bash
-wisemark [options]
+wisemark [opcions]
 ```
 
 ```bash
-wisemark lint [options]
+wisemark lint [opcions]
 ```
 
-#### Options
+#### Opcions
 
-For these both commands you can use the following options:
+Per a aquestes dues comandes pots utilitzar les següents opcions:
 
-    The optional options are:
+    Les opcions opcionals són:
 
-- `--type`: Filter by type (todo, note, fixme)
-- `--path`: Inner path of the project to scan (default: `.`)
-- `--severity`: Filter by severity (low, medium, high)
-- `--json`: Return output in JSON format
-- `--table`: Return output in table format
-- `--showDate`: Show the date of the comment
-- `--withDueDate`: Return only comments with a due date
-- `--due`: Filter by due date (YYYY-MM-DD)
-- `--tags`: Filter by tags (comma separated)
-- `--cwd`: Path to the project (default: current working directory)
-- `--help`: Show help information
-- `--version`: Show version information
+- `--type`: Filtrar per tipus (todo, note, fixme)
+- `--path`: Camí intern del projecte a escanejar (per defecte: `.`)
+- `--severity`: Filtrar per severitat (low, medium, high)
+- `--json`: Retornar la sortida en format JSON
+- `--table`: Retornar la sortida en format taula
+- `--showDate`: Mostrar la data del comentari
+- `--withDueDate`: Retornar només els comentaris amb una data de venciment
+- `--due`: Filtrar per data de venciment (YYYY-MM-DD)
+- `--tags`: Filtrar per etiquetes (separades per comes)
+- `--cwd`: Camí al projecte (per defecte: directori de treball actual)
+- `--help`: Mostrar informació d'ajuda
+- `--version`: Mostrar informació de la versió
 
-A full example of the command would be:
+Un exemple complet de la comanda seria:
 
 ```bash
 wisemark --type todo --path src --severity high --json --showDate --withDueDate --due 2023-10-01 --tags bug,urgent
 ```
 
-# VSCode Extension
+# Extensió de VSCode
 
-Wisemark is a VSCode extension that helps you manage and scan intelligent commands within your codebase. It enables easy insertion of different types of comments (like TODO, FIXME, Notes, Questions, Refactors) and allows you to quickly navigate and manage these comments. It also provides enhanced token coloring and grouping options for better code organization.
+Wisemark és una extensió de VSCode que t'ajuda a gestionar i escanejar comandes intel·ligents dins del teu codi. Permet la inserció fàcil de diferents tipus de comentaris (com TODO, FIXME, Notes, Preguntes, Refactoritzacions) i et permet navegar i gestionar ràpidament aquests comentaris. També proporciona un acolorit de tokens millorat i opcions d'agrupament per a una millor organització del codi.
 
-## Features
+## Característiques
 
-- **Command Insertion**: Insert predefined comments such as:
-  - Note
+- **Inserció de comandes**: Insereix comentaris predefinits com:
+  - Nota
   - Todo
   - Fixme
-  - Question
-  - Refactor
-- **Command Scanning**: Scan and manage your project for specific commands with a quick search functionality.
-- **Grouping**: Toggle grouping of comments for better organization.
-- **Color Customization**: Different colors for each comment type (Note, Todo, etc.) to make your comments more visually distinguishable.
-- **Contextual Menus**: Access all commands directly from the editor's context menu.
-- **Quick Navigation**: Easily navigate between comments and sections in your code.
+  - Pregunta
+  - Refactorització
+- **Escaneig de comandes**: Escaneja i gestiona el teu projecte per a comandes específiques amb una funcionalitat de cerca ràpida.
+- **Agrupament**: Activa/desactiva l'agrupament de comentaris per a una millor organització.
+- **Personalització de colors**: Diferents colors per a cada tipus de comentari (Nota, Todo, etc.) per fer els teus comentaris més distingibles visualment.
+- **Menús contextuals**: Accedeix a totes les comandes directament des del menú contextual de l'editor.
+- **Navegació ràpida**: Navega fàcilment entre comentaris i seccions del teu codi.
 
-## Installation
+## Instal·lació
 
-1. Open VSCode.
-2. Go to the Extensions view (`Ctrl+Shift+X`).
-3. Search for `Wisemark`.
-4. Click **Install**.
+1. Obre el VSCode.
+2. Ves a la vista d'Extensions (`Ctrl+Shift+X`).
+3. Busca `Wisemark`.
+4. Fes clic a **Instal·lar**.
 
-Alternatively, you can install it via the terminal:
+Alternativament, pots instal·lar-ho mitjançant el terminal:
 
 ```bash
 ext install wisemark
 ```
 
-## Usage
+## Ús
 
-Once installed, you'll be able to use Wisemark to:
+Un cop instal·lat, podràs utilitzar Wisemark per:
 
-1. **Insert Comments**:  
-   You can insert the following comments in your code:
+1. **Insertar comentaris**:
+   Pots inserir els següents comentaris al teu codi:
 
-   - **Note**: `ctrl+alt+n`
+   - **Nota**: `ctrl+alt+n`
    - **Todo**: `ctrl+alt+t`
    - **FIXME**: `ctrl+alt+f`
-   - **Question**: `ctrl+alt+q`
-   - **Refactor**: `ctrl+alt+r`
+   - **Pregunta**: `ctrl+alt+q`
+   - **Refactorització**: `ctrl+alt+r`
 
-2. **Command Scanning**:  
-   To scan for all comments, run the **Scan Wisemark Commands** command from the command palette (`Ctrl+Shift+P` > **Scan Wisemark commands**).
+2. **Escaneig de comandes**:
+   Per escanejar tots els comentaris, executa la comanda **Scan Wisemark Commands** des de la paleta de comandes (`Ctrl+Shift+P` > **Scan Wisemark commands**).
 
-   ![Scan Command](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/example.png?raw=true)
+   ![Comanda d'escaneig](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/example.png?raw=true)
 
-3. **Group Comments**:  
-   Toggle grouping for better visibility and organization of your comments using the **Toggle Grouping** command.
+3. **Agrupar comentaris**:
+   Activa l'agrupament per a una millor visibilitat i organització dels teus comentaris utilitzant la comanda **Toggle Grouping**.
 
-   ![Grouping Command](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/fileGroup.png?raw=true)
+   ![Comanda d'agrupament](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/fileGroup.png?raw=true)
 
-4. **Navigate Between Comments**:  
-   Use the **Select and Open a Comment** command to quickly navigate between comments in your code.
+4. **Navegar entre comentaris**:
+   Utilitza la comanda **Select and Open a Comment** per navegar ràpidament entre els comentaris del teu codi.
 
-   ![Navigate Comments](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/list.png?raw=true)
+   ![Navegar comentaris](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/list.png?raw=true)
 
-## Configuration
+## Configuració
 
-You can customize the token colors for each comment type. By default, Wisemark uses the following colors:
+Pots personalitzar els colors dels tokens per a cada tipus de comentari. Per defecte, Wisemark utilitza els següents colors:
 
-- **Note**: `#ff6347` (italic)
-- **Todo**: `#e5c07b` (bold)
-- **FIXME**: `#f0f0f0` (italic)
-- **Refactor**: `#00bcd4` (bold)
-- **Question**: `#8be9fd` (italic)
+- **Nota**: `#ff6347` (cursiva)
+- **Todo**: `#e5c07b` (negreta)
+- **FIXME**: `#f0f0f0` (cursiva)
+- **Refactorització**: `#00bcd4` (negreta)
+- **Pregunta**: `#8be9fd` (cursiva)
 
-To customize, open the VSCode settings and modify the `"editor.tokenColorCustomizations"` to your liking.
+Per personalitzar-ho, obre la configuració de VSCode i modifica `"editor.tokenColorCustomizations"` al teu gust.
 
-## Predictive Features
+## Característiques predictives
 
-Wisemark also predicts the most used comments based on your previous usage, helping you streamline the process.
+Wisemark també prediu els comentaris més utilitzats segons el teu ús anterior, ajudant-te a agilitzar el procés.
 
-![Predictive Feature](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/predict.png?raw=true)
+![Característica predictiva](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/predict.png?raw=true)
 
-## Quick Pick for Commands
+## Quick Pick per a comandes
 
-For even faster insertion of comments, use the **Quick Pick** functionality, which suggests the best options for your current task.
+Per a una inserció de comentaris encara més ràpida, utilitza la funcionalitat **Quick Pick**, que suggereix les millors opcions per a la teva tasca actual.
 
 ![Quick Pick](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/quickpick.png?raw=true)
 
-## Group Comments by Type
+## Agrupar comentaris per tipus
 
-Easily group your comments by type for better organization.
+Agrupa fàcilment els teus comentaris per tipus per a una millor organització.
 
-![Group Comments](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/typeGroup.png?raw=true)
+![Grup de comentaris](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/typeGroup.png?raw=true)
 
-# Roadmap
+# Full de ruta (Roadmap)
 
-| Feature             | Status | Description                                                                  |
+| Característica             | Estat | Descripció                                                                  |
 | ------------------- | ------ | ---------------------------------------------------------------------------- |
-| Core Functionality  | ✅     | Basic functionality for managing comments.                                   |
-| CLI Tool            | ✅     | Command-line interface for running Wisemark commands (Scan + due date lint). |
-| VSCode Extension    | ✅     | VSCode extension for managing comments directly in the editor.               |
-| Grouping            | ✅     | Group comments by type for better organization.                              |
-| Color Customization | ✅     | Customize colors for different comment types.                                |
-| Predictive Features | ✅     | Predict the most used comments based on previous usage.                      |
-| Quick Pick          | ✅     | Suggest the best options for your current task.                              |
-| Report Generation   | 🟧     | Generate reports of your comments.                                           |
-| Overdue Linting     | 🟧     | Fail pipelines if you have overdue comments.                                 |
-| Customizable Rules  | 🟧     | Allow users to define their own rules for comments. (wisemark.config.ts)     |
+| Funcionalitat principal  | ✅     | Funcionalitat bàsica per gestionar comentaris.                                   |
+| Eina CLI            | ✅     | Interfície de línia de comandes per executar comandes Wisemark (Escaneig + lint de data de venciment). |
+| Extensió de VSCode    | ✅     | Extensió de VSCode per gestionar comentaris directament a l'editor.               |
+| Agrupament            | ✅     | Agrupar comentaris per tipus per a una millor organització.                              |
+| Personalització de colors | ✅     | Personalitzar colors per a diferents tipus de comentari.                                |
+| Característiques predictives | ✅     | Predir els comentaris més utilitzats segons l'ús anterior.                      |
+| Quick Pick          | ✅     | Suggerir les millors opcions per a la tasca actual.                              |
+| Generació d'informes   | 🟧     | Generar informes dels teus comentaris.                                           |
+| Linting de vençuts     | 🟧     | Fer fallar les pipelines si tens comentaris vençuts.                                 |
+| Regles personalitzables  | 🟧     | Permetre als usuaris definir les seves pròpies regles per als comentaris (wisemark.config.ts).     |
 
-## Contributing
+## Contribucions
 
-If you'd like to contribute to Wisemark, feel free to submit issues and pull requests. Contributions are welcome!
+Si vols contribuir a Wisemark, no dubtis a enviar problemes (issues) i sol·licituds d'incorporació (pull requests). Les contribucions són benvingudes!
 
-1. Fork this repository.
-2. Create your branch (`git checkout -b feature/your-feature`).
-3. Commit your changes (`git commit -am 'Add new feature'`).
-4. Push to the branch (`git push origin feature/your-feature`).
-5. Open a pull request.
+1. Fes un fork d'aquest repositori.
+2. Crea la teva branca (`git checkout -b feature/la-teva-funcionalitat`).
+3. Fes un commit dels teus canvis (`git commit -am 'Afegir nova funcionalitat'`).
+4. Puja a la branca (`git push origin feature/la-teva-funcionalitat`).
+5. Obre una pull request.
 
-## License
+## Llicència
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Aquest projecte està sota la llicència MIT - vegeu el fitxer [LICENSE](LICENSE) per a més detalls.
 
 ---
 
-Enjoy organizing your code and comments with Wisemark!
+Gaudeix organitzant el teu codi i comentaris amb Wisemark!

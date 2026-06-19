@@ -24,10 +24,10 @@ tech:
 import { Image } from 'astro:assets';
 
 
-**@polgubau/fuzzy** is an optimized fuzzy finder library designed with TypeScript from the roots. You just need to type one command and call one function to get a fuzzy finder for your project.
- 
+**@polgubau/fuzzy** és una llibreria de cerca difusa optimitzada, dissenyada amb TypeScript des de la base. Només cal escriure una comanda i cridar una funció per tenir un cercador difús al teu projecte.
+
   <Image
-    alt="Landing of Fuzzy"
+    alt="Landing de Fuzzy"
     title="Fuzzy"
     loading={"eager"}
     priority={true}
@@ -36,58 +36,58 @@ import { Image } from 'astro:assets';
     className="flex flex-1 rounded-xl object-contain"
     src="https://raw.githubusercontent.com/PolGubau/fuzzy/main/apps/docs/public/opengraph-image.png"
   />
- 
-
-## What and why
-Filters in JavaScript are often slow and cumbersome. The native *Array.prototype.filter* method is not optimized for performance, especially when dealing with large datasets. This library provides a simple and efficient way to perform fuzzy searches on arrays of strings.
-
-It allows you to create a fuzzy search function that can be reused across your application, making it easy to filter lists based on user input.
 
 
-### What this is NOT ⚠️
-- A catch-all library that solves every problem.
-- A replacement for Lodash or Underscore.
-- A package that will unnecessarily inflate your bundle size.
+## Què i per què
+Els filtres en JavaScript solen ser coneguts per ser lents i feixucs. El mètode natiu *Array.prototype.filter* no està optimitzat per al rendiment, especialment quan es treballa amb grans conjunts de dades. Aquesta llibreria ofereix una manera senzilla i eficient de realitzar cerques difuses en matrius de cadenes de text.
 
-### What this IS ✅
-- A collection of small, focused utility functions.
-- Modular, tree-shakable and lightweight both for CJS and ESM.
-- Designed to be simple, efficient, and easy to use.
-- Fully typed, with TypeScript definitions included.
+Et permet crear una funció de cerca difusa que es pot reutilitzar a tota l'aplicació, facilitant el filtratge de llistes basat en l'entrada de l'usuari.
 
-## Installation
 
-Install the library using your package manager of choice:
+### Què NO és això ⚠️
+- Una llibreria per a tot que resol tots els problemes.
+- Un substitut de Lodash o Underscore.
+- Un paquet que inflarà innecessàriament la mida del teu paquet.
+
+### Què ÉS això ✅
+- Una col·lecció de petites funcions d'utilitat focalitzades.
+- Modular, "tree-shakable" i lleuger tant per a CJS com per a ESM.
+- Dissenyat per ser senzill, eficient i fàcil d'utilitzar.
+- Totalment tipat, amb definicions de TypeScript incloses.
+
+## Instal·lació
+
+Instal·la la llibreria utilitzant el teu gestor de paquets preferit:
 
 ```sh title="bash"
 pnpm add @polgubau/fuzzy
 ```
 
-## Usage
+## Ús
 
 ```ts title="index.ts"
 import fuzzy from '@polgubau/fuzzy';
 
 const list = ["volvo", "seat", "mercedes", "audi", "bmw"];
-const queryText = "volv"; // The search term
+const queryText = "volv"; // El terme de cerca
 const fuzzySearch = fuzzy(list);
 
-// Run this whenever the search term changes
+// Executa això quan el terme de cerca canviï
 const fuzzedList = fuzzySearch(queryText);
-console.log(fuzzedList); 
+console.log(fuzzedList);
 ```
-## Framework adapters
-The library core is available as a standalone package, but we also provide adapters for popular frameworks like React and Vue.
+## Adaptadors per a frameworks
+El nucli de la llibreria està disponible com un paquet independent, però també oferim adaptadors per a frameworks populars com React i Vue.
 
-> Notice how the core import is *@polgubau/fuzzy*, while the React and Vue adapters are imported from *@polgubau/fuzzy/react* and *@polgubau/fuzzy/vue* respectively.
+> Tingues en compte que la importació del nucli és *@polgubau/fuzzy*, mentre que els adaptadors de React i Vue s'importen des de *@polgubau/fuzzy/react* i *@polgubau/fuzzy/vue* respectivament.
 
-Using this import will allow you to use the library in a framework-agnostic way, while the framework-specific imports will provide additional functionality tailored to that framework. So you don't import vue or react bundles if you don't need them. 
+L'ús d'aquesta importació et permetrà utilitzar la llibreria d'una manera independent del framework, mentre que les importacions específiques del framework proporcionaran funcionalitats addicionals adaptades a aquest framework. Així no importes els paquets de Vue o React si no els necessites.
 
-### Using React? 
-To simplify the integration of fuzzy search into your React applications, we provide a custom hook called *useFuzzy*.
+### Fas servir React?
+Per simplificar la integració de la cerca difusa a les teves aplicacions React, oferim un hook personalitzat anomenat *useFuzzy*.
 
 ```tsx title="App.tsx"
-import { useFuzzy, Highlight } from '@polgubau/fuzzy/react' // Note: now importing from /react
+import { useFuzzy, Highlight } from '@polgubau/fuzzy/react' // Nota: ara important des de /react
 
 const filteredList = useFuzzy({
   list: ["volvo", "seat", "mercedes", "audi", "bmw"],
@@ -101,13 +101,13 @@ filteredList.map(({ item, matches: [range] }) => (
 ))
 ```
 
-### Using Vue?
-The same approach is available for Vue applications. We provide a composable called *useFuzzy* to simplify the integration of fuzzy search into your Vue applications.
+### Fas servir Vue?
+El mateix enfocament està disponible per a aplicacions Vue. Oferim un "composable" anomenat *useFuzzy* per simplificar la integració de la cerca difusa a les teves aplicacions Vue.
 
 ```vue title="App.vue"
 <template>
   <div>
-    <input v-model="query" placeholder="Search..." />
+    <input v-model="query" placeholder="Cerca..." />
     <ul>
       <li v-for="(result, index) in fuzzySearch.results" :key="index">
         {{ result }}
@@ -115,20 +115,20 @@ The same approach is available for Vue applications. We provide a composable cal
     </ul>
   </div>
 </template>
- 
+
 <script lang="ts">
 import { ref } from "vue";
 import { useFuzzy } from "@polgubau/fuzzy/vue";
- 
+
 export default {
   setup() {
-    // Lista de strings para la búsqueda
+    // Llista de cadenes per a la cerca
     const items = ref<string[]>(["Apple", "Banana", "Cherry", "Grape", "Pineapple"]);
     const query = ref("");
- 
-    // Using the composable
+
+    // Utilitzant el composable
     const fuzzySearch = useFuzzy({ list: items, query });
- 
+
     return {
       query,
       fuzzySearch,
@@ -137,63 +137,63 @@ export default {
 };
 </script>
 ```
-## Documentation
-The documentation page is available at [fuzzy.polgubau.com](https://fuzzy.polgubau.com).
+## Documentació
+La pàgina de documentació està disponible a [fuzzy.polgubau.com](https://fuzzy.polgubau.com).
 
-The documentation is built using [Fumadocs](https://fumadocs.com) with some customizations.
+La documentació està construïda amb [Fumadocs](https://fumadocs.com) amb algunes personalitzacions.
 
-### I18n support
+### Suport i18n
 
-The documentation is available in multiple languages. You can switch between them using the language selector in the top right corner of the page.
-Currently, the following languages are supported:
+La documentació està disponible en diversos idiomes. Pots canviar entre ells utilitzant el selector d'idioma a la part superior dreta de la pàgina.
+Actualment, es donen suport als següents idiomes:
 
-| Language | Supported |
+| Idioma | Suportat |
 | -------- | --------- |
-| English  | ✅       |
-| Spanish  | ✅       |
-| Catalan  | ✅       |
-| German   | ✅       |
+| Anglès  | ✅       |
+| Castellà  | ✅       |
+| Català  | ✅       |
+| Alemany   | ✅       |
 
 
 
-## 🛠 Development
+## 🛠 Desenvolupament
 
-### Building the project
+### Construcció del projecte
 
-The easiest way to work with the project monorepo is to run
+La manera més fàcil de treballar amb el monorepo del projecte és executar
 
 ```sh
 pnpm dev
 ```
-in the root directory. This will start a watch build for the package and start a local server to preview the documentation page.
+al directori arrel. Això iniciarà una compilació en mode watch per al paquet i iniciarà un servidor local per previsualitzar la pàgina de documentació.
 
-### Running tests
-> The tests are written in TypeScript and use [Vitest](https://vitest.dev/) as the testing framework.
-Run the command inside the *packages/fuzzy* directory to run the tests.
+### Execució de tests
+> Els tests estan escrits en TypeScript i utilitzen [Vitest](https://vitest.dev/) com a framework de proves.
+Executa la comanda dins del directori *packages/fuzzy* per executar els tests.
 ```sh
 pnpm test
 ```
 
 
 ---
-## Author and license
-Made with ❤️ by [Pol Gubau Amores](https://polgubau.com)
+## Autor i llicència
+Fet amb ❤️ per [Pol Gubau Amores](https://polgubau.com)
 
-This project is based on *microfuzz*, which was created by [@Nozbe](https://github.com/Nozbe), some improvements were made to the original code, and it was rewritten in TypeScript.
+Aquest projecte es basa en *microfuzz*, creat per [@Nozbe](https://github.com/Nozbe), s'han fet algunes millores al codi original i s'ha reescrit en TypeScript.
 
-[See all contributors](https://github.com/PolGubau/fuzzy/graphs/contributors).
+[Veure tots els col·laboradors](https://github.com/PolGubau/fuzzy/graphs/contributors).
 
-This project is available under the MIT license. See the [LICENSE file](https://github.com/PolGubau/fuzzy/LICENSE) for more info.
-
-
-## 💡 More info
-
-- [Documentation](https://utils.polgubau.com)
-- [GitHub Repository](https://github.com/polgubau/utils)
-- [NPM Package](https://www.npmjs.com/package/@polgubau/utils)
+Aquest projecte està disponible sota la llicència MIT. Vegeu el [fitxer LICENSE](https://github.com/PolGubau/fuzzy/LICENSE) per a més informació.
 
 
-## Badges
+## 💡 Més informació
+
+- [Documentació](https://utils.polgubau.com)
+- [Repositori de GitHub](https://github.com/polgubau/utils)
+- [Paquet NPM](https://www.npmjs.com/package/@polgubau/utils)
+
+
+## Insígnies
 
 <nav className="flex items-center gap-4 flex-wrap">
 <Image src="https://raw.githubusercontent.com/PolGubau/fuzzy/2d0326e92c70efb4535359e962ddee970b7a4025/badges/packages/fuzzy/coverage-branches.svg" alt="Branches" width={100} height={20} className="h-5" />

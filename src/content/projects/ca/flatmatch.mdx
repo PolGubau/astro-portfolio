@@ -45,148 +45,151 @@ import flatmatch from "../img/flatmatch.webp";
 
 
 
-# Flatmatch - Find your ideal place to live
+# Flatmatch - Troba el teu lloc ideal per viure
 
-Flatmatch is a web app designed to help **Erasmus students and young professionals easily find short and mid term housing** across the world. Inspired by swipe-based apps like Tinder, but applied to the rental market, Flatmatch makes the housing search **fast, visual, and engaging**.
+Flatmatch és una aplicació web dissenyada per ajudar els **estudiants Erasmus i joves professionals a trobar allotjament de curta i mitjana durada** fàcilment a tot el món. Inspirada en aplicacions basades en lliscar com Tinder, però aplicada al mercat del lloguer, Flatmatch fa que la cerca d'habitatge sigui **ràpida, visual i atractiva**.
 
-The concept is simple: swipe through listings until you find your match.
+El concepte és senzill: llisca entre els anuncis fins que trobis el teu "match".
 
-<Image src={flatmatch} alt="Flatmatch thumbnail" height={500} class={"show-animation rounded-2xl"}  loading={"eager"} />
+<Image src={flatmatch} alt="Miniatura de Flatmatch" height={500} class={"show-animation rounded-2xl"}  loading={"eager"} />
 ---
 
-## Key Features
-- **Tinder-like swiping interface**: Swipe right to save a property to your favorites, swipe left to dismiss it.
-- **Favorites section**: Easily access and manage your saved properties.
-- **Real-time chat**: (Coming soon) Communicate directly with landlords and property managers.
-- **In App payment**: (Coming soon) Securely pay deposits and rent through the app.
-- **Profile management**: Create and manage your user profile and listings.
-- **International focus**: The app is available in multiple languages, automatically adapting to the user's browser language.
-- **Easy property publishing**: Landlords can quickly create and publish listings through a guided multi-step form.
+## Característiques principals
+- **Interfície de lliscament a l'estil Tinder**: Llisca a la dreta per desar una propietat als teus preferits, llisca a l'esquerra per descartar-la.
+- **Secció de preferits**: Accedeix i gestiona fàcilment les teves propietats desades.
+- **Xat en temps real**: (Properament) Comunica't directament amb els propietaris i gestors de propietats.
+- **Pagament a l'aplicació**: (Properament) Paga els dipòsits i el lloguer de forma segura a través de l'aplicació.
+- **Gestió de perfils**: Crea i gestiona el teu perfil d'usuari i els teus anuncis.
+- **Enfocament internacional**: L'aplicació està disponible en diversos idiomes, adaptant-se automàticament a l'idioma del navegador de l'usuari.
+- **Publicació fàcil de propietats**: Els propietaris poden crear i publicar anuncis ràpidament mitjançant un formulari guiat de diversos passos.
 
-## Core Features
+## Funcions bàsiques
 
-The app is structured into **four main pages**:
+L'aplicació s'estructura en **quatre pàgines principals**:
 
-### Home (Explore Properties)
+### Inici (Explorar propietats)
 
-The landing page presents a **Tinder-like card stack interface**, where users can:
+La pàgina d'inici presenta una **interfície de pila de targetes a l'estil Tinder**, on els usuaris poden:
 
-* Swipe **left** to dismiss a property.
-* Swipe **right** to add it to favorites.
-* Scroll vertically on a card to see more details.
+* Lliscament cap a l'**esquerra** per descartar una propietat.
+* Lliscament cap a la **dreta** per afegir-la als preferits.
+* Desplaçar-se verticalment en una targeta per veure'n més detalls.
 
-<Image src={tinder_like} alt="Tinder-like experience" height={700} class={"show-animation rounded-2xl"} />
+<Image src={tinder_like} alt="Experiència a l'estil Tinder" height={700} class={"show-animation rounded-2xl"} />
 
 ---
 
-### Favorites
+### Preferits
 
-This section gathers all properties saved with a **right swipe**. Users can:
+Aquesta secció reuneix totes les propietats desades amb un **lliscament cap a la dreta**. Els usuaris poden:
 
-* Browse the list of saved properties.
-* Open the **details view** for more information.
-* From the detail modal, directly **contact the landlord**.
+* Explorar la llista de propietats desades.
+* Obrir la **vista de detalls** per obtenir més informació.
+* Des del modal de detalls, **contactar directament amb el propietari**.
 
 <div class="flex flex-wrap gap-4">
-<Image src={favs} alt="Favorites in Flatmatch" height={500} class={"show-animation rounded-2xl"} />
-<Image src={details_modal} alt="Property details modal" height={500} class={"show-animation rounded-2xl"} />
+<Image src={favs} alt="Preferits a Flatmatch" height={500} class={"show-animation rounded-2xl"} />
+<Image src={details_modal} alt="Modal de detalls de la propietat" height={500} class={"show-animation rounded-2xl"} />
 </div>
 ---
 
-### Chats
+### Xats
 
-The **Chats tab** will soon allow real-time conversations between landlords and tenants. 
+La **pestanya de xats** permetrà aviat converses en temps real entre propietaris i llogaters.
 
-At the moment, this feature is still under development.
+En aquest moment, aquesta funció encara està en desenvolupament.
 
 ---
 
-### Profile
+### Perfil
 
-Users can manage their identity and listings in the **Profile section**:
+Els usuaris poden gestionar la seva identitat i els seus anuncis a la **secció de Perfil**:
 
-* Complete their **personal profile**.
-* View and manage **their own published properties**.
+* Completar el seu **perfil personal**.
+* Veure i gestionar les **seves pròpies propietats publicades**.
 <div class="flex flex-wrap gap-4">
-<Image src={profile} alt="User profile" height={450} class={"show-animation rounded-2xl"} />
-<Image src={profile_after_create_room} alt="Profile after creating a listing" height={450} class={"show-animation rounded-2xl"} />
+<Image src={profile} alt="Perfil d'usuari" height={450} class={"show-animation rounded-2xl"} />
+<Image src={profile_after_create_room} alt="Perfil després de crear un anunci" height={450} class={"show-animation rounded-2xl"} />
 </div>
 ---
 
-## Property Creation Flow
+## Flux de creació de propietats
 
-Publishing a property on Flatmatch is straightforward, broken down into **guided steps** to make sure every listing is accurate and attractive.
+Publicar una propietat a Flatmatch és senzill, dividit en **passos guiats** per assegurar-se que cada anunci sigui precís i atractiu.
 
-Instead of overwhelming users with a long form, the process is divided into **9 simple steps**:
+En lloc d'aclaparar els usuaris amb un formulari llarg, el procés es divideix en **9 passos senzills**:
 
-1. **Property Type**
+1. **Tipus de propietat**
 
-In this step, users select the type of property they are listing (e.g., apartment, shared room).
+En aquest pas, els usuaris seleccionen el tipus de propietat que estan anunciant (per exemple, apartament, habitació compartida).
 
-   <Image src={form_1type} alt="Select type of property" height={600} class={"show-animation rounded-2xl"} />
+   <Image src={form_1type} alt="Seleccionar el tipus de propietat" height={600} class={"show-animation rounded-2xl"} />
 
-2. **Location**
+2. **Ubicació**
 
-In this step, users specify the location of the property, this is done with an autocomplete input powered by all streets in the world, selecting the desired street will automatically set the coordinates, postal code, city name and country name of the property so the user doesn't have to fill them manually.
-   <Image src={form_2location} alt="Set location" height={600} class={"show-animation rounded-2xl"} />
+En aquest pas, els usuaris especifiquen la ubicació de la propietat; això es fa amb una entrada d'autocompleció que conté tots els carrers del món. En seleccionar el carrer desitjat, s'establiran automàticament les coordenades, el codi postal, el nom de la ciutat i el nom del país de la propietat, de manera que l'usuari no els hagi d'omplir manualment.
+   <Image src={form_2location} alt="Establir la ubicació" height={600} class={"show-animation rounded-2xl"} />
 
-3. **Commodities & Amenities**
+3. **Comoditats i serveis**
 
-In this step, users can select the amenities and commodities available in the property (e.g., Wi-Fi, kitchen, washing machine) Also the amount of bathrooms, bedrooms and the size of the property.
-   <Image src={form_3commodities} alt="Choose amenities" height={600} class={"show-animation rounded-2xl"} />
+En aquest pas, els usuaris poden seleccionar els serveis i les comoditats disponibles a la propietat (per exemple, Wi-Fi, cuina, rentadora). També la quantitat de banys, habitacions i la mida de la propietat.
+   <Image src={form_3commodities} alt="Triar comoditats" height={600} class={"show-animation rounded-2xl"} />
 
-4. **Company**
+4. **Companyia**
 
-If the property is shared, the landlord can specify details about the current roommates living in the property and also if the landlord lives in the property.
-   <Image src={form_4company} alt="Roommates and landlord details" height={600} class={"show-animation rounded-2xl"} />
+Si la propietat és compartida, el propietari pot especificar detalls sobre els actuals companys de pis que viuen a la propietat i també si el propietari viu a la propietat.
+   <Image src={form_4company} alt="Detalls dels companys de pis i del propietari" height={600} class={"show-animation rounded-2xl"} />
 
-5. **Metadata (Price, Size, etc.)**
+5. **Metadades (preu, mida, etc.)**
 
-In this step, users provide key details about the property, including its price, name, visible description, and upload photos to showcase the space.
-   <Image src={form_5metadata} alt="Metadata form" height={600} class={"show-animation rounded-2xl"} />
+En aquest pas, els usuaris proporcionen detalls clau sobre la propietat, incloent-hi el preu, el nom, la descripció visible i pugen fotos per mostrar l'espai.
+   <Image src={form_5metadata} alt="Formulari de metadades" height={600} class={"show-animation rounded-2xl"} />
 
-6. **Tenant Preferences**
+6. **Preferències del llogater**
 
-In this step, landlords can specify any preferences they have for potential tenants, such as age range, occupation, or gender.
-   <Image src={form_6preferences} alt="Tenant preferences" height={600} class={"show-animation rounded-2xl"} />
+En aquest pas, els propietaris poden especificar qualsevol preferència que tinguin per als potencials llogaters, com ara la franja d'edat, l'ocupació o el gènere.
+   <Image src={form_6preferences} alt="Preferències del llogater" height={600} class={"show-animation rounded-2xl"} />
 
-7. **House Rules**
-In this step, landlords can set specific house rules that tenants must agree to, such as no smoking or no pets.
-   <Image src={form_7rules} alt="Set house rules" height={600} class={"show-animation rounded-2xl"} />
+7. **Normes de la casa**
 
-8. **Availability & Timing**
-In this step, landlords can specify the availability of the property, including move-in dates and minimum/maximum stay durations.
-   <Image src={form_8timings} alt="Availability" height={600} class={"show-animation rounded-2xl"} />
+En aquest pas, els propietaris poden establir normes específiques de la casa que els llogaters han d'acceptar, com ara no fumar o no acceptar mascotes.
+   <Image src={form_7rules} alt="Establir les normes de la casa" height={600} class={"show-animation rounded-2xl"} />
 
-9. **Preview & Publish**
-In the final step, users can review all the information they have entered, make any necessary edits, and then publish the listing to make it live on the platform.
-   <Image src={form_9preview} alt="Listing preview" height={600} class={"show-animation rounded-2xl"} />
+8. **Disponibilitat i horaris**
+
+En aquest pas, els propietaris poden especificar la disponibilitat de la propietat, incloent-hi les dates d'entrada i la durada mínima/màxima de l'estada.
+   <Image src={form_8timings} alt="Disponibilitat" height={600} class={"show-animation rounded-2xl"} />
+
+9. **Vista prèvia i publicació**
+
+En el pas final, els usuaris poden revisar tota la informació que han introduït, fer les edicions necessàries i després publicar l'anunci perquè estigui actiu a la plataforma.
+   <Image src={form_9preview} alt="Vista prèvia de l'anunci" height={600} class={"show-animation rounded-2xl"} />
 
 ---
 
-## Tech Stack
+## Piló tecnològic
 
-Flatmatch is built with modern, fast, and scalable technologies:
+Flatmatch està construït amb tecnologies modernes, ràpides i escalables:
 
-| Technology                         | Purpose                           |
+| Tecnologia                         | Propòsit                           |
 | ---------------------------------- | --------------------------------- |
-| **React**                          | Core UI library                   |
-| **React Router**                   | Navigation and routing            |
-| **TailwindCSS + Radix Primitives** | Styling and accessible components |
-| **TypeScript**                     | Type safety and maintainability   |
-| **Vite**                           | Fast bundling and development     |
-| **@polgubau/utils**           | Custom utility functions          |
+| **React**                          | Biblioteca principal de la IU      |
+| **React Router**                   | Navegació i encaminament           |
+| **TailwindCSS + Radix Primitives** | Estilisme i components accessibles |
+| **TypeScript**                     | Seguretat de tipus i mantenibilitat |
+| **Vite**                           | Empaquetat i desenvolupament ràpid |
+| **@polgubau/utils**           | Funcions d'utilitat personalitzades |
 | **Supabase**                       | Backend-as-a-Service (BaaS)       |
-| **open-map-geocoder**            | Address autocomplete              |
+| **open-map-geocoder**            | Autocompleció d'adreces            |
 
 ---
 
-## Future plans
+## Plans de futur
 
-Flatmatch is an ongoing project with many exciting features planned, including:
-* **Real-time chat** between landlords and tenants.
-* **Advanced filtering** options for property searches.
-* **User reviews and ratings** for properties and landlords.
-* **Mobile app** for on-the-go browsing and swiping.
-* **Flatmates matching** based on lifestyle and preferences.
-* **Subscription plans** for landlords with premium features.
+Flatmatch és un projecte en curs amb moltes funcions interessants planificades, com ara:
+* **Xat en temps real** entre propietaris i llogaters.
+* **Opcions de filtratge avançat** per a cerques de propietats.
+* **Ressenyes i valoracions dels usuaris** per a propietats i propietaris.
+* **Aplicació m\u00f2bil** per navegar i lliscar des de qualsevol lloc.
+* **Match de companys de pis** basat en l'estil de vida i les preferències.
+* **Plans de subscripció** per a propietaris amb funcions prèmium.

@@ -25,28 +25,28 @@ link: https://ui.polgubau.com
 import { Image } from "astro:assets";
 import cover from "../img/pol-ui.webp";
 
-> **Bachelor's Thesis - Summa Cum Laude, 10/10. Awarded with special distinction by UAB.**
+> **Treball de Final de Grau - Summa Cum Laude, 10/10. Guardonat amb distinció especial per la UAB.**
 
-Pol-UI is a React component library I built as my final university project. What started as a thesis requirement became a production-grade library with 150+ components, a full documentation site, Storybook integration, and 50,000+ NPM downloads.
+Pol-UI és una llibreria de components React que vaig construir com el meu projecte final de carrera. El que va començar com un requisit de la tesi es va convertir en una llibreria de grau de producció amb més de 150 components, un lloc de documentació complet, integració amb Storybook i més de 50.000 descàrregues a NPM.
 
 ---
 
-## Why I built it
+## Per què la vaig crear
 
-During my third year at university, I was already working full-time at Mesalvo building design systems. I saw the same patterns repeated across every project - buttons, modals, forms, tooltips - all built from scratch each time.
+Durant el meu tercer any a la universitat, ja treballava a jornada completa a Mesalvo construint sistemes de disseny. Veia els mateixos patrons repetits en cada projecte (botons, modals, formularis, tooltips), tots construïts des de zero cada vegada.
 
-I wanted to build something reusable, well-documented, and actually pleasant to use. Not another component dump - a coherent library with a consistent API and real accessibility support. I wrote about the full process - including the mistakes - in [What I learned building a UI library from scratch](/blog/designingLibrary).
+Volia construir una cosa reusable, ben documentada i realment agradable d'utilitzar. No un altre abocador de components: una llibreria coherent amb una API consistent i suport real d'accessibilitat. Vaig escriure sobre tot el procés (incloent-hi els errors) a [Què vaig aprendre construint una llibreria d'UI des de zero](/blog/designingLibrary).
 
-## What's inside
+## Què hi ha dins
 
-Pol-UI ships with:
+Pol-UI inclou:
 
-- **150+ components** - from primitives (Button, Input, Badge) to complex patterns (DataTable, CommandMenu, Combobox)
-- **Full TypeScript support** - every prop typed, no `any` escapes
-- **Radix UI primitives** - accessible by default, keyboard navigable, screen reader friendly
-- **Tailwind CSS** - fully customizable via tokens, no style overriding hacks
-- **Storybook** - every component documented with live examples
-- **Vitest + Testing Library** - >80% test coverage
+- **150+ components** - des de primitius (Button, Input, Badge) fins a patrons complexos (DataTable, CommandMenu, Combobox)
+- **Suport complet de TypeScript** - totes les props tipades, sense escapatòries amb `any`
+- **Primitius de Radix UI** - accessibles per defecte, navegables amb teclat, compatibles amb lectors de pantalla
+- **Tailwind CSS** - totalment personalitzable mitjançant tokens, sense trucs per sobreescriure estils
+- **Storybook** - cada component documentat amb exemples en viu
+- **Vitest + Testing Library** - >80% de cobertura de tests
 
 ```bash
 npm install pol-ui
@@ -59,40 +59,40 @@ export function LoginForm() {
   return (
     <form>
       <Input label="Email" type="email" />
-      <Input label="Password" type="password" />
-      <Button intent="primary" type="submit">Sign in</Button>
+      <Input label="Contrasenya" type="password" />
+      <Button intent="primary" type="submit">Inicia sessió</Button>
     </form>
   );
 }
 ```
 
-## Technical decisions
+## Decisions tècniques
 
-**Why Radix UI?** Accessibility is hard to get right. Radix handles focus management, ARIA attributes, and keyboard interactions so I don't have to.
+**Per què Radix UI?** L'accessibilitat és difícil de fer bé. Radix gestiona el focus, els atributs ARIA i les interaccions del teclat perquè jo no ho hagi de fer.
 
-**Why Tailwind?** Design tokens via CSS variables + Tailwind utilities means consumers can theme the library without fighting specificity wars.
+**Per què Tailwind?** Els design tokens mitjançant variables CSS + les utilitats de Tailwind permeten als usuaris personalitzar la llibreria sense lluitar contra la especificitat de CSS.
 
-**Why Vitest over Jest?** Faster. Native ESM support. Same API. No config needed with Vite.
+**Per què Vitest en lloc de Jest?** Més ràpid. Suport natiu per a ESM. Mateixa API. No cal configuració amb Vite.
 
-## The documentation site
+## El lloc de documentació
 
-The docs at [ui.polgubau.com](https://ui.polgubau.com) cover every component with:
+La documentació a [ui.polgubau.com](https://ui.polgubau.com) cobreix cada component amb:
 
-- Live interactive demos
-- All prop variations with TypeScript types
-- Accessibility notes
-- Copy-paste code examples
+- Demos interactives en viu
+- Totes les variacions de props amb tipus de TypeScript
+- Notes d'accessibilitat
+- Exemples de codi per copiar i enganxar
 
-Documentation took nearly as long as the library itself. I think that's correct.
+La documentació va trigar gairebé tant com la pròpia llibreria. Crec que és el correcte.
 
-## Impact
+## Impacte
 
-- **50,000+ downloads** on NPM since launch
-- Used in multiple freelance projects and Doscientos client work
-- Referenced in my thesis paper which received a special distinction from UAB
+- **50.000+ descàrregues** a NPM des del llançament
+- Utilitzada en múltiples projectes freelance i treballs de clients a Doscientos
+- Referenciada en el meu treball de tesi, que va rebre una distinció especial de la UAB
 
 ---
 
-The full source is on [GitHub](https://github.com/PolGubau/pol-ui). Contributions welcome.
+El codi font complet és a [GitHub](https://github.com/PolGubau/pol-ui). Les contribucions són benvingudes.
 
-The component composition patterns I developed for this library are explained in detail in [React Component Composition Patterns](/blog/component-composition-patterns).
+Els patrons de composició de components que vaig desenvolupar per a aquesta llibreria s'expliquen detalladament a [React Component Composition Patterns](/blog/component-composition-patterns).

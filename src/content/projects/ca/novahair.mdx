@@ -33,155 +33,155 @@ import metrics from "../../../assets/media/projects/novahair/metrics.webp";
 import booking from "../../../assets/media/projects/novahair/book-calendar.webp";
 import landing from "../../../assets/media/projects/novahair/landing.webp";
  
-## Multi-Tenant Salon Management Platform
+## Plataforma de gestió de perruqueries multi-inquilí
 
-**NovaHair** is a production-ready, enterprise-grade monorepo solution for beauty salon management. It combines a **Progressive Web App** admin panel, an **embeddable booking widget**, and **customizable landing pages** into a cohesive, type-safe ecosystem.
+**NovaHair** és una solució de monorepo de grau empresarial a punt per a producció per a la gestió de salons de bellesa. Combina un panell d'administració **PWA (Progressive Web App)**, un **giny de reserves integrable** i **pàgines de destinació personalitzables** en un ecosistema cohesionat i amb seguretat de tipus.
 
-Built with **React 19**, **TanStack Router**, **TanStack Query**, and following **Clean Architecture** principles, this project demonstrates advanced monorepo management, performance optimization, and scalable frontend architecture.
+Construït amb **React 19**, **TanStack Router**, **TanStack Query** i seguint els principis de la **Clean Architecture**, aquest projecte demostra una gestió avançada de monorepos, optimització del rendiment i una arquitectura frontend escalable.
 
 <figure>
   <Image
     src={metrics}
-    alt="Admin dashboard showing metrics and analytics"
+    alt="Panell d'administració que mostra mètriques i analítiques"
     width={700}
     height={400}
     className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"
   />
-  <figcaption>Admin dashboard with real-time metrics and KPIs.</figcaption>
+  <figcaption>Panell d'administració amb mètriques i KPIs en temps real.</figcaption>
 </figure>
 
 ---
 
-## Project Overview
+## Resum del projecte
 
-NovaHair is a **multi-tenant SaaS platform** designed to streamline salon operations. The system consists of three main applications:
+NovaHair és una **plataforma SaaS multi-inquilí** dissenyada per agilitzar les operacions de les perruqueries. El sistema consta de tres aplicacions principals:
 
-* 1. **Admin Panel** - Full-featured PWA for salon management
-* 2. **Booking System** - Embeddable widget for customer appointments
-* 3. **Landing Pages** - Customizable templates for salon websites
+* 1. **Panell d'Administració** - PWA completa per a la gestió del saló
+* 2. **Sistema de Reserves** - Giny integrable per a les cites dels clients
+* 3. **Pàgines de Destinació** - Plantilles personalitzables per a webs de perruqueries
 
-All applications share a common design system and business logic through a **pnpm workspace monorepo**, ensuring consistency and reducing code duplication by **~40%**.
-
----
-
-## Cool Achievements
-
-* **Sub-second load times** - Achieved < 800ms FCP through code splitting and SSR
-* **40% code reduction** - Shared packages eliminate duplication across apps
-* **Real-time sync** - Optimistic updates with TanStack Query reduce perceived latency by 60%
-* **i18n support** - Full English/Spanish localization with automatic detection
-* **PWA capabilities** - Offline-first admin panel with service worker caching
-* **Accessible UI** - WCAG 2.1 AA compliant with Radix UI primitives
-* **Type-safe** - End-to-end TypeScript with 100% coverage in shared packages
+Totes les aplicacions comparteixen un sistema de disseny i una lògica de negoci comuns a través d'un **monorepo de pnpm workspaces**, assegurant la consistència i reduint la duplicació de codi en un **~40%**.
 
 ---
 
-## Technical Architecture
+## Èxits destacats
 
-### Monorepo Structure
+* **Temps de càrrega inferiors al segon** - S'ha aconseguit un FCP < 800ms mitjançant code splitting i SSR
+* **Reducció del 40% del codi** - Els paquets compartits eliminen la duplicació entre aplicacions
+* **Sincronització en temps real** - Les actualitzacions optimistes amb TanStack Query redueixen la latència percebuda en un 60%
+* **Suport i18n** - Localització completa en anglès/espanyol amb detecció automàtica
+* **Capacitats PWA** - Panell d'administració offline-first amb memòria cau de service worker
+* **Interfície accessible** - Compliment de WCAG 2.1 AA amb primitius de Radix UI
+* **Seguretat de tipus** - TypeScript d'extrem a extrem amb una cobertura del 100% en paquets compartits
+
+---
+
+## Arquitectura tècnica
+
+### Estructura del monorepo
 
 ```
 novahair/
 ├── apps/
-│   ├── admin/          # PWA admin panel (Port 3000)
-│   ├── booking/        # Booking widget (Port 3001)
-│   └── landings/       # Landing templates (Port 3002)
+│   ├── admin/          # Panell d'administració PWA (Port 3000)
+│   ├── booking/        # Giny de reserves (Port 3001)
+│   └── landings/       # Plantilles de landing (Port 3002)
 └── packages/
-    ├── ui/             # Shared component library (50+ components)
-    ├── client/         # Type-safe API client with React Query
-    ├── utils/          # Shared utilities and hooks
-    └── book-app/       # Reusable booking logic
+    ├── ui/             # Llibreria de components compartits (+50 components)
+    ├── client/         # Client API amb seguretat de tipus i React Query
+    ├── utils/          # Utilitats i hooks compartits
+    └── book-app/       # Lògica de reserves reutilitzable
 ```
 
-**Why this architecture?**
-- **Centralized dependencies**: Single source of truth for versions
-- **Instant hot reload**: Changes in shared packages reflect immediately
-- **Type safety**: TypeScript works seamlessly across package boundaries
-- **Optimized builds**: pnpm's content-addressable storage reduces install time by 2x
+**Per què aquesta arquitectura?**
+- **Dependències centralitzades**: Font única de veritat per a les versions
+- **Recàrrega en calent instantània**: Els canvis en els paquets compartits es reflecteixen immediatament
+- **Seguretat de tipus**: TypeScript funciona sense problemes entre els límits dels paquets
+- **Construccions optimitzades**: L'emmagatzematge de pnpm redueix el temps d'instal·lació per 2
 
 ---
 
-## Live Demo
+## Demo en viu
 
 [🔗 novahair.polgubau.com](https://novahair.polgubau.com)
 
 <figure>
   <Image
     src={booking}
-    alt="Booking flow interface"
+    alt="Interfície del flux de reserves"
     width={700}
     height={400}
     className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"
   />
-  <figcaption>Multi-step booking flow with real-time availability.</figcaption>
+  <figcaption>Flux de reserves de diversos passos amb disponibilitat en temps real.</figcaption>
 </figure>
 
 ---
 
-## Core Features
+## Característiques principals
 
-### Admin Panel (PWA)
-* **Real-time dashboard** - Revenue, appointments, and staff performance metrics
-* **Team management** - Staff scheduling with conflict detection
-* **Appointment system** - Drag-and-drop calendar with recurring bookings
-* **Service catalog** - Dynamic pricing and duration management
-* **Offline support** - Service worker caching with background sync
-* **Analytics** - Custom date ranges with trend visualization
+### Panell d'Administració (PWA)
+* **Dashboard en temps real** - Mètriques d'ingressos, cites i rendiment del personal
+* **Gestió d'equips** - Planificació del personal amb detecció de conflictes
+* **Sistema de cites** - Calendari arrossegable amb reserves recurrents
+* **Catàleg de serveis** - Gestió dinàmica de preus i durades
+* **Suport offline** - Memòria cau de service worker amb sincronització en segon pla
+* **Analítiques** - Rangs de dates personalitzats amb visualització de tendències
 
-### Booking Widget
-* **Embeddable** - Works as iframe or React component
-* **Multi-step flow** - Service → Staff → Time → Confirmation
-* **Responsive** - Mobile-first design with touch gestures
-* **Multi-tenant** - Single deployment serves multiple salons
-* **Anonymous sessions** - Local storage for guest bookings
-* **Optimistic UI** - Instant feedback with rollback on error
+### Giny de Reserves
+* **Integrable** - Funciona com a iframe o component React
+* **Flux de diversos passos** - Servei → Personal → Hora → Confirmació
+* **Responsiu** - Disseny mobile-first amb gestos tàctils
+* **Multi-inquilí** - Un sol desplegament serveix a múltiples perruqueries
+* **Sessions anònimes** - Emmagatzematge local per a reserves de convidats
+* **UI optimista** - Feedback instantani amb reversió en cas d'error
 
-### Landing Pages
-* **Customizable** - Template system for brand consistency
-* **Performance** - GSAP animations with 60fps guarantee
-* **Parallax effects** - Smooth scrolling with Lenis
-* **SEO optimized** - SSR with meta tags and sitemap
-* **Deep linking** - Pre-fill booking from URL params
+### Pàgines de Destinació
+* **Personalitzables** - Sistema de plantilles per a la consistència de marca
+* **Rendiment** - Animacions GSAP amb garantia de 60fps
+* **Efectes parallax** - Desplaçament suau amb Lenis
+* **Optimitzat per a SEO** - SSR amb metaetiquetes i sitemap
+* **Enllaços profunds** - Pre-emplenat de reserves des de paràmetres de l'URL
 
 ---
 
 <details>
-  <summary><b>Technical Deep Dive</b><br/><small>Architecture decisions and performance optimizations</small></summary>
+  <summary><b>Aprofundiment tècnic</b><br/><small>Decisions d'arquitectura i optimitzacions de rendiment</small></summary>
   <br />
 
-  ### Tech Stack
+  ### Stack tecnològic
 
-  | Layer | Technology | Purpose |
+  | Capa | Tecnologia | Propòsit |
   |-------|-----------|---------|
-  | **Framework** | React 19 | Latest features (use, compiler optimizations) |
-  | **Routing** | TanStack Router | Type-safe routing with SSR support |
-  | **State** | TanStack Query v5 | Server state with optimistic updates |
-  | **Build** | Vite 7 | Lightning-fast HMR (\<50ms) |
-  | **Monorepo** | pnpm workspaces | Efficient dependency management |
-  | **Styling** | Tailwind CSS 4 | Utility-first with JIT compilation |
-  | **UI Primitives** | Radix UI | Accessible, unstyled components |
-  | **Animations** | GSAP + Framer Motion | High-performance animations |
-  | **i18n** | i18next | Runtime translation switching |
-  | **Testing** | Vitest + Testing Library | Fast unit and integration tests |
-  | **Linting** | Biome | 100x faster than ESLint |
-  | **Type Safety** | TypeScript 5.7 | Strict mode with no implicit any |
-  | **SSR** | Nitro | Universal server rendering |
+  | **Framework** | React 19 | Últimes funcionalitats (use, optimitzacions del compilador) |
+  | **Enrutament** | TanStack Router | Enrutament amb seguretat de tipus i suport SSR |
+  | **Estat** | TanStack Query v5 | Estat del servidor amb actualitzacions optimistes |
+  | **Build** | Vite 7 | HMR ultraràpid (\<50ms) |
+  | **Monorepo** | pnpm workspaces | Gestió eficient de dependències |
+  | **Estils** | Tailwind CSS 4 | Utilitats amb compilació JIT |
+  | **Primitius UI** | Radix UI | Components accessibles i sense estils |
+  | **Animacions** | GSAP + Framer Motion | Animacions d'alt rendiment |
+  | **i18n** | i18next | Canvi de traducció en temps d'execució |
+  | **Proves** | Vitest + Testing Library | Proves unitàries i d'integració ràpides |
+  | **Linting** | Biome | 100 vegades més ràpid que ESLint |
+  | **Seguretat de tipus** | TypeScript 5.7 | Mode estricte sense any implícits |
+  | **SSR** | Nitro | Renderitzat de servidor universal |
 
   ---
 
-  ### Performance Optimizations
+  ### Optimitzacions de rendiment
 
-  #### 1. Code Splitting Strategy
+  #### 1. Estratègia de Code Splitting
   ```typescript
-  // Route-based splitting with TanStack Router
-  defaultPreload: "intent" // Preload on hover/focus
-  defaultViewTransition: true // Native view transitions
+  // Divisió basada en rutes amb TanStack Router
+  defaultPreload: "intent" // Precarrega en passar el ratolí o focus
+  defaultViewTransition: true // Transicions de vista natives
   ```
-  **Result**: Initial bundle reduced from 450KB to 180KB (-60%)
+  **Resultat**: Paquet inicial reduït de 450KB a 180KB (-60%)
 
-  #### 2. PWA Caching Strategy
+  #### 2. Estratègia de memòria cau PWA
   ```typescript
-  // Service worker configuration
+  // Configuració del service worker
   runtimeCaching: [
     {
       urlPattern: /^https:\/\/api\.gerardmartinez\.es\/api\/.*/i,
@@ -194,11 +194,11 @@ novahair/
     }
   ]
   ```
-  **Result**: 90% cache hit rate for API calls, offline functionality
+  **Resultat**: taxa d'encert de memòria cau del 90% per a les crides a l'API, funcionalitat offline
 
-  #### 3. React Query Optimizations
+  #### 3. Optimitzacions de React Query
   ```typescript
-  // Optimistic updates for instant UI feedback
+  // Actualitzacions optimistes per a un feedback instantani de la UI
   const { create } = useAppointmentActions(tenantId);
 
   create.mutate(data, {
@@ -213,58 +213,56 @@ novahair/
     }
   });
   ```
-  **Result**: Perceived latency reduced by 60%
+  **Resultat**: Latència percebuda reduïda en un 60%
 
-  #### 4. Image Optimization
-  - WebP format with fallbacks
-  - Lazy loading with Intersection Observer
-  - Responsive images with `srcset`
+  #### 4. Optimització d'imatges
+  - Format WebP amb alternatives
+  - Càrrega mandrosa (Lazy loading) amb Intersection Observer
+  - Imatges responsives amb `srcset`
 
-  **Result**: LCP improved from 2.1s to 0.8s
+  **Resultat**: LCP millorat de 2.1s a 0.8s
 
   ---
 
-  ### Clean Architecture Implementation
+  ### Implementació de l'Arquitectura Neta
 
-  Each feature follows a layered architecture:
+  Cada funcionalitat segueix una arquitectura per capes:
 
   ```
   features/dashboard/
-  ├── domain/          # Business logic (pure functions)
+  ├── domain/          # Lògica de negoci (funcions pures)
   │   └── metrics.ts
-  ├── infra/           # External dependencies
+  ├── infra/           # Dependències externes
   │   ├── metrics-calculator.ts
   │   └── date-range-calculator.ts
-  ├── hooks/           # React integration
+  ├── hooks/           # Integració amb React
   │   └── use-dashboard-metrics.ts
-  └── ui/              # Presentation components
+  └── ui/              # Components de presentació
       ├── dashboard-view.tsx
       └── metric-card.tsx
   ```
 
-  **Benefits**:
-  - ✅ Testable business logic (100% coverage in domain layer)
-  - ✅ Easy to swap implementations (e.g., API client)
-  - ✅ Clear separation of concerns
-  - ✅ Reusable across applications
+  **Beneficis**:
+  - ✅ Lògica de negoci testable (100% de cobertura en la capa de domini)
+  - ✅ Fàcil d'intercanviar implementacions (ex. client API)
+  - ✅ Clara separació de conceptes
+  - ✅ Reutilitzable entre aplicacions
 
   ---
 
-  ### Type-Safe API Client
-
-  
+  ### Client API amb seguretat de tipus
 
   ```typescript
-  // Unified client with full type inference
+  // Client unificat amb inferència de tipus completa
   import { client } from '@novahair/client';
 
   const { useAppointments, useAppointmentActions } = client.appointments;
 
-  // Fully typed, autocomplete works everywhere
+  // Totalment tipat, l'autocompletat funciona a tot arreu
   const { appointments, isLoading } = useAppointments(tenantId);
   const { create, update, delete: deleteAppointment } = useAppointmentActions(tenantId);
 
-  // TypeScript knows the exact shape of appointment
+  // TypeScript coneix la forma exacta de la cita
   create.mutate({
     serviceId: string,
     staffId: string,
@@ -274,45 +272,45 @@ novahair/
   });
   ```
 
-  **Features**:
-  - Zero runtime overhead (types stripped in build)
-  - Automatic refetch on mutations
-  - Optimistic updates with rollback
-  - Anonymous session support for guest bookings
+  **Característiques**:
+  - Zero sobrecàrrega en temps d'execució (els tipus s'eliminen en la construcció)
+  - Refetch automàtic en mutacions
+  - Actualitzacions optimistes amb reversió
+  - Suport de sessió anònima per a reserves de convidats
 
   ---
 
-  ### Monorepo Benefits
+  ### Beneficis del monorepo
 
-  **Shared UI Package** (`@novahair/ui`)
-  - 50+ components (Button, Input, Dialog, Table, etc.)
-  - Consistent design tokens
-  - Radix UI primitives for accessibility
-  - Tree-shakeable exports
+  **Paquet d'UI compartit** (`@novahair/ui`)
+  - +50 components (Botó, Entrada, Diàleg, Taula, etc.)
+  - Tokens de disseny consistents
+  - Primitius de Radix UI per a l'accessibilitat
+  - Exportacions tree-shakeable
 
-  **Shared Client Package** (`@novahair/client`)
-  - Type-safe API client
-  - React Query integration
-  - Automatic caching and invalidation
-  - 100% test coverage
+  **Paquet de Client compartit** (`@novahair/client`)
+  - Client API amb seguretat de tipus
+  - Integració amb React Query
+  - Memòria cau i invalidació automàtica
+  - Cobertura de proves del 100%
 
-  **Shared Utils Package** (`@novahair/utils`)
-  - Custom hooks (useMobile, useDebounce, etc.)
-  - i18n configuration
-  - Common utilities (cn, formatters, validators)
+  **Paquet d'Utilitats compartit** (`@novahair/utils`)
+  - Hooks personalitzats (useMobile, useDebounce, etc.)
+  - Configuració d'i18n
+  - Utilitats comunes (cn, formatadors, validadors)
 
-  **Impact**:
-  - 40% reduction in code duplication
-  - Single source of truth for business logic
-  - Instant propagation of changes across apps
-  - Unified testing strategy
+  **Impacte**:
+  - Reducció del 40% en la duplicació de codi
+  - Font única de veritat per a la lògica de negoci
+  - Propagació instantània dels canvis entre aplicacions
+  - Estratègia de proves unificada
 
   ---
 
-  ### Internationalization
+  ### Internacionalització
 
   ```typescript
-  // Automatic language detection with cookie persistence
+  // Detecció automàtica d'idioma amb persistència de galetes
   i18n.use(LanguageDetector).init({
     supportedLngs: ['en', 'es'],
     fallbackLng: 'es',
@@ -320,93 +318,93 @@ novahair/
       order: ['cookie'],
       lookupCookie: 'novahair_i18n',
       caches: ['cookie'],
-      cookieMinutes: 525600 // 1 year
+      cookieMinutes: 525600 // 1 any
     }
   });
 
-  // Type-safe translations
+  // Traduccions amb seguretat de tipus
   import { t } from 'i18next';
-  <h1>{t('welcome_message')}</h1> // TypeScript knows all keys
+  <h1>{t('welcome_message')}</h1> // TypeScript coneix totes les claus
   ```
 
-  **Features**:
-  - Runtime language switching (no reload)
-  - Namespace merging (common + app-specific)
-  - Pluralization and interpolation
-  - CLI for extracting missing keys
+  **Característiques**:
+  - Canvi d'idioma en temps d'execució (sense recarregar)
+  - Fusió d'espais de noms (comú + específic de l'app)
+  - Pluralització i interpolació
+  - CLI per a l'extracció de claus que falten
 
   ---
 
-  ### Testing Strategy
+  ### Estratègia de proves
 
   ```bash
-  # Unit tests for business logic
-  pnpm test                    # Run all tests
-  pnpm coverage                # Generate coverage report
+  # Proves unitàries per a la lògica de negoci
+  pnpm test                    # Executa totes les proves
+  pnpm coverage                # Genera l'informe de cobertura
 
-  # Integration tests for features
-  pnpm test --watch            # Watch mode for TDD
+  # Proves d'integració per a les funcionalitats
+  pnpm test --watch            # Mode watch per a TDD
   ```
 
-  **Coverage**:
-  - Domain layer: 100%
-  - Infrastructure layer: 85%
-  - UI components: 70%
-  - Overall: 82%
+  **Cobertura**:
+  - Capa de domini: 100%
+  - Capa d'infraestructura: 85%
+  - Components d'UI: 70%
+  - Total: 82%
 
-  **Tools**:
-  - Vitest (20x faster than Jest)
-  - Testing Library (user-centric tests)
-  - jsdom (lightweight DOM simulation)
+  **Eines**:
+  - Vitest (20 vegades més ràpid que Jest)
+  - Testing Library (proves centrades en l'usuari)
+  - jsdom (simulació lleugera del DOM)
 
   ---
 
-  ### Build & Deployment
+  ### Construcció i desplegament
 
   ```bash
-  # Development
-  pnpm dev                     # All apps in parallel
-  pnpm dev:admin               # Single app
+  # Desenvolupament
+  pnpm dev                     # Totes les apps en paral·lel
+  pnpm dev:admin               # Una sola app
 
-  # Production
-  pnpm build                   # Optimized builds
-  # Output: dist/ (SSR-ready with Nitro)
+  # Producció
+  pnpm build                   # Construccions optimitzades
+  # Resultat: dist/ (llest per a SSR amb Nitro)
   ```
 
-  **Build Metrics**:
-  - Admin: 220KB gzipped (initial bundle)
+  **Mètriques de construcció**:
+  - Admin: 220KB gzipped (paquet inicial)
   - Booking: 180KB gzipped
   - Landing: 150KB gzipped
-  - Build time: ~12s (cold), ~2s (cached)
+  - Temps de construcció: ~12s (fred), ~2s (en memòria cau)
 
-  **Deployment**:
-  - Vercel (recommended) - Zero config
-  - Nitro server for SSR
-  - Automatic preview deployments
-  - Edge functions for API routes
+  **Desplegament**:
+  - Vercel (recomanat) - Zero configuració
+  - Servidor Nitro per a SSR
+  - Desplegaments de vista prèvia automàtics
+  - Edge functions per a rutes API
 
   ---
 
-  ### Local Setup
+  ### Configuració local
 
   ```bash
-  # Clone repository
+  # Clonar el repositori
   git clone https://github.com/polgubau/novahair
   cd novahair
 
-  # Install dependencies (pnpm required)
+  # Instal·lar dependències (requereix pnpm)
   pnpm install
 
-  # Start all apps
+  # Iniciar totes les apps
   pnpm dev
 
-  # Or start individual apps
+  # O iniciar aplicacions individuals
   pnpm dev:admin    # http://localhost:3000
   pnpm dev:booking  # http://localhost:3001
   pnpm dev:landing  # http://localhost:3002
   ```
 
-  **Requirements**:
+  **Requisits**:
   - Node.js ≥ 20.0.0
   - pnpm ≥ 9.0.0
 
@@ -414,73 +412,71 @@ novahair/
 
 ---
 
- 
 <figure>
   <Image
     src={landing}
-    alt="Metrics dashboard with revenue and appointment trends"
+    alt="Dashboard de mètriques amb tendències d'ingressos i cites"
     width={700}
     height={400}
     className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"
   />
-  <figcaption>Landing page with GSAP parallax animations.</figcaption>
+  <figcaption>Pàgina de destinació amb animacions parallax de GSAP.</figcaption>
 </figure>
- 
 
 ---
 
-## Key Learnings
+## Aprenentatges clau
 
-### 1. Monorepo Management
-Managing a monorepo with multiple apps taught me the importance of:
-- **Dependency boundaries**: Preventing circular dependencies between packages
-- **Build orchestration**: Ensuring packages build in the correct order
-- **Version alignment**: Keeping shared dependencies in sync
+### 1. Gestió de monorepos
+Gestionar un monorepo amb múltiples aplicacions m'ha ensenyat la importància de:
+- **Límits de dependència**: Prevenir dependències circulars entre paquets
+- **Orquestració de la construcció**: Assegurar que els paquets es construeixin en l'ordre correcte
+- **Alineació de versions**: Mantenir les dependències compartides sincronitzades
 
-### 2. Performance at Scale
-Optimizing for performance across three applications required:
-- **Strategic code splitting**: Route-based + component-based splitting
-- **Caching strategies**: Multi-layer caching (browser, service worker, React Query)
-- **Bundle analysis**: Regular audits to prevent bloat
+### 2. Rendiment a escala
+Optimitzar el rendiment en tres aplicacions ha requerit:
+- **Code splitting estratègic**: Divisió basada en rutes + components
+- **Estratègies de memòria cau**: Memòria cau multicapa (navegador, service worker, React Query)
+- **Anàlisi de paquets**: Auditories periòdiques per prevenir el creixement desmesurat
 
-### 3. Type Safety
-Achieving end-to-end type safety involved:
-- **Shared types**: Single source of truth for domain models
-- **Generic utilities**: Reusable type-safe hooks and functions
-- **Strict TypeScript**: No escape hatches, full type coverage
+### 3. Seguretat de tipus
+Aconseguir la seguretat de tipus d'extrem a extrem ha implicat:
+- **Tipus compartits**: Font única de veritat per als models de domini
+- **Utilitats genèriques**: Hooks i funcions amb seguretat de tipus reutilitzables
+- **TypeScript estricte**: Sense dreceres, cobertura completa de tipus
 
-### 4. Developer Experience
-Creating a great DX required:
-- **Fast feedback loops**: HMR in \<50ms, tests in \<2s
-- **Clear documentation**: README files for each package
-- **Automated tooling**: Biome for instant linting/formatting
-
----
- 
-## Challenges I found with this project
-
-NovaHair was not easy to implement, I found multiple steps that need multiple hours to solve as:
-
-* **Architect complex systems** - Multi-app monorepo with shared packages was harded to setup but the reward is incredible
-* **Optimize performance** - Sub-second load times with strategic caching and using modern frontend technologies
-* **Write maintainable code** - Clean Architecture with 82% test coverage to ensure a good funcionality
-* **Choose the right tools** - Modern stack with proven technologies as React, Typescript and TanStack solutions
-* **Document thoroughly** - Clear README files and inline documentation as the work was splitted into multiple coworkers
-* **Ship production code** - Deployed and running in production
-
+### 4. Experiència del desenvolupador
+Crear una gran DX ha requerit:
+- **Bucles de retroalimentació ràpids**: HMR en \<50ms, proves en \<2s
+- **Documentació clara**: Fitxers README per a cada paquet
+- **Eines automatitzades**: Biome per a linting/formatat instantani
 
 ---
 
-## License
+## Reptes que he trobat en aquest projecte
 
-This project is a commercial product and is not open source. All rights reserved by the author.
+NovaHair no va ser fàcil d'implementar, vaig trobar diversos passos que van requerir moltes hores per resoldre, com:
+
+* **Arquitectura de sistemes complexos** - Un monorepo multi-aplicació amb paquets compartits va ser difícil de configurar, però la recompensa és increïble
+* **Optimització del rendiment** - Temps de càrrega inferiors al segon amb memòria cau estratègica i utilitzant tecnologies frontend modernes
+* **Escriure codi mantenible** - Arquitectura neta amb un 82% de cobertura de proves per assegurar una bona funcionalitat
+* **Triar les eines adequades** - Stack modern amb tecnologies provades com React, TypeScript i solucions TanStack
+* **Documentar exhaustivament** - Fitxers README clars i documentació en línia, ja que el treball es va dividir entre diversos col·laboradors
+* **Enviar codi a producció** - Desplegat i funcionant en producció
+
 
 ---
 
-## Contact
+## Llicència
 
-Built by:
-- Design & Frontend Development: **Pol Gubau Amores** - [polgubau.com](https://polgubau.com)
-- Database and Backend Development: **Gerard Martínez Alcocer** - [gerardmartinez.es](https://gerardmartinez.es)
+Aquest projecte és un producte comercial i no és de codi obert. Tots els drets reservats per l'autor.
 
-Interested in discussing this project or potential opportunities? Feel free to reach out!
+---
+
+## Contacte
+
+Creat per:
+- Disseny i desenvolupament frontend: **Pol Gubau Amores** - [polgubau.com](https://polgubau.com)
+- Base de dades i desenvolupament backend: **Gerard Martínez Alcocer** - [gerardmartinez.es](https://gerardmartinez.es)
+
+T'interessa parlar d'aquest projecte o de possibles oportunitats? No dubtis a posar-te en contacte amb mi!

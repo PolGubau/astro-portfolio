@@ -30,90 +30,90 @@ import phone1 from "../../../assets/media/projects/cartas/phone1.webp";
 import phone2 from "../../../assets/media/projects/cartas/phone2.webp";
 import ronda from "../../../assets/media/projects/cartas/ronda.webp";
 
-# ¿Cómo se jugaba?
+# Com es jugava?
 
-**¿Cómo se jugaba?** is a modern, content-driven web app that documents and explains traditional Spanish card games - starting with **El Cuadrado** and **5 Vidas**.  
-It was born from a personal desire to preserve and share the rules of the games I grew up playing.
+**Com es jugava?** és una aplicació web moderna basada en contingut que documenta i explica els jocs de cartes tradicionals espanyols, començant per **El Cuadrado** i **5 Vidas**.
+Va néixer del desig personal de preservar i compartir les regles dels jocs amb els quals vaig créixer jugant.
 
-Built with **Astro**, **MDX**, **TailwindCSS**, and enriched with ✨hand-made illustrations✨.
+Construïda amb **Astro**, **MDX**, **TailwindCSS**, i enriquida amb ✨il·lustracions fetes a mà✨.
 
 <figure>
   <Image
     src={ronda}
-    alt="Example of the illustrations"
+    alt="Exemple de les il·lustracions"
     width={700}
     height={700}
     className="rounded-xl h-full w-full max-h-[300px] md:max-h-[400px] object-cover show-animation"
   />
-  <figcaption class="text-center">Example of the illustrations.</figcaption>
+  <figcaption class="text-center">Exemple de les il·lustracions.</figcaption>
 </figure>
 
 ---
 
-## Motivation
+## Motivació
 
-I've always loved card games, especially traditional Spanish ones. Many of these games aren't well documented online, or their rules vary widely depending on region or family.  
-This site is my attempt to:
+Sempre m'han agradat els jocs de cartes, especialment els tradicionals espanyols. Molts d'aquests jocs no estan ben documentats en línia, o les seves regles varien molt segons la regió o la família.
+Aquest lloc és el meu intent de:
 
-* 🗂️ Archive my favorite games so I never forget how they're played  
-* 📖 Teach others about Spanish card game culture  
-* 🎨 Combine a beautiful design and clean code project  
+* 🗂️ Arxivar els meus jocs preferits per no oblidar mai com es juguen
+* 📖 Ensenyar a altres la cultura dels jocs de cartes espanyols
+* 🎨 Combinar un disseny bonic i un projecte de codi net
 
 ---
 
-## Live Site
+## Lloc en directe
 
 [🔗 cartas.polgubau.com](https://cartas.polgubau.com)
 
 <figure>
   <Image
     src={pc1}
-    alt="Landing page of the site"
+    alt="Pàgina d'inici del lloc"
     width={700}
     height={400}
     className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"
   />
-  <figcaption>Landing page of the site.</figcaption>
+  <figcaption>Pàgina d'inici del lloc.</figcaption>
 </figure>
 
 ---
 
-## Main Features
+## Característiques principals
 
-* ✅ Fully responsive UI (TailwindCSS)  
-* 🧾 Game documentation written in MDX  
-* 🎭 Custom hand-drawn illustrations  
-* ⚡ Optimized and fast (Astro + server output)  
-* 🎡 SEO-ready with sitemap & metadata  
+* ✅ Interfície totalment adaptativa (TailwindCSS)
+* 🧾 Documentació dels jocs escrita en MDX
+* 🎭 Il·lustracions personalitzades dibuixades a mà
+* ⚡ Optimitzat i ràpid (Astro + sortida de servidor)
+* 🎡 Preparat per a SEO amb sitemap i metadades
 
 ---
 
 <details>
-  <summary> <b> Technical Details</b> <br/><small>For developers & curious minds </small></summary>
+  <summary> <b> Detalls Tècnics</b> <br/><small>Per a desenvolupadors i ments curioses </small></summary>
   <br />
   <br/>
 
-  ### Tech Stack
+  ### Piló Tècnic
 
-  | Tool | Purpose |
+  | Eina | Propòsit |
   |------|----------|
-  | **Astro** | Static + server-side rendering |
-  | **MDX** | Game rules in interactive Markdown |
-  | **TailwindCSS** | Utility-first styling |
-  | **@astrojs/content** | Content collections for games |
-  | **Sharp** | Image optimization |
+  | **Astro** | Renderitzat estàtic i al costat del servidor |
+  | **MDX** | Regles dels jocs en Markdown interactiu |
+  | **TailwindCSS** | Estils basats en utilitats |
+  | **@astrojs/content** | Col·leccions de contingut per als jocs |
+  | **Sharp** | Optimització d'imatges |
 
   ---
 
-  ### Project Structure
+  ### Estructura del Projecte
 
   ```
   ├── 📦src
-       ├── 📂assets # Illustrations and media files
-       ├── 📂components # Reusable UI components
-       ├── 📂content # Game content (MDX files)
+       ├── 📂assets # Il·lustracions i fitxers multimèdia
+       ├── 📂components # Components d'IU reutilitzables
+       ├── 📂content # Contingut dels jocs (fitxers MDX)
             └──📂games
-       ├── 📂layouts  # Layout components
+       ├── 📂layouts  # Components de disseny
        ├── 📂lib
        ├── 📂pages
             └──📂games
@@ -122,11 +122,11 @@ This site is my attempt to:
        ├── 📂styles
        ├── 📂utils
        └── 📜content.config.ts
-  ├── public/  # Static assets (e.g. illustrations)
+  ├── public/  # Actius estàtics (p. ex. il·lustracions)
   └── astro.config.mjs
   ```
 
-  Example of content collection definition:
+  Exemple de definició de col·lecció de contingut:
 
   ```ts
   import { defineCollection, z } from 'astro:content';
@@ -152,7 +152,7 @@ This site is my attempt to:
 
   ---
 
-  ### Local Setup
+  ### Configuració Local
 
   ```bash
   git clone https://github.com/polgubau/como-se-jugaba
@@ -165,39 +165,39 @@ This site is my attempt to:
 
 ---
 
-## Screenshots
+## Captures de pantalla
 
 <figure>
-  <Image src={pc2} alt="Landing page" width={600} height={400} className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"/>
-  <figcaption>Landing page of the site.</figcaption>
+  <Image src={pc2} alt="Pàgina d'inici" width={600} height={400} className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"/>
+  <figcaption>Pàgina d'inici del lloc.</figcaption>
 </figure>
 
 <figure>
-  <Image src={pc3} alt="Example of game explication" width={600} height={400} className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"/>
-  <figcaption>Example of game explanation.</figcaption>
+  <Image src={pc3} alt="Exemple d'explicació de joc" width={600} height={400} className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"/>
+  <figcaption>Exemple d'explicació de joc.</figcaption>
 </figure>
 
 <figure>
-  <Image src={phone1} alt="Phone view" width={600} height={400} className="rounded-xl max-h-[500px] md:max-h-[600px] w-fit show-animation"/>
-  <figcaption>Phone view of the site.</figcaption>
+  <Image src={phone1} alt="Vista per a mòbil" width={600} height={400} className="rounded-xl max-h-[500px] md:max-h-[600px] w-fit show-animation"/>
+  <figcaption>Vista per a mòbil del lloc.</figcaption>
 </figure>
 
 <figure>
-  <Image src={phone2} alt="Main image of the site" width={600} height={400} className="rounded-xl max-h-[500px] md:max-h-[600px] w-fit show-animation"/>
-  <figcaption>Main image of the site.</figcaption>
+  <Image src={phone2} alt="Imatge principal del lloc" width={600} height={400} className="rounded-xl max-h-[500px] md:max-h-[600px] w-fit show-animation"/>
+  <figcaption>Imatge principal del lloc.</figcaption>
 </figure>
 
 ---
 
-## Future Plans
+## Plans de futur
 
-* Add more games (e.g. Brisca, Mus)  
-* Add video explainers  
-* Localization (ES/CAT/EN)  
-* Comments or rule variants via MDX  
+* Afegir més jocs (p. ex. Brisca, Mus)
+* Afegir vídeos explicatius
+* Localització (ES/CAT/EN)
+* Comentaris o variants de regles mitjançant MDX
 
 ---
 
-## License
+## Llicència
 
 MIT

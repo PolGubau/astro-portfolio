@@ -24,20 +24,20 @@ import { Image } from "astro:assets";
 import intellisense from "../../../assets/media/projects/animated/Intellisense.webp";
 import thumbnail from "../../../assets/media/projects/animated/thumbnail.webp";
 
-I was tired of copying animation keyframes between projects. Every new codebase started with the same paste: fade-in, slide-up, blur-in, bounce. Always slightly different. Always untested.
+Estava cansat de copiar keyframes d'animacions entre projectes. Cada nova base de codi començava amb el mateix copiar i enganxar: fade-in, slide-up, blur-in, bounce. Sempre lleugerament diferent. Sempre sense provar.
 
-So I packaged them properly.
+Així que les vaig empaquetar correctament.
 
-**Animated** is a Tailwind CSS 4 plugin with 75+ handcrafted CSS animations. One import, zero JavaScript, works in any framework.
+**Animated** és un connector de Tailwind CSS 4 amb més de 75 animacions CSS fetes a mà. Una importació, zero JavaScript, funciona en qualsevol framework.
 
 <figure>
-  <Image src={thumbnail} alt="Animated - CSS animations for Tailwind CSS 4" class="rounded-xl show-animation" width={800} height={500} />
-  <figcaption>The Animated documentation site - every animation previewed live.</figcaption>
+  <Image src={thumbnail} alt="Animated - animacions CSS per a Tailwind CSS 4" class="rounded-xl show-animation" width={800} height={500} />
+  <figcaption>El lloc de documentació de Animated - cada animació es previsualitza en viu.</figcaption>
 </figure>
 
 ---
 
-## Installation
+## Instal·lació
 
 ```sh
 pnpm add @polgubau/animated
@@ -49,26 +49,26 @@ pnpm add @polgubau/animated
 @import "@polgubau/animated";
 ```
 
-That's it. No config, no plugin registration, no JavaScript.
+Això és tot. Sense configuració, sense registre de connectors, sense JavaScript.
 
-## Usage
+## Ús
 
 ```html
-<div class="animate-fade-in">Fades in on mount</div>
-<div class="animate-slide-up">Slides up on mount</div>
-<div class="animate-blur-in animate-delay-300">Blur in, 300ms delay</div>
+<div class="animate-fade-in">Apareix gradualment en muntar-se</div>
+<div class="animate-slide-up">Llisca cap amunt en muntar-se</div>
+<div class="animate-blur-in animate-delay-300">Desenfocament d'entrada, 300ms de retard</div>
 ```
 
-Full IntelliSense support in VS Code and any TypeScript-aware editor:
+Suport complet d'IntelliSense a VS Code i qualsevol editor amb suport per a TypeScript:
 
 <figure>
-  <Image src={intellisense} alt="IntelliSense showing animation class suggestions" class="rounded-xl show-animation" width={800} height={400} />
-  <figcaption>Autocomplete works out of the box - no extra setup needed.</figcaption>
+  <Image src={intellisense} alt="IntelliSense mostrant suggeriments de classes d'animació" class="rounded-xl show-animation" width={800} height={400} />
+  <figcaption>L'autocompletat funciona des del primer moment - no cal cap configuració extra.</figcaption>
 </figure>
 
-## Without Tailwind
+## Sense Tailwind
 
-Works standalone too. Import the CSS and use the keyframes directly:
+També funciona de manera independent. Importa el CSS i utilitza els keyframes directament:
 
 ```css
 import '@polgubau/animated';
@@ -79,77 +79,77 @@ import '@polgubau/animated';
 ```
 
 
-## 📋 Available Animations
+## 📋 Animacions Disponibles
 
-@polgubau/animated provides a variety of CSS animations categorized into different groups:
+@polgubau/animated ofereix una varietat d'animacions CSS categoritzades en diferents grups:
 
-- **Blur**: 
-  - animate-blur 
+- **Desenfocament (Blur)**:
+  - animate-blur
   - animate-blur-pulse
   - animate-blur-flash
   - ...
 
-- Fade 
+- **Efecte gradual (Fade)**
   - animate-fade-in
   - animate-fade-out
   - animate-fade-pulse
   - ...
 
-- Grow
+- **Creixement (Grow)**
   - animate-grow
   - animate-grow-pulse
   - ...
 
-- Pump
+- **Batec (Pump)**
   - animate-pump
   - animate-pump-pulse
   - ...
 
-- Shake
+- **Sacsejada (Shake)**
   - animate-shake-x
   - animate-shake-y
   - ...
 
-- Slide
+- **Lliscar (Slide)**
   - animate-slide-left
   - animate-slide-right
   - animate-slide-up
   - animate-slide-down
   - ...
 
-- Wiggle
+- **Balanceig (Wiggle)**
   - animate-wiggle
   - ...
 
-- Flip
+- **Gir (Flip)**
   - animate-flip-x
   - animate-flip-y
   - animate-flip-pulse
   - ...
 
-- Roll
+- **Rodar (Roll)**
   - animate-roll-left
   - animate-roll-right
   - animate-roll-pulse
   - ...
 
-These are just some examples, the library has +75 animations to use in your project.
-*(More categories coming soon!)*
+Aquests són només alguns exemples, la llibreria té més de 75 animacions per utilitzar en el teu projecte.
+*(Més categories properament!)*
 
-## ⚡ Customization
+## ⚡ Personalització
 
-You can customize animation durations and other properties using Tailwind's utility classes:
+Pots personalitzar la durada de les animacions i altres propietats utilitzant les classes d'utilitat de Tailwind:
 
 ```html
 <div class="animate-slide-left duration-1000 ease-in-out">
-  Sliding effect!
+  Efecte de lliscar!
 </div>
 ```
 
-## Configuration
-To make it easier to configure, the animations are based in predefined css variables. You can change the default values by overriding the variables in your CSS.
+## Configuració
+Per facilitar-ne la configuració, les animacions es basen en variables CSS predefinides. Pots canviar els valors per defecte sobreescrivint les variables al teu CSS.
 
-These are the default values:
+Aquests són els valors per defecte:
 
 ```css
 :root {
@@ -178,7 +178,7 @@ These are the default values:
   --rolled-distance-negative: calc(-1 * var(--rolled-distance));
 }
 ```
-Simply override these values in your main CSS file under the library import to personalize your animations.
+Simplement sobreescriu aquests valors al teu fitxer CSS principal sota la importació de la llibreria per personalitzar les teves animacions.
 
 ```css
 /* index.css */
@@ -189,19 +189,19 @@ Simply override these values in your main CSS file under the library import to p
   --slide-amount: 40px;
 }
 ```
-*Now all slide animations will slide 40px instead of the default 20px! 😎*
+*Ara totes les animacions de lliscament lliscaran 40px en lloc dels 20px per defecte! 😎*
 
-## How Can I See the Available Animations? 🔍
+## Com puc veure les animacions disponibles? 🔍
 
-You can simply type `animate-` and you'll see all available animations in your editor.
+Simplement pots escriure `animate-` i veuràs totes les animacions disponibles al teu editor.
 
-![Tailwind intellisense highlighting animations](../../../assets/media/projects/animated/Intellisense.webp)
+![Tailwind intellisense destacant animacions](../../../assets/media/projects/animated/Intellisense.webp)
 
-> This will work automatically if you have your Tailwind extension installed in your IDE.
+> Això funcionarà automàticament si tens instal·lada l'extensió de Tailwind al teu IDE.
 
-### But I Want to Access Them Dynamically 💡
+### Però vull accedir-hi dinàmicament 💡
 
-The library exports an array of all animations in JSON format:
+La llibreria exporta una matriu de totes les animacions en format JSON:
 
 ```ts
 import animations from "@polgubau/animated/summary";
@@ -214,18 +214,18 @@ import animations from "@polgubau/animated/summary";
 ] */
 ```
 
-*You can use this array however you like. TIP: This is useful for creating dynamically animated UI components based on props. 🌟*
+*Pots utilitzar aquesta matriu com vulguis. CONSELL: Això és útil per crear components d'interfície animats dinàmicament basats en props. 🌟*
 
-## I'm Not Using Tailwind 🚫
+## No estic fent servir Tailwind 🚫
 
-**@polgubau/animated** is fully compatible with any CSS framework or vanilla CSS. Just import the library in your main CSS file:
+**@polgubau/animated** és totalment compatible amb qualsevol framework CSS o CSS pur. Només cal importar la llibreria al teu fitxer CSS principal:
 
 ```tsx
 /* index.tsx */
 import "@polgubau/animated";
 ```
 
-You'll now have access to all keyframe animations, but remember you'll need to create the classes manually.
+Ara tindràs accés a totes les animacions de keyframes, però recorda que hauràs de crear les classes manualment.
 
 ```css
 .fade-in {
@@ -235,12 +235,12 @@ You'll now have access to all keyframe animations, but remember you'll need to c
 
 ---
 
-## Explore the Animations 🌟
+## Explora les animacions 🌟
 
-Now that you know how to use the library, dive into the animations! Use the sidebar to explore different categories and see them in action. Enjoy! 🎉
+Ara que ja saps com utilitzar la llibreria, submergeix-te en les animacions! Utilitza la barra lateral per explorar diferents categories i veure-les en acció. Gaudeix-ne! 🎉
 
 ---
 
-## Documentation 📝
+## Documentació 📝
 
-The documentation is built using a **monorepo with Vite and React**. It uses **TailwindCSS** and features **fully dynamic animations**, meaning they are loaded directly from the package and not prebuilt into the documentation itself.
+La documentació està construïda utilitzant un **monorepositori amb Vite i React**. Utilitza **TailwindCSS** i compta amb **animacions totalment dinàmiques**, el que significa que es carreguen directament del paquet i no estan preconstruïdes a la pròpia documentació.

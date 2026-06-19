@@ -25,93 +25,87 @@ import phone from "../../../assets/media/projects/uabmedia/uabMediaPhone.webp"
 import phone2 from "../../../assets/media/projects/uabmedia/uabMediaPhone2.webp"
 
 
-## What is UABMèdia
+## Què és UABMèdia
 
-UABMèdia is a vital importance project for the TV and the Radio of the Universitat Autònoma de Barcelona (UAB).
+UABMèdia és un projecte de vital importància per a la TV i la Ràdio de la Universitat Autònoma de Barcelona (UAB).
 
-Consists in a web service to consult any media product made there. All podcasts, news, video programs and any kind of cultural events are stored here as a **digital library** of the communication department of the university.
+Consisteix en un servei web per consultar qualsevol producte mediàtic realitzat allà. Tots els pòdcasts, notícies, programes de vídeo i qualsevol mena d'esdeveniment cultural s'emmagatzemen aquí com una **biblioteca digital** del departament de comunicació de la universitat.
 
 {" "}
 <picture>
   <Image
-    alt="Capture and mockup of the UAB Mèdia landing page"
+    alt="Captura i mockup de la pàgina d'aterratge d'UAB Mèdia"
     width={700}
     height={500}
     className='show-animation'
     src={computer}
   />
-  <figcaption>Capture and mockup of the UAB Mèdia landing page.</figcaption>
+  <figcaption>Captura i mockup de la pàgina d'aterratge d'UAB Mèdia.</figcaption>
 </picture>
 
-You can even listen the University radio from the website without downloading any app.
+Fins i tot pots escoltar la ràdio de la Universitat des del lloc web sense descarregar cap aplicació.
 
-### Tech Stack
+### Stack tecnològic
 
-The main tool for make UABMèdia a reality is **PHP** programming language and **Javascript** for the interaction.
-It works with **WebTV** services and **AWS database** to storage the media.
+Les eines principals per fer realitat UABMèdia són el llenguatge de programació **PHP** i **JavaScript** per a la interacció.
+Funciona amb serveis de **WebTV** i una **base de dades AWS** per emmagatzemar els fitxers multimèdia.
 
-In the website, we use diferent APIs to consult these results and show them to the user.
+Al lloc web, utilitzem diferents APIs per consultar aquests resultats i mostrar-los a l'usuari.
 
-We use Javascript in different ways as frontend functions (for instance play or pause music, set a timer to the radio...) or to conditionally show different content:
-For example, if the news are on air you will se them.
+Utilitzem JavaScript de diferents maneres, com ara funcions de frontend (per exemple, reproduir o pausar la música, posar un temporitzador a la ràdio...) o per mostrar contingut de manera condicional:
+Per exemple, si les notícies estan en antena, es mostraran automàticament.
 
-### Responsive
+### Disseny adaptatiu
 
 <div className="grid grid-cols-2 gap-4 xl:gap-8 my-8">
- 
+
   <Image
     className="rounded-xl h-full max-h-[500px] object-contain pl-16 show-first-phone"
     src={phone}
-    alt="UAB Mèdia responsive design on mobile"
+    alt="Disseny adaptatiu d'UAB Mèdia en mòbil"
   />
 
 
 <div className="mt-12">
   <Image
-  alt="UAB Mèdia responsive design on mobile"
+  alt="Disseny adaptatiu d'UAB Mèdia en mòbil"
     className="rounded-xl h-full max-h-[500px] object-contain show-second-phone"
     src={phone2}
   />
 </div>
 
 </div>
-The responsive design is a key for the service, during 2021, the **78% of the
-visits are done in mobiles device** so mobile experience needs to be as good or
-even better than in wide devices.
+El disseny adaptatiu és clau per al servei; durant el 2021, el **78% de les visites es van fer des de dispositius mòbils**, per la qual cosa l'experiència mòbil ha de ser tan bona o fins i tot millor que en dispositius de pantalla gran.
 
-In this example we can see how the content is placed in mobile devices:
+En aquest exemple podem veure com s'ubica el contingut en dispositius mòbils:
 
-- Navigation is moved to the bottom part as modern interface.
-- The current selected tab is darker to always know where you are.
-- The radio section has another color to mark it's parts, the play button has a hard contrast so we are showing how important it is for the website.
-- All boxes (as the weather one) have a limitted width and a small margins in
-  the horizontal direction so will never touch the sides of the screen (it's
-  part of the interface, main different compared to the radio or navigation
-  section)
+- La navegació es mou a la part inferior, seguint els patrons d'interfície moderns.
+- La pestanya seleccionada actualment és més fosca per saber sempre on ets.
+- La secció de ràdio té un altre color per marcar les seves parts; el botó de reproducció té un contrast fort per mostrar com n'és d'important per al lloc web.
+- Totes les caixes (com la del temps) tenen una amplada limitada i marges petits en sentit horitzontal per no tocar mai els costats de la pantalla (és part de la interfície, la principal diferència respecte a la secció de ràdio o navegació).
 
-## My role
+## El meu paper
 
-I had been involve for a bit less than a year as a **frontend developer** intern. Sometimes we were more but usually we were just 2 or 3 people working on the project because it had a small budget and it was it's first year alive. Nowadays it's a bit bigger and it has more people working on it.
+Vaig estar involucrat durant una mica menys d'un any com a becari de **desenvolupament frontend**. De vegades érem més, però normalment només érem 2 o 3 persones treballant en el projecte perquè tenia un pressupost reduït i era el seu primer any de vida. Avui dia és una mica més gran i hi ha més gent treballant-hi.
 
-I was in charge of the **frontend** part of the project, so I had to make the website look good and work as expected. I had to make the **responsive design** and the **animations**.
+Jo estava a càrrec de la part **frontend** del projecte, així que havia de fer que el lloc web es veies bé i funcionés com s'esperava. Vaig haver de fer el **disseny adaptatiu** i les **animacions**.
 
-I also had interesting tasks as the radio player, the weather widget or the
-news section, some Javascript functions were needed to make them work.
+També vaig tenir tasques interessants com el reproductor de ràdio, el widget del temps o la secció de notícies, on calien algunes funcions de JavaScript per fer-les funcionar.
 
-In my lasts days, I also **taught the new interns** how to work with the project and how to make the website work.
+En els meus últims dies, també vaig **ensenyar als nous becaris** com treballar amb el projecte i com mantenir el lloc web.
 
-### What I learned
+### Què vaig aprendre
 
-1. **Javascript** is a powerful tool, I had to learn it to make the radio player work and it was a great experience to reach that goal as the designers were expecting.
+1. **JavaScript** és una eina poderosa; vaig haver d'aprendre'l per fer funcionar el reproductor de ràdio i va ser una gran experiència assolir aquest objectiu tal com esperaven els dissenyadors.
 
-2. **Responsive design** is a must nowadays, I had to make the website look good in every device and it was a challenge to make it work in every screen size.
+2. El **disseny adaptatiu** és imprescindible avui dia; vaig haver de fer que el lloc web es veies bé en tots els dispositius i va ser un repte fer-lo funcionar en totes les mides de pantalla.
 
-3. **Animations** are a great way to make the website look better, I had to make some animations to make the website look more alive and it was a great experience to learn how to do it.
+3. Les **animacions** són una gran manera de millorar el lloc web; vaig haver de fer algunes animacions per fer que el lloc web semblés més viu i va ser una gran experiència aprendre a fer-ho.
 
-4. **Teamwork** is a great way to make a project work, I had to work with other people and it was a great experience to learn how to work with them.
+4. El **treball en equip** és una gran manera de fer que un projecte funcioni; vaig haver de treballar amb altres persones i va ser una gran experiència aprendre a col·laborar amb ells.
 
-5. **Github** is a powerful tool to work in a team, I had to learn how to use it, I did some courses about **branching**, **merging** and **pull requests** and it was a great experience to learn how to use it.
+5. **GitHub** és una eina molt potent per treballar en equip; vaig haver d'aprendre a utilitzar-la, vaig fer alguns cursos sobre **branques (branching)**, **fusions (merging)** i **pull requests** i va ser una gran experiència aprendre a utilitzar-lo correctament.
 
-## Conclusion
+## Conclusió
 
-UABMèdia was a great oportunity to grow as a developer and as a person, I had to learn a lot of things and it was a great experience to learn how to work in a small team of developers.
+UABMèdia va ser una gran oportunitat per créixer com a desenvolupador i com a persona; vaig haver d'aprendre moltes coses i va ser una gran experiència aprendre a treballar en un equip petit de desenvolupadors.

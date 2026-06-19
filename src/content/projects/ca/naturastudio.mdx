@@ -30,68 +30,68 @@ import packExample from "../../../assets/media/projects/naturastudio/pack-exampl
 import packList from "../../../assets/media/projects/naturastudio/pack-list.webp"
 import sobreMi from "../../../assets/media/projects/naturastudio/sobre-mi.webp"
 
-## Landing Page for a Photographer Brand
+## Landing Page per a una marca de fotografia
 
 <ul className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-4 list-none pl-0!">
-<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80">Astro + Tailwind</h3><small>Lightweight and performant</small></li>
-<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80">100% SEO</h3><small>Optimized for search engines</small></li>
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80">Astro + Tailwind</h3><small>Lleuger i eficient</small></li>
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80">100% SEO</h3><small>Optimitzat per a cercadors</small></li>
 <li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80"> \<0.5s</h3><small>
 First Contentful Paint</small></li>
 </ul>
 
-<Image src={hero} alt="Naturastudio hero section" height={700} class={"show-animation rounded-2xl"} />
+<Image src={hero} alt="Secció hero de Naturastudio" height={700} class={"show-animation rounded-2xl"} />
 
-Naturastudio is the personal brand of <At label='Nuria Fluvia' href='https://www.flickr.com/photos/182279030@N06/'/>, a young photographer and graphic designer passionate about capturing the **authentic and natural beauty** of real moments.  
-The goal was to create a **calm, emotional, and elegant digital space** that reflected her artistic identity while maintaining excellent SEO performance and minimal loading time.
+Naturastudio és la marca personal de <At label='Nuria Fluvia' href='https://www.flickr.com/photos/182279030@N06/'/>, una jove fotògrafa i dissenyadora gràfica apassionada per capturar la **bellesa autèntica i natural** dels moments reals.
+L'objectiu era crear un **espai digital calmat, emocional i elegant** que reflectís la seva identitat artística, mantenint un rendiment SEO excel·lent i un temps de càrrega mínim.
 
-The landing features her most popular photography packs, from weddings to newborn sessions, along with testimonials and a personal “About Me” section that builds trust and connection with potential clients.
+La landing presenta els seus paquets de fotografia més populars, des de bodes fins a sessions de nounats, juntament amb testimonis i una secció personal "Sobre mi" que genera confiança i connexió amb els clients potencials.
 
-### Highlights
-- Brand identity based on **nature, authenticity, and emotion**.  
-- Clean design with **warm tones and subtle animations**.  
-- Optimized for **fast loading, accessibility, and search discoverability**.  
-- Built for scalability: future-ready to host a booking system and blog.  
+### Aspectes destacats
+- Identitat de marca basada en la **natura, l'autenticitat i l'emoció**.
+- Disseny net amb **tons càlids i animacions subtils**.
+- Optimitzat per a una **càrrega ràpida, accessibilitat i visibilitat en cercadors**.
+- Construït per a l'escalabilitat: preparat per acollir un sistema de reserves i un blog en el futur.
 
-<Image src={packList} alt="Naturastudio photography packs list" height={700} class={"show-animation rounded-2xl my-8"} />
-<Image src={packExample} alt="Photography pack example" height={700} class={"show-animation rounded-2xl my-8"} />
-<Image src={sobreMi} alt="About the photographer section" height={700} class={"show-animation rounded-2xl my-8"} />
+<Image src={packList} alt="Llista de paquets de fotografia de Naturastudio" height={700} class={"show-animation rounded-2xl my-8"} />
+<Image src={packExample} alt="Exemple de paquet de fotografia" height={700} class={"show-animation rounded-2xl my-8"} />
+<Image src={sobreMi} alt="Secció sobre la fotògrafa" height={700} class={"show-animation rounded-2xl my-8"} />
 
 
 
 <details>
-  <summary> <b>Technical Details</b> <br/><small>For developers & curious minds</small></summary>
+  <summary> <b>Detalls tècnics</b> <br/><small>Per a desenvolupadors i ments curioses</small></summary>
 
-  ### Tech Stack
-  - **Astro** for lightning-fast static rendering and SEO-first architecture.  
-  - **TailwindCSS** for custom styling and responsive design.  
-  - **Vanilla JavaScript** for interactivity and animations without extra libraries.  
-  - **Vercel** for deployment with automatic build optimizations.  
+  ### Stack tecnològic
+  - **Astro** per a un renderitzat estàtic ultraràpid i una arquitectura centrada en el SEO.
+  - **TailwindCSS** per a un estil personalitzat i disseny responsiu.
+  - **Vanilla JavaScript** per a la interactivitat i les animacions sense llibreries extres.
+  - **Vercel** per al desplegament amb optimitzacions de construcció automàtiques.
 
-  ### Structure & Approach
-  The site is structured as a **component-based Astro project** with modular sections:
-  - `components/` → reusable UI pieces (Hero, Packs, Testimonials, Contact).  
-  - `layouts/` → shared layouts for consistent structure and metadata.  
-  - `assets/` → optimized `.webp` images with responsive loading.  
+  ### Estructura i enfocament
+  El lloc està estructurat com un **projecte Astro basat en components** amb seccions modulars:
+  - `components/` → peces d'interfície reutilitzables (Hero, Paquets, Testimonis, Contacte).
+  - `layouts/` → dissenys compartits per a una estructura i metadades consistents.
+  - `assets/` → imatges `.webp` optimitzades amb càrrega responsiva.
 
-  ### Performance & SEO
-  - Fully **SEO-optimized** with meta tags, alt texts, and structured data.  
-  - **Lazy loading** for images and smooth fade-in animations.  
-  - LCP below **1.1s** on desktop and **1.4s** on mobile.  
+  ### Rendiment i SEO
+  - Totalment **optimitzat per al SEO** amb metaetiquetes, textos alternatius i dades estructurades.
+  - **Càrrega mandrosa** (lazy loading) per a les imatges i animacions suaus de tipus fade-in.
+  - LCP per sota d'**1.1s** en escriptori i **1.4s** en mòbil.
 
-  <Image src={stats} alt="UI pack detail" height={700} class={"show-animation rounded-2xl my-8"} />
+  <Image src={stats} alt="Detall del paquet d'interfície" height={700} class={"show-animation rounded-2xl my-8"} />
 
 
 </details>
 
 
 
-### Outcome
+### Resultat
 
-Naturastudio became a **digital extension of Nuria's artistic brand**, minimal, natural, and emotionally engaging.
+Naturastudio s'ha convertit en una **extensió digital de la marca artística de la Nuria**, minimalista, natural i emocionalment atractiva.
 <div class="show-animation flex flex-col gap-1 my-8 rounded-2xl overflow-hidden">
-  <Image src={packBook} alt="UI pack detail" height={700} />
-  <Image src={contact} alt="Contact form section" height={700} />
+  <Image src={packBook} alt="Detall del paquet d'interfície" height={700} />
+  <Image src={contact} alt="Secció del formulari de contacte" height={700} />
 </div>
-It communicates her personality and professionalism, helping her **stand out in a saturated photography market** while maintaining excellent SEO visibility and technical performance.
+Comunica la seva personalitat i professionalitat, ajudant-la a **destacar en un mercat fotogràfic saturat** mentre manté una visibilitat SEO i un rendiment tècnic excel·lents.
 
  

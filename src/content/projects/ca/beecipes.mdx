@@ -20,98 +20,98 @@ import beecipesCover from "../img/beecipes.webp"
 import { Image } from 'astro:assets';
 
 
-This is my Participation in JOBarcelona 2023 hackathon. Beecipes is a recipe app that uses the Spoonacular API to fetch recipes and display them in a user-friendly way. **It was done in less than 24 hours as a challenge**.
+Aquesta és la meva participació al hackathon JOBarcelona 2023. Beecipes és una aplicació de receptes que utilitza l'API de Spoonacular per obtenir receptes i mostrar-les de manera fàcil per a l'usuari. **Es va fer en menys de 24 hores com a repte**.
 
-- This App is built with React and Recoil.
+- Aquesta aplicació està construïda amb React i Recoil.
 
-- Uses the **Spoonacular API** to fetch recipes and display them.
+- Utilitza l'**API de Spoonacular** per obtenir i mostrar les receptes.
 
   <Image
-    alt="Stickies notes mobile mockup image"
+    alt="Mockup de Beecipes per a mòbils"
     width={800}
     height={500}
     className="rounded-xl h-full max-h-[500px] my-8 object-contain "
     src={beecipesCover}
   />
 
-## Features
+## Funcionalitats
 
-- Search for recipes by name
-- Search for recipes randomly
-- Local storage to save recipes
-- Less fetches to the API saving data
+- Cercar receptes per nom
+- Cercar receptes aleatòriament
+- Emmagatzematge local per desar receptes
+- Reducció de crides a l'API per estalviar dades
 
-These features are designed to **improve the user experience by providing useful functionality and reducing the amount of data that needs to be fetched from the API**. The ability to search for recipes by name allows users to quickly find the recipe they are looking for, while the ability to search for recipes randomly provides a fun and easy way to discover new recipes.
+Aquestes funcionalitats estan dissenyades per **millorar l'experiència de l'usuari proporcionant una funcionalitat útil i reduint la quantitat de dades que s'han d'obtenir de l'API**. La capacitat de cercar receptes per nom permet als usuaris trobar ràpidament la recepta que busquen, mentre que la capacitat de cercar receptes de forma aleatòria ofereix una manera divertida i senzilla de descobrir noves receptes.
 
-The addition of local storage also improves the user experience by allowing users to save their favorite recipes and access them offline. This reduces the reliance on internet connectivity and allows users to access their saved recipes at any time.
+L'addició de l'emmagatzematge local també millora l'experiència de l'usuari en permetre als usuaris desar les seves receptes preferides i accedir-hi sense connexió. Això redueix la dependència de la connexió a Internet i permet als usuaris accedir a les seves receptes desades en qualsevol moment.
 
-Finally, by reducing the number of fetches to the API, we can save on data usage and improve the overall speed of the application. This is an important consideration for users who may have limited data plans or slower internet connections.
+Finalment, en reduir el nombre de crides a l'API, podem estalviar en l'ús de dades i millorar la velocitat general de l'aplicació. Aquesta és una consideració important per als usuaris que puguin tenir plans de dades limitats o connexions a Internet més lentes.
 
-## **Installation**
+## **Instal·lació**
 
-This project is build using Vite.
+Aquest projecte està construït amb Vite.
 
-1. Clone the repo
+1. Clona el repositori
 
    ```bash
    git clone https://github.com/PolGubau/hackathon-JOBarcelona-recipes-2023.git
    ```
 
-2. Install the dependencies
+2. Instal·la les dependències
 
    ```bash
    pnpm i
    ```
 
-3. Run the project
+3. Executa el projecte
 
    ```bash
-    pnpm run dev
+   pnpm run dev
    ```
 
-4. Open the project in your preferred code editor.
+4. Obre el projecte al teu editor de codi preferit.
 
-## **Usage**
+## **Ús**
 
-Instructions on how to use the project.
+Instruccions sobre com utilitzar el projecte.
 
-To use the app you need to get an API key from [Spoonacular](https://spoonacular.com/food-api).
+Per utilitzar l'aplicació, has d'obtenir una clau d'API de [Spoonacular](https://spoonacular.com/food-api).
 
-After obtaining the API key from Spoonacular, you can follow these steps to use the app:
+Després d'obtenir la clau d'API de Spoonacular, pots seguir aquests passos per utilitzar l'aplicació:
 
-Open the project in your preferred code editor.
-Navigate to the src/models/url.ts file and replace YOUR_API_KEY with your actual API key obtained from Spoonacular.
-Save the changes made to the src/models/url.ts file.
-Open the project using
+Obre el projecte al teu editor de codi preferit.
+Ves al fitxer `src/models/url.ts` i substitueix `YOUR_API_KEY` per la teva clau d'API real obtinguda de Spoonacular.
+Desa els canvis realitzats al fitxer `src/models/url.ts`.
+Obre el projecte utilitzant:
 
 ```bash
 npm run dev
 ```
 
-You should now be able to use the app to search for recipes by name or randomly and save them to local storage.
-Note: Make sure you have a stable internet connection while using the app to avoid any errors while fetching data from the API.
+Ara ja hauries de poder utilitzar l'aplicació per cercar receptes per nom o de forma aleatòria i desar-les a l'emmagatzematge local.
+Nota: Assegura't de tenir una connexió a Internet estable mentre utilitzes l'aplicació per evitar qualsevol error en obtenir les dades de l'API.
 
-## **Roadmap**
+## **Full de ruta**
 
-Future plans for the project.
+Plans de futur per al projecte.
 
-1. Filter recipes by ingredients, calories, etc.
-2. Add a shopping list
-3. Add a favorites list
-4. Add a login system
+1. Filtrar receptes per ingredients, calories, etc.
+2. Afegir una llista de la compra
+3. Afegir una llista de preferits
+4. Afegir un sistema d'inici de sessió
 
-## **Contributing**
+## **Contribució**
 
-Guidelines on how to contribute to the project (more details in the repo)
+Directrius sobre com contribuir al projecte (més detalls al repositori).
 
-1. Fork the project in Github
-2. Create a new branch
-3. Commit your changes
-4. Push to the branch
-5. Open a pull request
+1. Fes un fork del projecte a GitHub
+2. Crea una nova branca
+3. Fes un commit dels teus canvis
+4. Puja-ho a la branca
+5. Obre una pull request
 
-## **License**
+## **Llicència**
 
-License information for the project:
-This project is licensed under the MIT License.
-Is totally free to use and modify as is Open Source.
+Informació de la llicència del projecte:
+Aquest projecte està llicenciat sota la Llicència MIT.
+És totalment gratuït d'utilitzar i modificar, ja que és de codi obert (Open Source).

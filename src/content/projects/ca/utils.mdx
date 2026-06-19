@@ -24,14 +24,14 @@ tech:
 
 import { Image } from 'astro:assets';
 
-Utils is a npm package that collects +50 handmade typed Javascript utilities, made to enhance your projects. 🚀  
+@polgubau/utils és un paquet d'npm que recull més de 50 utilitats de JavaScript fetes a mà i amb tipat, creades per millorar els teus projectes. 🚀
 
-I have also coded a documentation page with all details and examples of the utilities so you can easily integrate them into your project.
+També he programat una pàgina de documentació amb tots els detalls i exemples de les utilitats perquè les puguis integrar fàcilment al teu projecte.
 
-## 📦 Installation
+## 📦 Instal·lació
 
-Install the library via npm or pnpm:
-  
+Instal·la la llibreria mitjançant npm o pnpm:
+
 ```sh
 npm install @polgubau/utils
 # or
@@ -39,99 +39,99 @@ pnpm add @polgubau/utils
 ```
 
 
-## What and why
+## Què i per què
 
-Over the past few years, TypeScript has become almost my second mother tongue after Spanish.  
-I kept noticing how often I was rewriting the same utilities "debounce", "throttle", or "copy to clipboard" across different projects. Instead of reinventing the wheel every time, I decided to build a small library with the utilities I use the most in my daily work.
+Durant els darrers anys, TypeScript s'ha convertit gairebé en la meva segona llengua materna després del castellà.
+Em vaig adonar de quantes vegades reescrivia les mateixes utilitats com "debounce", "throttle" o "copy to clipboard" en diferents projectes. En lloc de reinventar la roda cada vegada, vaig decidir construir una petita llibreria amb les utilitats que més utilitzo en el meu dia a dia.
 
-**@polgubau/utils** is a lightweight utility library designed to simplify common JavaScript and TypeScript tasks. It's modular, framework-agnostic, tree-shakable, and optimized for performance.
+**@polgubau/utils** és una llibreria d'utilitats lleugera dissenyada per simplificar les tasques comunes de JavaScript i TypeScript. És modular, independent del framework, tree-shakable i optimitzada per al rendiment.
 
-### What this is NOT ⚠️
-- A catch-all library that solves every problem.
-- A replacement for Lodash or Underscore.
-- A package that will unnecessarily inflate your bundle size.
+### Què NO és ⚠️
+- Una llibreria per a tot que resol tots els problemes.
+- Un substitut de Lodash o Underscore.
+- Un paquet que inflarà innecessàriament la mida del teu bundle.
 
-### What this IS ✅
-- A collection of small, focused utility functions.
-- Modular, tree-shakable and lightweight both for CJS and ESM.
-- Designed to be simple, efficient, and easy to use.
-- Fully typed, with TypeScript definitions included.
+### Què ÉS ✅
+- Una col·lecció de funcions d'utilitat petites i enfocades.
+- Modular, tree-shakable i lleugera tant per a CJS com per a ESM.
+- Dissenyada per ser senzilla, eficient i fàcil d'utilitzar.
+- Totalment tipada, amb definicions de TypeScript incloses.
 
-## Installation
+## Instal·lació
 
-Install the library using your package manager of choice:
+Instal·la la llibreria utilitzant el teu gestor de paquets preferit:
 
 ```sh
 pnpm add @polgubau/utils
 ```
 
-## Usage
+## Ús
 
-Import the utilities you need from the package:
+Importa les utilitats que necessitis del paquet:
 
 ```js
 import { copyToClipboard } from "@polgubau/utils";
 ```
 
-For even better optimization, you can import specific modules or functions as needed:
+Per a una optimització encara millor, pots importar mòduls o funcions específiques segons sigui necessari:
 
 ```js
 import { copyToClipboard } from "@polgubau/utils/functions";
 import { shuffle } from "@polgubau/utils/arrays";
 ```
 
-## Available Modules
+## Mòduls disponibles
 
-- **Storage**: Utilities for working with *localStorage* and *sessionStorage*.
-- **Accessibility**: Helpers to improve web accessibility.
-- **Arrays**: Functions to manipulate arrays efficiently.
-- **Comparators**: Utility functions for sorting and comparing data.
-- **Functions**: Higher-order functions and utility methods.
-- **Numbers**: Mathematical and number-related utilities.
-- **Objects**: Object manipulation and transformation helpers.
-- **Parsers**: Functions for parsing different types of data as JSON.
-- **Texts**: String and text processing utilities.
+- **Storage**: Utilitats per treballar amb *localStorage* i *sessionStorage*.
+- **Accessibility**: Ajudes per millorar l'accessibilitat web.
+- **Arrays**: Funcions per manipular arrays de manera eficient.
+- **Comparators**: Funcions d'utilitat per ordenar i comparar dades.
+- **Functions**: Funcions d'ordre superior i mètodes d'utilitat.
+- **Numbers**: Utilitats matemàtiques i relacionades amb números.
+- **Objects**: Ajudes per a la manipulació i transformació d'objectes.
+- **Parsers**: Funcions per analitzar diferents tipus de dades com JSON.
+- **Texts**: Utilitats de processament de cadenes i text.
 
-## Example
+## Exemple
 
-Using the arrays module:
+Utilitzant el mòdul d'arrays:
 
 ```js
-import { limitArray } from "@polgubau/utils/arrays"; 
-const { limitedArray } = limitArray([1, 2, 3, 4, 5]); 
+import { limitArray } from "@polgubau/utils/arrays";
+const { limitedArray } = limitArray([1, 2, 3, 4, 5]);
 console.log(limitedArray); // [1, 2]
 ```
 
-## TypeScript Support
+## Suport de TypeScript
 
-As it should always be, this library includes full TypeScript support with type definitions included.
+Com hauria de ser sempre, aquesta llibreria inclou suport complet de TypeScript amb definicions de tipus incloses.
 
 
 
-## 🛠 Development
+## 🛠 Desenvolupament
 
-### Building the project
+### Construcció del projecte
 
-The easiest way to work with the project monorepo is to run
+La manera més fàcil de treballar amb el monorepo del projecte és executar
 
 ```sh
 pnpm dev
 ```
-in the root directory. This will start a watch build for the package and start a local server to preview the documentation page.
+al directori arrel. Això iniciarà una compilació en mode watch per al paquet i iniciarà un servidor local per previsualitzar la pàgina de documentació.
 
-## 📜 License
+## 📜 Llicència
 
-This project is licensed under the **MIT** License.  
+Aquest projecte està sota la llicència **MIT**.
 
-## 💡 More info
+## 💡 Més informació
 
-- [Documentation](https://utils.polgubau.com)
-- [GitHub Repository](https://github.com/polgubau/utils)
-- [NPM Package](https://www.npmjs.com/package/@polgubau/utils)
+- [Documentació](https://utils.polgubau.com)
+- [Repositori de GitHub](https://github.com/polgubau/utils)
+- [Paquet NPM](https://www.npmjs.com/package/@polgubau/utils)
 
 
-## Badges
- 
+## Insígnies
+
 <nav className="flex items-center gap-4 flex-wrap">
 <Image src="https://raw.githubusercontent.com/PolGubau/utils/4dfcb7508db2c298447567148df2440cd6e813b6/badges/packages/utils/coverage-branches.svg" alt="Branches" width={100} height={20} className="h-5" />
 

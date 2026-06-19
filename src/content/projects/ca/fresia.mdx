@@ -35,50 +35,50 @@ import tutorial from "../../../assets/media/projects/fresia/tutorial.webp"
 import thumbnail from "../img/fresia.webp"
  
 
-Customer asked an interactive landing page for their 2025's christmas campaign showcasing modern web development techniques with advanced animations, 3D graphics, and performance optimization.
+El client va demanar una pàgina d'aterratge interactiva per a la seva campanya de Nadal del 2025, mostrant tècniques modernes de desenvolupament web amb animacions avançades, gràfics 3D i optimització del rendiment.
 
 
 
 <ul className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-4 list-none pl-0!">
-<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80">Astro + Tailwind</h3><small>Lightweight and performant</small></li>
-<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80">100% SEO</h3><small>Optimized for search engines</small></li>
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80">Astro + Tailwind</h3><small>Lleuger i amb gran rendiment</small></li>
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80">100% SEO</h3><small>Optimitzat per a motors de cerca</small></li>
 <li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80"> \<0.3s</h3><small>
 First Contentful Paint</small></li>
 </ul>
 
-<Image src={thumbnail} alt="thumbnail" height={700} class={"show-animation rounded-2xl"} />
+<Image src={thumbnail} alt="miniatura" height={700} class={"show-animation rounded-2xl"} />
 
 
-## Overview
+## Vista general
 
-Landing page built for the **most known flower shop** in Mataró. This project showcases advanced web development techniques including **smooth animations**, interactive 3D graphics, while optimizing all assets for performance and SEO.
-
-
-## Section Highlights
-### Hero Section
-<Image src={hero} alt="thumbnail" height={700} class={"show-animation rounded-2xl"} />
-The hero section features a full-width image carousel with smooth GSAP-powered animations. The heading uses SplitText for a letter-by-letter reveal effect as the user scrolls down.
- 
-
-### Main Product Section
-<Image src={main} alt="thumbnail" height={700} class={"show-animation rounded-2xl"} />
-The main product section highlights the main product information with a large, high-quality image that grows slightly on scroll, creating a dynamic and engaging visual effect.
-
-### Product List Section
-<Image src={product} alt="thumbnail" height={700} class={"show-animation rounded-2xl"} />
-This landing was built to showcase the most popular products of the season, it's not an e-commerce. Each product card animates into view with a smooth fade and slide effect as the user scrolls down the page.
+Pàgina d'aterratge construïda per a la **floristeria més coneguda** de Mataró. Aquest projecte mostra tècniques avançades de desenvolupament web, incloent-hi **animacions suaus** i gràfics 3D interactius, mentre s'optimitzen tots els actius per al rendiment i el SEO.
 
 
-### Storytelling Section
-<Image src={storyboard} alt="thumbnail" height={700} class={"show-animation rounded-2xl"} />
-This section tells the brand's story with a combination of text and images. The text reveals itself with a scroll-triggered animation, while the images fade in for a cohesive narrative experience.
-
-### Cuidar la Frèsia Carousel
-<Image src={tutorial} alt="thumbnail" height={700} class={"show-animation rounded-2xl"} />
-A carousel showcasing tips on how to care for a Poinsettia, a popular Christmas plant. The carousel is created with pure CSS and the scroll-snap feature, providing a smooth and intuitive navigation experience.
+## Punts destacats de les seccions
+### Secció Hero
+<Image src={hero} alt="hero" height={700} class={"show-animation rounded-2xl"} />
+La secció hero inclou un carrussel d'imatges a tota amplada amb animacions suaus impulsades per GSAP. L'encapçalament utilitza SplitText per a un efecte de revelació lletra per lletra a mesura que l'usuari es desplaça cap avall.
 
 
-### 3D Gift Card Section
+### Secció de producte principal
+<Image src={main} alt="producte principal" height={700} class={"show-animation rounded-2xl"} />
+Aquesta secció destaca la informació del producte estrella amb una imatge gran d'alta qualitat que creix lleugerament en fer scroll, creant un efecte visual dinàmic i atractiu.
+
+### Secció de llista de productes
+<Image src={product} alt="llista de productes" height={700} class={"show-animation rounded-2xl"} />
+Aquesta pàgina es va construir per mostrar els productes més populars de la temporada; no és un comerç electrònic. Cada targeta de producte s'anima en aparèixer amb un efecte de desaparició i lliscament suau a mesura que l'usuari baixa per la pàgina.
+
+
+### Secció de narració (Storytelling)
+<Image src={storyboard} alt="narració" height={700} class={"show-animation rounded-2xl"} />
+Aquesta secció explica la història de la marca amb una combinació de text i imatges. El text es revela amb una animació activada pel desplaçament, mentre que les imatges apareixen gradualment per a una experiència narrativa cohesionada.
+
+### Carrussel "Cuidar la Frèsia"
+<Image src={tutorial} alt="tutorial" height={700} class={"show-animation rounded-2xl"} />
+Un carrussel que mostra consells sobre com cuidar una Poinsettia, una planta de Nadal molt popular. El carrussel està creat amb CSS pur i la funció de scroll-snap, proporcionant una experiència de navegació suau i intuïtiva.
+
+
+### Secció de targeta de regal 3D
 <figure>
   <video
     class="rounded-xl h-full w-full max-h-[400px] md:max-h-[500px] object-cover show-animation"
@@ -88,172 +88,172 @@ A carousel showcasing tips on how to care for a Poinsettia, a popular Christmas 
     playsinline
   >
     <source src={card} type="video/mp4" />
-    Your browser does not support the video tag.
+    El teu navegador no admet l'etiqueta de vídeo.
   </video>
-  <figcaption class="text-center">3D Gift Card with physics simulation.</figcaption>
+  <figcaption class="text-center">Targeta de regal 3D amb simulació de física.</figcaption>
 </figure>
-This section features an interactive 3D gift card that users can rotate and interact with. Built using React Three Fiber and Rapier physics engine, it provides a unique and engaging experience that stands out.
+Aquesta secció inclou una targeta de regal 3D interactiva que els usuaris poden girar i amb la qual poden interactuar. Construïda amb React Three Fiber i el motor de física Rapier, ofereix una experiència única i atractiva que destaca.
 
 
 
 <details>
-  <summary> <b> Technical Details</b> <br/><small>For developers & curious minds</small></summary>
-  ## Technical Details
+  <summary> <b> Detalls Tècnics</b> <br/><small>Per a desenvolupadors i ments curioses</small></summary>
+  ## Detalls Tècnics
 
-  <Image src={stats} alt="stats of the project" height={700} class={"show-animation rounded-2xl"} />
-  As with all my projects, performance and SEO were top priorities. The landing page achieves a Lighthouse performance score of 99+, with a First Contentful Paint (FCP) under 0.3 seconds, thanks to Astro's static site generation and optimized asset handling.
+  <Image src={stats} alt="estadístiques del projecte" height={700} class={"show-animation rounded-2xl"} />
+  Com en tots els meus projectes, el rendiment i el SEO van ser prioritats màximes. La pàgina d'aterratge aconsegueix una puntuació de rendiment de Lighthouse de 99+, amb un First Contentful Paint (FCP) inferior a 0,3 segons, gràcies a la generació de llocs estàtics d'Astro i a la gestió optimitzada dels actius.
 
 
 
-#### Advanced Animations
-- **GSAP-powered interactions**: Smooth, hardware-accelerated animations with ScrollTrigger for scroll-based reveals
-- **Letter-by-letter text reveal**: Custom typography animations with staggered delays
-- **Transform-based animations**: Zero layout thrashing for 60fps performance
-- **Dynamic import strategy**: Code-split animation libraries for optimal bundle size
+#### Animacions avançades
+- **Interaccions impulsades per GSAP**: Animacions suaus accelerades per maquinari amb ScrollTrigger per a revelacions basades en el desplaçament.
+- **Revelació de text lletra per lletra**: Animacions tipogràfiques personalitzades amb retards escalonats.
+- **Animacions basades en transformacions**: Zero "layout thrashing" per a un rendiment de 60 fps.
+- **Estratègia d'importació dinàmica**: Biblioteques d'animació dividides per codi per a una mida de paquet òptima.
 
-#### Interactive 3D Scene
-- **React Three Fiber integration**: Real-time 3D gift card with physics simulation
-- **Rapier physics engine**: Realistic rope/band dynamics with joint constraints
-- **Custom shader materials**: MeshLine implementation for textured band rendering
-- **Responsive 3D positioning**: Viewport-aware camera and object placement
+#### Escena 3D interactiva
+- **Integració de React Three Fiber**: Targeta de regal 3D en temps real amb simulació de física.
+- **Motor de física Rapier**: Dinàmica realista de cordes/bandes amb restriccions d'unió.
+- **Materials de shader personalitzats**: Implementació de MeshLine per al renderitzat de bandes amb textura.
+- **Posicionament 3D adaptatiu**: Càmera i col·locació d'objectes conscients del "viewport".
 
-#### Progressive Image Loading
-- **LQIP (Low-Quality Image Placeholder)**: Blur-up technique for perceived performance
-- **Custom Astro component**: Reusable `ProgressiveImage` with load state management
-- **Optimized assets**: Astro's built-in image optimization with WebP support
-- **CLS prevention**: Reserved layout space to avoid content shifts
+#### Càrrega d'imatge progressiva
+- **LQIP (Low-Quality Image Placeholder)**: Tècnica de "blur-up" per a la percepció del rendiment.
+- **Component Astro personalitzat**: `ProgressiveImage` reutilitzable amb gestió de l'estat de càrrega.
+- **Actius optimitzats**: Optimització d'imatges integrada d'Astro amb suport per a WebP.
+- **Prevenció de CLS**: Espai de disseny reservat per evitar canvis de contingut.
 
-#### Carousel Implementation
-- **GSAP Timeline animations**: Smooth slide transitions with custom easing
-- **Multi-input navigation**: Keyboard, mouse, touch swipe support
-- **Autoplay with pause-on-hover**: UX-optimized auto-advance
-- **Accessible markup**: ARIA labels and semantic HTML
+#### Implementació del carrussel
+- **Animacions de línia de temps GSAP**: Transicions de diapositives suaus amb suavitzat personalitzat.
+- **Navegació amb múltiples entrades**: Suport per a teclat, ratolí i lliscament tàctil.
+- **Reproducció automàtica amb pausa en passar el cursor**: Avanç automàtic optimitzat per a l'UX.
+- **Marcatge accessible**: Etiquetes ARIA i HTML semàntic.
 
-#### Internationalization Ready
-- **Structured i18n**: Extracted copy strings to `src/locales/es.json`
-- **Scalable architecture**: Foundation for multi-language support
-- **Context-based keys**: Organized translations by section and purpose
+#### Preparat per a la internacionalització
+- **i18n estructurat**: Cadenes de text extretes a `src/locales/es.json`.
+- **Arquitectura escalable**: Base per al suport multiidioma.
+- **Claus basades en el context**: Traduccions organitzades per secció i propòsit.
 
-#### Performance Optimizations
-- **Static Site Generation**: Pre-rendered pages with Astro's zero-JS default
-- **Islands Architecture**: Selective hydration for interactive components
-- **Dynamic imports**: Lazy-loaded libraries (GSAP, Three.js) on demand
-- **Minimal JavaScript**: ~95% static HTML/CSS, JS only where needed
+#### Optimitzacions de rendiment
+- **Generació de llocs estàtics**: Pàgines prerenneritzades amb el valor predeterminat d'Astro de zero-JS.
+- **Arquitectura d'illes**: Hidratació selectiva per a components interactius.
+- **Importacions dinàmiques**: Biblioteques carregades de forma mandrosa (GSAP, Three.js) sota demanda.
+- **JavaScript mínim**: ~95% HTML/CSS estàtic, JS només on és necessari.
 
-### Tech Stack
+### Piló tecnològic
 
-#### Core Framework
-- **Astro 5.14** - Modern static site generator with partial hydration
-- **React 19** - UI components for interactive islands
-- **TypeScript** - Type-safe development
+#### Framework principal
+- **Astro 5.14** - Generador de llocs estàtics modern amb hidratació parcial.
+- **React 19** - Components de la IU per a illes interactives.
+- **TypeScript** - Desenvolupament amb seguretat de tipus.
 
-#### Styling
-- **Tailwind CSS 4.1** - Utility-first CSS framework
-- **Custom CSS animations** - Hand-crafted keyframes for precise control
+#### Estils
+- **Tailwind CSS 4.1** - Framework de CSS basat en utilitats.
+- **Animacions CSS personalitzades**: "Keyframes" fets a mà per a un control precís.
 
-#### Animation & 3D
-- **GSAP 3.13** - Professional-grade animation library
-- **ScrollTrigger** - Scroll-linked animations
-- **SplitText** - Advanced text manipulation
-- **React Three Fiber 9.4** - Declarative Three.js in React
-- **Three.js 0.181** - WebGL 3D graphics
-- **Rapier 2.2** - Physics simulation
-- **Drei 10.7** - R3F helper utilities
-- **MeshLine 3.3** - Custom line rendering
+#### Animació i 3D
+- **GSAP 3.13** - Biblioteca d'animació de grau professional.
+- **ScrollTrigger** - Animacions vinculades al desplaçament.
+- **SplitText** - Manipulació de text avançada.
+- **React Three Fiber 9.4** - Three.js declaratiu a React.
+- **Three.js 0.181** - Gràfics 3D WebGL.
+- **Rapier 2.2** - Simulació de física.
+- **Drei 10.7** - Utilitats d'ajuda per a R3F.
+- **MeshLine 3.3** - Renderitzat de línies personalitzat.
 
-#### Development Tools
-- **Vite** - Lightning-fast dev server and build tool
-- **Sharp** - High-performance image processing
+#### Eines de desenvolupament
+- **Vite** - Servidor de desenvolupament i eina de construcció increïblement ràpid.
+- **Sharp** - Processament d'imatges d'alt rendiment.
 
-### Project Structure
+### Estructura del projecte
 
 ```
 fresia/
 ├── src/
 │   ├── app/
 │   │   ├── layouts/
-│   │   │   └── base-layout.astro      # Main layout with nav and footer
+│   │   │   └── base-layout.astro      # Disseny principal amb navegació i peu de pàgina
 │   │   └── styles/
-│   │       └── global.css              # Global styles and variables
+│   │       └── global.css              # Estils i variables globals
 │   ├── assets/
-│   │   └── images/                     # Optimized image assets
+│   │   └── images/                     # Actius d'imatge optimitzats
 │   ├── components/
-│   │   └── ProgressiveImage.astro      # Reusable LQIP component
+│   │   └── ProgressiveImage.astro      # Component LQIP reutilitzable
 │   ├── sections/
 │   │   ├── hero/
-│   │   │   ├── Hero.astro              # Hero section with image carousel
-│   │   │   └── title.astro             # Animated heading with SplitText
+│   │   │   ├── Hero.astro              # Secció hero amb carrussel d'imatges
+│   │   │   └── title.astro             # Encapçalament animat amb SplitText
 │   │   ├── products/
-│   │   │   ├── Products.astro          # Product list wrapper
-│   │   │   └── Product.astro           # Scroll-reveal product cards
+│   │   │   ├── Products.astro          # Embolcall de la llista de productes
+│   │   │   └── Product.astro           # Targetes de producte amb revelació en fer scroll
 │   │   ├── storytelling/
-│   │   │   ├── Storytelling.astro      # Brand narrative section
-│   │   │   └── AppearingText.astro     # Scroll-triggered text reveal
+│   │   │   ├── Storytelling.astro      # Secció de narrativa de marca
+│   │   │   └── AppearingText.astro     # Revelació de text activada per scroll
 │   │   ├── cuidar-poinsettia/
-│   │   │   └── CuidarPoinsettia.astro  # GSAP carousel for care tips
+│   │   │   └── CuidarPoinsettia.astro  # Carrussel GSAP per a consells de cura
 │   │   ├── gift-card/
-│   │   │   ├── GiftCard.astro          # Section wrapper
-│   │   │   └── vercel-card.jsx         # 3D physics card (React)
+│   │   │   ├── GiftCard.astro          # Embolcall de la secció
+│   │   │   └── vercel-card.jsx         # Targeta física 3D (React)
 │   │   ├── main-product/
-│   │   │   └── MainProduct.astro       # Featured product hero
+│   │   │   └── MainProduct.astro       # Hero del producte destacat
 │   │   └── footer/
-│   │       └── Footer.astro            # Site footer with contact
+│   │       └── Footer.astro            # Peu de pàgina amb contacte
 │   ├── shared/
 │   │   └── ui/
-│   │       └── morphing-text.tsx       # Animated text morphing component
+│   │       └── morphing-text.tsx       # Component de text animat morphing
 │   ├── locales/
-│   │   └── es.json                     # Spanish translations
+│   │   └── es.json                     # Traduccions al castellà
 │   └── pages/
-│       └── index.astro                 # Main landing page
+│       └── index.astro                 # Pàgina d'aterratge principal
 ├── public/
-│   ├── fonts/                          # Web fonts
-│   └── media/                          # Static media assets
-├── astro.config.mjs                    # Astro configuration
-├── tailwind.config.js                  # Tailwind configuration
-├── tsconfig.json                       # TypeScript configuration
-└── package.json                        # Dependencies and scripts
+│   ├── fonts/                          # Fonts web
+│   └── media/                          # Actius de mitjans estàtics
+├── astro.config.mjs                    # Configuració d'Astro
+├── tailwind.config.js                  # Configuració de Tailwind
+├── tsconfig.json                       # Configuració de TypeScript
+└── package.json                        # Dependències i scripts
 ```
 
-### Technical Highlights
+### Punts destacats tècnics
 
-#### 1. Performance-First Architecture
-- **Lighthouse Score**: 95+ across all metrics
-- **Zero CLS**: Progressive image loading with reserved space
-- **Optimized animations**: Transform/opacity-only (compositor-friendly)
-- **Code splitting**: Dynamic imports reduce initial bundle by ~40%
+#### 1. Arquitectura amb prioritat al rendiment
+- **Puntuació de Lighthouse**: 95+ en totes les mètriques.
+- **Zero CLS**: Càrrega d'imatge progressiva amb espai reservat.
+- **Animacions optimitzades**: Només transformació/opacitat (compatibles amb el compositor).
+- **Divisió de codi**: Les importacions dinàmiques redueixen el paquet inicial en un ~40%.
 
-#### 2. Advanced GSAP Integration
+#### 2. Integració avançada de GSAP
 ```javascript
-// Dynamic import pattern for optimal loading
+// Patró d'importació dinàmica per a una càrrega òptima
 const { gsap } = await import('gsap');
 const ScrollTrigger = (await import('gsap/ScrollTrigger')).default;
 
-// Transform-based animations (no layout thrashing)
-gsap.fromTo(img, 
+// Animacions basades en transformacions (sense layout thrashing)
+gsap.fromTo(img,
   { yPercent: 6, scale: 1.06, opacity: 0 },
-  { 
-    yPercent: -6, 
-    scale: 1, 
+  {
+    yPercent: -6,
+    scale: 1,
     opacity: 1,
     scrollTrigger: { trigger, scrub: 0.6 }
   }
 );
 ```
 
-#### 3. 3D Physics Simulation
+#### 3. Simulació de física 3D
 ```jsx
-// React Three Fiber with Rapier physics
+// React Three Fiber amb física Rapier
 <RigidBody type="fixed" ref={fixed}>
-  <useRopeJoint bodyA={fixed} bodyB={card} 
+  <useRopeJoint bodyA={fixed} bodyB={card}
     length={2} maxMultiplier={3} />
 </RigidBody>
 ```
 
-#### 4. Progressive Enhancement Pattern
+#### 4. Patró de millora progressiva
 ```astro
-<!-- Astro component with progressive image loading -->
-<ProgressiveImage 
-  src={foto.src} 
+<!-- Component Astro amb càrrega d'imatge progressiva -->
+<ProgressiveImage
+  src={foto.src}
   alt={foto.alt}
   lqip={foto.lqip}
   placeholderColor="#f0f0f0"
@@ -261,9 +261,9 @@ gsap.fromTo(img,
 />
 ```
 
-#### 5. Accessible Carousel
+#### 5. Carrussel accessible
 ```javascript
-// Multi-input accessible carousel
+// Carrussel accessible amb múltiples entrades
 indicators.forEach((dot) => {
   dot.addEventListener('click', () => goTo(idx, dir));
 });
@@ -271,68 +271,65 @@ window.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') prev();
   if (e.key === 'ArrowRight') next();
 });
-// + Touch swipe support
+// + Suport per a lliscament tàctil
 ```
 
-### Getting Started
+### Primers passos
 
-#### Prerequisites
-- Node.js 18+ 
-- pnpm (recommended) or npm
+#### Requisits previs
+- Node.js 18+
+- pnpm (recomanat) o npm
 
-#### Installation
+#### Instal·lació
 
 ```bash
-# Clone the repository
+# Clonar el repositori
 git clone https://github.com/PolGubau/fresia.git
 cd fresia
 
-# Install dependencies
+# Instal·lar dependències
 pnpm install
 
-# Start development server
+# Iniciar el servidor de desenvolupament
 pnpm dev
 
-# Build for production
+# Construir per a producció
 pnpm build
 
-# Preview production build
+# Vista prèvia de la construcció de producció
 pnpm preview
 ```
 
-#### Development URLs
-- **Dev server**: http://localhost:4321
-- **Production build**: `dist/` folder
+#### URLs de desenvolupament
+- **Servidor de desenvolupament**: http://localhost:4321
+- **Construcció de producció**: carpeta `dist/`
 
-### Project Stats
+### Estadístiques del projecte
 
-- **Total Components**: 12+ reusable Astro/React components
-- **Lines of Code**: ~2,000 (excluding node_modules)
-- **Bundle Size**: \<150KB (gzipped, excluding images)
-- **Load Time**: \<1.5s (3G connection)
-- **Animation Frames**: Consistent 60fps on modern devices
-- **Lighthouse Scores**: 
-  - Performance: 95+
-  - Accessibility: 98+
-  - Best Practices: 100
+- **Total de components**: 12+ components Astro/React reutilitzables.
+- **Línies de codi**: ~2.000 (excloent node_modules).
+- **Mida del paquet**: \<150KB (gzipped, excloent imatges).
+- **Temps de càrrega**: \<1,5 s (connexió 3G).
+- **Quadres d'animació**: 60 fps constants en dispositius moderns.
+- **Puntuacions de Lighthouse**:
+  - Rendiment: 95+
+  - Accessibilitat: 98+
+  - Bones pràctiques: 100
   - SEO: 100
 
-#### Design Patterns
-- **Islands Architecture**: Selective hydration for optimal performance
-- **Progressive Enhancement**: Core experience works without JavaScript
-- **Composition over Inheritance**: Modular, reusable components
-- **Single Responsibility**: Each component has one clear purpose
-- **DRY Principle**: Extracted i18n strings, reusable image component
+#### Patrons de disseny
+- **Arquitectura d'illes**: Hidratació selectiva per a un rendiment òptim.
+- **Millora progressiva**: L'experiència principal funciona sense JavaScript.
+- **Composició sobre herència**: Components modulars i reutilitzables.
+- **Responsabilitat única**: Cada component té un propòsit clar.
+- **Principi DRY**: Cadenes i18n extretes, component d'imatge reutilitzable.
 
 </details>
 
-## What I Learned
+## Què he après
 
-Searching examples of real-cases for advanced web animations and 3D graphics implementations has been quite tricky, as most projects tend to keep these details private. However, I managed to find some valuable resources and case studies that provided insights into best practices and innovative techniques.
+Cercar exemples de casos reals per a implementacions avançades d'animacions web i gràfics 3D ha estat força complicat, ja que la majoria de projectes tendeixen a mantenir aquests detalls privats. No obstant això, vaig aconseguir trobar alguns recursos i estudis de cas valuosos que van proporcionar informació sobre les millors pràctiques i tècniques innovadores.
 
-I started creating a complex set of animations and transitions using GSAP, nevertheless I deleted parts of the code to keep a clean, performant experience focused on the key interactions that would enhance the user experience without overwhelming it. 
+Vaig començar creant un conjunt complex d'animacions i transicions utilitzant GSAP, però vaig decidir eliminar parts del codi per mantenir una experiència neta i eficaç, centrada en les interaccions clau que millorarien l'experiència de l'usuari sense aclaparar-lo.
 
-The final result is a balance between visual appeal and performance, ensuring that the landing page is both engaging and efficient.
-
-
-
+El resultat final és un equilibri entre l'atractiu visual i el rendiment, garantint que la pàgina d'aterratge sigui alhora atractiva i eficient.

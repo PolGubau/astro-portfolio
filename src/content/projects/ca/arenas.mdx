@@ -31,87 +31,87 @@ import At from "../../../components/mdx-components/at.astro";
 
 
 
-## Navigating a century of Barcelona theatre
+## Navegant per un segle de teatre barceloní
 
-The Arenas Explorer is an interactive knowledge-graph built on top of **564 glass-plate negatives** photographed by Rafael Areñas between 1909 and 1935. The collection documents actors, playwrights, theatres, and companies across Barcelona's modernist cultural scene - and it was entirely invisible to researchers until now.
+L'Arenas Explorer és un explorador interactiu de grafs de coneixement construït sobre **564 negatius en placa de vidre** fotografiats per Rafael Areñas entre 1909 i 1935. La col·lecció documenta actors, dramaturgs, teatres i companyies de l'escena cultural modernista de Barcelona —i fins ara era totalment invisible per als investigadors.
 
-The project is the practical component of <At label="Sara Gálvez Torres" href="https://www.linkedin.com/in/sara-g%C3%A1lvez-b0bb70195/" />'s Master's thesis in Digital Humanities at the Universitat Autònoma de Barcelona.
+El projecte és el component pràctic del Treball de Final de Màster en Humanitats Digitals de <At label="Sara Gálvez Torres" href="https://www.linkedin.com/in/sara-g%C3%A1lvez-b0bb70195/" /> a la Universitat Autònoma de Barcelona.
 
-<Image src={thumbnail} alt="Arenas Explorer main view" height={500} class={"show-animation rounded-2xl"} loading={"eager"} />
-
----
-
-## The Problem
-
-Traditional archival catalogues treat photographs as isolated objects: who appears in them, when they were taken. What they cannot represent is **the network**. A single Areñas photograph is the intersection of an actor, a playwright, a theatre, and a company - relationships that existed but were structurally invisible in flat catalogue records.
-
-Sara's thesis identifies this as **semantic dispersion**: the information is there, but locked in disconnected rows. The challenge was to make those connections explorable without losing the fidelity of the original historical data.
+<Image src={thumbnail} alt="Vista principal de l'Arenas Explorer" height={500} class={"show-animation rounded-2xl"} loading={"eager"} />
 
 ---
 
-## Knowledge Graph
+## El Problema
 
-Instead of a relational database, I built a **Knowledge Graph** where each entity is a node and each documented relationship is an edge. Three layers of AI-extracted metadata enrich every photograph node:
+Els catàlegs d'arxiu tradicionals tracten les fotografies com a objectes aïllats: qui hi apareix, quan es van fer. El que no poden representar és **la xarxa**. Una sola fotografia d'Areñas és la intersecció d'un actor, un dramaturg, un teatre i una companyia —relacions que existien però que eren estructuralment invisibles en els registres de catàleg plans.
 
-* **Estimated date** - a computer vision model predicts the year of each shot with a confidence score.
-* **Costume detection** - detected garments are indexed as separate nodes, enabling cross-era fashion queries.
-* **HTR transcription** - handwritten annotations on the back of each plate are extracted via Handwritten Text Recognition and linked to the image.
-
-The result is a graph of **740 nodes and 4,120 edges** that lets researchers navigate the collection by actor, year, costume, theatre, or keyword - simultaneously.
-
-<Image src={grafoGephi} alt="Knowledge graph visualised in Gephi" height={500} class={"show-animation rounded-2xl"} />
+La tesi de la Sara identifica això com a **dispersió semàntica**: la informació hi és, però tancada en files desconnectades. El repte era fer que aquestes connexions fossin explorables sense perdre la fidelitat de les dades històriques originals.
 
 ---
 
-## Technical Decisions
+## Graf de Coneixement
 
-### Pre-computed layout
+En lloc d'una base de dades relacional, vaig construir un **Graf de Coneixement** on cada entitat és un node i cada relació documentada és una aresta. Tres capes de metadades extretes mitjançant IA enriqueixen cada node de fotografia:
 
-Running a force-directed layout in the browser on 740 nodes is slow. Instead, **ForceAtlas2 runs 500 iterations at build time** over the source GEXF file and serialises final node coordinates to a static JSON. The client loads directly into the resolved constellation - zero layout cost at runtime.
+* **Data estimada** - un model de visió per ordinador prediu l'any de cada fotografia amb una puntuació de confiança.
+* **Detecció de vestuari** - les peces de roba detectades s'indexen com a nodes separats, permetent consultes de moda de diferents èpoques.
+* **Transcripció HTR** - les anotacions manuscrites al revers de cada placa s'extreuen mitjançant Reconeixement de Text Manuscrit (HTR) i s'enllacen a la imatge.
 
-### WebGL rendering
+El resultat és un graf de **740 nodes i 4.120 arestes** que permet als investigadors navegar per la col·lecció per actor, any, vestuari, teatre o paraula clau —simultàniament.
 
-The graph renders through **Sigma.js on a WebGL canvas**. Each image node displays the actual photograph as a circular texture, letting researchers see the visual content of the archive without leaving the graph view.
-
-### Image proxy
-
-The source images live on the Generalitat de Catalunya's servers behind CORS restrictions. I implemented a **Next.js API route** that proxies image requests server-side, serving them transparently to the client without exposing credentials.
-
-<Image src={grafoNoFotos} alt="Graph with metadata layers active" height={500} class={"show-animation rounded-2xl"} />
+<Image src={grafoGephi} alt="Graf de coneixement visualitzat a Gephi" height={500} class={"show-animation rounded-2xl"} />
 
 ---
 
-## Interface
+## Decisions Tècniques
 
-The app is a **split-screen**: the graph occupies the full left panel, the contextual detail panel lives on the right.
+### Disseny precalculat
 
-Clicking any node triggers a **crossfade** that loads the detail view - full photograph, predicted year with model confidence, detected garments, and a gallery of photographs from the same year. Clicking any item in the detail panel moves the graph camera to the corresponding node, keeping spatial context at all times.
+Executar un algorisme de força en el navegador amb 740 nodes és lent. En el seu lloc, **ForceAtlas2 executa 500 iteracions en el moment de la construcció** sobre el fitxer GEXF d'origen i serialitza les coordenades finals dels nodes en un JSON estàtic. El client es carrega directament en la constel·lació resolta —cost zero de disseny en temps d'execució.
+
+### Renderitzat WebGL
+
+El graf es renderitza mitjançant **Sigma.js en un llenç WebGL**. Cada node d'imatge mostra la fotografia real com una textura circular, permetent als investigadors veure el contingut visual de l'arxiu sense sortir de la vista del graf.
+
+### Proxy d'imatges
+
+Les imatges d'origen resideixen als servidors de la Generalitat de Catalunya sota restriccions de CORS. Vaig implementar una **ruta d'API de Next.js** que fa de proxy de les sol·licituds d'imatges al servidor, servint-les de manera transparent al client sense exposar credencials.
+
+<Image src={grafoNoFotos} alt="Graf amb capes de metadades actives" height={500} class={"show-animation rounded-2xl"} />
+
+---
+
+## Interfície
+
+L'aplicació és una **pantalla dividida**: el graf ocupa tot el panell esquerre i el panell de detalls contextuals resideix a la dreta.
+
+En fer clic a qualsevol node s'activa un **fos encadenat** que carrega la vista de detalls —fotografia completa, any predit amb la confiança del model, peces de roba detectades i una galeria de fotografies del mateix any. En fer clic a qualsevol element del panell de detalls, la càmera del graf es mou cap al node corresponent, mantenint el context espacial en tot moment.
 
 <div class="flex flex-wrap gap-4">
-<Image src={thumbnail2} alt="Detail panel with photograph metadata" height={450} class={"show-animation rounded-2xl"} />
+<Image src={thumbnail2} alt="Panell de detalls amb metadades de la fotografia" height={450} class={"show-animation rounded-2xl"} />
 </div>
 
 ---
 
-## Tech Stack
+## Piló Tècnic
 
-| Technology | Purpose |
+| Tecnologia | Propòsit |
 | --- | --- |
-| **Next.js** | Framework, API routes, static build |
-| **React + TypeScript** | UI and type safety |
-| **Sigma.js** | WebGL graph rendering |
-| **Graphology** | Graph data model and algorithms |
-| **graphology-layout-forceatlas2** | Pre-computed node layout |
-| **TailwindCSS** | Styling |
-| **Framer Motion** | Panel transitions and crossfades |
-| **Sharp** | Thumbnail optimisation pipeline |
+| **Next.js** | Framework, rutes d'API, construcció estàtica |
+| **React + TypeScript** | Interfície d'usuari i seguretat de tipus |
+| **Sigma.js** | Renderitzat de grafs amb WebGL |
+| **Graphology** | Model de dades de grafs i algorismes |
+| **graphology-layout-forceatlas2** | Disseny de nodes precalculat |
+| **TailwindCSS** | Estils |
+| **Framer Motion** | Transicions de panells i fosos |
+| **Sharp** | Pipeline d'optimització de miniatures |
 
 ---
 
-## Results
+## Resultats
 
-* **564 glass-plate photographs** from 1909–1935 digitised and semantically connected
-* **740 nodes** - photographs, actors, playwrights, theatres, companies, years, garments
-* **4,120 edges** - explicit semantic relationships between all entity types
-* **3 AI models** - date estimation, costume detection, HTR transcription
-* **0ms layout cost** at runtime - all positions pre-calculated at build time
+* **564 fotografies en placa de vidre** de 1909–1935 digitalitzades i connectades semànticament
+* **740 nodes** - fotografies, actors, dramaturgs, teatres, companyies, anys, peces de roba
+* **4.120 arestes** - relacions semàntiques explícites entre tots els tipus d'entitats
+* **3 models d'IA** - estimació de data, detecció de vestuari, transcripció HTR
+* **0ms de cost de disseny** en temps d'execució - totes les posicions s'han calculat prèviament en el moment de la construcció

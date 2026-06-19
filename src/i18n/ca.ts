@@ -67,9 +67,9 @@ export const ca: Record<UiKey, string> = {
 	"about.story.p1":
 		"Vaig començar com a dissenyador gràfic, guanyant hackathons a l'escola, fotografiant cotxes per a concessionaris i creant branding per a startups. La gent no parava de demanar-me webs en veure les que feia per a mi mateix, així que vaig aprendre a programar.",
 	"about.story.p2":
-		'Una cosa va portar a l\'altra. Les webs de WordPress es van convertir en apps de React, els projectes freelance en una feina a temps complet a Mesalvo, i un treball de fi de grau en <a href="/projects/polui" class="text-ink underline underline-offset-4 hover:opacity-70">Pol-UI</a>: una llibreria de components React amb més de 150 components, més de 62k descàrregues a npm i un 10/10 amb menció especial de la UAB.',
+		'Una cosa va portar a l\'altra. Les webs de WordPress es van convertir en apps de React, els projectes freelance en una feina a temps complet a Mesalvo, i un treball de fi de grau en <a href="/ca/projects/polui" class="text-ink underline underline-offset-4 hover:opacity-70">Pol-UI</a>: una llibreria de components React amb més de 150 components, més de 62k descàrregues a npm i un 10/10 amb menció especial de la UAB.',
 	"about.story.p3":
-		'Després de graduar-me em vaig mudar a Alemanya per estar més a prop de la seu de Mesalvo, llavors vaig tornar a Espanya i vaig cofundar <a href="/projects/doscientos" class="text-ink underline underline-offset-4 hover:opacity-70">Doscientos</a>, un estudi de programari que implementa tecnologia per a qui s\'ha quedat petit amb l\'Excel.',
+		'Després de graduar-me em vaig mudar a Alemanya per estar més a prop de la seu de Mesalvo, llavors vaig tornar a Espanya i vaig cofundar <a href="/ca/projects/doscientos" class="text-ink underline underline-offset-4 hover:opacity-70">Doscientos</a>, un estudi de programari que implementa tecnologia per a qui s\'ha quedat petit amb l\'Excel.',
 	"about.stats.years": "Anys creant",
 	"about.stats.npm": "descàrregues npm",
 	"about.stats.components": "components React",
@@ -84,7 +84,7 @@ export const ca: Record<UiKey, string> = {
 	"about.currently.item2":
 		'Cofundador a <strong class="text-ink font-medium">Doscientos</strong> - MVPs i eines internes, preu tancat, 6 setmanes',
 	"about.currently.item3":
-		'Creant <a href="/projects/les-santes" class="text-ink underline underline-offset-4 hover:opacity-70">Les Santes</a> - app no oficial de la festa major de Mataró',
+		'Creant <a href="/ca/projects/les-santes" class="text-ink underline underline-offset-4 hover:opacity-70">Les Santes</a> - app no oficial de la festa major de Mataró',
 	"about.currently.item4": "A Mataró, Barcelona",
 	"about.contact.title": "Parlem",
 	"about.contact.body":
@@ -122,8 +122,23 @@ export const ca: Record<UiKey, string> = {
 	"projects.subtitle":
 		"Una selecció de feina en web, mòbil, open source i freelance.",
 	"projects.notice": "El detall dels projectes està en anglès.",
+	"projects.similar": "Projectes similars",
 	"projects.meta.title":
 		"Projectes - Feina web, mòbil i open source de Pol Gubau",
 	"projects.meta.description":
 		"Explora més de 50 projectes de Pol Gubau Amores en React, TypeScript i React Native: apps web, design systems, apps mòbils i feina freelance, des de llibreries open source fins a productes per a clients.",
+	"projects.status.inProgress": "En progrés",
+	"projects.links.visit": "Visitar projecte",
+	"projects.links.source": "Codi font",
+	"projects.links.npm": "Paquet NPM",
+	"projects.links.playstore": "Descarregar",
+	"projects.links.live": "Web en directe",
+	"projects.links.registry": "registre npm",
+	"projects.links.googlePlay": "Google Play",
+	"projects.links.links": "Enllaços",
+	"bar.share": "Compartir",
+	"bar.copied": "Copiat!",
+	"bar.visitProject": "Visitar projecte",
+	"stats.npmTooltip": "descàrregues npm",
+	"stats.vercelTooltip": "peticions en projectes de Vercel",
 };

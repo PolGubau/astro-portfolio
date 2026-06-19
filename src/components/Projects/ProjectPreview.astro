@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import type { ProjectMetadata } from "../../lib/utils";
+import { getLocale, localizePath } from "../../i18n/utils";
+import { type ProjectMetadata, parseProjectId } from "../../lib/utils";
 
 interface Props {
   project: ProjectMetadata;
@@ -8,7 +9,9 @@ interface Props {
 }
 
 const { project, index } = Astro.props;
-const { data, id: slug } = project;
+const locale = getLocale(Astro.currentLocale);
+const { data, id: rawId } = project;
+const slug = parseProjectId(rawId).slug;
 const { title, summary, color, cover: src, tech, endedAt, client } = data;
 const isFirstLoad = index < 6;
 const isActive = !endedAt;
@@ -20,7 +23,7 @@ const titleSize = title.length > 14 ? "text-2xl" : "text-3xl";
   class="group project-cascade relative flex h-64 cursor-pointer flex-col overflow-hidden md:h-96"
 >
   <a
-    href={`/projects/${slug}`}
+    href={localizePath(`/projects/${slug}`, locale)}
     title={title}
     class="relative flex h-full flex-col items-center justify-end overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 focus-visible:ring-inset"
     style={{ backgroundColor: color }}

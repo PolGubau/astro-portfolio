@@ -1,0 +1,116 @@
+---
+title: "Explorador Arenas"
+seoTitle: "Arenas Explorer: grafo de conocimiento WebGL"
+startedAt: "2026-03-01"
+endedAt: "2026-06-01"
+category: "web"
+color: "#7c5c3a90"
+cover: "../img/arenas.avif"
+available: true
+client: "Universitat Autònoma de Barcelona"
+
+summary: "Explorador interactivo de grafos de conocimiento con WebGL sobre 564 placas de vidrio del teatro de Barcelona (1909–1935), creado para una tesis de Humanidades Digitales de la UAB."
+
+tech:
+  - next
+  - react
+  - typescript
+  - sigma.js
+  - graphology
+  - tailwindcss
+  - framer-motion
+---
+import { Image } from "astro:assets";
+
+import thumbnail from "../../../assets/media/projects/arenas/home.avif";
+import grafoGephi from "../../../assets/media/projects/arenas/grafo-gephi.avif";
+import grafoNoFotos from "../../../assets/media/projects/arenas/grafo-no-fotos.avif";
+import thumbnail2 from "../../../assets/media/projects/arenas/thumbnail2.avif";
+import At from "../../../components/mdx-components/at.astro";
+
+
+
+## Navegando un siglo de teatro barcelonés
+
+El Arenas Explorer es un grafo de conocimiento interactivo construido sobre **564 negativos en placa de vidrio** fotografiados por Rafael Areñas entre 1909 y 1935. La colección documenta actores, dramaturgos, teatros y compañías a lo largo de la escena cultural modernista de Barcelona - y era completamente invisible para los investigadores hasta ahora.
+
+El proyecto es el componente práctico de la tesis de Máster en Humanidades Digitales de <At label="Sara Gálvez Torres" href="https://www.linkedin.com/in/sara-g%C3%A1lvez-b0bb70195/" /> en la Universitat Autònoma de Barcelona.
+
+<Image src={thumbnail} alt="Vista principal del Arenas Explorer" height={500} class={"show-animation rounded-2xl"} loading={"eager"} />
+
+---
+
+## El Problema
+
+Los catálogos de archivo tradicionales tratan las fotografías como objetos aislados: quién aparece en ellas, cuándo fueron tomadas. Lo que no pueden representar es **la red**. Una fotografía de Areñas es la intersección de un actor, un dramaturgo, un teatro y una compañía - relaciones que existían pero que eran estructuralmente invisibles en los registros planos del catálogo.
+
+La tesis de Sara identifica esto como **dispersión semántica**: la información está ahí, pero bloqueada en filas desconectadas. El desafío era hacer esas conexiones explorables sin perder la fidelidad de los datos históricos originales.
+
+---
+
+## Grafo de Conocimiento
+
+En lugar de una base de datos relacional, construí un **Grafo de Conocimiento** donde cada entidad es un nodo y cada relación documentada es una arista. Tres capas de metadatos extraídos con IA enriquecen cada nodo fotográfico:
+
+* **Fecha estimada** - un modelo de visión por computador predice el año de cada toma con una puntuación de confianza.
+* **Detección de vestuario** - las prendas detectadas se indexan como nodos separados, permitiendo consultas de moda a través de eras.
+* **Transcripción HTR** - las anotaciones manuscritas en el reverso de cada placa se extraen mediante Reconocimiento de Texto Manuscrito y se vinculan a la imagen.
+
+El resultado es un grafo de **740 nodos y 4.120 aristas** que permite a los investigadores navegar la colección por actor, año, vestuario, teatro o palabra clave - simultáneamente.
+
+<Image src={grafoGephi} alt="Grafo de conocimiento visualizado en Gephi" height={500} class={"show-animation rounded-2xl"} />
+
+---
+
+## Decisiones Técnicas
+
+### Diseño precomputado
+
+Ejecutar un diseño dirigido por fuerzas en el navegador sobre 740 nodos es lento. En su lugar, **ForceAtlas2 ejecuta 500 iteraciones en tiempo de compilación** sobre el archivo GEXF fuente y serializa las coordenadas finales de los nodos en un JSON estático. El cliente carga directamente en la constelación resuelta - coste de diseño cero en tiempo de ejecución.
+
+### Renderizado WebGL
+
+El grafo se renderiza a través de **Sigma.js en un canvas WebGL**. Cada nodo de imagen muestra la fotografía real como textura circular, permitiendo a los investigadores ver el contenido visual del archivo sin salir de la vista del grafo.
+
+### Proxy de imágenes
+
+Las imágenes fuente están en los servidores de la Generalitat de Catalunya detrás de restricciones CORS. Implementé una **ruta API de Next.js** que hace de proxy a las solicitudes de imágenes del lado del servidor, sirviéndolas transparentemente al cliente sin exponer credenciales.
+
+<Image src={grafoNoFotos} alt="Grafo con capas de metadatos activas" height={500} class={"show-animation rounded-2xl"} />
+
+---
+
+## Interfaz
+
+La aplicación es una **pantalla dividida**: el grafo ocupa el panel izquierdo completo, el panel de detalle contextual está a la derecha.
+
+Al hacer clic en cualquier nodo se activa un **crossfade** que carga la vista de detalle - fotografía completa, año predicho con confianza del modelo, prendas detectadas y una galería de fotografías del mismo año. Al hacer clic en cualquier elemento del panel de detalle, la cámara del grafo se mueve al nodo correspondiente, manteniendo siempre el contexto espacial.
+
+<div class="flex flex-wrap gap-4">
+<Image src={thumbnail2} alt="Panel de detalle con metadatos de fotografía" height={450} class={"show-animation rounded-2xl"} />
+</div>
+
+---
+
+## Stack Tecnológico
+
+| Tecnología | Propósito |
+| --- | --- |
+| **Next.js** | Framework, rutas API, compilación estática |
+| **React + TypeScript** | UI y seguridad de tipos |
+| **Sigma.js** | Renderizado de grafo en WebGL |
+| **Graphology** | Modelo de datos del grafo y algoritmos |
+| **graphology-layout-forceatlas2** | Diseño de nodos precomputado |
+| **TailwindCSS** | Estilos |
+| **Framer Motion** | Transiciones de panel y crossfades |
+| **Sharp** | Pipeline de optimización de miniaturas |
+
+---
+
+## Resultados
+
+* **564 fotografías en placa de vidrio** de 1909-1935 digitalizadas y conectadas semánticamente
+* **740 nodos** - fotografías, actores, dramaturgos, teatros, compañías, años, prendas
+* **4.120 aristas** - relaciones semánticas explícitas entre todos los tipos de entidades
+* **3 modelos de IA** - estimación de fecha, detección de vestuario, transcripción HTR
+* **0ms de coste de diseño** en tiempo de ejecución - todas las posiciones precomputadas en compilación

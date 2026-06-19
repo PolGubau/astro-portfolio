@@ -1,19 +1,22 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import type { ProjectMetadata } from "../../lib/utils";
+import { getLocale, localizePath } from "../../i18n/utils";
+import { type ProjectMetadata, parseProjectId } from "../../lib/utils";
 
 interface Props {
   projects: ProjectMetadata[];
 }
 
 const { projects } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
 ---
 
 <ul class="flex flex-col" data-stagger="60">
   {
     projects.map((project, index) => {
-      const { data, id: slug } = project;
+      const { data, id: rawId } = project;
+      const slug = parseProjectId(rawId).slug;
       const { title, summary, color, cover, tech, endedAt, startedAt, client } =
         data;
       const year = (endedAt ?? startedAt).getFullYear();
@@ -33,7 +36,7 @@ const { projects } = Astro.props;
           /> */}
 
           <a
-            href={`/projects/${slug}`}
+            href={localizePath(`/projects/${slug}`, locale)}
             class="flex items-center gap-5 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20 focus-visible:ring-offset-2 rounded-r-xl"
           >
             {/* Thumbnail */}

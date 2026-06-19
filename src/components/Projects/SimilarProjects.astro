@@ -1,35 +1,40 @@
 ---
-import { getProjects, type ProjectMetadata } from "../../lib/utils";
+import { type Locale, getLocale, useTranslations } from "../../i18n/utils";
+import { type ProjectMetadata, getLocalizedProjects } from "../../lib/utils";
 import ProjectsList from "./ProjectList/ProjectsList.astro";
 
 type Props = {
-	project: ProjectMetadata;
+  project: ProjectMetadata;
 };
 const { project } = Astro.props;
+const locale: Locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
 
 const AMOUNT = 2;
 
 const similarTechProjects = (): ProjectMetadata[] => {
-	// get AMOUNT projects that has tech in common, if it's not the case, get up to 2 random projects
+  // get AMOUNT projects that has tech in common, if it's not the case, get up to 2 random projects
 
-	const tech = project.data.tech ?? "";
+  const tech = project.data.tech ?? "";
 
-	const otherProjects = getProjects().filter((post) => post.id !== project.id);
+  const otherProjects = getLocalizedProjects(locale).filter(
+    (post) => post.id !== project.id,
+  );
 
-	const similarProjects = otherProjects.filter((post) =>
-		post.data.tech?.some((t) => tech.includes(t)),
-	);
+  const similarProjects = otherProjects.filter((post) =>
+    post.data.tech?.some((t) => tech.includes(t)),
+  );
 
-	if (similarProjects.length > AMOUNT) {
-		const shuffled = similarProjects.sort(() => 0.5 - Math.random());
-		return shuffled.slice(0, AMOUNT);
-	}
+  if (similarProjects.length > AMOUNT) {
+    const shuffled = similarProjects.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, AMOUNT);
+  }
 
-	return otherProjects.slice(0, AMOUNT);
+  return otherProjects.slice(0, AMOUNT);
 };
 ---
 
 <>
-	<h2 class="mt-16 font-semibold text-2xl text-ink">Similar Projects</h2>
-	<ProjectsList projects={similarTechProjects()} />
+  <h2 class="mt-16 font-semibold text-2xl text-ink">{t("projects.similar")}</h2>
+  <ProjectsList projects={similarTechProjects()} />
 </>

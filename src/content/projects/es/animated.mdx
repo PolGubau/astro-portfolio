@@ -1,0 +1,180 @@
+---
+title: "Animated"
+seoTitle: "Animated: 75+ animaciones CSS para Tailwind"
+startedAt: "2025-01-20"
+endedAt: "2025-02-10"
+category: "web"
+color: "#ff8a9390"
+cover: "../img/animated.webp"
+available: true
+
+summary: "75+ animaciones CSS hechas a mano para Tailwind CSS 4. Una sola importación, sin JavaScript, funciona en todas partes."
+
+githubLink: https://github.com/PolGubau/animated
+npmLink: https://www.npmjs.com/package/@polgubau/animated
+link: https://animated.polgubau.com
+
+tech:
+  - CSS
+  - Tailwind CSS
+  - TypeScript
+---
+import { Image } from "astro:assets";
+import intellisense from "../../../assets/media/projects/animated/Intellisense.webp";
+import thumbnail from "../../../assets/media/projects/animated/thumbnail.webp";
+
+Estaba harto de copiar keyframes de animaciones entre proyectos. Cada nueva codebase empezaba con el mismo pegado: fade-in, slide-up, blur-in, bounce. Siempre ligeramente diferente. Siempre sin probar.
+
+Así que los empaquetó correctamente.
+
+**Animated** es un plugin de Tailwind CSS 4 con más de 75 animaciones CSS artesanales. Una importación, cero JavaScript, funciona en cualquier framework.
+
+<figure>
+  <Image src={thumbnail} alt="Animated - animaciones CSS para Tailwind CSS 4" class="rounded-xl show-animation" width={800} height={500} />
+  <figcaption>El sitio de documentación de Animated - cada animación con vista previa en vivo.</figcaption>
+</figure>
+
+---
+
+## Instalación
+
+```sh
+pnpm add @polgubau/animated
+```
+
+```css
+/* index.css */
+@import "tailwindcss";
+@import "@polgubau/animated";
+```
+
+Eso es todo. Sin configuración, sin registro de plugin, sin JavaScript.
+
+## Uso
+
+```html
+<div class="animate-fade-in">Aparece con fade al montar</div>
+<div class="animate-slide-up">Sube al montar</div>
+<div class="animate-blur-in animate-delay-300">Blur in, 300ms de delay</div>
+```
+
+Soporte completo de IntelliSense en VS Code y cualquier editor con soporte TypeScript:
+
+<figure>
+  <Image src={intellisense} alt="IntelliSense mostrando sugerencias de clases de animación" class="rounded-xl show-animation" width={800} height={400} />
+  <figcaption>El autocompletado funciona sin configuración adicional.</figcaption>
+</figure>
+
+## Sin Tailwind
+
+También funciona de forma independiente. Importa el CSS y usa los keyframes directamente:
+
+```css
+import '@polgubau/animated';
+
+.mi-elemento {
+  animation: slide-in-top 0.4s ease-out;
+}
+```
+
+## 📋 Animaciones Disponibles
+
+@polgubau/animated proporciona una variedad de animaciones CSS categorizadas en diferentes grupos:
+
+- **Blur**: animate-blur, animate-blur-pulse, animate-blur-flash, ...
+- **Fade**: animate-fade-in, animate-fade-out, animate-fade-pulse, ...
+- **Grow**: animate-grow, animate-grow-pulse, ...
+- **Pump**: animate-pump, animate-pump-pulse, ...
+- **Shake**: animate-shake-x, animate-shake-y, ...
+- **Slide**: animate-slide-left, animate-slide-right, animate-slide-up, animate-slide-down, ...
+- **Wiggle**: animate-wiggle, ...
+- **Flip**: animate-flip-x, animate-flip-y, animate-flip-pulse, ...
+- **Roll**: animate-roll-left, animate-roll-right, animate-roll-pulse, ...
+
+Estos son solo algunos ejemplos, la biblioteca tiene +75 animaciones para usar en tu proyecto.
+*(¡Más categorías próximamente!)*
+
+## ⚡ Personalización
+
+Puedes personalizar las duraciones de animación y otras propiedades usando las clases de utilidad de Tailwind:
+
+```html
+<div class="animate-slide-left duration-1000 ease-in-out">
+  ¡Efecto deslizante!
+</div>
+```
+
+## Configuración
+
+Para facilitar la configuración, las animaciones se basan en variables CSS predefinidas. Puedes cambiar los valores predeterminados sobreescribiendo las variables en tu CSS.
+
+```css
+:root {
+  --smaller-scale: 0.8;
+  --larger-scale: 1.2;
+  --slide-amount: 20px;
+  --blur-amount: 8px;
+  /* ... más variables */
+}
+```
+
+Simplemente sobreescribe estos valores en tu archivo CSS principal bajo la importación de la biblioteca para personalizar tus animaciones.
+
+```css
+/* index.css */
+@import "tailwindcss";
+@import "@polgubau/animated";
+
+:root {
+  --slide-amount: 40px;
+}
+```
+*¡Ahora todas las animaciones de slide se desplazarán 40px en lugar de los 20px predeterminados! 😎*
+
+## ¿Cómo Veo las Animaciones Disponibles? 🔍
+
+Simplemente escribe `animate-` y verás todas las animaciones disponibles en tu editor.
+
+![Tailwind intellisense destacando animaciones](../../../assets/media/projects/animated/Intellisense.webp)
+
+> Esto funcionará automáticamente si tienes la extensión de Tailwind instalada en tu IDE.
+
+### Pero Quiero Acceder a Ellas Dinámicamente 💡
+
+La biblioteca exporta un array con todas las animaciones en formato JSON:
+
+```ts
+import animations from "@polgubau/animated/summary";
+
+/* [
+  "animate-blur",
+  "animate-blur-flash",
+  "animate-blur-pulse",
+  ...
+] */
+```
+
+*Puedes usar este array como quieras. TIP: Es útil para crear componentes de UI animados dinámicamente basados en props. 🌟*
+
+## No Uso Tailwind 🚫
+
+**@polgubau/animated** es totalmente compatible con cualquier framework CSS o CSS vanilla. Solo importa la biblioteca en tu archivo CSS principal:
+
+```tsx
+/* index.tsx */
+import "@polgubau/animated";
+```
+
+Tendrás acceso a todas las animaciones de keyframes, pero recuerda que necesitarás crear las clases manualmente.
+
+---
+
+## Explora las Animaciones 🌟
+
+¡Ahora que sabes cómo usar la biblioteca, sumérgete en las animaciones! Usa la barra lateral para explorar las diferentes categorías y verlas en acción. ¡Disfruta! 🎉
+
+---
+
+## Documentación 📝
+
+La documentación está construida usando un **monorepo con Vite y React**. Usa **TailwindCSS** y cuenta con **animaciones completamente dinámicas**, lo que significa que se cargan directamente desde el paquete y no están precompiladas en la documentación.

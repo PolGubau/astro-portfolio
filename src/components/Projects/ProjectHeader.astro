@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { getLocale, localizePath, useTranslations } from "../../i18n/utils";
 import { type ProjectMetadata, formatDate } from "../../lib/utils";
 import GithubIcon from "../icons/GithubIcon.astro";
 import NpmIcon from "../icons/NpmIcon.astro";
@@ -10,12 +11,15 @@ type Props = {
   project: ProjectMetadata;
 };
 const { project: p } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
 
 enum Icons {
   github = "github",
   npm = "npm",
   playStore = "playStore",
 }
+
 const projectButtons: {
   link: string | undefined;
   label: string;
@@ -23,17 +27,17 @@ const projectButtons: {
 }[] = [
   {
     link: p.data.githubLink,
-    label: "View Source",
+    label: t("projects.links.source"),
     icon: Icons.github,
   },
   {
     link: p.data.npmLink,
-    label: "Link to NPM",
+    label: t("projects.links.npm"),
     icon: Icons.npm,
   },
   {
     link: p.data.playStoreLink,
-    label: "Link to Play store",
+    label: t("projects.links.playstore"),
     icon: Icons.playStore,
   },
 ].filter((p) => Boolean(p.link));
@@ -55,7 +59,7 @@ const isLastButton = (button: string) => lastExistingButton === button;
 <header class="flex flex-col gap-2">
   <a
     title="Back to projects"
-    href="/projects"
+    href={localizePath("/projects", locale)}
     class="text-ink/50 hover:text-ink transition-colors text-sm"
   >
     ← Back
@@ -123,7 +127,11 @@ const isLastButton = (button: string) => lastExistingButton === button;
       <p class="text-sm text-ink/55">
         {formatDate(p.data.startedAt)}
         {" → "}
-        {p.data.endedAt ? formatDate(p.data.endedAt) : "In Progress"}
+        {
+          p.data.endedAt
+            ? formatDate(p.data.endedAt)
+            : t("projects.status.inProgress")
+        }
       </p>
     </div>
   </div>
@@ -141,7 +149,7 @@ const isLastButton = (button: string) => lastExistingButton === button;
             style={{ backgroundColor: p.data.color ?? "transparent" }}
           >
             <SearchIcon width={16} height={16} />
-            Visit Project
+            {t("projects.links.visit")}
           </a>
         )}
         {projectButtons.map((b) => {

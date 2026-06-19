@@ -66,9 +66,9 @@ export const es: Record<UiKey, string> = {
 	"about.story.p1":
 		"Empecé como diseñador gráfico, ganando hackathons en la escuela, fotografiando coches para concesionarios y creando branding para startups. La gente no paraba de pedirme webs tras ver las que hacía para mí, así que aprendí a programar.",
 	"about.story.p2":
-		'Una cosa llevó a la otra. Las webs de WordPress se convirtieron en apps de React, los proyectos freelance en un trabajo a tiempo completo en Mesalvo, y un trabajo de fin de grado en <a href="/projects/polui" class="text-ink underline underline-offset-4 hover:opacity-70">Pol-UI</a>: una librería de componentes React con más de 150 componentes, más de 62k descargas en npm y un 10/10 con mención especial de la UAB.',
+		'Una cosa llevó a la otra. Las webs de WordPress se convirtieron en apps de React, los proyectos freelance en un trabajo a tiempo completo en Mesalvo, y un trabajo de fin de grado en <a href="/es/projects/polui" class="text-ink underline underline-offset-4 hover:opacity-70">Pol-UI</a>: una librería de componentes React con más de 150 componentes, más de 62k descargas en npm y un 10/10 con mención especial de la UAB.',
 	"about.story.p3":
-		'Tras graduarme me mudé a Alemania para estar más cerca de la sede de Mesalvo, luego volví a España y cofundé <a href="/projects/doscientos" class="text-ink underline underline-offset-4 hover:opacity-70">Doscientos</a>, un estudio de software que implementa tecnología para quienes se han quedado pequeños con Excel.',
+		'Tras graduarme me mudé a Alemania para estar más cerca de la sede de Mesalvo, luego volví a España y cofundé <a href="/es/projects/doscientos" class="text-ink underline underline-offset-4 hover:opacity-70">Doscientos</a>, un estudio de software que implementa tecnología para quienes se han quedado pequeños con Excel.',
 	"about.stats.years": "Años creando",
 	"about.stats.npm": "descargas npm",
 	"about.stats.components": "componentes React",
@@ -83,7 +83,7 @@ export const es: Record<UiKey, string> = {
 	"about.currently.item2":
 		'Cofundador en <strong class="text-ink font-medium">Doscientos</strong> - MVPs y herramientas internas, precio cerrado, 6 semanas',
 	"about.currently.item3":
-		'Creando <a href="/projects/les-santes" class="text-ink underline underline-offset-4 hover:opacity-70">Les Santes</a> - app no oficial de la fiesta mayor de Matar\u00f3',
+		'Creando <a href="/es/projects/les-santes" class="text-ink underline underline-offset-4 hover:opacity-70">Les Santes</a> - app no oficial de la fiesta mayor de Matar\u00f3',
 	"about.currently.item4": "En Matar\u00f3, Barcelona",
 	"about.contact.title": "Hablemos",
 	"about.contact.body":
@@ -121,8 +121,23 @@ export const es: Record<UiKey, string> = {
 	"projects.subtitle":
 		"Una selección de trabajo en web, móvil, open source y freelance.",
 	"projects.notice": "El detalle de los proyectos está en inglés.",
+	"projects.similar": "Proyectos similares",
 	"projects.meta.title":
 		"Proyectos - Trabajo web, móvil y open source de Pol Gubau",
 	"projects.meta.description":
 		"Explora más de 50 proyectos de Pol Gubau Amores en React, TypeScript y React Native: apps web, design systems, apps móviles y trabajo freelance, desde librerías open source hasta productos para clientes.",
+	"projects.status.inProgress": "En progreso",
+	"projects.links.visit": "Visitar proyecto",
+	"projects.links.source": "Ver código",
+	"projects.links.npm": "Paquete NPM",
+	"projects.links.playstore": "Descargar",
+	"projects.links.live": "Sitio web",
+	"projects.links.registry": "registro npm",
+	"projects.links.googlePlay": "Google Play",
+	"projects.links.links": "Enlaces",
+	"bar.share": "Compartir",
+	"bar.copied": "¡Copiado!",
+	"bar.visitProject": "Visitar proyecto",
+	"stats.npmTooltip": "descargas npm",
+	"stats.vercelTooltip": "peticiones en proyectos de Vercel",
 };

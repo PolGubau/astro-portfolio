@@ -1,0 +1,98 @@
+---
+title: "Pol-UI"
+seoTitle: "Pol-UI: llibreria de components React, 150+ UI"
+startedAt: "2024-03-17"
+endedAt: "2024-06-17"
+category: "web"
+color: "#b49cff80"
+available: true
+cover: "../img/pol-ui.webp"
+tech:
+  - React
+  - TypeScript
+  - Tailwind CSS
+  - Radix UI
+  - Vitest
+  - Storybook
+
+summary: "Una llibreria d'UI en React amb 150+ components, 62k+ descàrregues a NPM i una distinció de 10/10 en una tesi universitària. Creada per ser ràpida, accessible i realment fàcil d'usar."
+
+githubLink: https://github.com/PolGubau/pol-ui
+npmLink: https://www.npmjs.com/package/pol-ui
+link: https://ui.polgubau.com
+---
+
+import { Image } from "astro:assets";
+import cover from "../img/pol-ui.webp";
+
+> **Bachelor's Thesis - Summa Cum Laude, 10/10. Awarded with special distinction by UAB.**
+
+Pol-UI is a React component library I built as my final university project. What started as a thesis requirement became a production-grade library with 150+ components, a full documentation site, Storybook integration, and 50,000+ NPM downloads.
+
+---
+
+## Why I built it
+
+During my third year at university, I was already working full-time at Mesalvo building design systems. I saw the same patterns repeated across every project - buttons, modals, forms, tooltips - all built from scratch each time.
+
+I wanted to build something reusable, well-documented, and actually pleasant to use. Not another component dump - a coherent library with a consistent API and real accessibility support. I wrote about the full process - including the mistakes - in [What I learned building a UI library from scratch](/blog/designingLibrary).
+
+## What's inside
+
+Pol-UI ships with:
+
+- **150+ components** - from primitives (Button, Input, Badge) to complex patterns (DataTable, CommandMenu, Combobox)
+- **Full TypeScript support** - every prop typed, no `any` escapes
+- **Radix UI primitives** - accessible by default, keyboard navigable, screen reader friendly
+- **Tailwind CSS** - fully customizable via tokens, no style overriding hacks
+- **Storybook** - every component documented with live examples
+- **Vitest + Testing Library** - >80% test coverage
+
+```bash
+npm install pol-ui
+```
+
+```tsx
+import { Button, Input, Modal } from 'pol-ui';
+
+export function LoginForm() {
+  return (
+    <form>
+      <Input label="Email" type="email" />
+      <Input label="Password" type="password" />
+      <Button intent="primary" type="submit">Sign in</Button>
+    </form>
+  );
+}
+```
+
+## Technical decisions
+
+**Why Radix UI?** Accessibility is hard to get right. Radix handles focus management, ARIA attributes, and keyboard interactions so I don't have to.
+
+**Why Tailwind?** Design tokens via CSS variables + Tailwind utilities means consumers can theme the library without fighting specificity wars.
+
+**Why Vitest over Jest?** Faster. Native ESM support. Same API. No config needed with Vite.
+
+## The documentation site
+
+The docs at [ui.polgubau.com](https://ui.polgubau.com) cover every component with:
+
+- Live interactive demos
+- All prop variations with TypeScript types
+- Accessibility notes
+- Copy-paste code examples
+
+Documentation took nearly as long as the library itself. I think that's correct.
+
+## Impact
+
+- **50,000+ downloads** on NPM since launch
+- Used in multiple freelance projects and Doscientos client work
+- Referenced in my thesis paper which received a special distinction from UAB
+
+---
+
+The full source is on [GitHub](https://github.com/PolGubau/pol-ui). Contributions welcome.
+
+The component composition patterns I developed for this library are explained in detail in [React Component Composition Patterns](/blog/component-composition-patterns).

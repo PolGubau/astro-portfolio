@@ -1,0 +1,76 @@
+---
+title: "AskaQuest"
+seoTitle: "AskaQuest: plataforma de preguntas con Next.js"
+startedAt: "2022-03-16"
+endedAt: "2023-01-03"
+category: "web"
+color: "#abd7ff"
+cover: "../img/askaquest.webp"
+available: false
+
+
+summary: "Plataforma full-stack de preguntas y respuestas creada con Next.js, PostgreSQL y TypeScript. Publica preguntas, vota respuestas y sigue los debates de la comunidad."
+githubLink: https://github.com/PolGubau/AskaQuest
+link: https://askaquest.vercel.app/
+tech: 
+  - NextJS
+  - PostgreSQL
+  - TypeScript
+  - Vercel
+  - SWR
+---
+import askMobile from "../img/askaquest.webp"
+import { Image } from 'astro:assets';
+
+## La Historia
+
+Embarcarme en la creación de AskaQuest, mi primer proyecto React con backend propio — una aplicación de preguntas construida con NextJS — fue **un reto enorme y enormemente gratificante**. Aquí un resumen del stack tecnológico, los aprendizajes clave y la evolución del proyecto.
+
+## La Idea
+
+La idea detrás de AskaQuest era crear una aplicación web de preguntas dinámica que enganchara a los usuarios con **cuestionarios interactivos y personalizables**.
+
+Los usuarios pueden crear, compartir y participar en quizzes sobre distintos temas, fomentando un sentido de comunidad e intercambio de conocimiento.
+
+## El Proceso
+
+El desarrollo de AskaQuest implicó conceptualizar la experiencia de usuario, diseñar el esquema de base de datos, implementar funcionalidades backend y garantizar una integración fluida con el framework frontend elegido, NextJS. Se emplearon ciclos de desarrollo iterativo para refinar funcionalidades, resolver problemas y optimizar el rendimiento. Fue mi primera vez creando una API para React y **cambió por completo mi forma de pensar sobre el desarrollo web**.
+
+{" "}
+<Image
+  alt="Mockup móvil de Askaquest"
+  width={800}
+  height={500}
+  className="rounded-xl h-full max-h-[500px] my-8 object-contain show-animation"
+  src={askMobile}
+/>
+
+## Stack Tecnológico
+
+1. **NextJS:** Como base de AskaQuest, NextJS ofreció un framework potente para construir aplicaciones React con renderizado en servidor y enrutamiento. Su eficiencia en el manejo de contenido dinámico contribuyó en gran medida a la capacidad de respuesta del proyecto.
+
+2. **PostgreSQL:** La elección de PostgreSQL como base de datos aportó robustez a la gestión de datos. Su naturaleza relacional permitió manejar de forma eficiente el contenido generado por usuarios: preguntas, respuestas y perfiles.
+
+3. **TypeScript:** Adoptar TypeScript añadió una capa de tipado estático, mejorando la claridad del código y detectando errores potenciales en una etapa temprana del desarrollo. Esto resultó en una base de código más mantenible y escalable.
+
+4. **Vercel:** Desplegar AskaQuest en Vercel fue una experiencia fluida. La integración de la plataforma con NextJS y los despliegues automáticos simplificaron el proceso, garantizando un flujo de trabajo de desarrollo eficiente.
+
+5. **SWR (Stale-While-Revalidate):** Aprovechar SWR para la obtención de datos optimizó el rendimiento de la aplicación ofreciendo un equilibrio entre actualizaciones en tiempo real y una experiencia de usuario responsiva.
+
+## Aprendizajes Clave
+
+1. **Desarrollo Backend:** Implementar un backend robusto supuso una curva de aprendizaje significativa. Crear un sistema de login seguro, gestionar la autenticación de usuarios e incorporar medidas de cifrado amplió mi comprensión del desarrollo backend.
+
+2. **Diseño de Base de Datos:** Diseñar un esquema de base de datos eficiente, optimizar consultas y garantizar la consistencia de los datos se convirtieron en aspectos integrales del proyecto. Las capacidades de PostgreSQL fueron plenamente exploradas para satisfacer los requisitos de la aplicación.
+
+3. **Interactividad de Usuario:** Construir funcionalidades como seguimiento de usuarios, marcado de preguntas como favoritas y la creación de un entorno similar a una red social añadió profundidad al proyecto. Gestionar interacciones en tiempo real entre usuarios fue una lección valiosa para mejorar el engagement.
+
+4. **Despliegue y Escalabilidad:** Desplegar la aplicación en Vercel me enseñó la importancia de la escalabilidad y las estrategias de despliegue eficientes. Se implementaron prácticas de integración y despliegue continuo para garantizar una experiencia de usuario fluida.
+
+## Evolución del Proyecto y Conclusión
+
+AskaQuest, nacido el 16 de marzo de 2022 y activo hasta el 3 de enero de 2023, es más que una aplicación web de preguntas — es un testimonio de la fusión de tecnologías punteras y habilidades prácticas en el ámbito del desarrollo frontend. Este proyecto encapsula el viaje de explorar NextJS, PostgreSQL, TypeScript y más, entretejiendo todo en una aplicación web cohesionada y rica en funcionalidades.
+
+Desde la concepción de la idea hasta la evolución de su stack, AskaQuest ha sido un viaje de aprendizaje y crecimiento continuo. El robusto backend, el eficiente diseño de base de datos y el despliegue fluido en Vercel demuestran la madurez de la aplicación.
+
+[Explora el código en Github](https://github.com/PolGubau/AskaQuest) y sumérgete en la [experiencia en vivo](https://askaquest.vercel.app/).

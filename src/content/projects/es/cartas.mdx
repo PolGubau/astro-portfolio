@@ -1,0 +1,155 @@
+---
+title: "¿Cómo se jugaba?"
+seoTitle: "Cómo se Jugaba: juegos de cartas españoles"
+startedAt: "2025-07-09"
+endedAt: "2025-08-02"
+category: "web"
+color: "#ec6e0080"
+cover: "../img/cartas.webp"
+available: true
+
+summary: "App web basada en contenido que documenta juegos de cartas tradicionales españoles como El Cuadrado y 5 Vidas, con reglas claras e ilustradas."
+
+githubLink: https://github.com/PolGubau/como-se-jugaba
+link: https://cartas.polgubau.com/
+
+tech:
+  - astro
+  - mdx
+  - tailwindcss
+  - typescript
+  - vitest
+---
+import { Image } from "astro:assets";
+
+import pc1 from "../../../assets/media/projects/cartas/pc1.webp";
+import pc2 from "../../../assets/media/projects/cartas/pc2.webp";
+import pc3 from "../../../assets/media/projects/cartas/pc3.webp";
+import phone1 from "../../../assets/media/projects/cartas/phone1.webp";
+import phone2 from "../../../assets/media/projects/cartas/phone2.webp";
+import ronda from "../../../assets/media/projects/cartas/ronda.webp";
+
+# ¿Cómo se jugaba?
+
+**¿Cómo se jugaba?** es una aplicación web moderna centrada en el contenido que documenta y explica juegos de cartas españoles tradicionales — empezando por **El Cuadrado** y **5 Vidas**.  
+Nació del deseo personal de preservar y compartir las reglas de los juegos con los que crecí.
+
+Construida con **Astro**, **MDX**, **TailwindCSS**, y enriquecida con ✨ilustraciones hechas a mano✨.
+
+<figure>
+  <Image
+    src={ronda}
+    alt="Ejemplo de las ilustraciones"
+    width={700}
+    height={700}
+    className="rounded-xl h-full w-full max-h-[300px] md:max-h-[400px] object-cover show-animation"
+  />
+  <figcaption class="text-center">Ejemplo de las ilustraciones.</figcaption>
+</figure>
+
+---
+
+## Motivación
+
+Siempre me han encantado los juegos de cartas, especialmente los españoles tradicionales. Muchos de estos juegos no están bien documentados en internet, o sus reglas varían mucho según la región o la familia.  
+Este sitio es mi intento de:
+
+* 🗂️ Archivar mis juegos favoritos para no olvidar cómo se juegan
+* 📖 Enseñar a otros sobre la cultura de los juegos de cartas españoles
+* 🎨 Combinar un diseño bonito con código limpio
+
+---
+
+## Sitio en Vivo
+
+[🔗 cartas.polgubau.com](https://cartas.polgubau.com)
+
+<figure>
+  <Image
+    src={pc1}
+    alt="Página de inicio del sitio"
+    width={700}
+    height={400}
+    className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"
+  />
+  <figcaption>Página de inicio del sitio.</figcaption>
+</figure>
+
+---
+
+## Características Principales
+
+* ✅ UI totalmente responsive (TailwindCSS)
+* 🧾 Documentación de juegos escrita en MDX
+* 🎭 Ilustraciones personalizadas dibujadas a mano
+* ⚡ Optimizado y rápido (Astro + salida de servidor)
+* 🎡 SEO preparado con sitemap y metadatos
+
+---
+
+<details>
+  <summary> <b>Detalles Técnicos</b> <br/><small>Para desarrolladores y mentes curiosas</small></summary>
+  <br />
+  <br/>
+
+  ### Stack Tecnológico
+
+  | Herramienta | Propósito |
+  |-------------|-----------|
+  | **Astro** | Renderizado estático y en servidor |
+  | **MDX** | Reglas de juego en Markdown interactivo |
+  | **TailwindCSS** | Estilos utility-first |
+  | **@astrojs/content** | Colecciones de contenido para juegos |
+  | **Sharp** | Optimización de imágenes |
+
+  ---
+
+  ### Configuración Local
+
+  ```bash
+  git clone https://github.com/polgubau/como-se-jugaba
+  cd como-se-jugaba
+  pnpm install
+  pnpm dev
+  ```
+
+</details>
+
+---
+
+## Capturas de Pantalla
+
+<figure>
+  <Image src={pc2} alt="Página de inicio" width={600} height={400} className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"/>
+  <figcaption>Página de inicio del sitio.</figcaption>
+</figure>
+
+<figure>
+  <Image src={pc3} alt="Ejemplo de explicación de juego" width={600} height={400} className="rounded-xl max-h-[300px] md:max-h-[400px] w-fit show-animation"/>
+  <figcaption>Ejemplo de explicación de un juego.</figcaption>
+</figure>
+
+<figure>
+  <Image src={phone1} alt="Vista en móvil" width={600} height={400} className="rounded-xl max-h-[500px] md:max-h-[600px] w-fit show-animation"/>
+  <figcaption>Vista en móvil del sitio.</figcaption>
+</figure>
+
+<figure>
+  <Image src={phone2} alt="Imagen principal del sitio" width={600} height={400} className="rounded-xl max-h-[500px] md:max-h-[600px] w-fit show-animation"/>
+  <figcaption>Imagen principal del sitio.</figcaption>
+</figure>
+
+---
+
+## Planes Futuros
+
+* Añadir más juegos (p.ej. Brisca, Mus)
+* Añadir explicaciones en vídeo
+* Localización (ES/CAT/EN)
+* Comentarios o variantes de reglas vía MDX
+
+---
+
+## Licencia
+
+MIT

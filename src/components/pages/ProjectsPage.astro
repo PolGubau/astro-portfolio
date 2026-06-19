@@ -1,13 +1,19 @@
 ---
-import { getLocale, localizePath, useTranslations } from "../../i18n/utils";
-import { metadata } from "../../lib/constants";
-import { projects } from "../../lib/utils";
+import {
+  getLocale,
+  localeTags,
+  localizePath,
+  useTranslations,
+} from "../../i18n/utils";
 import MainLayout from "../../layouts/MainLayout.astro";
-import ProjectsList from "../Projects/ProjectList/ProjectsList.astro";
+import { metadata } from "../../lib/constants";
+import { getLocalizedProjects, parseProjectId } from "../../lib/utils";
 import ContentLanguageNotice from "../Layout/ContentLanguageNotice.astro";
+import ProjectsList from "../Projects/ProjectList/ProjectsList.astro";
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
+const projects = getLocalizedProjects(locale);
 
 const pageTitle = t("projects.meta.title");
 const pageDescription = t("projects.meta.description");
@@ -22,12 +28,15 @@ const itemListSchema = {
   name: pageTitle,
   description: pageDescription,
   url: pageUrl,
-  inLanguage: locale,
+  inLanguage: localeTags[locale],
   numberOfItems: projects.length,
   itemListElement: projects.map((project, index) => ({
     "@type": "ListItem",
     position: index + 1,
-    url: `https://polgubau.com/projects/${project.id}`,
+    url: new URL(
+      localizePath(`/projects/${parseProjectId(project.id).slug}`, locale),
+      metadata.links.website,
+    ).href,
     name: project.data.title,
   })),
 };

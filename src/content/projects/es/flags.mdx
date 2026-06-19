@@ -1,0 +1,150 @@
+---
+title: "React Beauty Flags"
+seoTitle: "React Beauty Flags: librería de +250 banderas SVG"
+startedAt: "2024-11-16"
+endedAt: "2024-12-20"
+category: "web"
+color: "#f3fe6c80"
+cover: "../img/flags.webp"
+available: true
+
+summary: "Una librería de React con +250 banderas SVG hechas a mano para países, ciudades y regiones, pensada para UIs modernas con una configuración mínima."
+githubLink: https://github.com/PolGubau/flags
+npmLink: https://www.npmjs.com/package/react-beauty-flags
+link: https://flags.polgubau.com
+
+tech:
+  - React
+  - TypeScript
+  - NPM Package
+  - Tailwind CSS
+---
+import { Image } from 'astro:assets';
+import flagsOg from "../../../assets/media/projects/flags/og.webp";
+import Q3 from "../../../assets/media/projects/flags/q3.webp";
+import Q2 from "../../../assets/media/projects/flags/q2.webp";
+import Q1 from "../../../assets/media/projects/flags/q1.webp";
+import flags1 from "../../../assets/media/projects/flags/1.webp";
+
+# React Beauty Flags
+
+**React Beauty Flags** es una librería React que proporciona más de **250 banderas SVG artesanales** — de países a ciudades — diseñadas para aportar color y estilo a interfaces modernas.
+
+Nacida de la frustración con alternativas aburridas o sobrecomplicadas, se centra en la **simplicidad, la armonía visual y la experiencia del desarrollador**.
+
+<figure>
+  <Image
+    alt="Vista previa de React Beauty Flags"
+    width={720}
+    height={480}
+    className="rounded-xl h-full max-h-[300px] md:max-h-[400px] object-contain show-animation"
+    src={flagsOg}
+  />
+</figure>
+
+---
+
+## Motivación
+
+Tras reutilizar banderas en decenas de proyectos, me di cuenta de que las soluciones existentes eran demasiado pesadas o carecían de consistencia de diseño. Inspirado en la **estética limpia y lúdica de Duolingo**, decidí diseñar un conjunto que quedara genial en cualquier UI moderna y fuera amigable para desarrolladores.
+
+> "Quería algo elegante para portfolios pero suficientemente sencillo para pasar a producción."
+
+El resultado es una **librería con más de 1.000 descargas** (¡y creciendo!) en NPM, con gran adopción entre desarrolladores centrados en UI y entusiastas del open source.
+
+---
+
+## Destacados
+
+* **+250 Banderas Artesanales** - Países, ciudades y símbolos diseñados en Figma.
+* **Ligero y Rápido** - Sin dependencias externas, SVGs optimizados.
+* **Personalizable** - Soporte de utilidades Tailwind para bordes, sombras y radio.
+* **Búsqueda y Filtrado** - Experiencia de búsqueda integrada con URLs compartibles.
+* **Preparado para TypeScript** - Completamente tipado, autocompletado en el IDE.
+
+<details>
+  <summary> <b>Detalles Técnicos</b> <br/><small>Para desarrolladores y mentes curiosas</small></summary>
+
+  ### 🧰 Stack Tecnológico
+
+  | Herramienta | Propósito |
+  |-------------|-----------|
+  | **React** | Librería principal para renderizar componentes |
+  | **TypeScript** | Tipado estático y fiabilidad del código |
+  | **Tailwind CSS** | Estilos utility-first para el sitio de demo |
+  | **Figma API** | Obtener y sincronizar diseños vectoriales de banderas |
+  | **svgo** | Optimización de SVG para carga rápida |
+  | **GitHub Actions** | CI/CD automatizado para build y publicación en NPM |
+
+  ---
+
+  ### ⚙️ Scripts de Automatización
+
+  **get-figma.ts** - Obtiene SVGs de Figma vía API y los almacena localmente.
+
+  **build-flags.ts** - Optimiza SVGs con svgo, genera componentes React y enums.
+
+  **check-flags.ts** - Valida la consistencia de banderas y los metadatos faltantes.
+
+  ---
+
+  ### 🚀 Flujo CI/CD
+
+  Cada push a `main` lanza GitHub Actions para:
+  1. Obtener las últimas banderas de Figma
+  2. Construir y optimizar los assets
+  3. Publicar una nueva versión del paquete en NPM
+  4. Desplegar el sitio de demo en Vercel automáticamente
+
+  Este flujo garantiza que la librería esté siempre actualizada y se despliega en menos de **2 minutos**.
+
+</details>
+
+---
+
+## Vista del Sitio Web
+
+El [sitio oficial](https://flags.polgubau.com) — construido con **Next.js** y **TailwindCSS** — muestra todas las banderas con filtrado en vivo, vistas previas y copia de código instantánea. Cada bandera incluye:
+
+* Personalización interactiva (radio, borde, sombra)
+* Copiar al portapapeles con clases Tailwind predefinidas
+* Deep-linking vía URL para compartir fácilmente
+
+<figure>
+  <Image alt="Vista de agrupación de banderas" width={250} height={400} className="rounded-xl h-full max-h-[300px] object-cover" src={Q3} />
+  <figcaption>Banderas agrupadas alfabéticamente por tipo.</figcaption>
+</figure>
+
+<figure>
+  <Image alt="Ejemplo de búsqueda" width={550} height={400} className="rounded-xl h-full max-h-[350px] w-full object-cover" src={Q2} />
+  <figcaption>Búsqueda instantánea con sincronización de URL para compartir resultados.</figcaption>
+</figure>
+
+<figure>
+  <Image alt="Feedback con búsqueda vacía" width={550} height={400} className="rounded-xl h-full max-h-[350px] w-full object-cover" src={Q1} />
+  <figcaption>Feedback elegante cuando ninguna bandera coincide con los criterios de búsqueda.</figcaption>
+</figure>
+
+<figure>
+  <Image alt="Cajón de detalles de bandera" width={250} height={500} className="rounded-xl h-full max-h-[500px] show-animation" src={flags1} />
+  <figcaption>Cajón interactivo con fragmentos de código listos para copiar.</figcaption>
+</figure>
+
+---
+
+## Aprendizajes e Impacto
+
+Construir **React Beauty Flags** reforzó mi interés en las **herramientas para desarrolladores y el diseño centrado en DX**. Automatizar pipelines de assets con TypeScript y APIs de Figma mejoró mi flujo de trabajo, ahorrando más de **10 horas de actualizaciones manuales de banderas por versión**.
+
+El proyecto también generó colaboraciones de otros desarrolladores, que contribuyeron con diseños y nuevos scripts.
+
+> Los pequeños detalles hacen el software delicioso — y las banderas, sorprendentemente, son uno de ellos.
+
+---
+
+## Planes Futuros
+
+* Añadir banderas de organizaciones mundiales y eventos
+* Ampliar las funciones de utilidad (paletas de colores, correspondencia de códigos)
+* Añadir analíticas sobre el uso de banderas
+* Mejorar los metadatos de accesibilidad

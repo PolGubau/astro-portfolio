@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { getLocale, useTranslations } from "../../i18n/utils";
 import type { ProjectMetadata } from "../../lib/utils";
 import GithubIcon from "../icons/GithubIcon.astro";
 import NpmIcon from "../icons/NpmIcon.astro";
@@ -10,6 +11,8 @@ interface Props {
 }
 const { project } = Astro.props;
 const data = project.data;
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
 ---
 
 <div
@@ -28,7 +31,7 @@ const data = project.data;
         <button
           id="share-button"
           type="button"
-          title="Share"
+          title={t("bar.share")}
           class="group relative flex items-center gap-1.5 cursor-pointer rounded-lg px-2.5 py-2 text-black/60 transition-all hover:bg-black/15"
         >
           <Icon

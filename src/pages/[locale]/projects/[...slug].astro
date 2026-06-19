@@ -1,0 +1,146 @@
+---
+// Localized project detail routes (/es/projects/{slug}, /ca/projects/{slug}).
+// Each locale has its own MDX entry (full frontmatter + body) in the single
+// `projects` collection under en/es/ca subfolders. Falls back to English.
+import { render } from "astro:content";
+import Breadcrumb from "../../../components/Breadcrumb.astro";
+import ProjectBar from "../../../components/Projects/ProjectBar.astro";
+import ProjectHeader from "../../../components/Projects/ProjectHeader.astro";
+import ProjectLinks from "../../../components/Projects/ProjectLinks.astro";
+import SimilarProjects from "../../../components/Projects/SimilarProjects.astro";
+import Toc from "../../../components/Toc.astro";
+import {
+  type Locale,
+  getLocalePaths,
+  localeTags,
+  localizePath,
+  useTranslations,
+} from "../../../i18n/utils";
+import MainLayout from "../../../layouts/MainLayout.astro";
+import MdLayout from "../../../layouts/MdLayout.astro";
+import { metadata } from "../../../lib/constants";
+import {
+  getLocalizedProject,
+  getProjects,
+  parseProjectId,
+} from "../../../lib/utils";
+
+export function getStaticPaths() {
+  return getLocalePaths().flatMap(({ params: { locale } }) =>
+    getProjects().map((project) => {
+      const slug = parseProjectId(project.id).slug;
+      return { params: { locale, slug }, props: { slug, locale } };
+    }),
+  );
+}
+type Props = { slug: string; locale: Locale };
+
+const { slug, locale } = Astro.props;
+const project = getLocalizedProject(slug, locale);
+if (!project) return Astro.redirect("/404");
+
+const t = useTranslations(locale);
+const PAGE_TITLE = `${project.data.seoTitle ?? project.data.title} - ${metadata.name}`;
+
+const { Content, headings } = await render(project);
+const publishedTime = project.data.startedAt.toISOString();
+const modifiedTime = (
+  project.data.endedAt ?? project.data.startedAt
+).toISOString();
+
+const projectsPath = localizePath("/projects", locale);
+const projectPageUrl = new URL(
+  localizePath(`/projects/${slug}`, locale),
+  metadata.links.website,
+).href;
+const ogImage = `${metadata.links.website}/og/projects/${slug}.png`;
+
+// Build JSON-LD: SoftwareSourceCode when a GitHub repo is present, CreativeWork
+// otherwise. Localized name/description and inLanguage power local SEO.
+const projectSchema = project.data.githubLink
+  ? {
+      "@context": "https://schema.org",
+      "@type": "SoftwareSourceCode",
+      name: project.data.title,
+      description: project.data.summary,
+      url: projectPageUrl,
+      image: ogImage,
+      inLanguage: localeTags[locale],
+      codeRepository: project.data.githubLink,
+      ...(project.data.tech?.length
+        ? { programmingLanguage: project.data.tech }
+        : {}),
+      dateCreated: project.data.startedAt.toISOString().split("T")[0],
+      ...(project.data.endedAt
+        ? { dateModified: project.data.endedAt.toISOString().split("T")[0] }
+        : {}),
+      author: {
+        "@type": "Person",
+        name: metadata.longName,
+        url: metadata.links.website,
+      },
+    }
+  : {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      name: project.data.title,
+      description: project.data.summary,
+      url: projectPageUrl,
+      image: ogImage,
+      inLanguage: localeTags[locale],
+      ...(project.data.link ? { sameAs: project.data.link } : {}),
+      ...(project.data.tech?.length
+        ? { keywords: project.data.tech.join(", ") }
+        : {}),
+      dateCreated: project.data.startedAt.toISOString().split("T")[0],
+      ...(project.data.endedAt
+        ? { dateModified: project.data.endedAt.toISOString().split("T")[0] }
+        : {}),
+      ...(project.data.client
+        ? { producer: { "@type": "Organization", name: project.data.client } }
+        : {}),
+      author: {
+        "@type": "Person",
+        name: metadata.longName,
+        url: metadata.links.website,
+      },
+    };
+---
+
+<MainLayout
+  image={`/og/projects/${slug}.png`}
+  title={PAGE_TITLE}
+  description={project.data.summary}
+  type="article"
+  publishedTime={publishedTime}
+  modifiedTime={modifiedTime}
+  keywords={project.data.tech && project.data.tech.length > 0
+    ? project.data.tech
+    : undefined}
+>
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(projectSchema)}
+  />
+  <section class="relative flex flex-col gap-4">
+    <Breadcrumb
+      items={[
+        { name: t("nav.home"), url: localizePath("/", locale) },
+        { name: t("projects.heading"), url: projectsPath },
+        { name: project.data.title },
+      ]}
+    />
+
+    <ProjectHeader project={project} />
+
+    <MdLayout backTo={projectsPath}>
+      <Content />
+      {headings?.length > 0 && <Toc slot="toc" headings={headings} />}
+      <ProjectLinks slot="footer" project={project} />
+    </MdLayout>
+    <SimilarProjects project={project} />
+
+    {project.data.link ? <ProjectBar project={project} /> : null}
+  </section>
+</MainLayout>

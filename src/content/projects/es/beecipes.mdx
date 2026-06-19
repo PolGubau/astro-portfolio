@@ -1,0 +1,106 @@
+---
+title: "Beecipes"
+seoTitle: "Beecipes: app de recetas de un hackathon de 24h"
+startedAt: "2023-01-02"
+endedAt: "2023-01-03"
+available: true
+cover: "../img/beecipes.webp"
+color: "#FFD16690"
+category: "web"
+summary: "App buscadora de recetas creada en menos de 24 horas para el hackathon JOBarcelona 2023, usando la API de Spoonacular con una interfaz limpia y fácil de usar."
+githubLink: https://github.com/PolGubau/hackathon-JOBarcelona-recipes-2023,
+link: https://beecipes.vercel.app
+tech: 
+  - React
+  - Next.js
+  - TypeScript
+  - Tailwind CSS
+---
+import beecipesCover from "../img/beecipes.webp"
+import { Image } from 'astro:assets';
+
+Esta es mi participación en el hackathon JOBarcelona 2023. Beecipes es una app de recetas que usa la API de Spoonacular para obtener recetas y mostrarlas de forma amigable. **Se completó en menos de 24 horas como reto**.
+
+- Esta app está construida con React y Recoil.
+
+- Usa la **API de Spoonacular** para obtener y mostrar recetas.
+
+  <Image
+    alt="Mockup móvil de Beecipes"
+    width={800}
+    height={500}
+    className="rounded-xl h-full max-h-[500px] my-8 object-contain"
+    src={beecipesCover}
+  />
+
+## Funcionalidades
+
+- Buscar recetas por nombre
+- Buscar recetas de forma aleatoria
+- Almacenamiento local para guardar recetas
+- Menos llamadas a la API para ahorrar datos
+
+Estas funcionalidades están diseñadas para **mejorar la experiencia del usuario proporcionando utilidades prácticas y reduciendo la cantidad de datos que se deben obtener de la API**. La búsqueda por nombre permite encontrar rápidamente la receta deseada, mientras que la búsqueda aleatoria ofrece una forma divertida y sencilla de descubrir recetas nuevas.
+
+El uso del almacenamiento local mejora la experiencia al permitir guardar recetas favoritas y acceder a ellas sin conexión, reduciendo la dependencia de la conectividad a internet.
+
+Finalmente, al reducir el número de llamadas a la API, se ahorra en uso de datos y se mejora la velocidad general de la aplicación — una consideración importante para usuarios con planes de datos limitados o conexiones más lentas.
+
+## **Instalación**
+
+Este proyecto está construido con Vite.
+
+1. Clona el repositorio
+
+   ```bash
+   git clone https://github.com/PolGubau/hackathon-JOBarcelona-recipes-2023.git
+   ```
+
+2. Instala las dependencias
+
+   ```bash
+   pnpm i
+   ```
+
+3. Ejecuta el proyecto
+
+   ```bash
+    pnpm run dev
+   ```
+
+4. Abre el proyecto en tu editor de código preferido.
+
+## **Uso**
+
+Para usar la app necesitas obtener una API key de [Spoonacular](https://spoonacular.com/food-api).
+
+Tras obtener la API key, sigue estos pasos:
+
+- Abre el proyecto en tu editor de código preferido.
+- Navega al archivo `src/models/url.ts` y reemplaza `YOUR_API_KEY` con tu API key real.
+- Guarda los cambios.
+- Abre el proyecto con `npm run dev`.
+
+Ya puedes usar la app para buscar recetas por nombre o de forma aleatoria, y guardarlas en el almacenamiento local.
+
+> **Nota:** Asegúrate de tener una conexión estable a internet mientras usas la app para evitar errores al obtener datos de la API.
+
+## **Hoja de Ruta**
+
+1. Filtrar recetas por ingredientes, calorías, etc.
+2. Añadir una lista de la compra
+3. Añadir una lista de favoritos
+4. Añadir un sistema de login
+
+## **Contribuciones**
+
+1. Haz fork del proyecto en Github
+2. Crea una nueva rama
+3. Haz commit de tus cambios
+4. Sube los cambios a la rama
+5. Abre un pull request
+
+## **Licencia**
+
+Este proyecto está licenciado bajo la Licencia MIT.
+Es totalmente libre de usar y modificar al ser Open Source.

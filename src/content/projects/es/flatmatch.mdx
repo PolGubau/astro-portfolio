@@ -1,0 +1,167 @@
+---
+title: "Flatmatch"
+seoTitle: "Flatmatch: buscador de pisos estilo Tinder"
+startedAt: "2025-08-14"
+endedAt: "2026-02-12"
+category: "web"
+color: "#4fc1c080"
+cover: "../img/flatmatch.webp"
+available: true
+client: "ErasmusLife Barcelona"
+
+summary: "App web estilo Tinder para encontrar tu hogar ideal. Crea un perfil, define tus criterios y desliza entre anuncios para encontrar el lugar perfecto donde vivir."
+
+githubLink: https://github.com/PolGubau/flatmatch
+link: https://flatmatchweb.vercel.app/
+
+tech:
+  - react
+  - react-router
+  - tailwindcss
+  - typescript
+  - vite
+---
+import { Image } from "astro:assets";
+
+import form_1type from "../../../assets/media/projects/flatmatch/1-type.webp";
+import form_2location from "../../../assets/media/projects/flatmatch/2-location.webp";
+import form_3commodities from "../../../assets/media/projects/flatmatch/3-commodities.webp";
+import form_4company from "../../../assets/media/projects/flatmatch/4-company.webp";
+import form_5metadata from "../../../assets/media/projects/flatmatch/5-metadata.webp";
+import form_6preferences from "../../../assets/media/projects/flatmatch/6-preferences.webp";
+import form_7rules from "../../../assets/media/projects/flatmatch/7-rules.webp";
+import form_8timings from "../../../assets/media/projects/flatmatch/8-timings.webp";
+import form_9preview from "../../../assets/media/projects/flatmatch/9-preview.webp";
+import details_modal from "../../../assets/media/projects/flatmatch/details-modal.webp";
+import favs from "../../../assets/media/projects/flatmatch/favs.webp";
+import home from "../../../assets/media/projects/flatmatch/home.webp";
+import tinder_like from "../../../assets/media/projects/flatmatch/tinder-like.webp";
+import flatmatch from "../img/flatmatch.webp";
+import profile from "../../../assets/media/projects/flatmatch/profile.webp";
+import profile_after_create_room from "../../../assets/media/projects/flatmatch/profile-after-create.webp";
+
+# Flatmatch - Encuentra tu lugar ideal para vivir
+
+Flatmatch es una aplicación web diseñada para ayudar a **estudiantes Erasmus y jóvenes profesionales a encontrar alojamiento temporal** en cualquier parte del mundo. Inspirada en apps de deslizamiento como Tinder pero aplicada al mercado de alquiler, Flatmatch hace la búsqueda de vivienda **rápida, visual y atractiva**.
+
+El concepto es simple: desliza por los anuncios hasta encontrar tu match.
+
+<Image src={flatmatch} alt="Miniatura de Flatmatch" height={500} class={"show-animation rounded-2xl"} loading={"eager"} />
+
+---
+
+## Funcionalidades Clave
+
+- **Interfaz de deslizamiento estilo Tinder**: Desliza a la derecha para guardar una propiedad, a la izquierda para descartarla.
+- **Sección de favoritos**: Accede y gestiona fácilmente tus propiedades guardadas.
+- **Chat en tiempo real**: (Próximamente) Comunícate directamente con propietarios.
+- **Pago en la app**: (Próximamente) Paga depósitos y alquiler de forma segura.
+- **Gestión de perfil**: Crea y gestiona tu perfil de usuario y anuncios.
+- **Enfoque internacional**: La app está disponible en varios idiomas, adaptándose automáticamente al idioma del navegador.
+- **Publicación fácil de propiedades**: Los propietarios pueden crear y publicar anuncios rápidamente a través de un formulario guiado por pasos.
+
+## Funcionalidades Principales
+
+La app está estructurada en **cuatro páginas principales**:
+
+### Inicio (Explorar Propiedades)
+
+La página de inicio presenta una **interfaz de pila de tarjetas estilo Tinder**, donde los usuarios pueden:
+
+* Deslizar a la **izquierda** para descartar una propiedad.
+* Deslizar a la **derecha** para añadirla a favoritos.
+* Desplazarse verticalmente en una tarjeta para ver más detalles.
+
+<Image src={tinder_like} alt="Experiencia estilo Tinder" height={700} class={"show-animation rounded-2xl"} />
+
+---
+
+### Favoritos
+
+Esta sección reúne todas las propiedades guardadas con un **deslizamiento a la derecha**. Los usuarios pueden:
+
+* Explorar la lista de propiedades guardadas.
+* Abrir la **vista de detalles** para más información.
+* Desde el modal de detalle, **contactar directamente con el propietario**.
+
+<div class="flex flex-wrap gap-4">
+<Image src={favs} alt="Favoritos en Flatmatch" height={500} class={"show-animation rounded-2xl"} />
+<Image src={details_modal} alt="Modal de detalles de la propiedad" height={500} class={"show-animation rounded-2xl"} />
+</div>
+
+---
+
+### Chats
+
+La **pestaña de Chats** pronto permitirá conversaciones en tiempo real entre propietarios e inquilinos. Actualmente esta funcionalidad está en desarrollo.
+
+---
+
+### Perfil
+
+Los usuarios pueden gestionar su identidad y anuncios en la **sección de Perfil**:
+
+* Completar su **perfil personal**.
+* Ver y gestionar **sus propias propiedades publicadas**.
+
+<div class="flex flex-wrap gap-4">
+<Image src={profile} alt="Perfil de usuario" height={450} class={"show-animation rounded-2xl"} />
+<Image src={profile_after_create_room} alt="Perfil tras crear un anuncio" height={450} class={"show-animation rounded-2xl"} />
+</div>
+
+---
+
+## Flujo de Creación de Propiedades
+
+Publicar una propiedad en Flatmatch es sencillo, dividido en **pasos guiados** para garantizar que cada anuncio sea preciso y atractivo, en **9 pasos simples**:
+
+1. **Tipo de propiedad** — Selecciona el tipo (piso, habitación compartida, etc.)
+   <Image src={form_1type} alt="Seleccionar tipo de propiedad" height={600} class={"show-animation rounded-2xl"} />
+
+2. **Ubicación** — Especifica la ubicación con autocompletado de calles de todo el mundo.
+   <Image src={form_2location} alt="Establecer ubicación" height={600} class={"show-animation rounded-2xl"} />
+
+3. **Comodidades** — Selecciona los servicios disponibles y el número de habitaciones y baños.
+   <Image src={form_3commodities} alt="Elegir comodidades" height={600} class={"show-animation rounded-2xl"} />
+
+4. **Compañía** — Si es compartida, especifica detalles sobre los compañeros actuales.
+   <Image src={form_4company} alt="Detalles de compañeros y propietario" height={600} class={"show-animation rounded-2xl"} />
+
+5. **Metadatos** — Precio, nombre, descripción y fotos.
+   <Image src={form_5metadata} alt="Formulario de metadatos" height={600} class={"show-animation rounded-2xl"} />
+
+6. **Preferencias de inquilino** — Rango de edad, ocupación o género preferido.
+   <Image src={form_6preferences} alt="Preferencias de inquilino" height={600} class={"show-animation rounded-2xl"} />
+
+7. **Normas de la casa** — Reglas específicas que los inquilinos deben aceptar.
+   <Image src={form_7rules} alt="Establecer normas de la casa" height={600} class={"show-animation rounded-2xl"} />
+
+8. **Disponibilidad** — Fechas de entrada y duración mínima/máxima de estancia.
+   <Image src={form_8timings} alt="Disponibilidad" height={600} class={"show-animation rounded-2xl"} />
+
+9. **Vista previa y publicación** — Revisa todo y publica el anuncio.
+   <Image src={form_9preview} alt="Vista previa del anuncio" height={600} class={"show-animation rounded-2xl"} />
+
+---
+
+## Stack Tecnológico
+
+| Tecnología | Propósito |
+| --- | --- |
+| **React** | Librería UI principal |
+| **React Router** | Navegación y enrutamiento |
+| **TailwindCSS + Radix Primitives** | Estilos y componentes accesibles |
+| **TypeScript** | Seguridad de tipos y mantenibilidad |
+| **Vite** | Bundling rápido y desarrollo |
+| **Supabase** | Backend-as-a-Service |
+| **open-map-geocoder** | Autocompletado de direcciones |
+
+---
+
+## Planes Futuros
+
+* **Chat en tiempo real** entre propietarios e inquilinos.
+* **Filtros avanzados** para búsquedas de propiedades.
+* **Reseñas y valoraciones** de propiedades y propietarios.
+* **App móvil** para navegar y deslizar sobre la marcha.
+* **Matching de compañeros** basado en estilo de vida y preferencias.

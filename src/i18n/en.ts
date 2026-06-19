@@ -118,10 +118,25 @@ export const en = {
 	"projects.subtitle":
 		"A selection of work across web, mobile, open source and freelance.",
 	"projects.notice": "",
+	"projects.similar": "Similar Projects",
 	"projects.meta.title":
 		"Projects - Web, Mobile & Open Source Work by Pol Gubau",
 	"projects.meta.description":
 		"Explore 50+ projects by Pol Gubau Amores across React, TypeScript, and React Native - web apps, design systems, mobile apps, and freelance work, from open source libraries to client products.",
+	"projects.status.inProgress": "In Progress",
+	"projects.links.visit": "Visit Project",
+	"projects.links.source": "Source code",
+	"projects.links.npm": "NPM package",
+	"projects.links.playstore": "Download",
+	"projects.links.live": "Live site",
+	"projects.links.registry": "npm registry",
+	"projects.links.googlePlay": "Google Play",
+	"projects.links.links": "Links",
+	"bar.share": "Share",
+	"bar.copied": "Copied!",
+	"bar.visitProject": "Visit project",
+	"stats.npmTooltip": "npm downloads",
+	"stats.vercelTooltip": "requests on Vercel-deployed projects",
 } as const;
 
 export type UiKey = keyof typeof en;

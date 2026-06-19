@@ -1,0 +1,98 @@
+---
+title: "Pol-UI"
+seoTitle: "Pol-UI: librería de componentes React, 150+ UI"
+startedAt: "2024-03-17"
+endedAt: "2024-06-17"
+category: "web"
+color: "#b49cff80"
+available: true
+cover: "../img/pol-ui.webp"
+tech:
+  - React
+  - TypeScript
+  - Tailwind CSS
+  - Radix UI
+  - Vitest
+  - Storybook
+
+summary: "Una librería de UI en React con 150+ componentes, 62k+ descargas en NPM y una distinción de 10/10 en una tesis universitaria. Creada para ser rápida, accesible y realmente fácil de usar."
+
+githubLink: https://github.com/PolGubau/pol-ui
+npmLink: https://www.npmjs.com/package/pol-ui
+link: https://ui.polgubau.com
+---
+
+import { Image } from "astro:assets";
+import cover from "../img/pol-ui.webp";
+
+> **Trabajo de Fin de Grado - Sobresaliente, 10/10. Mención especial concedida por la UAB.**
+
+Pol-UI es una biblioteca de componentes React que construí como proyecto final universitario. Lo que comenzó como un requisito de tesis se convirtió en una biblioteca lista para producción con más de 150 componentes, un sitio de documentación completo, integración con Storybook y más de 50.000 descargas en NPM.
+
+---
+
+## Por qué lo construí
+
+Durante mi tercer año de universidad, ya trabajaba a tiempo completo en Mesalvo construyendo sistemas de diseño. Vi los mismos patrones repetirse en cada proyecto: botones, modales, formularios, tooltips, siempre construidos desde cero.
+
+Quería construir algo reutilizable, bien documentado y realmente agradable de usar. No otro volcado de componentes, sino una biblioteca coherente con una API consistente y soporte real de accesibilidad. Escribí sobre todo el proceso (incluidos los errores) en [Qué aprendí construyendo una biblioteca de UI desde cero](/blog/designingLibrary).
+
+## Qué incluye
+
+Pol-UI viene con:
+
+- **150+ componentes** - desde primitivos (Button, Input, Badge) hasta patrones complejos (DataTable, CommandMenu, Combobox)
+- **Soporte completo de TypeScript** - cada prop tipado, sin escapes con `any`
+- **Primitivos de Radix UI** - accesibles por defecto, navegables por teclado y compatibles con lectores de pantalla
+- **Tailwind CSS** - totalmente personalizable mediante tokens, sin hackear estilos
+- **Storybook** - cada componente documentado con ejemplos en vivo
+- **Vitest + Testing Library** - cobertura de tests >80%
+
+```bash
+npm install pol-ui
+```
+
+```tsx
+import { Button, Input, Modal } from 'pol-ui';
+
+export function LoginForm() {
+  return (
+    <form>
+      <Input label="Correo electrónico" type="email" />
+      <Input label="Contraseña" type="password" />
+      <Button intent="primary" type="submit">Iniciar sesión</Button>
+    </form>
+  );
+}
+```
+
+## Decisiones técnicas
+
+**¿Por qué Radix UI?** La accesibilidad es difícil de implementar correctamente. Radix gestiona el enfoque, los atributos ARIA y las interacciones de teclado.
+
+**¿Por qué Tailwind?** Los tokens de diseño mediante variables CSS + utilidades de Tailwind permiten personalizar la biblioteca sin luchar contra la especificidad de CSS.
+
+**¿Por qué Vitest en lugar de Jest?** Más rápido. Soporte nativo de ESM. La misma API. Sin configuración extra con Vite.
+
+## El sitio de documentación
+
+Los docs en [ui.polgubau.com](https://ui.polgubau.com) cubren cada componente con:
+
+- Demos interactivos en vivo
+- Todas las variantes de props con tipos TypeScript
+- Notas de accesibilidad
+- Ejemplos de código listos para copiar y pegar
+
+La documentación llevó casi tanto tiempo como la propia biblioteca. Creo que eso es lo correcto.
+
+## Impacto
+
+- **50.000+ descargas** en NPM desde el lanzamiento
+- Usado en múltiples proyectos freelance y trabajo de clientes de Doscientos
+- Citado en mi tesis que recibió una mención especial de la UAB
+
+---
+
+El código fuente completo está en [GitHub](https://github.com/PolGubau/pol-ui). Las contribuciones son bienvenidas.
+
+Los patrones de composición de componentes que desarrollé para esta biblioteca se explican en detalle en [Patrones de Composición de Componentes en React](/blog/component-composition-patterns).

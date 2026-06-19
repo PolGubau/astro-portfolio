@@ -1,0 +1,121 @@
+---
+title: "L2024"
+seoTitle: "L2024: caminando cada parada del metro de Barcelona"
+startedAt: "2024-01-25"
+endedAt: "2024-09-29"
+category: "web"
+color: "#d93f4980"
+cover: "../img/l2024.webp"
+available: true
+
+summary: "Proyecto web para ilustrar un reto personal: recorrer a pie todas las estaciones de la red de metro de Barcelona en un año."
+
+githubLink: https://github.com/PolGubau/l2024
+link: https://l2024.polgubau.com
+
+tech: 
+  - React
+  - Tailwind CSS
+  - React Icons
+  - Eslint 
+  - Typescript
+  - Vite
+---
+import At from "../../../components/mdx-components/at.astro";
+import { Image } from 'astro:assets';
+
+import mapOverview from "../../../assets/media/projects/l2024/map-overview.avif"
+import mapDetail from "../../../assets/media/projects/l2024/map-detail.avif"
+import lineDetails from "../../../assets/media/projects/l2024/line-details.avif"
+import people from "../../../assets/media/projects/l2024/people.avif"
+import stopImages from "../../../assets/media/projects/l2024/stop-images.avif"
+
+## El reto
+
+Cada último sábado de 2024, <At label='Marcos Rayo' href='https://www.linkedin.com/in/marcos-rayo-garc%C3%ADa-308342308/'/> y yo recorrimos una línea de metro completa de Barcelona caminando — sobre el asfalto, a pie, parada a parada. Sin atajos, sin coger el metro. Solo las calles.
+
+Al final del año habíamos cubierto las 12 líneas de la red: ~200 km de ciudad al ritmo del paso.
+
+<Image
+  alt="Grupo de personas caminando una de las líneas de metro"
+  width={400}
+  height={600}
+  className="rounded-2xl mx-auto max-h-[600px] w-auto show-animation my-8 shadow-xl"
+  src={people}
+/>
+
+Amigos se fueron uniendo en distintas fechas — algunos para una línea, otros para varias. Cada sábado acabó siendo algo propio: distintos barrios, distinto tiempo y el objetivo compartido de llegar a la última estación antes de que cayera el sol.
+
+## Ingeniería de las rutas
+
+El objetivo era documentar todo — rutas, estadísticas y las fotos que hicimos en cada parada.
+
+La pipeline de datos fue la parte más interesante:
+1. **Grabación**: Registramos cada caminata con el móvil.
+2. **Limpieza**: Los archivos GPX exportados se limpiaron en [GPX Studio](https://gpx.studio) para eliminar la deriva del GPS y corregir segmentos perdidos.
+3. **Procesamiento**: Convertidos a GeoJSON para el mapa, pero también se extrajo metadata a una estructura TypeScript personalizada para gestionar la UI.
+
+<div class="grid grid-cols-1 md:grid-cols-[auto_auto] gap-2">
+
+<Image
+  alt="Vista general del mapa mostrando todas las líneas de metro recorridas por Barcelona"
+  width={800}
+  height={500}
+  className="rounded-2xl mx-auto max-h-[600px] w-auto show-animation my-8 shadow-xl"
+  src={mapOverview}
+/>
+
+```typescript
+{
+  id: "L1",
+  metadata: {
+    title: "L1",
+    subtitle: "Hospital de Bellvitge / Fondo",
+    color: "#df2937",
+    distance: 29.64,
+    timeWalking: "06:56:45",
+    stations: 30,
+  }
+}
+```
+</div>
+
+## Construyendo el mapa
+
+El mapa está construido con **MapLibre** y **React**. Al ser un proyecto personal, quería evitar las APIs de Google Maps o Mapbox para mantenerlo completamente gratuito y centrado en la privacidad.
+
+Usé `@mapcomponents/react-maplibre`, que era potente pero tenía casi cero documentación. Tuve que bucear en el código fuente para entender cómo gestionar la interpolación de capas — haciendo que las líneas se hicieran más gruesas al hacer zoom para mantenerlas visibles.
+
+<Image
+  alt="Mapa ampliado mostrando una línea con paradas y detalle de ruta"
+  width={800}
+  height={500}
+  className="rounded-2xl w-full object-cover show-animation my-4 border border-neutral-200"
+  src={mapDetail}
+/>
+
+Seleccionar una línea filtra los datos GeoJSON globales y centra el viewport en esa ruta específica, mostrando las estadísticas en tiempo real extraídas de la metadata.
+
+<Image
+  alt="Panel de detalle de línea mostrando estadísticas como distancia, tiempo y estaciones"
+  width={800}
+  height={500}
+  className="rounded-2xl mx-auto max-h-[600px] w-auto show-animation my-8 shadow-xl"
+  src={lineDetails}
+/>
+
+## Fotos de las paradas
+
+En cada estación hicimos una foto. Era la parte más difícil de automatizar: tenemos cientos de fotos nombradas exactamente como los nombres de las estaciones.
+
+En lugar de una base de datos, opté por una convención de nomenclatura simple. La app obtiene el nombre de la parada clicada, identifica la línea y carga dinámicamente la imagen desde una carpeta pública estructurada: `/images/${line}/${stop}.jpg`.
+
+<Image
+  alt="Cuadrícula de fotos tomadas en paradas de metro a lo largo de una línea"
+  width={400}
+  height={600}
+  className="rounded-2xl mx-auto max-h-[500px] w-auto show-animation my-8 shadow-xl"
+  src={stopImages}
+/>
+
+Es un proyecto pequeño, pero captura el 2024 a la perfección: 12 sábados, 12 líneas, y muchos kilómetros andados.

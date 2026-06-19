@@ -1,0 +1,160 @@
+---
+title: "Fuzzy"
+seoTitle: "Fuzzy: búsqueda en TypeScript sin dependencias"
+startedAt: "2025-02-28"
+endedAt: "2025-04-10"
+category: "web"
+color: "#62e36a80"
+cover: "../img/fuzzy.webp"
+available: true
+
+summary: "Librería de búsqueda difusa en TypeScript, ligera y sin dependencias, con cobertura de tests completa y un playground en vivo para búsquedas rápidas en memoria."
+
+githubLink: https://github.com/PolGubau/utils
+npmLink: https://www.npmjs.com/package/@polgubau/fuzzy
+
+link: https://fuzzy.polgubau.com
+
+tech: 
+  - functions
+  - utilities 
+  - Javascript
+  - Typescript
+---
+import { Image } from 'astro:assets';
+
+**@polgubau/fuzzy** es una librería de búsqueda difusa optimizada, diseñada desde la raíz con TypeScript. Solo necesitas ejecutar un comando y llamar a una función para tener una búsqueda difusa en tu proyecto.
+
+  <Image
+    alt="Landing de Fuzzy"
+    title="Fuzzy"
+    loading={"eager"}
+    priority={true}
+    width={600}
+    height={400}
+    className="flex flex-1 rounded-xl object-contain"
+    src="https://raw.githubusercontent.com/PolGubau/fuzzy/main/apps/docs/public/opengraph-image.png"
+  />
+
+## Qué es y por qué existe
+
+Los filtros en JavaScript son frecuentemente lentos y engorrosos. El método nativo *Array.prototype.filter* no está optimizado para el rendimiento, especialmente al trabajar con grandes conjuntos de datos. Esta librería proporciona una forma sencilla y eficiente de realizar búsquedas difusas sobre arrays de strings.
+
+Permite crear una función de búsqueda difusa reutilizable en toda la aplicación, facilitando el filtrado de listas basado en la entrada del usuario.
+
+### Lo que NO es ⚠️
+- Una librería que lo resuelve todo.
+- Un reemplazo de Lodash o Underscore.
+- Un paquete que inflará innecesariamente el tamaño del bundle.
+
+### Lo que SÍ es ✅
+- Una colección de pequeñas funciones de utilidad enfocadas.
+- Modular, tree-shakable y ligero tanto para CJS como ESM.
+- Diseñado para ser simple, eficiente y fácil de usar.
+- Completamente tipado, con definiciones TypeScript incluidas.
+
+## Instalación
+
+Instala la librería con el gestor de paquetes de tu elección:
+
+```sh title="bash"
+pnpm add @polgubau/fuzzy
+```
+
+## Uso
+
+```ts title="index.ts"
+import fuzzy from '@polgubau/fuzzy';
+
+const list = ["volvo", "seat", "mercedes", "audi", "bmw"];
+const queryText = "volv"; // El término de búsqueda
+const fuzzySearch = fuzzy(list);
+
+// Ejecuta esto cada vez que cambie el término de búsqueda
+const fuzzedList = fuzzySearch(queryText);
+console.log(fuzzedList); 
+```
+
+## Adaptadores de frameworks
+
+El núcleo de la librería está disponible como paquete independiente, pero también proporcionamos adaptadores para frameworks populares como React y Vue.
+
+> Ten en cuenta que el import del núcleo es *@polgubau/fuzzy*, mientras que los adaptadores de React y Vue se importan desde *@polgubau/fuzzy/react* y *@polgubau/fuzzy/vue* respectivamente.
+
+Usar este import te permitirá usar la librería de forma agnóstica al framework, mientras que los imports específicos de framework proporcionarán funcionalidad adicional adaptada a ese framework. Así no importas bundles de Vue o React si no los necesitas.
+
+### ¿Usas React?
+Para simplificar la integración de la búsqueda difusa en tus aplicaciones React, proporcionamos un hook personalizado llamado *useFuzzy*.
+
+```tsx title="App.tsx"
+import { useFuzzy, Highlight } from '@polgubau/fuzzy/react'
+
+const filteredList = useFuzzy({
+  list: ["volvo", "seat", "mercedes", "audi", "bmw"],
+  query: "volv"
+})
+
+filteredList.map(({ item, matches: [range] }) => (
+  <div key={item}>
+    <Highlight text={item} ranges={range} />
+  </div>
+))
+```
+
+### ¿Usas Vue?
+El mismo enfoque está disponible para aplicaciones Vue. Proporcionamos un composable llamado *useFuzzy* para simplificar la integración.
+
+```vue title="App.vue"
+<template>
+  <div>
+    <input v-model="query" placeholder="Buscar..." />
+    <ul>
+      <li v-for="(result, index) in fuzzySearch.results" :key="index">
+        {{ result }}
+      </li>
+    </ul>
+  </div>
+</template>
+```
+
+## Documentación
+
+La página de documentación está disponible en [fuzzy.polgubau.com](https://fuzzy.polgubau.com).
+
+### Soporte i18n
+
+La documentación está disponible en varios idiomas:
+
+| Idioma   | Soportado |
+| -------- | --------- |
+| Inglés   | ✅       |
+| Español  | ✅       |
+| Catalán  | ✅       |
+| Alemán   | ✅       |
+
+## 🛠 Desarrollo
+
+### Compilar el proyecto
+
+La forma más sencilla de trabajar con el monorepo es ejecutar
+
+```sh
+pnpm dev
+```
+en el directorio raíz. Esto iniciará un build en modo watch para el paquete y arrancará un servidor local para previsualizar la documentación.
+
+### Ejecutar tests
+
+```sh
+pnpm test
+```
+
+---
+
+## Autor y licencia
+
+Hecho con ❤️ por [Pol Gubau Amores](https://polgubau.com)
+
+Este proyecto está basado en *microfuzz*, creado por [@Nozbe](https://github.com/Nozbe). Se realizaron mejoras al código original y se reescribió en TypeScript.
+
+Este proyecto está disponible bajo la licencia MIT.

@@ -1,0 +1,105 @@
+---
+title: "Tich"
+seoTitle: "Tich: gestiona los plazos de tus comentarios de código"
+startedAt: "2025-06-20"
+endedAt: "2025-07-27"
+category: "app"
+color: "#99CEFF"
+cover: "../img/tich.webp"
+available: true
+
+summary: "Un estándar para gestionar los comentarios del código. Rastrea TODOs y FIXMEs, fija plazos y haz fallar los pipelines cuando los comentarios vencen."
+
+githubLink: https://github.com/PolGubau/tich
+link: https://tichapp.vercel.app/
+playStoreLink: https://play.google.com/store/apps/details?id=com.polgubau.tich
+
+tech:
+  - expo
+  - react-native
+  - typescript
+  - tailwindcss
+  - vitest
+
+
+---
+
+import { Image } from "astro:assets";
+
+import classDetails from "../../../assets/media/projects/tich/class_details.webp";
+import createStudent from "../../../assets/media/projects/tich/create_student.webp";
+import dashboard from "../../../assets/media/projects/tich/dashboard.webp";
+import dateSelect from "../../../assets/media/projects/tich/date_select.webp";
+import preview from "../../../assets/media/projects/tich/preview.webp";
+import studentDetails from "../../../assets/media/projects/tich/student_details.webp";
+
+ 
+**Tich** es una app móvil limpia y minimalista que ayuda a los profesores particulares a llevar el seguimiento de sus alumnos, clases, ingresos y horas de docencia.
+
+Se divide en tres secciones principales:
+
+## Panel principal
+
+Ofrece un resumen rápido de tus estadísticas de enseñanza:
+- Total de alumnos
+- Total de clases impartidas
+- Horas realizadas
+- Ingresos obtenidos
+
+También muestra una lista de todas las clases en orden cronológico inverso.
+
+<Image src={dashboard} alt="Panel principal de Tich"  height={700} class={"show-animation"} />
+
+---
+
+## Alumnos
+
+Gestiona todos tus alumnos desde un solo lugar:
+- Lista filtrable con nombre, foto, correo y número de clases
+- Toca para ver los detalles y el historial de clases
+- Edita o elimina cualquier alumno
+- Añade nuevos alumnos fácilmente
+
+<div class="grid grid-cols-2 gap-4">
+
+    <Image src={studentDetails} alt="Detalles del alumno" height={700} class={"show-animation"} />
+
+    <Image src={createStudent} alt="Crear alumno" height={700} class={"show-animation"} />
+
+</div>
+---
+
+## Módulo de clases
+
+En el formulario de detalles o creación de clase puedes ver el contexto completo:
+- Alumno
+- Tema
+- Notas
+- Duración
+- Precio
+- Fecha y hora
+- Estado de pago
+
+
+<div class="grid grid-cols-2 gap-4">
+    <Image src={classDetails} alt="Detalles de la clase" height={700} class={"show-animation"} />
+    <Image src={dateSelect} alt="Selector de fecha" height={700} class={"show-animation"} />
+</div>
+---
+
+## Extras
+
+- Compatible con **modo oscuro** (activado automáticamente según la configuración del sistema)
+- Completamente **localizado**: inglés, español, catalán y alemán
+- La selección de idioma es automática según las preferencias del dispositivo
+- Fácil integración con el calendario del dispositivo: añade clases existentes a tu calendario local
+
+---
+
+## Tecnología
+
+- React Native + Expo
+- TypeScript
+- Soporte nativo de i18n y temas
+- Tailwind
+- Expo Icons

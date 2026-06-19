@@ -10,17 +10,17 @@ import Toc from "../../components/Toc.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
 import MdLayout from "../../layouts/MdLayout.astro";
 import { metadata } from "../../lib/constants";
-import { getProjects } from "../../lib/utils";
+import { getProjects, parseProjectId } from "../../lib/utils";
 
 export async function getStaticPaths() {
-  return getProjects().map((project) => ({
-    params: { slug: project.id },
-    props: project,
-  }));
+  return getProjects().map((project) => {
+    const slug = parseProjectId(project.id).slug;
+    return { params: { slug }, props: { project, slug } };
+  });
 }
-type Props = CollectionEntry<"projects">;
+type Props = { project: CollectionEntry<"projects">; slug: string };
 
-const project = Astro.props;
+const { project, slug } = Astro.props;
 
 const PAGE_TITLE = `${project.data.seoTitle ?? project.data.title} - ${metadata.name}`;
 const { Content, headings } = await render(project);
@@ -29,8 +29,8 @@ const modifiedTime = (
   project.data.endedAt ?? project.data.startedAt
 ).toISOString();
 
-const projectPageUrl = `${metadata.links.website}/projects/${project.id}`;
-const ogImage = `${metadata.links.website}/og/projects/${project.id}.png`;
+const projectPageUrl = `${metadata.links.website}/projects/${slug}`;
+const ogImage = `${metadata.links.website}/og/projects/${slug}.png`;
 
 // Build JSON-LD: SoftwareSourceCode when a GitHub repo is present, CreativeWork otherwise
 const projectSchema = project.data.githubLink
@@ -87,7 +87,7 @@ const projectSchema = project.data.githubLink
 ---
 
 <MainLayout
-  image={`/og/projects/${project.id}.png`}
+  image={`/og/projects/${slug}.png`}
   title={PAGE_TITLE}
   description={project.data.summary}
   type="article"

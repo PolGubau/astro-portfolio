@@ -1,0 +1,124 @@
+---
+title: "Frèsia"
+seoTitle: "Frèsia: landing navideña con 3D animado"
+startedAt: "2025-11-21"
+endedAt: "2025-12-07"
+category: "web"
+color: "#e65e7980"
+cover: "../img/fresia.webp"
+available: true
+client: "Frèsia"
+
+summary: "Landing de campaña de Navidad con animaciones GSAP avanzadas y gráficos 3D inmersivos, creada con Astro y React Three Fiber."
+githubLink: https://github.com/PolGubau/fresia
+link: https://fresia.polgubau.com
+
+tech: 
+  - Astro
+  - Gsap
+  - JavaScript
+  - TailwindCSS
+  - React Three Fiber
+  - Three.js
+  - TypeScript
+---
+import { Image } from 'astro:assets';
+import card from "../../../assets/media/projects/fresia/card.mp4"
+import gift from "../../../assets/media/projects/fresia/gift-card.webp"
+import hero from "../../../assets/media/projects/fresia/hero.webp"
+import main from "../../../assets/media/projects/fresia/main-product.webp"
+import product from "../../../assets/media/projects/fresia/product.webp"
+import stats from "../../../assets/media/projects/fresia/stats.webp"
+import storyboard from "../../../assets/media/projects/fresia/storyboard.webp"
+import tutorial from "../../../assets/media/projects/fresia/tutorial.webp"
+import thumbnail from "../img/fresia.webp"
+
+El cliente solicitó una landing page interactiva para su campaña navideña de 2025, mostrando técnicas modernas de desarrollo web con animaciones avanzadas, gráficos 3D y optimización de rendimiento.
+
+<ul className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-4 list-none pl-0!">
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80">Astro + Tailwind</h3><small>Ligero y de alto rendimiento</small></li>
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80">100% SEO</h3><small>Optimizado para buscadores</small></li>
+<li className="bg-neutral-500/10 p-4! rounded-xl border border-neutral-500/20"><h3 className="my-3! text-ink/80">\<0.3s</h3><small>First Contentful Paint</small></li>
+</ul>
+
+<Image src={thumbnail} alt="miniatura" height={700} class={"show-animation rounded-2xl"} />
+
+## Resumen
+
+Landing page construida para la **floristería más conocida de Mataró**. Este proyecto muestra técnicas avanzadas de desarrollo web incluyendo **animaciones suaves**, gráficos 3D interactivos y optimización de todos los assets para rendimiento y SEO.
+
+## Secciones Destacadas
+
+### Sección Hero
+<Image src={hero} alt="sección hero" height={700} class={"show-animation rounded-2xl"} />
+La sección hero incluye un carrusel de imágenes a pantalla completa con animaciones fluidas impulsadas por GSAP. El titular usa SplitText para un efecto de revelación letra a letra mientras el usuario hace scroll.
+
+### Sección Producto Principal
+<Image src={main} alt="producto principal" height={700} class={"show-animation rounded-2xl"} />
+La sección del producto principal destaca la información del producto estrella con una imagen grande y de alta calidad que crece ligeramente al hacer scroll, creando un efecto visual dinámico y atractivo.
+
+### Sección Lista de Productos
+<Image src={product} alt="lista de productos" height={700} class={"show-animation rounded-2xl"} />
+Esta landing fue construida para mostrar los productos más populares de la temporada. Cada tarjeta de producto se anima al entrar en vista con un suave efecto de fade y slide mientras el usuario baja por la página.
+
+### Sección de Storytelling
+<Image src={storyboard} alt="storyboard" height={700} class={"show-animation rounded-2xl"} />
+Esta sección cuenta la historia de la marca con una combinación de texto e imágenes. El texto se revela con una animación activada por scroll, mientras las imágenes aparecen con fade para una narrativa cohesiva.
+
+### Carrusel Cuidar la Frèsia
+<Image src={tutorial} alt="tutorial" height={700} class={"show-animation rounded-2xl"} />
+Un carrusel con consejos para cuidar una Poinsettia. Creado con CSS puro y la función scroll-snap, proporciona una navegación fluida e intuitiva.
+
+### Sección Tarjeta de Regalo 3D
+<figure>
+  <video
+    class="rounded-xl h-full w-full max-h-[400px] md:max-h-[500px] object-cover show-animation"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+    <source src={card} type="video/mp4" />
+    Tu navegador no soporta el tag de vídeo.
+  </video>
+  <figcaption class="text-center">Tarjeta de regalo 3D con simulación de física.</figcaption>
+</figure>
+Esta sección incluye una tarjeta de regalo 3D interactiva que los usuarios pueden rotar y con la que pueden interactuar. Construida con React Three Fiber y el motor de física Rapier, proporciona una experiencia única y atractiva que destaca.
+
+<details>
+  <summary> <b>Detalles Técnicos</b> <br/><small>Para desarrolladores y mentes curiosas</small></summary>
+
+  <Image src={stats} alt="estadísticas del proyecto" height={700} class={"show-animation rounded-2xl"} />
+
+  Como en todos mis proyectos, el rendimiento y el SEO fueron las principales prioridades. La landing page alcanza una puntuación de rendimiento Lighthouse de 99+, con un First Contentful Paint (FCP) inferior a 0.3 segundos, gracias a la generación de sitios estáticos de Astro y el manejo optimizado de assets.
+
+  #### Animaciones Avanzadas
+  - **Interacciones con GSAP**: Animaciones suaves aceleradas por hardware con ScrollTrigger
+  - **Revelación texto letra a letra**: Animaciones de tipografía personalizadas con delays escalonados
+  - **Animaciones basadas en transform**: Sin layout thrashing para rendimiento a 60fps
+  - **Estrategia de importación dinámica**: Librerías de animación divididas por código
+
+  #### Escena 3D Interactiva
+  - **Integración React Three Fiber**: Tarjeta de regalo 3D en tiempo real con simulación de física
+  - **Motor de física Rapier**: Dinámica realista de cuerdas/bandas con restricciones de unión
+  - **Materiales shader personalizados**: Implementación MeshLine para renderizado de bandas texturizadas
+  - **Posicionamiento 3D responsive**: Cámara y objetos adaptados al viewport
+
+  ### Stack Tecnológico
+  - **Astro 5.14** - Generador de sitios estáticos moderno con hidratación parcial
+  - **React 19** - Componentes UI para islas interactivas
+  - **TypeScript** - Desarrollo con seguridad de tipos
+  - **Tailwind CSS 4.1** - Framework CSS utility-first
+  - **GSAP 3.13** - Librería de animación profesional con ScrollTrigger y SplitText
+  - **React Three Fiber 9.4** - Three.js declarativo en React
+  - **Rapier 2.2** - Simulación de física
+
+</details>
+
+## Qué Aprendí
+
+Encontrar ejemplos de casos reales de animaciones web avanzadas e implementaciones de gráficos 3D ha sido bastante difícil, ya que la mayoría de proyectos tienden a mantener estos detalles privados. Sin embargo, encontré recursos valiosos y casos de estudio que aportaron ideas sobre mejores prácticas y técnicas innovadoras.
+
+Empecé creando un conjunto complejo de animaciones y transiciones con GSAP, pero eliminé partes del código para mantener una experiencia limpia y de alto rendimiento centrada en las interacciones clave que mejorarían la experiencia del usuario sin abrumarlo.
+
+El resultado final es un equilibrio entre atractivo visual y rendimiento.

@@ -1,0 +1,235 @@
+---
+title: "Entre Líneas"
+seoTitle: "Entre Líneas: poesía española interactiva"
+startedAt: "2025-12-12"
+endedAt: "2026-01-05"
+category: "web"
+color: "#e1e1e1"
+cover: "../img/entre-lineas.webp"
+available: true
+summary: "Una aplicación web moderna para explorar la poesía española a través de un análisis literario profundo e interactivo."
+
+githubLink: https://github.com/PolGubau/entre-lineas
+link: https://entrelineas.polgubau.com/
+
+tech:
+  - react
+  - Typescript
+  - tailwindcss
+  - TanStack Stack
+  - SSR
+---
+import { Image } from "astro:assets";
+import Video from "../../../components/mdx-components/video.astro";
+
+import home from "../../../assets/media/projects/entre-lineas/home.webp";
+import actionsBar from "../../../assets/media/projects/entre-lineas/actions-bar.webp";
+import narrowAnalysis from "../../../assets/media/projects/entre-lineas/narrow-analysis.webp";
+import narrowFilters from "../../../assets/media/projects/entre-lineas/narrow-filters.webp";
+import narrowFiltersApplied from "../../../assets/media/projects/entre-lineas/narrow-filters-applied.webp";
+import narrowFiltersApply from "../../../assets/media/projects/entre-lineas/narrow-filters-apply.webp";
+import narrowHome from "../../../assets/media/projects/entre-lineas/narrow-home.webp";
+import narrowPoem from "../../../assets/media/projects/entre-lineas/narrow-poem.webp";
+import narrowReadMode from "../../../assets/media/projects/entre-lineas/narrow-read-mode.webp";
+import narrowSort from "../../../assets/media/projects/entre-lineas/narrow-sort.webp";
+
+import contextAccordions from "../../../assets/media/projects/entre-lineas/context-accordions.webm";
+import filtersShowcase from "../../../assets/media/projects/entre-lineas/filters-showcase.webm";
+import goNextList from "../../../assets/media/projects/entre-lineas/go-next-list.webm";
+import likeAnimation from "../../../assets/media/projects/entre-lineas/like-animation.webm";
+import readMode from "../../../assets/media/projects/entre-lineas/read-mode.webm";
+import shareApi from "../../../assets/media/projects/entre-lineas/share-api.webm";
+import shortcutsDrawer from "../../../assets/media/projects/entre-lineas/shortcuts-drawer.webm";
+import tooltips from "../../../assets/media/projects/entre-lineas/tooltips.webm";
+import verseAnotations from "../../../assets/media/projects/entre-lineas/verse-anotations.webm";
+import verseFigureHighlight from "../../../assets/media/projects/entre-lineas/verse-figure-highlight.webm";
+
+# Entre Líneas: El Análisis Poético Reimaginado
+
+**¿Y si analizar poesía pudiera ser tan intuitivo como leer tus letras favoritas en Genius?**
+
+Entre Líneas es una aplicación web moderna que transforma el análisis de poesía española en una experiencia interactiva y envolvente. Construida para estudiantes, profesores y amantes de la literatura, combina análisis literario profundo con patrones de UX contemporáneos.
+
+<ul class="grid pl-0 md:grid-cols-3 gap-4 my-8 max-w-full md:divide-x divide-ink/20">
+  <li class="list-none">
+    <strong class="text-3xl font-bold">React 19</strong>
+    <div class="text-sm text-ink/80">Stack moderno</div>
+  </li>
+  <li class="list-none">
+    <strong class="text-3xl font-bold ">TanStack Start</strong>
+    <div class="text-sm text-ink/80">Framework SSR</div>
+  </li>
+  <li class="list-none">
+    <strong class="text-3xl font-bold ">TypeScript</strong>
+    <div class="text-sm text-ink/80">Tipado de extremo a extremo</div>
+  </li>
+</ul>
+
+---
+
+## El Reto
+
+Las herramientas tradicionales de análisis poético son documentos PDF desactualizados, webs estáticas sin interactividad, o plataformas académicas que parecen de los años 2000. Estudiantes y profesores merecen algo mejor: necesitan **herramientas modernas e intuitivas** que hagan el análisis literario accesible y atractivo.
+
+## La Solución
+
+Entre Líneas lleva el análisis poético a la era web moderna con una **aplicación renderizada en servidor completamente interactiva**, construida con un stack moderno. Es un proyecto personal que fusiona 2 de mis aficiones y resuelve un problema habitual que encontré al estudiar literatura.
+
+<Image 
+  src={home} 
+  alt="Página de inicio de Entre Líneas mostrando una cuadrícula limpia de tarjetas de poemas"
+  width={1200}
+  height={800}
+  class="show-animation w-full h-auto"
+  loading="eager"
+/>
+
+### Funcionalidades Principales
+
+- **Análisis verso a verso** con figuras retóricas identificadas
+- **Contexto histórico** y biografías de autores
+- **Resaltados interactivos** - haz clic en cualquier figura para ver los versos relacionados
+- **Totalmente responsive** - de móvil a escritorio
+- **Búsqueda instantánea** con filtrado en tiempo real
+- **Modo oscuro** en toda la aplicación
+
+---
+
+## Diseño y Experiencia de Usuario
+
+### Inicio: Tu Biblioteca Poética
+
+La página de inicio presenta los poemas como **tarjetas hermosas y escaneables**. Cada tarjeta muestra el título del poema, el autor, la época y una vista previa de métricas como número de versos y figuras retóricas.
+
+<div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 my-8 max-w-full">
+  <Image 
+    src={narrowHome} 
+    alt="Vista móvil de la página de inicio con tarjetas responsive"
+    width={170}
+    height={500}
+    class="h-auto md:h-[500px] show-animation object-contain w-full md:w-[170px] max-w-[170px]"
+  />
+  <Image 
+    src={home} 
+    alt="Vista móvil de la página de inicio con tarjetas responsive"
+    width={1000}
+    height={500}
+    class="h-auto md:h-[500px] show-animation w-full object-contain"
+  />
+</div>
+
+#### Filtrado y Ordenación Inteligente
+
+Filtra poemas por autor, época o movimiento literario. Ordena por título, fecha o número de versos. Todo se actualiza en tiempo real.
+
+<Video 
+  src={filtersShowcase}
+  class="show-animation w-full max-w-full"
+  alt="Demostración en vivo del filtrado y ordenación de poemas"
+/>
+
+---
+
+## Experiencia de Lectura
+
+### El Diseño de Tres Columnas
+
+Los usuarios de escritorio tienen una **potente interfaz de tres columnas** optimizada para el análisis profundo:
+
+1. **Barra lateral izquierda**: Navegación de poemas y acciones rápidas
+2. **Centro**: El poema con anotaciones de verso interactivas
+3. **Barra lateral derecha**: Panel de análisis con contexto, figuras y métricas
+
+<Image 
+  src={narrowAnalysis} 
+  alt="Diseño de tres columnas en escritorio mostrando el poema con panel de análisis"
+  width={300}
+  height={700}
+  class="show-animation h-auto w-full max-w-[300px] mx-auto"
+/>
+
+### Anotaciones Interactivas
+
+Pasa el cursor sobre cualquier verso para ver **tooltips contextuales** con información instantánea sobre figuras retóricas, notas históricas o definiciones de vocabulario.
+
+<Video 
+  src={tooltips}
+  alt="Pasar el cursor sobre los versos revela información contextual"
+  class="show-animation aspect-video w-full max-w-full"
+/>
+
+### Resaltado de Figuras Retóricas
+
+Haz clic en cualquier **figura retórica** del panel de análisis y observa cómo todos los versos relacionados **se iluminan** en el poema. Esto crea conexiones visuales que hacen intuitiva la comprensión de recursos literarios complejos.
+
+<Video
+  src={verseFigureHighlight}
+  alt="Al hacer clic en figuras retóricas se resaltan los versos correspondientes"
+  class="show-animation aspect-video w-full max-w-full"
+/>
+
+---
+
+## Diseño Mobile-First
+
+### Diseños Responsive
+
+En móvil, el diseño de tres columnas se transforma en una **vista de columna única simplificada** con paneles colapsables. El panel de análisis se convierte en un cajón que se desliza desde abajo.
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-8 max-w-full">
+  <Image src={narrowPoem} alt="Vista de lectura de poema en móvil" width={400} height={800} class="show-animation w-full h-auto" />
+  <Image src={narrowFilters} alt="Interfaz de filtros en móvil" width={400} height={800} class="show-animation w-full h-auto" />
+  <Image src={narrowSort} alt="Opciones de ordenación en móvil" width={400} height={800} class="show-animation w-full h-auto" />
+</div>
+
+### Modo de Lectura
+
+Activa el **Modo de Lectura** para eliminar todas las distracciones de la UI y concentrarse puramente en la poesía. Perfecto para sesiones de lectura profunda o presentaciones en clase.
+
+<div class="flex max-md:flex-col gap-4 max-w-full">
+<Video src={readMode} alt="El modo de lectura limpio elimina todas las distracciones" class="show-animation h-auto md:h-[450px] aspect-video w-full max-w-full" />
+<Image src={narrowReadMode} alt="Interfaz de modo de lectura en móvil" width={222} height={450} class="show-animation object-bottom h-auto md:h-[450px] object-contain w-full max-w-[222px]" />
+</div>
+
+---
+
+## Funcionalidades Avanzadas
+
+<div class="grid md:grid-cols-[1fr_300px] gap-8 max-w-full">
+<div>
+### Acordeones de Contexto
+Cada poema incluye **secciones expandibles** con contexto enriquecido: trasfondo histórico, biografía del autor, movimiento literario y análisis temático.
+</div>
+<Video src={contextAccordions} alt="Paneles de contexto expandibles con información detallada" class="show-animation h-auto md:h-[500px] w-full max-w-[300px] object-contain" />
+</div>
+
+### Barra de Acciones e Interacciones
+
+<Image src={actionsBar} alt="Barra de acciones con controles de favorito, compartir y modo de lectura" width={1200} height={200} class="show-animation w-full h-auto" />
+
+- **Poemas favoritos** con una deliciosa animación de like
+- **Compartir directamente** usando la API Web Share nativa
+- **Atajos de teclado** para usuarios avanzados
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8 max-w-full">
+  <Video src={likeAnimation} alt="Animación suave al añadir un poema a favoritos" class="show-animation w-full max-w-full" />
+  <Video src={shareApi} alt="Funcionalidad nativa de compartir para compartir poemas fácilmente" class="show-animation w-full max-w-full" />
+  <Video src={shortcutsDrawer} alt="Panel de atajos de teclado para navegación eficiente" class="show-animation w-full max-w-full" />
+</div>
+
+### Filtrado Inteligente
+
+Aplica múltiples filtros simultáneamente: combina autores, épocas y movimientos literarios para encontrar exactamente lo que necesitas.
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8 max-w-full">
+  <Image src={narrowFiltersApply} alt="Aplicando filtros en móvil" width={400} height={800} class="show-animation w-full h-auto" />
+  <Image src={narrowFiltersApplied} alt="Resultados tras aplicar filtros" width={400} height={800} class="show-animation w-full h-auto" />
+</div>
+
+---
+
+## Conclusión
+
+Entre Líneas representa la intersección de la literatura y la tecnología web moderna. Aplicando patrones de UX contemporáneos al análisis de poesía clásica, demuestra cómo las herramientas digitales pueden mejorar en lugar de reemplazar el aprendizaje tradicional.
+
+El proyecto muestra excelencia técnica a través de la optimización del rendimiento, la seguridad de tipos y la accesibilidad, manteniendo el foco en la experiencia de usuario y el valor educativo.

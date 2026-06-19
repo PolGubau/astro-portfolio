@@ -126,15 +126,20 @@ const socials = [
     const moon = document.getElementById("theme-icon-moon");
     const html = document.documentElement;
 
-    function applyTheme(dark: boolean) {
-      html.classList.toggle("dark", dark);
+    function syncIcons(dark: boolean) {
       sun?.classList.toggle("hidden", !dark);
       moon?.classList.toggle("hidden", dark);
+    }
+
+    function applyTheme(dark: boolean) {
+      html.classList.toggle("dark", dark);
+      syncIcons(dark);
       localStorage.setItem("theme", dark ? "dark" : "light");
     }
 
-    // Sync icon with current state on load
-    applyTheme(html.classList.contains("dark"));
+    // Sync icons only — don't write to localStorage on load so the
+    // browser's system preference keeps working until the user explicitly toggles.
+    syncIcons(html.classList.contains("dark"));
 
     toggle?.addEventListener("click", () => {
       applyTheme(!html.classList.contains("dark"));

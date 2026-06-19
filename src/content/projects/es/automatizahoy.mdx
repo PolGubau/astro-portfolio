@@ -1,0 +1,101 @@
+---
+title: "automatizaHoy"
+seoTitle: "automatizaHoy: landing de agencia de automatización"
+startedAt: "2025-10-03"
+category: "web"
+color: "#69d4e6"
+cover: "../img/doscientos.webp"
+available: false
+
+summary: "Landing orientada a conversión para una consultoría de automatización. Animaciones al hacer scroll y un sistema de diseño limpio, creada con Astro y Tailwind."
+
+githubLink: https://github.com/PolGubau/tactil
+link: https://hdmi.vercel.app/
+
+tech:
+  - astro
+  - mdx
+  - tailwindcss
+  - typescript
+---
+import { Image } from "astro:assets";
+
+import cards from "../../../assets/media/projects/tactil/cards.webp";
+import landing from "../../../assets/media/projects/tactil/landing.webp";
+import ticket from "../../../assets/media/projects/tactil/ticket.webp";
+
+## Landing page para una Agencia de Automatización
+
+automatizaHoy es una consultora de automatización que ofrece **diseño y desarrollo a medida** para empresas ambiciosas que buscan experiencias digitales **rápidas**, **escalables** y **únicas**.
+
+El objetivo es romper con el mundo de las plantillas genéricas porque **las plantillas son para diapositivas, no para tu web**.
+
+<Image src={cards} alt="automatizaHoy Cards" height={700} class={"show-animation"} />
+
+---
+
+## Visión
+
+Los sitios web modernos suelen caer en dos extremos: plantillas sobrediseñadas pero con bajo rendimiento, o temas rápidos pero visualmente sin alma. En automatizaHoy, salvamos esa brecha entregando interfaces artesanales, interacciones sutiles y bases de código de alto rendimiento — todo adaptado al ADN de la marca.
+
+<Image src={landing} alt="automatizaHoy Landing" height={700} class={"show-animation"} />
+
+Construimos sitios web que:
+
+* Convierten mejor por ser intencionales
+* Escalan con tu negocio
+* Cargan increíblemente rápido
+* Se sienten vivos gracias al movimiento y al detalle
+
+Nuestro tagline lo resume:
+
+> **Diseño y desarrollo** personalizado para marcas ambiciosas.
+> Experiencias digitales rápidas🚀, únicas🦄 y escalables📈.
+
+---
+
+## ¿Por qué Astro?
+
+La web no necesita más megabytes de JS solo para renderizar contenido estático.
+
+Usamos **[Astro](https://astro.build)** como base para seguir entregando:
+
+* **Cero JS por defecto**, ideal para landing pages y SEO
+* **Arquitectura de islas**, habilitando interactividad selectiva
+* **Tiempos de build rápidos** y optimizaciones out-of-the-box
+
+Combinado con **React Islands** y **TailwindCSS**, Astro nos da el poder de entregar rendimiento en tiempo real *e* interfaces expresivas.
+
+---
+
+## Stack Tecnológico
+
+| Herramienta / Librería | Propósito |
+| ---------------------- | --------- |
+| `Astro` | Generador de sitios estáticos |
+| `React` | Islas de UI interactivas |
+| `TailwindCSS` | Estilos utility-first |
+| `@astrojs/mdx` | Contenido enriquecido con Markdown y JSX |
+| `@astrojs/sitemap` | Generación de sitemap para SEO |
+| `@polgubau/animated` | Mi propia librería de componentes animados |
+| `sharp` | Procesamiento y optimización de imágenes |
+
+---
+
+## i18n y Traducciones
+
+<Image src={ticket} alt="Sección Ticket de automatizaHoy" height={700} class={"show-animation"} />
+
+El sitio está construido con la internacionalización en mente. El contenido de texto está abstraído en archivos específicos por idioma (`en.ts`, `es.ts`, etc).
+
+Esto permite una expansión fácil a otros idiomas y soporta renderizado dinámico de la UI por idioma.
+
+---
+
+## 🔍 SEO, Rendimiento y Buenas Prácticas
+
+* Totalmente estático por defecto
+* Etiquetas `<meta>` autogeneradas
+* Sitemap vía `@astrojs/sitemap`
+* Fuentes e imágenes optimizadas (`sharp`)
+* Cero JS en cliente salvo que sea necesario

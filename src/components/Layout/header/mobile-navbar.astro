@@ -1,20 +1,29 @@
 ---
-import { getLocale, localizePath, useTranslations } from "../../../i18n/utils";
+import {
+  getLocale,
+  localizePath,
+  stripLocale,
+  useTranslations,
+} from "../../../i18n/utils";
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 
-const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, "");
-const subpath = pathname.match(/[^\/]+/g);
+// Compare against the locale-agnostic path so the active state is independent
+// of the language segment (`/es/blog` -> `/blog`).
+const pathname = stripLocale(
+  Astro.url.pathname.replace(import.meta.env.BASE_URL, ""),
+);
+const section = pathname.match(/[^\/]+/g)?.[0];
 
-// Every route has a localized index variant; their links go through
-// localizePath so the locale segment is preserved.
+// Routes are stored locale-agnostic and localized at render time via
+// localizePath so the locale segment is preserved in the href.
 const navItems = [
-  { path: localizePath("/", locale), name: t("m.home") },
-  { path: localizePath("/about", locale), name: t("m.about") },
-  { path: localizePath("/projects", locale), name: t("m.work") },
-  { path: localizePath("/ui", locale), name: t("m.lab") },
-  { path: localizePath("/blog", locale), name: t("m.writing") },
+  { path: "/", name: t("m.home") },
+  { path: "/about", name: t("m.about") },
+  { path: "/projects", name: t("m.work") },
+  { path: "/ui", name: t("m.lab") },
+  { path: "/blog", name: t("m.writing") },
 ];
 ---
 
@@ -26,10 +35,11 @@ const navItems = [
   >
     {
       navItems.map(({ path, name }) => {
-        const isActive = path === pathname || path === `/${subpath?.[0] || ""}`;
+        const isActive =
+          path === pathname || (path !== "/" && path === `/${section ?? ""}`);
         return (
           <a
-            href={path}
+            href={localizePath(path, locale)}
             tabindex={isActive ? -1 : undefined}
             class:list={[
               "flex flex-col items-center gap-1.5 transition-colors duration-200",

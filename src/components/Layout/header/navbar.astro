@@ -1,21 +1,30 @@
 ---
-import { getLocale, localizePath, useTranslations } from "../../../i18n/utils";
+import {
+  getLocale,
+  localizePath,
+  stripLocale,
+  useTranslations,
+} from "../../../i18n/utils";
 import LogoPill from "../../ui/LogoPill.astro";
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 
-const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, "");
-const subpath = pathname.match(/[^\/]+/g);
+// Compare against the locale-agnostic path so the active state is independent
+// of the language segment (`/es/blog` -> `/blog`).
+const pathname = stripLocale(
+  Astro.url.pathname.replace(import.meta.env.BASE_URL, ""),
+);
+const section = pathname.match(/[^\/]+/g)?.[0];
 
-// Every route has a localized index variant; their links go through
-// localizePath so the locale segment is preserved.
+// Routes are stored locale-agnostic and localized at render time via
+// localizePath so the locale segment is preserved in the href.
 const navItems = [
-  { path: localizePath("/", locale), name: t("nav.home") },
-  { path: localizePath("/about", locale), name: t("nav.about") },
-  { path: localizePath("/projects", locale), name: t("nav.portfolio") },
-  { path: localizePath("/ui", locale), name: t("nav.experiments") },
-  { path: localizePath("/blog", locale), name: t("nav.writing") },
+  { path: "/", name: t("nav.home") },
+  { path: "/about", name: t("nav.about") },
+  { path: "/projects", name: t("nav.portfolio") },
+  { path: "/ui", name: t("nav.experiments") },
+  { path: "/blog", name: t("nav.writing") },
 ];
 ---
 
@@ -29,10 +38,11 @@ const navItems = [
   >
     {
       navItems.map(({ path, name }) => {
-        const isActive = path === pathname || path === `/${subpath?.[0] || ""}`;
+        const isActive =
+          path === pathname || (path !== "/" && path === `/${section ?? ""}`);
         return (
           <a
-            href={path}
+            href={localizePath(path, locale)}
             class:list={[
               "rounded-full px-4 py-1 text-sm transition-all duration-200",
               {

@@ -45,11 +45,10 @@ export const ca: Record<UiKey, string> = {
 	"home.beyond.caption1": "Entrevistat a TV3 sobre la meva feina",
 	"home.beyond.caption2": "Ensenyant Astro i Tailwind a més de 35 alumnes",
 	"home.beyond.caption3": "Presentant Pol-UI com a Treball de Fi de Grau",
-	"home.doscientos.badge": "Cofundador · Doscientos",
 	"home.doscientos.title":
 		"Necessites programari a mida, fet per enginyers sènior?",
 	"home.doscientos.body":
-		'Vaig cofundar <strong class="text-secondary-50">Doscientos</strong>, un estudi de programari que converteix idees en productes — preu fix, enginyers sènior des del primer dia, llançat en sis setmanes.',
+		'Vaig cofundar <strong class="text-secondary-50">Doscientos</strong>, un estudi de programari que converteix idees en productes - preu fix, enginyers sènior des del primer dia, llançat en sis setmanes.',
 	"home.doscientos.stat1": "Productes publicats",
 	"home.doscientos.stat2": "D'idea a llançament",
 	"home.doscientos.stat3": "El codi és teu",

@@ -1,4 +1,6 @@
 ---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { getProjects } from "../../lib/utils";
 import GitHubGrid from "../GitHub/GitHubGrid.astro";
 import Header from "../Layout/header/header.astro";
 import BeyondCodeSection from "../home/BeyondCodeSection.astro";
@@ -6,8 +8,6 @@ import DoscientosCTA from "../home/DoscientosCTA.astro";
 import OpenSourceSection from "../home/OpenSourceSection.astro";
 import PerformanceCards from "../home/PerformanceCards.astro";
 import WorkSection from "../home/WorkSection.astro";
-import MainLayout from "../../layouts/MainLayout.astro";
-import { getProjects } from "../../lib/utils";
 import "../../styles/cards.css";
 
 const allProjects = getProjects();

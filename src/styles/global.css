@@ -3,7 +3,7 @@
 @plugin "tailwindcss-motion";
 @plugin "@tailwindcss/typography";
 
-/* Class-based dark mode — overrides Tailwind's default media-query variant */
+/* Class-based dark mode - overrides Tailwind's default media-query variant */
 @variant dark (&:where(.dark, .dark *));
 
 @font-face {
@@ -76,7 +76,7 @@ body {
 }
 
 *::selection {
-	@apply bg-primary/80 text-background backdrop-blur-md;
+	@apply bg-primary/80 text-ink backdrop-blur-md rounded-lg;
 }
 @keyframes grow-progress {
 	from {

@@ -1,14 +1,14 @@
 ---
 // Suggests switching to the visitor's browser language when it differs from
 // the page's locale. Detection and dismissal happen client-side (static site),
-// so English visitors never see layout shift — the bar is hidden until JS
+// so English visitors never see layout shift - the bar is hidden until JS
 // confirms a better-matching locale exists. Only routes with real translations
 // are eligible; everything else stays English-only and shows nothing.
 import {
   type Locale,
   getLocale,
-  localizePath,
   locales,
+  localizePath,
   stripLocale,
 } from "../../i18n/utils";
 
@@ -38,7 +38,11 @@ const copy: Record<Locale, { message: string; cta: string; dismiss: string }> =
     },
   };
 
-const options = locales.map((l) => ({ locale: l, href: localizePath(base, l), ...copy[l] }));
+const options = locales.map((l) => ({
+  locale: l,
+  href: localizePath(base, l),
+  ...copy[l],
+}));
 ---
 
 {
@@ -74,7 +78,11 @@ const options = locales.map((l) => ({ locale: l, href: localizePath(base, l), ..
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
-      <script type="application/json" id="locale-banner-data" set:html={JSON.stringify(options)} />
+      <script
+        type="application/json"
+        id="locale-banner-data"
+        set:html={JSON.stringify(options)}
+      />
     </div>
   )
 }

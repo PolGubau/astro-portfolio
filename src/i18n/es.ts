@@ -45,11 +45,10 @@ export const es: Record<UiKey, string> = {
 	"home.beyond.caption1": "Entrevistado en TV3 sobre mi trabajo",
 	"home.beyond.caption2": "Enseñando Astro y Tailwind a más de 35 alumnos",
 	"home.beyond.caption3": "Presentando Pol-UI como Trabajo de Fin de Grado",
-	"home.doscientos.badge": "Cofundador · Doscientos",
 	"home.doscientos.title":
 		"¿Necesitas software a medida, hecho por ingenieros senior?",
 	"home.doscientos.body":
-		'Cofundé <strong class="text-secondary-50">Doscientos</strong>, un estudio de software que convierte ideas en productos — precio fijo, ingenieros senior desde el primer día, en seis semanas.',
+		'Cofundé <strong class="text-secondary-50">Doscientos</strong>, un estudio de software que convierte ideas en productos en seis semanas.',
 	"home.doscientos.stat1": "Productos publicados",
 	"home.doscientos.stat2": "De idea a lanzamiento",
 	"home.doscientos.stat3": "El código es tuyo",

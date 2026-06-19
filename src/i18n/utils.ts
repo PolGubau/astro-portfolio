@@ -50,7 +50,7 @@ export function localizePath(path: string, locale: Locale): string {
 /**
  * Static paths for every non-default locale. Powers the `[locale]` dynamic
  * routes so adding a language only requires a new entry in `locales` plus its
- * dictionary — no new page files. `[{ params: { locale: "es" } }, ...]`.
+ * dictionary - no new page files. `[{ params: { locale: "es" } }, ...]`.
  */
 export function getLocalePaths() {
 	return locales

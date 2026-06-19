@@ -1,72 +1,66 @@
 @import "tailwindcss";
 
 :root {
-  --card-height: 40vw;
-  --card-margin: 2vw;
-  --card-top-offset: 6em;
+	--card-height: 40vw;
+	--card-margin: 2vw;
+	--card-top-offset: 6em;
 }
 
 #cards-header {
-  position: sticky;
-  top: 0;
-   padding-block: 1rem;
- 
+	position: sticky;
+	top: 0;
+	padding-block: 1rem;
 }
 
 #sticked-cards {
-  /* Make place at bottom, as items will slide to that position*/
-  padding-bottom: calc(var(--numCards) * var(--card-top-offset));
-  /* Don't include the --card-margin in padding, as that will affect the scroll-timeline*/
-  margin-bottom: var(--card-margin);
+	/* Make place at bottom, as items will slide to that position*/
+	padding-bottom: calc(var(--numCards) * var(--card-top-offset));
+	/* Don't include the --card-margin in padding, as that will affect the scroll-timeline*/
+	margin-bottom: var(--card-margin);
 }
 
 #card_1 {
-  --index: 1;
+	--index: 1;
 }
 
 #card_2 {
-  --index: 2;
+	--index: 2;
 }
 
 #card_3 {
-  --index: 3;
+	--index: 3;
 }
 
 #card_4 {
-  --index: 4;
+	--index: 4;
 }
 
 .card {
-  position: sticky;
-  top: 0;
-  padding-top: calc(var(--index) * var(--card-top-offset));
-  transform-origin: center center;
+	position: sticky;
+	top: 0;
+	padding-top: calc(var(--index) * var(--card-top-offset));
+	transform-origin: center center;
 }
 
 #sticked-cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(var(--numCards), var(--card-height));
-  gap: var(--card-margin);
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(var(--numCards), var(--card-height));
+	gap: var(--card-margin);
 }
 
 .card img {
-  @apply rounded-xl aspect-video;
-  width: 100%;
-  object-fit: cover;
-  object-position: top;
-  overflow: hidden;
-  border: 1px solid #e5e5e5;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.07);
-  --index0: calc(var(--index) - 1); /* 0-based index */
-  --reverse-index: calc(var(--numCards) - var(--index0)); /* reverse index */
-  --reverse-index0: calc(var(--reverse-index) - 1); /* 0-based reverse index */
+	@apply rounded-xl w-full object-cover object-top aspect-video border overflow-hidden;
+	box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.07);
+	--index0: calc(var(--index) - 1); /* 0-based index */
+	--reverse-index: calc(var(--numCards) - var(--index0)); /* reverse index */
+	--reverse-index0: calc(var(--reverse-index) - 1); /* 0-based reverse index */
 }
 
 .card {
-  --index0: calc(var(--index) - 1); /* 0-based index */
-  --reverse-index: calc(var(--numCards) - var(--index0)); /* reverse index */
-  --reverse-index0: calc(var(--reverse-index) - 1); /* 0-based reverse index */
+	--index0: calc(var(--index) - 1); /* 0-based index */
+	--reverse-index: calc(var(--numCards) - var(--index0)); /* reverse index */
+	--reverse-index0: calc(var(--reverse-index) - 1); /* 0-based reverse index */
 }
 
 /* Animation handled entirely by JS (PerformanceCards.astro) for

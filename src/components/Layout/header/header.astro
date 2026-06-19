@@ -1,15 +1,19 @@
 ---
 import { Image } from "astro:assets";
 import me from "../../../assets/media/me.webp";
+import { getLocale, useTranslations } from "../../../i18n/utils";
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
 
 const stats = [
-  { value: "62k+", label: "NPM downloads" },
-  { value: "1M+", label: "Vercel requests/yr" },
+  { value: "62k+", label: t("home.stats.npm") },
+  { value: "1M+", label: t("home.stats.vercel") },
   {
     value: `${new Date().getFullYear() - 2019}+`,
-    label: "Years of experience",
+    label: t("home.stats.years"),
   },
-  { value: "55+", label: "React projects" },
+  { value: "55+", label: t("home.stats.react") },
 ];
 ---
 
@@ -25,26 +29,15 @@ const stats = [
         data-easing="soft"
         class="text-5xl md:text-6xl text-balance font-medium leading-[0.95]"
       >
-        I'm Pol, a senior frontend developer
+        {t("home.hero.title")}
       </h1>
       <p
         data-reveal="bottom"
         data-delay="120"
         data-easing="soft"
         class="text-lg text-ink/60 max-w-lg"
-      >
-        Senior Frontend Engineer at <a
-          href="https://mesalvo.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-ink hover:underline underline-offset-4">Mesalvo</a
-        >. Co-founder of <a
-          href="https://doscientos.es"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-ink hover:underline underline-offset-4">Doscientos</a
-        >. Based in Mataró, Barcelona.
-      </p>
+        set:html={t("home.hero.intro")}
+      />
     </div>
 
     <Image

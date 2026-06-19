@@ -1,19 +1,23 @@
 ---
+import { getLocale, localizePath, useTranslations } from "../../../i18n/utils";
 import { metadata } from "../../../lib/constants";
 import DownloadIcon from "../../icons/DownloadIcon.astro";
 import LogoPill from "../../ui/LogoPill.astro";
 
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+
 const year = new Date().getFullYear();
 
 const nav = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Work" },
-  { href: "/blog", label: "Writing" },
-  { href: "/ui", label: "Experiments" },
+  { href: localizePath("/", locale), label: t("footer.home") },
+  { href: localizePath("/projects", locale), label: t("footer.work") },
+  { href: localizePath("/blog", locale), label: t("footer.writing") },
+  { href: localizePath("/ui", locale), label: t("footer.experiments") },
 ];
 
 const socials = [
-  { href: metadata.links.email, label: "Email", me: false },
+  { href: metadata.links.email, label: t("footer.email"), me: false },
   { href: metadata.links.linkedin, label: "LinkedIn", me: true },
   { href: metadata.links.github, label: "GitHub", me: true },
 ];

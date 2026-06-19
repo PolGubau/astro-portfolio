@@ -4,6 +4,9 @@ import Footer from "../components/Layout/footer/footer.astro";
 import MobileNavbar from "../components/Layout/header/mobile-navbar.astro";
 import Navbar from "../components/Layout/header/navbar.astro";
 import "@polgubau/astro-reveal/styles";
+import { getLocale } from "../i18n/utils";
+
+const locale = getLocale(Astro.currentLocale);
 
 interface Props {
   title?: string;
@@ -14,7 +17,6 @@ interface Props {
   modifiedTime?: string;
   author?: string;
   className?: string;
-  tags?: string[];
   keywords?: string[];
 }
 
@@ -26,13 +28,16 @@ const {
   publishedTime,
   modifiedTime,
   author,
-  tags,
   keywords,
   className,
 } = Astro.props;
 ---
 
-<html lang="en" dir="ltr" class={"w-full overflow-x-clip overscroll-y-none"}>
+<html
+  lang={locale}
+  dir="ltr"
+  class={"w-full overflow-x-clip overscroll-y-none"}
+>
   <head>
     <!-- Prevent FOUC: apply stored/system theme before paint -->
     <script is:inline>
@@ -54,8 +59,8 @@ const {
       publishedTime={publishedTime}
       modifiedTime={modifiedTime}
       author={author}
-      tags={tags}
       keywords={keywords}
+      locale={locale}
     />
   </head>
   <body>

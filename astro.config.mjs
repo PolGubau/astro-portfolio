@@ -3,14 +3,21 @@ import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
-import metaTags from 'astro-meta-tags';
 import icon from 'astro-icon';
+import metaTags from 'astro-meta-tags';
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://polgubau.com',
   trailingSlash: 'never',
+  i18n: {
+    locales: ['en', 'es', 'ca'],
+    defaultLocale: 'en',
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport',

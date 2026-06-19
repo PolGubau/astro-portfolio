@@ -13,26 +13,24 @@ export const getBlogs = (limit = Number.MAX_SAFE_INTEGER): BlogMetadata[] => {
 
 // ----
 export const projects = (await getCollection("projects"))
-  .filter((project) => project.data.available === true)
-  .sort((a, b) => {
-    const aEnded = a.data.endedAt;
-    const bEnded = b.data.endedAt;
+	.filter((project) => project.data.available === true)
+	.sort((a, b) => {
+		const aEnded = a.data.endedAt;
+		const bEnded = b.data.endedAt;
 
-    // ambos en curso → ordenar por startedAt desc
-    if (!aEnded && !bEnded) {
-      return b.data.startedAt.valueOf() - a.data.startedAt.valueOf();
-    }
+		// ambos en curso → ordenar por startedAt desc
+		if (!aEnded && !bEnded) {
+			return b.data.startedAt.valueOf() - a.data.startedAt.valueOf();
+		}
 
-    // ambos terminados → ordenar por endedAt desc
-    if (aEnded && bEnded) {
-      return bEnded.valueOf() - aEnded.valueOf();
-    }
+		// ambos terminados → ordenar por endedAt desc
+		if (aEnded && bEnded) {
+			return bEnded.valueOf() - aEnded.valueOf();
+		}
 
-    // uno en curso, otro terminado → en curso primero
-    return aEnded ? 1 : -1;
-  });
-
-
+		// uno en curso, otro terminado → en curso primero
+		return aEnded ? 1 : -1;
+	});
 
 export type ProjectMetadata = (typeof projects)[number];
 
@@ -43,8 +41,12 @@ export const getProjects = (
 	return limitedProjects;
 };
 
-export function formatDate(d: Date, style: "short" | "long" = "short"): string {
-	return d.toLocaleString("en-us", {
+export function formatDate(
+	d: Date,
+	style: "short" | "long" = "short",
+	locale = "en-US",
+): string {
+	return d.toLocaleString(locale, {
 		month: style,
 		day: "numeric",
 		year: "numeric",

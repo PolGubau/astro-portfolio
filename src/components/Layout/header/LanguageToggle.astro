@@ -1,0 +1,46 @@
+---
+import { type Locale, getLocale, stripLocale } from "../../../i18n/utils";
+
+const locale = getLocale(Astro.currentLocale);
+const base = stripLocale(Astro.url.pathname);
+
+// Routes that have explicit locale equivalents beyond EN
+const translatedRoutes = ["/", "/about"];
+
+function getTarget(base: string, targetLocale: Locale): string {
+  if (targetLocale === "en") return base === "/" ? "/" : base;
+  const dest = translatedRoutes.includes(base) ? base : "/";
+  return dest === "/" ? `/${targetLocale}/` : `/${targetLocale}${dest}`;
+}
+
+const langs: { locale: Locale; label: string; ariaLabel: string }[] = [
+  { locale: "en", label: "EN", ariaLabel: "Switch to English" },
+  { locale: "es", label: "ES", ariaLabel: "Cambiar a Español" },
+  { locale: "ca", label: "CA", ariaLabel: "Canviar a Català" },
+];
+---
+
+<div
+  class="ml-1 flex items-center rounded-full border border-ink/10 overflow-hidden text-xs font-medium tracking-wide"
+  role="group"
+  aria-label="Language selector"
+>
+  {
+    langs.map(({ locale: l, label, ariaLabel }) =>
+      l === locale ? (
+        <span aria-current="true" class="px-2 py-1 bg-ink text-background">
+          {label}
+        </span>
+      ) : (
+        <a
+          href={getTarget(base, l)}
+          aria-label={ariaLabel}
+          title={ariaLabel}
+          class="px-2 py-1 text-ink/40 hover:text-ink hover:bg-ink/5 transition-colors duration-150"
+        >
+          {label}
+        </a>
+      ),
+    )
+  }
+</div>

@@ -64,22 +64,22 @@ const titleSize = title.length > 14 ? "text-2xl" : "text-3xl";
 
     <!-- Footer - slides up on hover -->
     <footer
-      class="absolute bottom-0 left-0 right-0 z-10 translate-y-full bg-gradient-to-t from-ink via-ink/70 to-transparent px-5 pb-5 pt-10 transition-transform duration-300 ease-out group-hover:translate-y-0"
+      class="absolute bottom-0 left-0 right-0 z-10 flex flex-col gap-2 translate-y-full bg-gradient-to-t from-background via-background/70 to-transparent px-5 pb-2 pt-2 transition-transform duration-300 backdrop-blur-md ease-out group-hover:translate-y-0 rounded-t-3xl"
     >
-      <p class="line-clamp-2 text-sm leading-relaxed text-white/85">
-        {summary}
-      </p>
       {
         tags.length > 0 && (
           <div class="mt-2.5 flex flex-wrap gap-1.5">
             {tags.map((tag) => (
-              <span class="rounded-full bg-white/15 px-2 py-0.5 text-xs text-white/70">
+              <span class="rounded-full bg-background/80 capitalize px-2 py-0.5 text-xs text-ink/70">
                 {tag}
               </span>
             ))}
           </div>
         )
       }
+      <p class="line-clamp-2 text-sm leading-relaxed text-ink">
+        {summary}
+      </p>
     </footer>
   </a>
 </div>

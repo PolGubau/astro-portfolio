@@ -3,6 +3,14 @@
 // all pages through the use of the <BaseHead /> component.
 import { metadata } from "../lib/constants";
 import "../styles/global.css";
+import {
+  type Locale,
+  getLocale,
+  localeTags,
+  localizePath,
+  ogLocales,
+  stripLocale,
+} from "../i18n/utils";
 
 interface Props {
   title?: string;
@@ -13,6 +21,7 @@ interface Props {
   modifiedTime?: string;
   author?: string;
   keywords?: string[];
+  locale?: Locale;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -26,7 +35,17 @@ const {
   modifiedTime,
   author = metadata.longName,
   keywords = metadata.tags,
+  locale: localeProp,
 } = Astro.props;
+
+const locale = localeProp ?? getLocale(Astro.currentLocale);
+const localeTag = localeTags[locale]; // e.g. "en-US"
+const ogLocale = ogLocales[locale]; // e.g. "en_US"
+
+// Hreflang alternate URLs
+const basePath = stripLocale(Astro.url.pathname);
+const enHref = new URL(localizePath(basePath, "en"), Astro.site).href;
+const esHref = new URL(localizePath(basePath, "es"), Astro.site).href;
 
 const imageURL = new URL(image, Astro.site);
 const ogImageType = image.endsWith(".png") ? "image/png" : "image/webp";
@@ -80,7 +99,7 @@ const websiteSchema = {
   },
   publisher,
   keywords: keywordsContent,
-  inLanguage: "en-US",
+  inLanguage: localeTag,
   potentialAction: {
     "@type": "SearchAction",
     target: {
@@ -103,7 +122,7 @@ const articleSchema =
         image: imageURL.href,
         datePublished: publishedTime,
         dateModified: modifiedTime || publishedTime,
-        inLanguage: "en-US",
+        inLanguage: localeTag,
         author: {
           "@type": "Person",
           name: author,
@@ -132,6 +151,11 @@ const articleSchema =
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
+
+<!-- Hreflang alternates -->
+<link rel="alternate" hreflang="en" href={enHref} />
+<link rel="alternate" hreflang="es" href={esHref} />
+<link rel="alternate" hreflang="x-default" href={enHref} />
 
 <!-- PWA Manifest -->
 <link rel="manifest" href="/manifest.json" />
@@ -178,7 +202,7 @@ const articleSchema =
   content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
 />
 <meta name="googlebot" content="index, follow" />
-<meta name="language" content="English" />
+<meta name="language" content={localeTag} />
 <meta
   name="theme-color"
   content="#ffffff"
@@ -202,7 +226,7 @@ const articleSchema =
 <meta property="og:image:height" content="630" />
 <meta property="og:image:type" content={ogImageType} />
 <meta property="og:image:alt" content={title} />
-<meta property="og:locale" content="en_US" />
+<meta property="og:locale" content={ogLocale} />
 {
   publishedTime && (
     <meta property="article:published_time" content={publishedTime} />

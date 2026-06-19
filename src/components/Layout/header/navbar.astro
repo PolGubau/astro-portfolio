@@ -1,15 +1,20 @@
 ---
+import { getLocale, localizePath, useTranslations } from "../../../i18n/utils";
 import LogoPill from "../../ui/LogoPill.astro";
+import LanguageToggle from "./LanguageToggle.astro";
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
 
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, "");
 const subpath = pathname.match(/[^\/]+/g);
 
 const navItems = [
-  { path: "/", name: "Home" },
-  { path: "/about", name: "About" },
-  { path: "/projects", name: "Portfolio" },
-  { path: "/ui", name: "Experiments" },
-  { path: "/blog", name: "Writing" },
+  { path: localizePath("/", locale), name: t("nav.home") },
+  { path: localizePath("/about", locale), name: t("nav.about") },
+  { path: localizePath("/projects", locale), name: t("nav.portfolio") },
+  { path: localizePath("/ui", locale), name: t("nav.experiments") },
+  { path: localizePath("/blog", locale), name: t("nav.writing") },
 ];
 ---
 
@@ -43,11 +48,14 @@ const navItems = [
       })
     }
 
+    <!-- Language toggle -->
+    <LanguageToggle />
+
     <!-- Dark mode toggle -->
     <button
       id="theme-toggle"
       type="button"
-      aria-label="Toggle dark mode"
+      aria-label={t("a11y.toggleTheme")}
       class="ml-1 rounded-full p-1.5 text-ink/50 hover:text-ink hover:bg-ink/5 transition-all duration-200"
     >
       <!-- Sun (shown in dark mode) -->

@@ -1,9 +1,13 @@
 ---
 import { Image } from "astro:assets";
 import exampleAnimated from "../../assets/media/other/example-animated.webp";
-import examplePortfolio from "../../assets/media/other/example-portfolio.webp";
 import exampleBlog from "../../assets/media/other/example-codedByPol.webp";
 import exampleFlags from "../../assets/media/other/example-flags.webp";
+import examplePortfolio from "../../assets/media/other/example-portfolio.webp";
+import { getLocale, useTranslations } from "../../i18n/utils";
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
 
 const cards = [
   {
@@ -22,10 +26,8 @@ const cards = [
     id="cards-header"
     class="flex flex-col gap-2 pt-20 items-center text-center w-full"
   >
-    <h2 class="text-3xl md:text-4xl font-medium">I don't ship slow websites</h2>
-    <p class="text-ink/50">
-      100/100 on Lighthouse isn't a flex, it's the baseline.
-    </p>
+    <h2 class="text-3xl md:text-4xl font-medium">{t("home.perf.title")}</h2>
+    <p class="text-ink/50">{t("home.perf.subtitle")}</p>
   </header>
   <ul class="sticked-cards" id="sticked-cards">
     {

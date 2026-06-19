@@ -28,6 +28,62 @@ const publishedTime = project.data.startedAt.toISOString();
 const modifiedTime = (
   project.data.endedAt ?? project.data.startedAt
 ).toISOString();
+
+const projectPageUrl = `${metadata.links.website}/projects/${project.id}`;
+const ogImage = `${metadata.links.website}/og/projects/${project.id}.png`;
+
+// Build JSON-LD: SoftwareSourceCode when a GitHub repo is present, CreativeWork otherwise
+const projectSchema = project.data.githubLink
+  ? {
+      "@context": "https://schema.org",
+      "@type": "SoftwareSourceCode",
+      name: project.data.title,
+      description: project.data.summary,
+      url: projectPageUrl,
+      image: ogImage,
+      codeRepository: project.data.githubLink,
+      ...(project.data.tech?.length
+        ? { programmingLanguage: project.data.tech }
+        : {}),
+      dateCreated: project.data.startedAt.toISOString().split("T")[0],
+      ...(project.data.endedAt
+        ? { dateModified: project.data.endedAt.toISOString().split("T")[0] }
+        : {}),
+      author: {
+        "@type": "Person",
+        name: metadata.longName,
+        url: metadata.links.website,
+      },
+    }
+  : {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      name: project.data.title,
+      description: project.data.summary,
+      url: projectPageUrl,
+      image: ogImage,
+      ...(project.data.link ? { sameAs: project.data.link } : {}),
+      ...(project.data.tech?.length
+        ? { keywords: project.data.tech.join(", ") }
+        : {}),
+      dateCreated: project.data.startedAt.toISOString().split("T")[0],
+      ...(project.data.endedAt
+        ? { dateModified: project.data.endedAt.toISOString().split("T")[0] }
+        : {}),
+      ...(project.data.client
+        ? {
+            producer: {
+              "@type": "Organization",
+              name: project.data.client,
+            },
+          }
+        : {}),
+      author: {
+        "@type": "Person",
+        name: metadata.longName,
+        url: metadata.links.website,
+      },
+    };
 ---
 
 <MainLayout
@@ -41,6 +97,11 @@ const modifiedTime = (
     ? project.data.tech
     : undefined}
 >
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(projectSchema)}
+  />
   <section class="relative flex flex-col gap-4">
     <Breadcrumb
       items={[

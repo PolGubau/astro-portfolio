@@ -108,6 +108,62 @@ const { backTo } = Astro.props;
 </nav>
 
 <script>
+  // Copy-to-clipboard for every code block
+  document.querySelectorAll(".prose pre").forEach((pre) => {
+    const wrapper = document.createElement("div");
+    wrapper.style.position = "relative";
+    pre.parentNode?.insertBefore(wrapper, pre);
+    wrapper.appendChild(pre);
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.setAttribute("aria-label", "Copy code");
+    btn.innerHTML =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    btn.style.cssText =
+      "position:absolute;top:8px;right:8px;padding:4px 8px;display:flex;align-items:center;gap:4px;font-size:11px;font-family:inherit;border-radius:6px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);cursor:pointer;transition:all 0.15s;line-height:1;";
+
+    btn.addEventListener("mouseenter", () => {
+      btn.style.background = "rgba(255,255,255,0.15)";
+      btn.style.color = "rgba(255,255,255,0.9)";
+    });
+    btn.addEventListener("mouseleave", () => {
+      if (!btn.dataset.copied) {
+        btn.style.background = "rgba(255,255,255,0.08)";
+        btn.style.color = "rgba(255,255,255,0.6)";
+      }
+    });
+
+    btn.addEventListener("click", async () => {
+      const code =
+        (pre.querySelector("code") as HTMLElement)?.innerText ??
+        (pre as HTMLElement).innerText;
+      try {
+        await navigator.clipboard.writeText(code);
+        btn.innerHTML =
+          '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
+        btn.dataset.copied = "true";
+        btn.style.background = "rgba(52,211,153,0.15)";
+        btn.style.color = "rgb(52,211,153)";
+        btn.style.borderColor = "rgba(52,211,153,0.3)";
+        setTimeout(() => {
+          btn.innerHTML =
+            '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+          delete btn.dataset.copied;
+          btn.style.background = "rgba(255,255,255,0.08)";
+          btn.style.color = "rgba(255,255,255,0.6)";
+          btn.style.borderColor = "rgba(255,255,255,0.15)";
+        }, 2000);
+      } catch {
+        /* clipboard unavailable */
+      }
+    });
+
+    wrapper.appendChild(btn);
+  });
+</script>
+
+<script>
   const shareBtn = document.getElementById("md-share-btn");
   if (shareBtn) {
     const def = shareBtn.querySelector(".md-share-default") as HTMLElement;

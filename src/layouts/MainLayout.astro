@@ -34,6 +34,18 @@ const {
 
 <html lang="en" dir="ltr" class={"w-full overflow-x-clip overscroll-y-none"}>
   <head>
+    <!-- Prevent FOUC: apply stored/system theme before paint -->
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        if (stored === "dark" || (!stored && prefersDark)) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
     <BaseHead
       title={title}
       description={description}

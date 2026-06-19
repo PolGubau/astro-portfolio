@@ -1,5 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
+import BannerLocale from "../components/Layout/BannerLocale.astro";
 import Footer from "../components/Layout/footer/footer.astro";
 import MobileNavbar from "../components/Layout/header/mobile-navbar.astro";
 import Navbar from "../components/Layout/header/navbar.astro";
@@ -73,6 +74,7 @@ const {
           className,
         ]}
       >
+        <BannerLocale />
         <Navbar />
         <slot />
         <Footer />

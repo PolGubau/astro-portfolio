@@ -9,6 +9,13 @@
       "continue": true
     },
     {
+      "src": "/sitemap.xml",
+      "status": 308,
+      "headers": {
+        "Location": "/sitemap-index.xml"
+      }
+    },
+    {
       "handle": "filesystem"
     },
     {

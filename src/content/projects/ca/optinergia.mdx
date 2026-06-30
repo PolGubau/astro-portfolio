@@ -1,0 +1,131 @@
+---
+title: "Optinergia CRM"
+seoTitle: "Optinergia CRM | Programari a mida per a una assessoria energètica"
+startedAt: "2026-06-14"
+endedAt: "2026-06-28"
+category: "web"
+color: "#f6b9b5"
+cover: "../../assets/media/projects/optinergia/thumbnail.webp"
+available: true
+client: "Optinergia"
+summary: "CRM a mida per a una assessoria energètica. Centralitza clients, contractes, renovacions i incidències en una sola eina amb alertes automàtiques de venciment, historial d'activitat i rols per perfil d'usuari."
+tech:
+  - react
+  - typescript
+  - tailwindcss
+  - supabase
+---
+
+import { Image } from "astro:assets";
+
+import dashboard from "../../assets/media/projects/optinergia/dashboard.webp";
+import dashboardMd from "../../assets/media/projects/optinergia/dashboard-md.webp";
+import clientDetails from "../../assets/media/projects/optinergia/client-details.webp";
+import renovations from "../../assets/media/projects/optinergia/renovations.webp";
+import incidentsTable from "../../assets/media/projects/optinergia/incidents-table.webp";
+import registerCall from "../../assets/media/projects/optinergia/register-call.webp";
+import searchMd from "../../assets/media/projects/optinergia/search-md.webp";
+import loginPage from "../../assets/media/projects/optinergia/login-page.webp";
+import settings from "../../assets/media/projects/optinergia/settings.webp";
+
+Una assessoria energètica amb centenars de clients actius, diversos comercials i contractes amb dates de venciment diverses. El problema: tot vivia en fulls de càlcul, correus i la memòria de cada comercial. Cada renovació que es perdia era diners que marxaven.
+
+**Ens van contactar a través de [Doscientos](https://doscientos.es) per construir l'eina que no existia al mercat: un CRM dissenyat des de zero per a l'operativa real d'una assessoria energètica.**
+
+<Image src={dashboard} alt="Tauler del CRM amb KPIs de cartera i renovacions urgents" class="rounded-2xl my-6" />
+
+<div class="not-prose grid grid-cols-2 sm:grid-cols-4 gap-4 my-8 p-5 rounded-2xl border border-muted bg-accent/40">
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">2</span><span class="text-[11px] uppercase tracking-wide text-muted-foreground">setmanes d'entrega</span></div>
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">6</span><span class="text-[11px] uppercase tracking-wide text-muted-foreground">mòduls entregats</span></div>
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">0</span><span class="text-[11px] uppercase tracking-wide text-muted-foreground">renovacions que s'escapen</span></div>
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">PWA</span><span class="text-[11px] uppercase tracking-wide text-muted-foreground">funciona en mòbil i escriptori</span></div>
+</div>
+
+---
+
+## El problema
+
+**El sector energètic té un ritme molt concret: contractes amb data de fi, renovacions que cal anticipar i clients que necessiten seguiment.** Gestionar-ho en Excel no escala: no avisa, no prioritza, no recorda qui va parlar amb qui ni quan.
+
+L'equip perdia renovacions per falta de visibilitat. No hi havia manera ràpida de saber quins contractes vencien aquell mes, quines incidències seguien obertes o quin comercial era responsable de cada client. La informació hi era, però dispersa.
+
+---
+
+## La solució
+
+Vam construir un tauler de gestió que dona a l'equip el que necessita d'una ullada: quants clients actius hi ha, quins contractes estan a punt de vèncer, quantes incidències segueixen obertes i qui ha d'actuar.
+
+<Image src={dashboardMd} alt="Tauler responsiu en pantalla mitjana" class="rounded-2xl my-6" />
+
+La fitxa de cada client agrupa tot en un sol lloc: dades de contacte, contractes energètics amb els seus CUPS, dates de vigència, imports i comissions, documents adjunts, incidències actives i un historial complet de cada acció registrada sobre aquell compte.
+
+<Image src={clientDetails} alt="Fitxa completa de client amb contractes, documents i historial d'activitat" class="rounded-2xl my-6" />
+
+### Renovacions amb cua de prioritat
+
+El mòdul de renovacions va ser el més crític per al client. Mostra automàticament tots els contractes que vencen en els pròxims 60 dies, ordenats per urgència — vençuts, urgents (menys de 30 dies) i pròxims — amb l'últim contacte registrat i el canal usat (telèfon o correu).
+
+<Image src={renovations} alt="Cua de renovacions amb urgència, dies restants i últim contacte" class="rounded-2xl my-6" />
+
+Des d'aquesta mateixa pantalla, el comercial pot registrar un contacte, anotar el resultat i renovar el contracte directament, sense sortir del flux.
+
+<Image src={registerCall} alt="Diàleg de registre de contacte de renovació" class="rounded-2xl my-6" />
+
+### Cerca i filtres que funcionen
+
+La cerca sobre clients és en temps real — per nom, DNI o empresa — amb filtres combinables per estat, comercial assignat i període d'alta. El llistat es pot exportar a CSV amb un clic, filtrat tal com es veu a la pantalla.
+
+<Image src={searchMd} alt="Llistat de clients amb cerca i filtres actius" class="rounded-2xl my-6" />
+
+### Incidències amb prioritat
+
+Les incidències (factures pendents, DNI no entregat, contractes sense signatura) es gestionen en una taula separada amb quatre nivells de prioritat. Qualsevol membre de l'equip les pot obrir, actualitzar i tancar. El tauler les reflecteix sempre en temps real.
+
+<Image src={incidentsTable} alt="Taula d'incidències amb prioritat i estat per client" class="rounded-2xl my-6" />
+
+---
+
+## Decisions de disseny
+
+<div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-3 my-6">
+  <div class="flex flex-col gap-1.5 rounded-xl border border-muted bg-accent/40 p-4">
+    <span class="text-sm font-semibold">Rols diferenciats per perfil</span>
+    <span class="text-sm leading-relaxed text-muted-foreground">El sistema distingeix entre propietari, administrador, comercial i només lectura. Cada rol veu i pot fer coses diferents — els comercials només veuen els seus propis clients; els admin veuen tot l'equip.</span>
+  </div>
+  <div class="flex flex-col gap-1.5 rounded-xl border border-muted bg-accent/40 p-4">
+    <span class="text-sm font-semibold">Historial d'activitat automàtic</span>
+    <span class="text-sm leading-relaxed text-muted-foreground">Cada acció queda registrada sense que ningú ho hagi d'apuntar: alta de client, canvi de contracte, contacte de renovació, resolució d'incidència. L'historial de cada client és la memòria de l'equip.</span>
+  </div>
+  <div class="flex flex-col gap-1.5 rounded-xl border border-muted bg-accent/40 p-4">
+    <span class="text-sm font-semibold">PWA: sense instal·lació, funciona en mòbil</span>
+    <span class="text-sm leading-relaxed text-muted-foreground">L'app està optimitzada com a Progressive Web App. Els comercials la fan servir des del mòbil entre visites sense instal·lar res. Mode fosc inclòs, amb preferència persistida per usuari.</span>
+  </div>
+  <div class="flex flex-col gap-1.5 rounded-xl border border-muted bg-accent/40 p-4">
+    <span class="text-sm font-semibold">Documents adjunts per client</span>
+    <span class="text-sm leading-relaxed text-muted-foreground">DNIs, contractes signats i propostes es pugen directament a la fitxa del client. Els PDFs es poden visualitzar dins la pròpia eina sense descarregar res.</span>
+  </div>
+  <div class="flex flex-col gap-1.5 rounded-xl border border-muted bg-accent/40 p-4">
+    <span class="text-sm font-semibold">Exportació a CSV filtrada</span>
+    <span class="text-sm leading-relaxed text-muted-foreground">Clients i contractes es poden exportar amb els filtres actius — per període, estat o comercial. El fitxer resultant té tots els camps que necessita l'equip: DNI, IBAN, data de signatura, renovació i serveis contractats.</span>
+  </div>
+  <div class="flex flex-col gap-1.5 rounded-xl border border-muted bg-accent/40 p-4">
+    <span class="text-sm font-semibold">Entregat en 2 setmanes</span>
+    <span class="text-sm leading-relaxed text-muted-foreground">Fase 1 (desenvolupament complet) la primera setmana. Fase 2 (importació de dades reals i validació conjunta amb el client) la segona. Sense sorpreses, sense scope creep.</span>
+  </div>
+</div>
+
+<Image src={settings} alt="Tauler de configuració amb gestió d'equip, rols i configuració de l'organització" class="rounded-2xl my-6" />
+
+<Image src={loginPage} alt="Pantalla d'accés amb autenticació segura" class="rounded-2xl my-6" />
+
+---
+
+**Resultats**
+- **6 mòduls** entregats i en producció: tauler, clients, contractes, renovacions, incidències i documents
+- **0 renovacions perdudes** des de l'adopció del sistema
+- **Equip complet migrat** des d'Excel en menys d'una setmana
+- **Rols i permisos** configurats des del primer dia sense intervenció tècnica
+
+---
+
+> Abans ho teníem tot en fulls de càlcul i depenia que algú ho recordés. Ara el sistema avisa sol i l'equip sap en tot moment què ha de fer.

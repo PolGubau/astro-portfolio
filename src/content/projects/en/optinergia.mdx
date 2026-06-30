@@ -1,0 +1,131 @@
+---
+title: "Optinergia CRM"
+seoTitle: "Optinergia CRM | Custom software for an energy consultancy"
+startedAt: "2026-06-14"
+endedAt: "2026-06-28"
+category: "web"
+color: "#f6b9b5"
+cover: "../../assets/media/projects/optinergia/thumbnail.webp"
+available: true
+client: "Optinergia"
+summary: "Custom CRM for an energy consultancy. Centralises clients, contracts, renewals and incidents in a single responsive tool with automatic expiry alerts, activity history and role-based access per user profile."
+tech:
+  - react
+  - typescript
+  - tailwindcss
+  - supabase
+---
+
+import { Image } from "astro:assets";
+
+import dashboard from "../../assets/media/projects/optinergia/dashboard.webp";
+import dashboardMd from "../../assets/media/projects/optinergia/dashboard-md.webp";
+import clientDetails from "../../assets/media/projects/optinergia/client-details.webp";
+import renovations from "../../assets/media/projects/optinergia/renovations.webp";
+import incidentsTable from "../../assets/media/projects/optinergia/incidents-table.webp";
+import registerCall from "../../assets/media/projects/optinergia/register-call.webp";
+import searchMd from "../../assets/media/projects/optinergia/search-md.webp";
+import loginPage from "../../assets/media/projects/optinergia/login-page.webp";
+import settings from "../../assets/media/projects/optinergia/settings.webp";
+
+An energy consultancy with hundreds of active clients, several sales reps and contracts all expiring on different dates. The problem: everything lived in spreadsheets, emails and each rep's memory. Every missed renewal was money walking out the door.
+
+**They reached out through [Doscientos](https://doscientos.es) to build the tool that didn't exist on the market: a CRM designed from scratch for the real operations of an energy consultancy.**
+
+<Image src={dashboard} alt="CRM dashboard with portfolio KPIs and urgent renewals" class="rounded-2xl my-6" />
+
+<div class="not-prose grid grid-cols-2 sm:grid-cols-4 gap-4 my-8 p-5 rounded-2xl border border-muted bg-accent/40">
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">2</span><span class="text-[11px] uppercase tracking-wide text-muted-foreground">weeks to deliver</span></div>
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">6</span><span class="text-[11px] uppercase tracking-wide text-muted-foreground">modules shipped</span></div>
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">0</span><span class="text-[11px] uppercase tracking-wide text-muted-foreground">renewals slipping through</span></div>
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">PWA</span><span class="text-[11px] uppercase tracking-wide text-muted-foreground">works on mobile and desktop</span></div>
+</div>
+
+---
+
+## The problem
+
+**The energy sector runs on a very specific rhythm: contracts with end dates, renewals to anticipate, clients that need follow-up.** Managing that in Excel doesn't scale: it doesn't remind you, it doesn't prioritise, it doesn't remember who spoke to whom or when.
+
+The team was losing renewals through lack of visibility. There was no quick way to know which contracts were expiring that month, which incidents were still open, or which rep was responsible for each client. The information existed — it was just scattered everywhere.
+
+---
+
+## The solution
+
+We built a management dashboard that gives the team what they need at a glance: how many active clients there are, which contracts are about to expire, how many incidents are still open and who needs to act.
+
+<Image src={dashboardMd} alt="Responsive dashboard on medium screen" class="rounded-2xl my-6" />
+
+Each client profile groups everything in one place: contact details, energy contracts with their supply points, validity dates, amounts and commissions, attached documents, active incidents and a full history of every action logged on that account.
+
+<Image src={clientDetails} alt="Full client profile with contracts, documents and activity history" class="rounded-2xl my-6" />
+
+### Renewals with a priority queue
+
+The renewals module was the most critical for the client. It automatically shows all contracts expiring in the next 60 days, sorted by urgency — overdue, urgent (under 30 days) and upcoming — with the last contact logged and the channel used (phone or email).
+
+<Image src={renovations} alt="Renewal queue with urgency, days remaining and last contact" class="rounded-2xl my-6" />
+
+From that same screen, the rep can log a contact, note the outcome and renew the contract directly — without leaving the flow.
+
+<Image src={registerCall} alt="Renewal contact registration dialog" class="rounded-2xl my-6" />
+
+### Search and filters that work
+
+Client search is real-time — by name, ID number or company — with combinable filters by status, assigned rep and registration period. The list can be exported to CSV in one click, filtered exactly as shown on screen.
+
+<Image src={searchMd} alt="Client list with active search and filters" class="rounded-2xl my-6" />
+
+### Incidents with priority levels
+
+Incidents (pending invoices, missing ID documents, unsigned contracts) are managed in a separate table with four priority levels. Any team member can open, update and close them. The dashboard always reflects them in real time.
+
+<Image src={incidentsTable} alt="Incident table with priority and status per client" class="rounded-2xl my-6" />
+
+---
+
+## Design decisions
+
+<div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-3 my-6">
+  <div class="flex flex-col gap-1.5 rounded-xl border border-muted bg-accent/40 p-4">
+    <span class="text-sm font-semibold">Role-based access per profile</span>
+    <span class="text-sm leading-relaxed text-muted-foreground">The system distinguishes between owner, admin, sales rep and read-only. Each role sees and can do different things — reps only see their own clients; admins see the full team.</span>
+  </div>
+  <div class="flex flex-col gap-1.5 rounded-xl border border-muted bg-accent/40 p-4">
+    <span class="text-sm font-semibold">Automatic activity history</span>
+    <span class="text-sm leading-relaxed text-muted-foreground">Every action is logged without anyone needing to note it down: new client, contract change, renewal contact, incident resolved. Each client's history is the team's memory.</span>
+  </div>
+  <div class="flex flex-col gap-1.5 rounded-xl border border-muted bg-accent/40 p-4">
+    <span class="text-sm font-semibold">PWA: no install required, works on mobile</span>
+    <span class="text-sm leading-relaxed text-muted-foreground">The app is optimised as a Progressive Web App. Reps use it from their phone between visits without installing anything. Dark mode included, with preference persisted per user.</span>
+  </div>
+  <div class="flex flex-col gap-1.5 rounded-xl border border-muted bg-accent/40 p-4">
+    <span class="text-sm font-semibold">Attached documents per client</span>
+    <span class="text-sm leading-relaxed text-muted-foreground">ID documents, signed contracts and proposals are uploaded directly to the client profile. PDFs can be previewed inside the tool without downloading anything.</span>
+  </div>
+  <div class="flex flex-col gap-1.5 rounded-xl border border-muted bg-accent/40 p-4">
+    <span class="text-sm font-semibold">Filtered CSV export</span>
+    <span class="text-sm leading-relaxed text-muted-foreground">Clients and contracts can be exported with active filters — by period, status or rep. The resulting file includes all fields the team needs: ID, IBAN, signing date, renewal date and contracted services.</span>
+  </div>
+  <div class="flex flex-col gap-1.5 rounded-xl border border-muted bg-accent/40 p-4">
+    <span class="text-sm font-semibold">Delivered in 2 weeks</span>
+    <span class="text-sm leading-relaxed text-muted-foreground">Phase 1 (full development) in the first week. Phase 2 (real data import and joint validation with the client) in the second. No surprises, no scope creep.</span>
+  </div>
+</div>
+
+<Image src={settings} alt="Settings panel with team management, roles and organisation configuration" class="rounded-2xl my-6" />
+
+<Image src={loginPage} alt="Login screen with secure authentication" class="rounded-2xl my-6" />
+
+---
+
+**Results**
+- **6 modules** delivered and in production: dashboard, clients, contracts, renewals, incidents and documents
+- **0 missed renewals** since the system was adopted
+- **Full team migrated** from Excel in under a week
+- **Roles and permissions** configured from day one without any technical intervention
+
+---
+
+> Before, we had everything in spreadsheets and relied on someone remembering. Now the system alerts by itself and the team always knows what they need to do.

@@ -7,6 +7,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const projects = (await getCollection("projects")).filter((e) =>
     e.id.startsWith("en/"),
   );
+  console.log("DEBUG cover", JSON.stringify(projects[0]?.data.cover, null, 2));
   return projects.map((project) => ({
     params: { slug: project.id.slice(3) }, // strip "en/"
     props: {

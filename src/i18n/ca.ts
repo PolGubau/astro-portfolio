@@ -26,6 +26,11 @@ export const ca: Record<UiKey, string> = {
   "a11y.toggleTheme": "Canviar mode fosc",
   "a11y.switchLang": "Canviar idioma",
 
+  // SEO
+  "seo.home.title": "Pol Gubau Amores - Desenvolupador frontend senior",
+  "seo.home.description":
+    "Desenvolupador frontend senior a Barcelona. Creo productes web i mòbils ràpids i accessibles amb React, TypeScript i Expo.",
+
   // Home hero
   "home.hero.title": "Sóc en Pol, faig productes digitals",
   "home.hero.intro":

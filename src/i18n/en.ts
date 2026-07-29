@@ -24,6 +24,11 @@ export const en = {
   "a11y.toggleTheme": "Toggle dark mode",
   "a11y.switchLang": "Switch language",
 
+  // SEO
+  "seo.home.title": "Pol Gubau Amores - Frontend Developer & Designer",
+  "seo.home.description":
+    "Senior frontend engineer based in Barcelona. I build fast, accessible web and mobile products with React, TypeScript and Expo.",
+
   // Home hero
   "home.hero.title": "I'm Pol, a senior frontend developer",
   "home.hero.intro":

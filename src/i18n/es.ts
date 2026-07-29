@@ -26,6 +26,11 @@ export const es: Record<UiKey, string> = {
   "a11y.toggleTheme": "Cambiar modo oscuro",
   "a11y.switchLang": "Cambiar idioma",
 
+  // SEO
+  "seo.home.title": "Pol Gubau Amores - Desarrollador frontend senior",
+  "seo.home.description":
+    "Desarrollador frontend senior en Barcelona. Creo productos web y móviles rápidos y accesibles con React, TypeScript y Expo.",
+
   // Home hero
   "home.hero.title": "Soy Pol, desarrollador frontend senior",
   "home.hero.intro":

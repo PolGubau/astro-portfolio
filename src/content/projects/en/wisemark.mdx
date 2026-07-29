@@ -62,7 +62,7 @@ This is the usual output using the VSCode extension.
 - [@wisemark/cli](https://github.com/PolGubau/wisemark/tree/main/packages/cli): The command-line interface for Wisemark. It allows you to run Wisemark commands from the terminal.
 - [@wisemark/vscode](https://github.com/PolGubau/wisemark/tree/main/packages/vscode): The VSCode extension for Wisemark. It provides a user interface for managing comments directly in the editor.
 
-# Creating Wisemark Comments
+## Creating Wisemark Comments
 
 A comment can be as simple as:
 
@@ -100,7 +100,7 @@ Structure of the comment:
 // @fixme Fix the bug in the code -- severity: medium -- tags: bug,correct
 ```
 
-# CLI Tool
+## CLI Tool
 
 Wisemark CLI is a command-line tool that allows you to manage your comments directly from the terminal. It provides commands for scanning your codebase, generating reports, and managing your TODOs and FIXMEs. (Report generation is not yet implemented)
 
@@ -164,7 +164,7 @@ A full example of the command would be:
 wisemark --type todo --path src --severity high --json --showDate --withDueDate --due 2023-10-01 --tags bug,urgent
 ```
 
-# VSCode Extension
+## VSCode Extension
 
 Wisemark is a VSCode extension that helps you manage and scan intelligent commands within your codebase. It enables easy insertion of different types of comments (like TODO, FIXME, Notes, Questions, Refactors) and allows you to quickly navigate and manage these comments. It also provides enhanced token coloring and grouping options for better code organization.
 
@@ -199,7 +199,7 @@ ext install wisemark
 
 Once installed, you'll be able to use Wisemark to:
 
-1. **Insert Comments**:  
+1. **Insert Comments**:
    You can insert the following comments in your code:
 
    - **Note**: `ctrl+alt+n`
@@ -208,17 +208,17 @@ Once installed, you'll be able to use Wisemark to:
    - **Question**: `ctrl+alt+q`
    - **Refactor**: `ctrl+alt+r`
 
-2. **Command Scanning**:  
+2. **Command Scanning**:
    To scan for all comments, run the **Scan Wisemark Commands** command from the command palette (`Ctrl+Shift+P` > **Scan Wisemark commands**).
 
    ![Scan Command](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/example.png?raw=true)
 
-3. **Group Comments**:  
+3. **Group Comments**:
    Toggle grouping for better visibility and organization of your comments using the **Toggle Grouping** command.
 
    ![Grouping Command](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/fileGroup.png?raw=true)
 
-4. **Navigate Between Comments**:  
+4. **Navigate Between Comments**:
    Use the **Select and Open a Comment** command to quickly navigate between comments in your code.
 
    ![Navigate Comments](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/list.png?raw=true)
@@ -253,7 +253,7 @@ Easily group your comments by type for better organization.
 
 ![Group Comments](https://github.com/PolGubau/wisemark/blob/main/packages/vscode/public/typeGroup.png?raw=true)
 
-# Roadmap
+## Roadmap
 
 | Feature             | Status | Description                                                                  |
 | ------------------- | ------ | ---------------------------------------------------------------------------- |

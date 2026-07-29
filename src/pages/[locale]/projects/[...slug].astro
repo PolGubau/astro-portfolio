@@ -45,7 +45,9 @@ const PAGE_TITLE = `${project.data.seoTitle ?? project.data.title} - ${metadata.
 const { Content, headings } = await render(project);
 const publishedTime = project.data.startedAt.toISOString();
 const modifiedTime = (
-  project.data.endedAt ?? project.data.startedAt
+  project.data.updatedAt ??
+  project.data.endedAt ??
+  project.data.startedAt
 ).toISOString();
 
 const projectsPath = localizePath("/projects", locale);
@@ -72,9 +74,7 @@ const projectSchema = project.data.githubLink
         ? { programmingLanguage: project.data.tech }
         : {}),
       dateCreated: project.data.startedAt.toISOString().split("T")[0],
-      ...(project.data.endedAt
-        ? { dateModified: project.data.endedAt.toISOString().split("T")[0] }
-        : {}),
+      dateModified: modifiedTime.split("T")[0],
       author: {
         "@type": "Person",
         name: metadata.longName,
@@ -96,9 +96,7 @@ const projectSchema = project.data.githubLink
         ? { keywords: project.data.tech.join(", ") }
         : {}),
       dateCreated: project.data.startedAt.toISOString().split("T")[0],
-      ...(project.data.endedAt
-        ? { dateModified: project.data.endedAt.toISOString().split("T")[0] }
-        : {}),
+      dateModified: modifiedTime.split("T")[0],
       ...(project.data.client
         ? { producer: { "@type": "Organization", name: project.data.client } }
         : {}),

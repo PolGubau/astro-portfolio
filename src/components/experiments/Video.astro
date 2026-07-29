@@ -25,7 +25,7 @@ const { src, date, title, width, height, tech, style } = Astro.props;
       width={width}
       height={height}
       class="lazy-video h-full w-full object-cover bg-ink/10"
-      data-src={`src/assets/concepts/${src}.mp4`}
+      data-src={src}
     >
       Your browser does not support the video tag.
     </video>

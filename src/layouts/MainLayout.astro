@@ -83,11 +83,17 @@ const {
     </main>
     <script>
       import "@polgubau/astro-reveal";
-      import mediumZoom from "medium-zoom";
-      mediumZoom(".prose img, [data-zoom]", {
-        margin: 16,
-        background: "rgba(0,0,0,0.75)",
-      });
+
+      // Only pull in medium-zoom (and run it) on pages that actually have
+      // zoomable content, instead of shipping/executing it on every route.
+      if (document.querySelector(".prose img, [data-zoom]")) {
+        import("medium-zoom").then(({ default: mediumZoom }) => {
+          mediumZoom(".prose img, [data-zoom]", {
+            margin: 16,
+            background: "rgba(0,0,0,0.75)",
+          });
+        });
+      }
     </script>
   </body>
 </html>

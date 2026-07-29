@@ -27,22 +27,74 @@ const {
 
 // Handle both string and imported asset
 const videoSrc = typeof src === "string" ? src : src.src;
+const videoSrcMp4 = videoSrc.replace(".webm", ".mp4");
 ---
 
 <div class:list={["relative overflow-hidden", className]}>
   <video
-    autoplay={autoplay}
     loop={loop}
     muted={muted}
     controls={controls}
     playsinline
+    preload="none"
+    data-autoplay={autoplay ? "true" : "false"}
+    data-src-webm={videoSrc}
+    data-src-mp4={videoSrcMp4 !== videoSrc ? videoSrcMp4 : undefined}
     width={width}
     height={height}
-    class={`w-full h-full object-cover object-center bg-ink/20 mt-0 mb-0 ${videoClassName}`}
+    class={`lazy-mdx-video w-full h-full object-cover object-center bg-ink/20 mt-0 mb-0 ${videoClassName}`}
     aria-label={alt}
   >
-    <source src={videoSrc} type="video/webm" />
-    <source src={videoSrc.replace(".webm", ".mp4")} type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 </div>
+
+<script>
+  // Lazily attach <source> elements and start playback only once a video
+  // scrolls near the viewport, so autoplay MDX videos don't all download
+  // eagerly on page load (preload="none" above already prevents the
+  // browser from fetching data before this runs).
+  function hydrateVideo(video: HTMLVideoElement) {
+    const webm = video.dataset.srcWebm;
+    const mp4 = video.dataset.srcMp4;
+
+    if (webm) {
+      const sourceWebm = document.createElement("source");
+      sourceWebm.src = webm;
+      sourceWebm.type = "video/webm";
+      video.appendChild(sourceWebm);
+    }
+    if (mp4) {
+      const sourceMp4 = document.createElement("source");
+      sourceMp4.src = mp4;
+      sourceMp4.type = "video/mp4";
+      video.appendChild(sourceMp4);
+    }
+
+    video.load();
+    if (video.dataset.autoplay === "true") {
+      video.play().catch(() => {
+        // Autoplay might be blocked, that's ok
+      });
+    }
+  }
+
+  const videos = document.querySelectorAll<HTMLVideoElement>(".lazy-mdx-video");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          hydrateVideo(entry.target as HTMLVideoElement);
+          obs.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "200px", threshold: 0.1 },
+    );
+
+    videos.forEach((video) => observer.observe(video));
+  } else {
+    videos.forEach(hydrateVideo);
+  }
+</script>

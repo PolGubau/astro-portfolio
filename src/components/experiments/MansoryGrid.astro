@@ -1,6 +1,22 @@
 ---
 import Video from "./Video.astro";
 
+// Resolve concept video filenames to their built, hashed asset URLs so the
+// browser can actually fetch them in production (a bare "src/assets/..."
+// path is not a valid runtime URL).
+const conceptVideos = import.meta.glob<string>("/src/assets/concepts/*.mp4", {
+  eager: true,
+  import: "default",
+  query: "?url",
+});
+
+const getVideoUrl = (name: string): string => {
+  const entry = Object.entries(conceptVideos).find(([path]) =>
+    path.endsWith(`/${name}.mp4`),
+  );
+  return entry ? entry[1] : "";
+};
+
 type VideoType = {
   mp4: string;
   date: string;
@@ -231,7 +247,7 @@ const sortedVideos = [...videos].sort(
     sortedVideos.map((video) => (
       <div class="mb-4 break-inside-avoid">
         <Video
-          src={video.mp4}
+          src={getVideoUrl(video.mp4)}
           title={video.title}
           width={video.width}
           height={video.height}

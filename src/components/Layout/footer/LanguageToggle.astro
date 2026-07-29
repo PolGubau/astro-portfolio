@@ -12,11 +12,22 @@ const base = stripLocale(Astro.url.pathname);
 // Routes that have explicit locale equivalents beyond EN
 const translatedRoutes = ["/", "/about", "/ui", "/blog", "/projects"];
 
+// Project detail pages (`/projects/{slug}`) also have per-locale routes -
+// every slug exists in every locale (falling back to the English MDX body
+// when untranslated), so the slug itself must be preserved across the switch.
+const projectDetailPattern = /^\/projects\/([^/]+)$/;
+
 // Build the destination via localizePath so links honour `trailingSlash: never`
 // (`/es`, not `/es/`). Routes without translations fall back to the home page.
 function getTarget(base: string, targetLocale: Locale): string {
-  const dest = translatedRoutes.includes(base) ? base : "/";
-  return localizePath(dest, targetLocale);
+  if (translatedRoutes.includes(base)) {
+    return localizePath(base, targetLocale);
+  }
+  const projectMatch = base.match(projectDetailPattern);
+  if (projectMatch) {
+    return localizePath(`/projects/${projectMatch[1]}`, targetLocale);
+  }
+  return localizePath("/", targetLocale);
 }
 
 const langs: { locale: Locale; label: string; ariaLabel: string }[] = [

@@ -39,7 +39,7 @@ const {
   publishedTime,
   modifiedTime,
   author = metadata.longName,
-  keywords = metadata.tags,
+  keywords = [],
   locale: localeProp,
   noindex = false,
   articleSchema = type === "article",
@@ -160,7 +160,7 @@ const articleNode = articleSchema
         url: siteBase,
       },
       publisher: { "@id": organizationId },
-      keywords: keywordsContent,
+      ...(keywords.length > 0 ? { keywords: keywordsContent } : {}),
       isPartOf: { "@id": pageId },
       mainEntityOfPage: { "@id": pageId },
     }

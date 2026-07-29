@@ -1,5 +1,10 @@
 ---
-import { getLocale, localizePath, useTranslations } from "../../i18n/utils";
+import {
+  getLocale,
+  localeTags,
+  localizePath,
+  useTranslations,
+} from "../../i18n/utils";
 import MainLayout from "../../layouts/MainLayout.astro";
 import { metadata } from "../../lib/constants";
 import { formatDate, getBlogs } from "../../lib/utils";
@@ -33,7 +38,7 @@ const itemListSchema = {
   name: pageTitle,
   description: pageDescription,
   url: pageUrl,
-  inLanguage: locale,
+  inLanguage: localeTags[locale],
   numberOfItems: allBlogs.length,
   itemListElement: allBlogs.map((post, index) => ({
     "@type": "ListItem",

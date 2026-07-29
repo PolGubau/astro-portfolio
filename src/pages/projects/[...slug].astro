@@ -37,6 +37,7 @@ const projectSchema = project.data.githubLink
   ? {
       "@context": "https://schema.org",
       "@type": "SoftwareSourceCode",
+      "@id": `${projectPageUrl}#software-source-code`,
       name: project.data.title,
       description: project.data.summary,
       url: projectPageUrl,
@@ -54,10 +55,12 @@ const projectSchema = project.data.githubLink
         name: metadata.longName,
         url: metadata.links.website,
       },
+      mainEntityOfPage: { "@id": `${projectPageUrl}#webpage` },
     }
   : {
       "@context": "https://schema.org",
       "@type": "CreativeWork",
+      "@id": `${projectPageUrl}#creative-work`,
       name: project.data.title,
       description: project.data.summary,
       url: projectPageUrl,
@@ -83,6 +86,7 @@ const projectSchema = project.data.githubLink
         name: metadata.longName,
         url: metadata.links.website,
       },
+      mainEntityOfPage: { "@id": `${projectPageUrl}#webpage` },
     };
 ---
 
@@ -96,6 +100,7 @@ const projectSchema = project.data.githubLink
   keywords={project.data.tech && project.data.tech.length > 0
     ? project.data.tech
     : undefined}
+  articleSchema={false}
 >
   <script
     is:inline

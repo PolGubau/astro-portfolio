@@ -19,6 +19,8 @@ interface Props {
   author?: string;
   className?: string;
   keywords?: string[];
+  noindex?: boolean;
+  articleSchema?: boolean;
 }
 
 const {
@@ -31,6 +33,8 @@ const {
   author,
   keywords,
   className,
+  noindex,
+  articleSchema,
 } = Astro.props;
 ---
 
@@ -62,6 +66,8 @@ const {
       author={author}
       keywords={keywords}
       locale={locale}
+      noindex={noindex}
+      articleSchema={articleSchema}
     />
   </head>
   <body>

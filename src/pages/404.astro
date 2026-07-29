@@ -72,7 +72,11 @@ const en = copy[defaultLocale];
 const excuse = en.excuses[Math.floor(Math.random() * en.excuses.length)];
 ---
 
-<MainLayout title="404 - Pol Gubau" description="This page doesn't exist.">
+<MainLayout
+  title="404 - Pol Gubau"
+  description="This page doesn't exist."
+  noindex
+>
   <div
     class="relative flex flex-col items-center justify-center gap-8 py-28 md:py-36 text-center overflow-hidden"
   >

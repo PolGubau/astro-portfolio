@@ -23,6 +23,10 @@ interface Props {
   author?: string;
   keywords?: string[];
   locale?: Locale;
+  /** Emit `noindex, nofollow` instead of the default indexable directives. */
+  noindex?: boolean;
+  /** Emit the `BlogPosting` node. Defaults to `true` for `type="article"`. */
+  articleSchema?: boolean;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -37,7 +41,13 @@ const {
   author = metadata.longName,
   keywords = metadata.tags,
   locale: localeProp,
+  noindex = false,
+  articleSchema = type === "article",
 } = Astro.props;
+
+const robotsContent = noindex
+  ? "noindex, nofollow"
+  : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 
 const locale = localeProp ?? getLocale(Astro.currentLocale);
 const localeTag = localeTags[locale]; // e.g. "en-US"
@@ -63,24 +73,33 @@ const imageURL = new URL(image, Astro.site);
 const ogImageType = image.endsWith(".png") ? "image/png" : "image/webp";
 const keywordsContent = keywords.join(", ");
 
-// Publisher used across structured data (logo required by search engines)
-const publisher = {
+// Single JSON-LD graph: every node gets a stable `@id` so search engines can
+// resolve the relationships between person, organization, site and page
+// instead of receiving several disconnected documents.
+const siteBase = metadata.links.website;
+const personId = `${siteBase}/#person`;
+const organizationId = `${siteBase}/#organization`;
+const websiteId = `${siteBase}/#website`;
+const pageId = `${canonicalURL.href}#webpage`;
+const articleId = `${canonicalURL.href}#article`;
+
+const organizationNode = {
   "@type": "Organization",
+  "@id": organizationId,
   name: metadata.longName,
-  url: metadata.links.website,
+  url: siteBase,
   logo: {
     "@type": "ImageObject",
     url: imageURL.href,
   },
 };
 
-// JSON-LD Structured Data for Person
-const personSchema = {
-  "@context": "https://schema.org",
+const personNode = {
   "@type": "Person",
+  "@id": personId,
   name: metadata.longName,
   jobTitle: metadata.slogan,
-  url: metadata.links.website,
+  url: siteBase,
   sameAs: [
     metadata.links.github,
     metadata.links.linkedin,
@@ -98,56 +117,65 @@ const personSchema = {
   email: "hola@polgubau.com",
 };
 
-// JSON-LD Structured Data for Website
-const websiteSchema = {
-  "@context": "https://schema.org",
+const websiteNode = {
   "@type": "WebSite",
+  "@id": websiteId,
   name: metadata.title,
   description: metadata.description,
-  url: Astro.site?.href,
-  author: {
-    "@type": "Person",
-    name: metadata.longName,
-  },
-  publisher,
-  keywords: keywordsContent,
+  url: `${siteBase}/`,
+  author: { "@id": personId },
+  publisher: { "@id": organizationId },
   inLanguage: localeTag,
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${Astro.site?.href}blog?q={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
+};
+
+const webPageNode = {
+  "@type": "WebPage",
+  "@id": pageId,
+  url: canonicalURL.href,
+  name: title,
+  description,
+  isPartOf: { "@id": websiteId },
+  about: { "@id": personId },
+  inLanguage: localeTag,
+  primaryImageOfPage: {
+    "@type": "ImageObject",
+    url: imageURL.href,
   },
 };
 
-// JSON-LD for Article (if it's a blog post)
-const articleSchema =
-  type === "article"
-    ? {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        headline: title,
-        description: description,
-        url: canonicalURL.href,
-        image: imageURL.href,
-        datePublished: publishedTime,
-        dateModified: modifiedTime || publishedTime,
-        inLanguage: localeTag,
-        author: {
-          "@type": "Person",
-          name: author,
-          url: metadata.links.website,
-        },
-        publisher,
-        keywords: keywordsContent,
-        mainEntityOfPage: {
-          "@type": "WebPage",
-          "@id": canonicalURL.href,
-        },
-      }
-    : null;
+const articleNode = articleSchema
+  ? {
+      "@type": "BlogPosting",
+      "@id": articleId,
+      headline: title,
+      description: description,
+      url: canonicalURL.href,
+      image: imageURL.href,
+      datePublished: publishedTime,
+      dateModified: modifiedTime || publishedTime,
+      inLanguage: localeTag,
+      author: {
+        "@type": "Person",
+        name: author,
+        url: siteBase,
+      },
+      publisher: { "@id": organizationId },
+      keywords: keywordsContent,
+      isPartOf: { "@id": pageId },
+      mainEntityOfPage: { "@id": pageId },
+    }
+  : null;
+
+const graphSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    personNode,
+    organizationNode,
+    websiteNode,
+    webPageNode,
+    ...(articleNode ? [articleNode] : []),
+  ],
+};
 ---
 
 <!-- Global Metadata -->
@@ -226,14 +254,10 @@ const articleSchema =
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-<meta name="keywords" content={keywordsContent} />
 <meta name="author" content={author} />
 <meta name="publisher" content={metadata.longName} />
-<meta
-  name="robots"
-  content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-/>
-<meta name="googlebot" content="index, follow" />
+<meta name="robots" content={robotsContent} />
+<meta name="googlebot" content={robotsContent} />
 <meta name="language" content={localeTag} />
 <meta
   name="theme-color"
@@ -307,19 +331,5 @@ const articleSchema =
 <script
   is:inline
   type="application/ld+json"
-  set:html={JSON.stringify(personSchema)}
+  set:html={JSON.stringify(graphSchema)}
 />
-<script
-  is:inline
-  type="application/ld+json"
-  set:html={JSON.stringify(websiteSchema)}
-/>
-{
-  articleSchema && (
-    <script
-      is:inline
-      type="application/ld+json"
-      set:html={JSON.stringify(articleSchema)}
-    />
-  )
-}

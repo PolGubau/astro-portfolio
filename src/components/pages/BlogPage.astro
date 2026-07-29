@@ -1,14 +1,26 @@
 ---
 import { getLocale, localizePath, useTranslations } from "../../i18n/utils";
+import MainLayout from "../../layouts/MainLayout.astro";
 import { metadata } from "../../lib/constants";
 import { formatDate, getBlogs } from "../../lib/utils";
-import MainLayout from "../../layouts/MainLayout.astro";
 import ContentLanguageNotice from "../Layout/ContentLanguageNotice.astro";
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 
 const allBlogs = getBlogs();
+
+// Tag facets are rendered server-side and filtered on the client, so the
+// canonical /blog page stays the only indexable URL for every tag view.
+const tagCounts = new Map<string, number>();
+for (const post of allBlogs) {
+  for (const tag of post.data.tags ?? []) {
+    tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+  }
+}
+const tags = [...tagCounts.entries()]
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+  .map(([tag]) => tag);
 
 const pageTitle = t("blog.meta.title");
 const pageDescription = t("blog.meta.description");
@@ -45,32 +57,122 @@ const itemListSchema = {
       <ContentLanguageNotice message={t("blog.notice")} />
     </header>
 
-    <ul class="flex flex-col">
+    <div class="flex flex-col gap-5">
       {
-        allBlogs.map((post) => (
-          <li class="group border-b border-ink/[0.06] last:border-0">
-            <a
-              href={`/blog/${post.id}`}
-              class="-mx-2 flex flex-col gap-1 rounded-xl px-2 py-4 transition-colors hover:bg-ink/[0.025] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20"
+        tags.length > 0 && (
+          <div id="blog-tag-filter" class="flex flex-wrap gap-2">
+            <button
+              type="button"
+              data-tag=""
+              aria-pressed="true"
+              class="rounded-full bg-ink/8 px-3 py-1 text-xs font-medium text-ink/70 transition-colors hover:bg-ink/12 aria-pressed:bg-ink aria-pressed:text-background"
             >
-              <div class="flex items-baseline justify-between gap-4">
-                <h2 class="font-medium text-ink transition-transform duration-200 group-hover:translate-x-0.5 line-clamp-1">
-                  {post.data.title}
-                </h2>
-                <time
-                  datetime={post.data.publishedAt.toISOString()}
-                  class="shrink-0 text-xs text-ink/35 tabular-nums"
-                >
-                  {formatDate(post.data.publishedAt)}
-                </time>
-              </div>
-              <p class="text-sm text-ink/50 line-clamp-2 text-pretty max-w-xl">
-                {post.data.summary}
-              </p>
-            </a>
-          </li>
-        ))
+              {t("blog.filter.all")}
+            </button>
+            {tags.map((tag) => (
+              <button
+                type="button"
+                data-tag={tag}
+                aria-pressed="false"
+                class="rounded-full bg-ink/8 px-3 py-1 text-xs font-medium text-ink/70 transition-colors hover:bg-ink/12 aria-pressed:bg-ink aria-pressed:text-background"
+              >
+                #{tag}
+              </button>
+            ))}
+          </div>
+        )
       }
-    </ul>
+
+      <p id="blog-empty" hidden class="text-sm text-ink/50">
+        {t("blog.filter.empty")}
+      </p>
+
+      <ul id="blog-list" class="flex flex-col">
+        {
+          allBlogs.map((post) => (
+            <li
+              class="group border-b border-ink/[0.06] last:border-0"
+              data-tags={(post.data.tags ?? []).join("|")}
+            >
+              <a
+                href={`/blog/${post.id}`}
+                class="-mx-2 flex flex-col gap-1 rounded-xl px-2 py-4 transition-colors hover:bg-ink/[0.025] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/20"
+              >
+                <div class="flex items-baseline justify-between gap-4">
+                  <h2 class="font-medium text-ink transition-transform duration-200 group-hover:translate-x-0.5 line-clamp-1">
+                    {post.data.title}
+                  </h2>
+                  <time
+                    datetime={post.data.publishedAt.toISOString()}
+                    class="shrink-0 text-xs text-ink/35 tabular-nums"
+                  >
+                    {formatDate(post.data.publishedAt)}
+                  </time>
+                </div>
+                <p class="text-sm text-ink/50 line-clamp-2 text-pretty max-w-xl">
+                  {post.data.summary}
+                </p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <script>
+      const filter = document.getElementById("blog-tag-filter");
+      const list = document.getElementById("blog-list");
+      const empty = document.getElementById("blog-empty");
+
+      if (filter && list && empty) {
+        const buttons = Array.from(
+          filter.querySelectorAll<HTMLButtonElement>("button[data-tag]"),
+        );
+        const items = Array.from(list.querySelectorAll<HTMLLIElement>("li"));
+
+        const apply = (tag: string, push: boolean) => {
+          let visible = 0;
+
+          for (const item of items) {
+            const itemTags = (item.dataset.tags ?? "")
+              .split("|")
+              .filter(Boolean);
+            const match = !tag || itemTags.includes(tag);
+            item.hidden = !match;
+            if (match) visible += 1;
+          }
+
+          for (const button of buttons) {
+            button.setAttribute(
+              "aria-pressed",
+              String((button.dataset.tag ?? "") === tag),
+            );
+          }
+
+          empty.hidden = visible > 0;
+
+          if (push) {
+            const url = new URL(window.location.href);
+            if (tag) {
+              url.searchParams.set("tag", tag);
+            } else {
+              url.searchParams.delete("tag");
+            }
+            window.history.replaceState({}, "", url);
+          }
+        };
+
+        for (const button of buttons) {
+          button.addEventListener("click", () => {
+            apply(button.dataset.tag ?? "", true);
+          });
+        }
+
+        const initial = new URL(window.location.href).searchParams.get("tag");
+        if (initial && buttons.some((b) => b.dataset.tag === initial)) {
+          apply(initial, false);
+        }
+      }
+    </script>
   </div>
 </MainLayout>

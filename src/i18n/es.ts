@@ -1,143 +1,145 @@
 import type { UiKey } from "./en";
 
 export const es: Record<UiKey, string> = {
-	// Navbar (desktop)
-	"nav.home": "Inicio",
-	"nav.about": "Sobre mí",
-	"nav.portfolio": "Portfolio",
-	"nav.experiments": "Experimentos",
-	"nav.writing": "Blog",
+  // Navbar (desktop)
+  "nav.home": "Inicio",
+  "nav.about": "Sobre mí",
+  "nav.portfolio": "Portfolio",
+  "nav.experiments": "Experimentos",
+  "nav.writing": "Blog",
 
-	// Mobile navbar
-	"m.home": "Inicio",
-	"m.about": "Sobre mí",
-	"m.work": "Trabajo",
-	"m.lab": "Lab",
-	"m.writing": "Blog",
+  // Mobile navbar
+  "m.home": "Inicio",
+  "m.about": "Sobre mí",
+  "m.work": "Trabajo",
+  "m.lab": "Lab",
+  "m.writing": "Blog",
 
-	// Footer
-	"footer.home": "Inicio",
-	"footer.work": "Trabajo",
-	"footer.writing": "Blog",
-	"footer.experiments": "Experimentos",
-	"footer.email": "Email",
+  // Footer
+  "footer.home": "Inicio",
+  "footer.work": "Trabajo",
+  "footer.writing": "Blog",
+  "footer.experiments": "Experimentos",
+  "footer.email": "Email",
 
-	// Accessibility / controls
-	"a11y.toggleTheme": "Cambiar modo oscuro",
-	"a11y.switchLang": "Cambiar idioma",
+  // Accessibility / controls
+  "a11y.toggleTheme": "Cambiar modo oscuro",
+  "a11y.switchLang": "Cambiar idioma",
 
-	// Home hero
-	"home.hero.title": "Soy Pol, desarrollador frontend senior",
-	"home.hero.intro":
-		'Senior Frontend Engineer en <a href="https://mesalvo.com" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Mesalvo</a>. Cofundador de <a href="https://doscientos.es" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Doscientos</a>. En Matar\u00f3, Barcelona.',
-	"home.stats.npm": "Descargas NPM",
-	"home.stats.vercel": "Peticiones Vercel/año",
-	"home.stats.years": "Años de experiencia",
-	"home.stats.react": "Proyectos React",
+  // Home hero
+  "home.hero.title": "Soy Pol, desarrollador frontend senior",
+  "home.hero.intro":
+    'Senior Frontend Engineer en <a href="https://mesalvo.com" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Mesalvo</a>. Cofundador de <a href="https://doscientos.es" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Doscientos</a>. En Matar\u00f3, Barcelona.',
+  "home.stats.npm": "Descargas NPM",
+  "home.stats.vercel": "Peticiones Vercel/año",
+  "home.stats.years": "Años de experiencia",
+  "home.stats.react": "Proyectos React",
 
-	// Home sections
-	"home.work.title": "Trabajo seleccionado",
-	"home.viewAll": "Ver todo",
-	"home.side.title": "Proyectos personales",
-	"home.side.downloads": "descargas",
-	"home.side.views": "visitas",
-	"home.beyond.title": "Más allá del código",
-	"home.beyond.caption1": "Entrevistado en TV3 sobre mi trabajo",
-	"home.beyond.caption2": "Enseñando Astro y Tailwind a más de 35 alumnos",
-	"home.beyond.caption3": "Presentando Pol-UI como Trabajo de Fin de Grado",
-	"home.doscientos.title":
-		"¿Necesitas software a medida, hecho por ingenieros senior?",
-	"home.doscientos.body":
-		'Cofundé <strong class="text-secondary-50">Doscientos</strong>, un estudio de software que convierte ideas en productos en seis semanas.',
-	"home.doscientos.stat1": "Productos publicados",
-	"home.doscientos.stat2": "De idea a lanzamiento",
-	"home.doscientos.stat2value": "6 semanas",
-	"home.doscientos.stat3": "El código es tuyo",
-	"home.doscientos.stat4": "Valoración clientes",
-	"home.doscientos.cta": "Visita Doscientos",
-	"home.perf.title": "No publico webs lentas",
-	"home.perf.subtitle": "100/100 en Lighthouse no es un alarde, es el mínimo.",
+  // Home sections
+  "home.work.title": "Trabajo seleccionado",
+  "home.viewAll": "Ver todo",
+  "home.side.title": "Proyectos personales",
+  "home.side.downloads": "descargas",
+  "home.side.views": "visitas",
+  "home.beyond.title": "Más allá del código",
+  "home.beyond.caption1": "Entrevistado en TV3 sobre mi trabajo",
+  "home.beyond.caption2": "Enseñando Astro y Tailwind a más de 35 alumnos",
+  "home.beyond.caption3": "Presentando Pol-UI como Trabajo de Fin de Grado",
+  "home.doscientos.title":
+    "¿Necesitas software a medida, hecho por ingenieros senior?",
+  "home.doscientos.body":
+    'Cofundé <strong class="text-secondary-50">Doscientos</strong>, un estudio de software que convierte ideas en productos en seis semanas.',
+  "home.doscientos.stat1": "Productos publicados",
+  "home.doscientos.stat2": "De idea a lanzamiento",
+  "home.doscientos.stat2value": "6 semanas",
+  "home.doscientos.stat3": "El código es tuyo",
+  "home.doscientos.stat4": "Valoración clientes",
+  "home.doscientos.cta": "Visita Doscientos",
+  "home.perf.title": "No publico webs lentas",
+  "home.perf.subtitle": "100/100 en Lighthouse no es un alarde, es el mínimo.",
 
-	// About page
-	"about.role": "Senior Frontend Engineer · Matar\u00f3, Barcelona",
-	"about.hero":
-		'Construyo interfaces para vivir y no puedo dejar de crear cosas fuera del trabajo. Actualmente Senior Frontend en <a href="https://mesalvo.com" class="text-ink hover:underline underline-offset-4" target="_blank" rel="noopener noreferrer">Mesalvo</a> y cofundador de <a href="https://doscientos.es" class="text-ink hover:underline underline-offset-4" target="_blank" rel="noopener noreferrer">Doscientos</a>.',
-	"about.story.title": "La historia hasta ahora",
-	"about.story.p1":
-		"Empecé como diseñador gráfico, ganando hackathons en la escuela, fotografiando coches para concesionarios y creando branding para startups. La gente no paraba de pedirme webs tras ver las que hacía para mí, así que aprendí a programar.",
-	"about.story.p2":
-		'Una cosa llevó a la otra. Las webs de WordPress se convirtieron en apps de React, los proyectos freelance en un trabajo a tiempo completo en Mesalvo, y un trabajo de fin de grado en <a href="/es/projects/polui" class="text-ink underline underline-offset-4 hover:opacity-70">Pol-UI</a>: una librería de componentes React con más de 150 componentes, más de 62k descargas en npm y un 10/10 con mención especial de la UAB.',
-	"about.story.p3":
-		'Tras graduarme me mudé a Alemania para estar más cerca de la sede de Mesalvo, luego volví a España y cofundé <a href="/es/projects/doscientos" class="text-ink underline underline-offset-4 hover:opacity-70">Doscientos</a>, un estudio de software que implementa tecnología para quienes se han quedado pequeños con Excel.',
-	"about.stats.years": "Años creando",
-	"about.stats.npm": "descargas npm",
-	"about.stats.components": "componentes React",
-	"about.stats.projects": "Proyectos publicados",
-	"about.beyond.title": "Más allá de la pantalla",
-	"about.beyond.caption1": "Entrevistado en TV3 sobre tecnología y diseño",
-	"about.beyond.caption2": "Enseñando Astro y Tailwind a más de 35 alumnos",
-	"about.beyond.caption3": "Presentando Pol-UI - mención 10/10",
-	"about.currently.title": "Ahora mismo",
-	"about.currently.item1":
-		'Senior Frontend en <strong class="text-ink font-medium">Mesalvo</strong> - creando productos de salud usados en toda Europa',
-	"about.currently.item2":
-		'Cofundador en <strong class="text-ink font-medium">Doscientos</strong> - MVPs y herramientas internas, precio cerrado, 6 semanas',
-	"about.currently.item3":
-		'Creando <a href="/es/projects/les-santes" class="text-ink underline underline-offset-4 hover:opacity-70">Les Santes</a> - app no oficial de la fiesta mayor de Matar\u00f3',
-	"about.currently.item4": "En Matar\u00f3, Barcelona",
-	"about.contact.title": "Hablemos",
-	"about.contact.body":
-		"Abierto a proyectos interesantes, trabajo freelance y buenas conversaciones sobre el oficio.",
-	"about.contact.email": "Escríbeme",
+  // About page
+  "about.role": "Senior Frontend Engineer · Matar\u00f3, Barcelona",
+  "about.hero":
+    'Construyo interfaces para vivir y no puedo dejar de crear cosas fuera del trabajo. Actualmente Senior Frontend en <a href="https://mesalvo.com" class="text-ink hover:underline underline-offset-4" target="_blank" rel="noopener noreferrer">Mesalvo</a> y cofundador de <a href="https://doscientos.es" class="text-ink hover:underline underline-offset-4" target="_blank" rel="noopener noreferrer">Doscientos</a>.',
+  "about.story.title": "La historia hasta ahora",
+  "about.story.p1":
+    "Empecé como diseñador gráfico, ganando hackathons en la escuela, fotografiando coches para concesionarios y creando branding para startups. La gente no paraba de pedirme webs tras ver las que hacía para mí, así que aprendí a programar.",
+  "about.story.p2":
+    'Una cosa llevó a la otra. Las webs de WordPress se convirtieron en apps de React, los proyectos freelance en un trabajo a tiempo completo en Mesalvo, y un trabajo de fin de grado en <a href="/es/projects/polui" class="text-ink underline underline-offset-4 hover:opacity-70">Pol-UI</a>: una librería de componentes React con más de 150 componentes, más de 62k descargas en npm y un 10/10 con mención especial de la UAB.',
+  "about.story.p3":
+    'Tras graduarme me mudé a Alemania para estar más cerca de la sede de Mesalvo, luego volví a España y cofundé <a href="/es/projects/doscientos" class="text-ink underline underline-offset-4 hover:opacity-70">Doscientos</a>, un estudio de software que implementa tecnología para quienes se han quedado pequeños con Excel.',
+  "about.stats.years": "Años creando",
+  "about.stats.npm": "descargas npm",
+  "about.stats.components": "componentes React",
+  "about.stats.projects": "Proyectos publicados",
+  "about.beyond.title": "Más allá de la pantalla",
+  "about.beyond.caption1": "Entrevistado en TV3 sobre tecnología y diseño",
+  "about.beyond.caption2": "Enseñando Astro y Tailwind a más de 35 alumnos",
+  "about.beyond.caption3": "Presentando Pol-UI - mención 10/10",
+  "about.currently.title": "Ahora mismo",
+  "about.currently.item1":
+    'Senior Frontend en <strong class="text-ink font-medium">Mesalvo</strong> - creando productos de salud usados en toda Europa',
+  "about.currently.item2":
+    'Cofundador en <strong class="text-ink font-medium">Doscientos</strong> - MVPs y herramientas internas, precio cerrado, 6 semanas',
+  "about.currently.item3":
+    'Creando <a href="/es/projects/les-santes" class="text-ink underline underline-offset-4 hover:opacity-70">Les Santes</a> - app no oficial de la fiesta mayor de Matar\u00f3',
+  "about.currently.item4": "En Matar\u00f3, Barcelona",
+  "about.contact.title": "Hablemos",
+  "about.contact.body":
+    "Abierto a proyectos interesantes, trabajo freelance y buenas conversaciones sobre el oficio.",
+  "about.contact.email": "Escríbeme",
 
-	// About page - SEO meta
-	"about.meta.title":
-		"Sobre Pol Gubau Amores - Senior Frontend Engineer & Diseñador",
-	"about.meta.description":
-		"Conoce a Pol Gubau Amores, Senior Frontend Engineer en Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI, diseñador reconvertido en desarrollador.",
-	"about.meta.schema":
-		"Conoce a Pol Gubau Amores, Senior Frontend Engineer en Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI.",
+  // About page - SEO meta
+  "about.meta.title":
+    "Sobre Pol Gubau Amores - Senior Frontend Engineer & Diseñador",
+  "about.meta.description":
+    "Conoce a Pol Gubau Amores, Senior Frontend Engineer en Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI, diseñador reconvertido en desarrollador.",
+  "about.meta.schema":
+    "Conoce a Pol Gubau Amores, Senior Frontend Engineer en Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI.",
 
-	// UI experiments page
-	"ui.heading": "Experimentos",
-	"ui.subtitle":
-		"Componentes de UI y animaciones, interacciones, movimiento y patrones creativos.",
-	"ui.meta.title":
-		"Experimentos de UI - Animaciones y motion con React por Pol Gubau",
-	"ui.meta.description":
-		"Experimentos de UI interactivos y animaciones hechos con React: microinteracciones, motion design y patrones creativos por Pol Gubau Amores.",
+  // UI experiments page
+  "ui.heading": "Experimentos",
+  "ui.subtitle":
+    "Componentes de UI y animaciones, interacciones, movimiento y patrones creativos.",
+  "ui.meta.title":
+    "Experimentos de UI - Animaciones y motion con React por Pol Gubau",
+  "ui.meta.description":
+    "Experimentos de UI interactivos y animaciones hechos con React: microinteracciones, motion design y patrones creativos por Pol Gubau Amores.",
 
-	// Blog index page
-	"blog.heading": "Artículos",
-	"blog.subtitle": "Artículos técnicos sobre desarrollo web y diseño",
-	"blog.notice": "Los artículos están escritos en inglés.",
-	"blog.meta.title":
-		"Blog - Artículos de React, TypeScript y frontend por Pol Gubau",
-	"blog.meta.description":
-		"Artículos técnicos sobre React, TypeScript, arquitectura frontend, rendimiento y design systems por Pol Gubau Amores, Senior Frontend Engineer en Barcelona.",
+  // Blog index page
+  "blog.heading": "Artículos",
+  "blog.subtitle": "Artículos técnicos sobre desarrollo web y diseño",
+  "blog.notice": "Los artículos están escritos en inglés.",
+  "blog.meta.title":
+    "Blog - Artículos de React, TypeScript y frontend por Pol Gubau",
+  "blog.meta.description":
+    "Artículos técnicos sobre React, TypeScript, arquitectura frontend, rendimiento y design systems por Pol Gubau Amores, Senior Frontend Engineer en Barcelona.",
+  "blog.filter.all": "Todos",
+  "blog.filter.empty": "Todavía no hay artículos con esta etiqueta.",
 
-	// Projects index page
-	"projects.heading": "Proyectos",
-	"projects.subtitle":
-		"Una selección de trabajo en web, móvil, open source y freelance.",
-	"projects.notice": "El detalle de los proyectos está en inglés.",
-	"projects.similar": "Proyectos similares",
-	"projects.meta.title":
-		"Proyectos - Trabajo web, móvil y open source de Pol Gubau",
-	"projects.meta.description":
-		"Explora más de 50 proyectos de Pol Gubau Amores en React, TypeScript y React Native: apps web, design systems, apps móviles y trabajo freelance, desde librerías open source hasta productos para clientes.",
-	"projects.status.inProgress": "En progreso",
-	"projects.links.visit": "Visitar proyecto",
-	"projects.links.source": "Ver código",
-	"projects.links.npm": "Paquete NPM",
-	"projects.links.playstore": "Descargar",
-	"projects.links.live": "Sitio web",
-	"projects.links.registry": "registro npm",
-	"projects.links.googlePlay": "Google Play",
-	"projects.links.links": "Enlaces",
-	"bar.share": "Compartir",
-	"bar.copied": "¡Copiado!",
-	"bar.visitProject": "Visitar proyecto",
-	"stats.npmTooltip": "descargas npm",
-	"stats.vercelTooltip": "peticiones en proyectos de Vercel",
+  // Projects index page
+  "projects.heading": "Proyectos",
+  "projects.subtitle":
+    "Una selección de trabajo en web, móvil, open source y freelance.",
+  "projects.notice": "El detalle de los proyectos está en inglés.",
+  "projects.similar": "Proyectos similares",
+  "projects.meta.title":
+    "Proyectos - Trabajo web, móvil y open source de Pol Gubau",
+  "projects.meta.description":
+    "Explora más de 50 proyectos de Pol Gubau Amores en React, TypeScript y React Native: apps web, design systems, apps móviles y trabajo freelance, desde librerías open source hasta productos para clientes.",
+  "projects.status.inProgress": "En progreso",
+  "projects.links.visit": "Visitar proyecto",
+  "projects.links.source": "Ver código",
+  "projects.links.npm": "Paquete NPM",
+  "projects.links.playstore": "Descargar",
+  "projects.links.live": "Sitio web",
+  "projects.links.registry": "registro npm",
+  "projects.links.googlePlay": "Google Play",
+  "projects.links.links": "Enlaces",
+  "bar.share": "Compartir",
+  "bar.copied": "¡Copiado!",
+  "bar.visitProject": "Visitar proyecto",
+  "stats.npmTooltip": "descargas npm",
+  "stats.vercelTooltip": "peticiones en proyectos de Vercel",
 };

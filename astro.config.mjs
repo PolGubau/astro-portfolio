@@ -34,6 +34,8 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
+      // Error pages are noindex; they must never be advertised in the sitemap.
+      filter: (page) => !/\/404\/?$/.test(page),
       customPages: [
         'https://polgubau.com/projects',
         'https://polgubau.com/blog',

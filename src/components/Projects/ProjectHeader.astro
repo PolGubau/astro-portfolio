@@ -47,13 +47,6 @@ const iconMap: Record<Icons, (props: Record<string, unknown>) => unknown> = {
   playStore: PlayStoreIcon,
   npm: NpmIcon,
 };
-
-const projectLinks = projectButtons
-  .map((p) => p.link)
-  .filter((value) => value !== undefined);
-const lastExistingButton = projectLinks[projectLinks.length - 1];
-
-const isLastButton = (button: string) => lastExistingButton === button;
 ---
 
 <header class="flex flex-col gap-2">

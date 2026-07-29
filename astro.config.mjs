@@ -1,7 +1,7 @@
 // @ts-check
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
-import sitemap from '@astrojs/sitemap';
+import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
 import metaTags from 'astro-meta-tags';
@@ -18,6 +18,7 @@ const rootDir = path.dirname(fileURLToPath(import.meta.url));
 // dates straight out of each MDX frontmatter block instead.
 const FRONTMATTER_DATE_KEYS = ['updatedAt', 'endedAt', 'startedAt', 'publishedAt'];
 
+/** @param {string} filePath */
 function readFrontmatterLastmod(filePath) {
   const raw = fs.readFileSync(filePath, 'utf-8');
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
@@ -57,6 +58,7 @@ for (const lang of ['en', 'es', 'ca']) {
   }
 }
 
+/** @param {string} url */
 function getLastmodForUrl(url) {
   const { pathname } = new URL(url);
   const blogMatch = pathname.match(/^\/blog\/([^/]+)\/?$/);
@@ -111,27 +113,27 @@ export default defineConfig({
         // Homepage - Maximum priority
         if (item.url === 'https://polgubau.com/') {
           item.priority = 1.0;
-          item.changefreq = 'daily';
+          item.changefreq = ChangeFreqEnum.DAILY;
         }
         // Blog posts - High priority, updated frequently
         else if (item.url.includes('/blog/')) {
           item.priority = 0.8;
-          item.changefreq = 'weekly';
+          item.changefreq = ChangeFreqEnum.WEEKLY;
         }
         // Projects - High priority
         else if (item.url.includes('/projects/')) {
           item.priority = 0.8;
-          item.changefreq = 'monthly';
+          item.changefreq = ChangeFreqEnum.MONTHLY;
         }
         // Experiments page - High priority for showcasing skills
         else if (item.url === 'https://polgubau.com/ui') {
           item.priority = 0.85;
-          item.changefreq = 'monthly';
+          item.changefreq = ChangeFreqEnum.MONTHLY;
         }
         // Index pages
         else if (item.url.endsWith('/blog') || item.url.endsWith('/projects') || item.url.endsWith('/ui')) {
           item.priority = 0.9;
-          item.changefreq = 'weekly';
+          item.changefreq = ChangeFreqEnum.WEEKLY;
         }
         return item;
       }

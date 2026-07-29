@@ -1,0 +1,4 @@
+packages: []
+
+overrides:
+  vite: ^6.3.6

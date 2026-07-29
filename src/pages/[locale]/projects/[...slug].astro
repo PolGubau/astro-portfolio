@@ -123,7 +123,7 @@ const projectSchema = project.data.githubLink
     type="application/ld+json"
     set:html={JSON.stringify(projectSchema)}
   />
-  <section class="relative flex flex-col gap-4">
+  <section class="relative flex flex-col gap-4 pt-12 md:pt-4">
     <Breadcrumb
       items={[
         { name: t("nav.home"), url: localizePath("/", locale) },

@@ -29,22 +29,25 @@ const titleSize = title.length > 14 ? "text-2xl" : "text-3xl";
     style={{ backgroundColor: color }}
   >
     <!-- Title -->
+    <!-- Text here sits directly on the pastel `color` background, which stays
+         light regardless of theme, so it's always paired with fixed dark text
+         (never text-ink, which would flip to white in dark mode). -->
     <header class="absolute top-5 left-5 z-30 flex flex-col gap-2">
-      <h3 class:list={["font-medium leading-snug text-ink/90", titleSize]}>
+      <h3 class:list={["font-medium leading-snug text-black/90", titleSize]}>
         {title}
       </h3>
       <div class="flex items-center gap-1.5">
         {
           isActive && (
-            <span class="flex items-center gap-1 rounded-full bg-background/10 px-2 py-0.5 backdrop-blur-sm">
+            <span class="flex items-center gap-1 rounded-full bg-black/10 px-2 py-0.5 backdrop-blur-sm">
               <span class="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              <span class="text-[10px] font-medium text-ink/70">Active</span>
+              <span class="text-[10px] font-medium text-black/70">Active</span>
             </span>
           )
         }
         {
           client && (
-            <span class="rounded-full bg-background/10 px-2 py-0.5 text-[10px] font-medium text-ink/70 backdrop-blur-sm">
+            <span class="rounded-full bg-black/10 px-2 py-0.5 text-[10px] font-medium text-black/70 backdrop-blur-sm">
               {client}
             </span>
           )

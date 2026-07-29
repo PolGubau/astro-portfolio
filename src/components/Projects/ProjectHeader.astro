@@ -93,8 +93,14 @@ const isLastButton = (button: string) => lastExistingButton === button;
     <!-- Text content -->
     <!-- Everything here sits directly on the pastel `color` background (or its
          gradient), which stays light regardless of theme, so it's paired with
-         fixed dark text (never text-ink, which would flip to white in dark mode). -->
-    <div class="relative z-10 flex flex-col gap-2 p-5 md:p-8">
+         fixed dark text (never text-ink, which would flip to white in dark mode).
+         On mobile the cover image spans the full card height at up to 50% width
+         (unlike desktop, where `max-w-sm` on the title keeps it clear of the
+         image), so `pr-[48%]` reserves space to guarantee the text never sits
+         under the image - regardless of how dark the photo is. -->
+    <div
+      class="relative z-10 flex flex-col gap-2 p-5 pr-[48%] md:p-8 md:pr-[35%]"
+    >
       <!-- Category + badges -->
       <div class="flex flex-wrap items-center gap-1.5">
         <span

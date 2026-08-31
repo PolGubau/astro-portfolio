@@ -45,9 +45,10 @@ Visit my portfolio at **[https://www.polgubau.com](https://www.polgubau.com/)** 
 ## **Scripts**
 
 - `pnpm dev` - start the local dev server
-- `pnpm build` - update the static npm-download report, type-check, build for production and run the SEO validation script against the output
+- `pnpm build` - update GitHub and npm static reports, type-check, build for production and run the SEO validation script against the output
 - `pnpm npm:downloads` - update the static npm download report manually
 - `pnpm github:repos` - update the static public GitHub repository count manually
+- `pnpm github:contributions` - update the static GitHub contribution report manually (requires `GITHUB_TOKEN`)
 - `pnpm preview` - preview the production build locally
 - `pnpm validate:seo` - run the SEO validation script against an existing `dist/` build
 - `pnpm optimize:images` / `pnpm optimize:images:dry` - optimize project/blog images in `src/assets`

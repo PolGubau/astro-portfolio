@@ -103,29 +103,144 @@ const formattedNpmDownloads = new Intl.NumberFormat(locale).format(
     return formatterByLocale.get(locale)!.format(value);
   }
 
+  function isDigit(character: string) {
+    return character >= "0" && character <= "9";
+  }
+
+  function renderNumberFlow(
+    element: HTMLElement,
+    value: number,
+    locale: string,
+  ) {
+    const formatted = formatDownloads(value, locale);
+    const reels: HTMLElement[] = [];
+    const fragment = document.createDocumentFragment();
+
+    for (const character of formatted) {
+      if (!isDigit(character)) {
+        const separator = document.createElement("span");
+        separator.className = "number-flow-separator";
+        separator.textContent = character;
+        separator.setAttribute("aria-hidden", "true");
+        fragment.append(separator);
+        continue;
+      }
+
+      const digit = Number(character);
+      const slot = document.createElement("span");
+      const reel = document.createElement("span");
+      slot.className = "number-flow-digit";
+      reel.className = "number-flow-reel";
+      reel.dataset.digit = character;
+      reel.style.transform = `translateY(-${digit * 1.1}em)`;
+
+      for (let index = 0; index <= 11; index += 1) {
+        const glyph = document.createElement("span");
+        glyph.className = "number-flow-glyph";
+        glyph.textContent = String(index % 10);
+        glyph.setAttribute("aria-hidden", "true");
+        reel.append(glyph);
+      }
+
+      slot.append(reel);
+      fragment.append(slot);
+      reels.push(reel);
+    }
+
+    element.classList.add("number-flow");
+    element.replaceChildren(fragment);
+    element.setAttribute("aria-label", formatted);
+    return reels;
+  }
+
+  function updateNumberFlow(
+    element: HTMLElement,
+    reels: HTMLElement[],
+    value: number,
+    locale: string,
+  ) {
+    const formatted = formatDownloads(value, locale);
+    const digits = [...formatted].filter(isDigit);
+    if (digits.length !== reels.length)
+      return renderNumberFlow(element, value, locale);
+
+    reels.forEach((reel, index) => {
+      const next = Number(digits[index]);
+      const previous = Number(reel.dataset.digit);
+      if (next === previous) return;
+
+      reel.dataset.digit = String(next);
+      if (next < previous) {
+        reel.style.transform = `translateY(-${(next + 10) * 1.1}em)`;
+        reel.addEventListener(
+          "transitionend",
+          () => {
+            reel.style.transition = "none";
+            reel.style.transform = `translateY(-${next * 1.1}em)`;
+            requestAnimationFrame(() =>
+              reel.style.removeProperty("transition"),
+            );
+          },
+          { once: true },
+        );
+      } else {
+        reel.style.transform = `translateY(-${next * 1.1}em)`;
+      }
+    });
+
+    element.setAttribute("aria-label", formatted);
+    return reels;
+  }
+
   function animateDownloads(element: HTMLElement) {
     if (element.dataset.animated) return;
     const total = Number(element.dataset.value);
     if (!Number.isSafeInteger(total)) return;
 
     const locale = element.dataset.locale ?? document.documentElement.lang;
-    const initial = Math.max(
+    const startDistance = Math.max(10, Math.round(total * 0.0002));
+    const storageKey = `npm-live-counter:${total}`;
+    const fallback = Math.max(
       0,
-      total - Math.max(10, Math.round(total * 0.0002)),
+      total - Math.round(startDistance * (0.75 + Math.random() * 0.5)),
     );
-    let value = initial;
+    let value = fallback;
+
+    try {
+      const storedValue = window.sessionStorage.getItem(storageKey);
+      const stored = storedValue === null ? Number.NaN : Number(storedValue);
+      if (Number.isSafeInteger(stored) && stored >= total - startDistance * 2) {
+        value = stored;
+      }
+      window.sessionStorage.setItem(storageKey, String(value));
+    } catch {
+      // Storage can be unavailable in private or restricted browsing contexts.
+    }
 
     element.dataset.animated = "true";
-    element.textContent = formatDownloads(value, locale);
-    const interval = window.setInterval(() => {
-      if (!element.isConnected) {
-        window.clearInterval(interval);
-        return;
-      }
+    let reels = renderNumberFlow(element, value, locale);
+    function scheduleNextTick() {
+      const delay =
+        Math.random() < 0.08
+          ? 2_800 + Math.random() * 2_600
+          : 700 + Math.random() * 1_100;
 
-      value += 1;
-      element.textContent = formatDownloads(value, locale);
-    }, 900);
+      window.setTimeout(() => {
+        if (!element.isConnected) {
+          return;
+        }
+
+        value += Math.random() < 0.1 ? 2 : 1;
+        reels = updateNumberFlow(element, reels, value, locale);
+        try {
+          window.sessionStorage.setItem(storageKey, String(value));
+        } catch {
+          // Keep the visual counter working even when storage is unavailable.
+        }
+        scheduleNextTick();
+      }, delay);
+    }
+    scheduleNextTick();
   }
 
   const counters = document.querySelectorAll<HTMLElement>(

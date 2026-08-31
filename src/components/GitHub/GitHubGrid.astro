@@ -1,9 +1,8 @@
 ---
 import { metadata } from "../../lib/constants";
-import { getGitHubContributions } from "../../lib/github";
+import { githubContributions } from "../../lib/github";
 
-const username = "polgubau";
-const contributions = await getGitHubContributions(username);
+const contributions = githubContributions;
 
 const hasData = contributions && contributions.weeks.length > 0;
 const total = hasData ? contributions.totalContributions : 0;
@@ -46,7 +45,7 @@ const getContributionColor = (count: number) => {
     {
       !hasData ? (
         <p class="text-ink/40 text-sm py-4">
-          Set up a GITHUB_TOKEN to see live contributions.
+          GitHub activity is unavailable for this build.
         </p>
       ) : (
         <div class="flex gap-[2px] w-full min-w-md pb-1">

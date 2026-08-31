@@ -66,6 +66,40 @@ html:not(.reveal-ready) [data-reveal] {
   transform: none !important;
 }
 
+/* Lightweight, dependency-free digit reel for the live npm counters. */
+.number-flow {
+  display: inline-flex;
+}
+
+.number-flow.text-right {
+  justify-content: flex-end;
+}
+
+.number-flow-digit {
+  display: inline-block;
+  height: 1.1em;
+  overflow: hidden;
+  line-height: 1.1;
+}
+
+.number-flow-reel {
+  display: block;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.number-flow-glyph {
+  display: block;
+  height: 1.1em;
+  line-height: 1.1;
+}
+
+.number-flow-separator {
+  display: inline-block;
+  width: 0.25em;
+  text-align: center;
+}
+
 .dark {
   --background: var(--color-secondary-950);
   --ink: var(--color-secondary-50);

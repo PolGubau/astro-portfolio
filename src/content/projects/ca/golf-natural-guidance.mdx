@@ -1,0 +1,56 @@
+---
+title: "Golf Natural Guidance"
+seoTitle: "Golf Natural Guidance | Demo de reserves i gestió per a acadèmies de golf"
+startedAt: "2026-08-24"
+endedAt: "2026-08-24"
+category: "web"
+color: "#183e32"
+cover: "../../../assets/media/projects/golf-natural-guidance/cover.webp"
+available: true
+client: "Golf Natural Guidance"
+summary: "Demo de reserves i gestió per a una acadèmia de golf: una experiència pública per a alumnes i un backoffice connectat per a l'equip."
+tech:
+  - Web
+  - Backend
+  - Backoffice
+  - Database
+---
+
+import { Image } from "astro:assets";
+import cover from "../../../assets/media/projects/golf-natural-guidance/cover.webp";
+
+Per a **Golf Natural Guidance**, vaig construir a través de [Doscientos](https://doscientos.es) una demo funcional de plataforma de gestió per a acadèmies de golf. L'objectiu era coordinar professors, horaris, alumnes, activitats, pagaments i factures des d'una experiència connectada.
+
+La demo uneix dues superfícies: una experiència pública per reservar i un backoffice per operar el negoci. No es va implantar en producció, però va permetre validar el recorregut complet i deixar una base navegable per prendre decisions de producte.
+
+<Image src={cover} alt="Dashboard de gestió i reserva mòbil per a Golf Natural Guidance" class="rounded-2xl my-6" />
+
+<div class="not-prose grid grid-cols-2 sm:grid-cols-3 gap-4 my-8 p-5 rounded-2xl border border-neutral-200 bg-neutral-50">
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">2</span><span class="text-[11px] uppercase tracking-wide text-neutral-400">superfícies connectades</span></div>
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">5</span><span class="text-[11px] uppercase tracking-wide text-neutral-400">mòduls principals</span></div>
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">0</span><span class="text-[11px] uppercase tracking-wide text-neutral-400">dades reals exposades</span></div>
+</div>
+
+---
+
+## El repte
+
+Quan reserves, agenda, cobraments i facturació viuen en eines separades, l'equip acaba fent de pont entre sistemes. L'alumne només veu una part del procés, però l'acadèmia ha de sostenir tota l'operació.
+
+El repte era dissenyar una experiència única que simplifiqués l'operació sense amagar la complexitat que hi ha al darrere.
+
+---
+
+## La solució
+
+L'experiència pública guia l'alumne per triar servei, professor, data i horari, omplir les seves dades i simular el pagament. Està pensada primer per a mòbil i manté el focus en la decisió següent.
+
+El backoffice reuneix el resum operatiu, agenda, clients, professors, captació, automatitzacions i facturació. La informació s'organitza segons les tasques reals de l'equip, no segons l'estructura interna de la base de dades.
+
+L'arquitectura deixa preparada l'evolució cap a autenticació, pagaments, notificacions i integracions fiscals reals, sense fer-les una dependència per validar inicialment el producte.
+
+---
+
+## La meva contribució
+
+Vaig convertir el flux complet d'una acadèmia en una demo coherent, des del recorregut públic de reserva fins a l'operativa interna. El resultat permet parlar de decisions de producte concretes abans de comprometre una implantació completa.

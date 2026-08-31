@@ -1,0 +1,56 @@
+---
+title: "Golf Natural Guidance"
+seoTitle: "Golf Natural Guidance | Demo de reservas y gestión para academias"
+startedAt: "2026-08-24"
+endedAt: "2026-08-24"
+category: "web"
+color: "#183e32"
+cover: "../../../assets/media/projects/golf-natural-guidance/cover.webp"
+available: true
+client: "Golf Natural Guidance"
+summary: "Demo de reservas y gestión para una academia de golf: una experiencia pública para alumnos y un backoffice conectado para el equipo."
+tech:
+  - Web
+  - Backend
+  - Backoffice
+  - Database
+---
+
+import { Image } from "astro:assets";
+import cover from "../../../assets/media/projects/golf-natural-guidance/cover.webp";
+
+Para **Golf Natural Guidance**, construí a través de [Doscientos](https://doscientos.es) una demo funcional de plataforma de gestión para academias de golf. El objetivo era coordinar profesores, horarios, alumnos, actividades, pagos y facturas desde una experiencia conectada.
+
+La demo une dos superficies: una experiencia pública para reservar y un backoffice para operar el negocio. No llegó a implantarse en producción, pero permitió validar el recorrido completo y dejar una base navegable para la toma de decisiones.
+
+<Image src={cover} alt="Dashboard de gestión y reserva móvil para Golf Natural Guidance" class="rounded-2xl my-6" />
+
+<div class="not-prose grid grid-cols-2 sm:grid-cols-3 gap-4 my-8 p-5 rounded-2xl border border-neutral-200 bg-neutral-50">
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">2</span><span class="text-[11px] uppercase tracking-wide text-neutral-400">superficies conectadas</span></div>
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">5</span><span class="text-[11px] uppercase tracking-wide text-neutral-400">módulos principales</span></div>
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">0</span><span class="text-[11px] uppercase tracking-wide text-neutral-400">datos reales expuestos</span></div>
+</div>
+
+---
+
+## El reto
+
+Cuando reservas, agenda, cobros y facturación viven en herramientas separadas, el equipo acaba haciendo de puente entre sistemas. El alumno solo ve una parte del proceso, pero la academia tiene que sostenerlo entero.
+
+El reto era diseñar una experiencia única que simplificara la operación sin esconder la complejidad que existe detrás.
+
+---
+
+## La solución
+
+La experiencia pública guía al alumno para elegir servicio, profesor, fecha y horario, completar sus datos y simular el pago. Está pensada primero para móvil y mantiene el foco en la siguiente decisión.
+
+El backoffice reúne el resumen operativo, agenda, clientes, profesores, captación, automatizaciones y facturación. La información se organiza por las tareas reales del equipo, no por la estructura interna de la base de datos.
+
+La arquitectura deja preparada la evolución hacia autenticación, pagos, notificaciones e integraciones fiscales reales, sin hacer depender de ellas la validación inicial del producto.
+
+---
+
+## Mi contribución
+
+Convertí el flujo completo de una academia en una demo coherente, desde el recorrido público de reserva hasta la operativa interna. El resultado sirve para discutir decisiones de producto concretas antes de comprometer una implantación completa.

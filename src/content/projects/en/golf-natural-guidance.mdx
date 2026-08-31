@@ -1,0 +1,56 @@
+---
+title: "Golf Natural Guidance"
+seoTitle: "Golf Natural Guidance | Booking and management demo for golf academies"
+startedAt: "2026-08-24"
+endedAt: "2026-08-24"
+category: "web"
+color: "#183e32"
+cover: "../../../assets/media/projects/golf-natural-guidance/cover.webp"
+available: true
+client: "Golf Natural Guidance"
+summary: "Booking and management demo for a golf academy: a public student experience and a connected backoffice for the team."
+tech:
+  - Web
+  - Backend
+  - Backoffice
+  - Database
+---
+
+import { Image } from "astro:assets";
+import cover from "../../../assets/media/projects/golf-natural-guidance/cover.webp";
+
+For **Golf Natural Guidance**, I built a working golf-academy management demo through [Doscientos](https://doscientos.es). Its goal was to coordinate instructors, schedules, students, activities, payments and invoices through one connected experience.
+
+The demo brings together two surfaces: a public booking experience and a backoffice for running the business. It was not deployed to production, but it validated the full journey and left a navigable foundation for product decisions.
+
+<Image src={cover} alt="Golf Natural Guidance management dashboard and mobile booking flow" class="rounded-2xl my-6" />
+
+<div class="not-prose grid grid-cols-2 sm:grid-cols-3 gap-4 my-8 p-5 rounded-2xl border border-neutral-200 bg-neutral-50">
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">2</span><span class="text-[11px] uppercase tracking-wide text-neutral-400">connected surfaces</span></div>
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">5</span><span class="text-[11px] uppercase tracking-wide text-neutral-400">core modules</span></div>
+  <div class="flex flex-col gap-0.5"><span class="text-2xl font-bold leading-none">0</span><span class="text-[11px] uppercase tracking-wide text-neutral-400">real records exposed</span></div>
+</div>
+
+---
+
+## The challenge
+
+When booking, scheduling, payments and invoicing live in separate tools, the team becomes the bridge between systems. The student sees only part of the process, while the academy has to hold the entire operation together.
+
+The challenge was to design one experience that simplified the operation without hiding the complexity behind it.
+
+---
+
+## The solution
+
+The public experience guides students through choosing a service, instructor, date and time, entering their details and completing a simulated payment. It is mobile-first and keeps the next decision in focus.
+
+The backoffice brings together the operational overview, schedule, clients, instructors, acquisition, automations and invoicing. Information is organised around the team's real tasks rather than the database's internal structure.
+
+The architecture leaves room for real authentication, payments, notifications and tax integrations without making those future pieces a dependency for the initial product validation.
+
+---
+
+## My contribution
+
+I turned a golf academy's end-to-end flow into a coherent demo, from the public booking journey to internal operations. The result makes it possible to discuss concrete product decisions before committing to a full implementation.

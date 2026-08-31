@@ -1,0 +1,155 @@
+{
+  "generatedAt": "2026-08-31T08:17:17.051Z",
+  "period": {
+    "from": "2015-01-10",
+    "to": "2026-08-30"
+  },
+  "sources": {
+    "user": "pol-gubau",
+    "scopes": [
+      "mesalvo",
+      "doscientos",
+      "codedbypol",
+      "polgubau",
+      "wisemark"
+    ]
+  },
+  "totals": {
+    "packages": 33,
+    "downloads": 141372
+  },
+  "packages": [
+    {
+      "name": "pol-ui",
+      "downloads": 69812
+    },
+    {
+      "name": "@mesalvo/react-ui",
+      "downloads": 28172
+    },
+    {
+      "name": "react-beauty-flags",
+      "downloads": 6476
+    },
+    {
+      "name": "@mesalvo/icons",
+      "downloads": 4251
+    },
+    {
+      "name": "@doscientos/verifactu",
+      "downloads": 4186
+    },
+    {
+      "name": "@doscientos/ui",
+      "downloads": 4070
+    },
+    {
+      "name": "@mesalvo/react-realtime",
+      "downloads": 2574
+    },
+    {
+      "name": "@mesalvo/api-client",
+      "downloads": 2393
+    },
+    {
+      "name": "@mesalvo/ts-definitions",
+      "downloads": 2296
+    },
+    {
+      "name": "@polgubau/animated",
+      "downloads": 2171
+    },
+    {
+      "name": "@mesalvo/ts-auth",
+      "downloads": 1718
+    },
+    {
+      "name": "pol-standard",
+      "downloads": 1353
+    },
+    {
+      "name": "@polgubau/utils",
+      "downloads": 1287
+    },
+    {
+      "name": "@polgubau/configs",
+      "downloads": 1190
+    },
+    {
+      "name": "@mesalvo/context",
+      "downloads": 1127
+    },
+    {
+      "name": "@polgubau/biome-config",
+      "downloads": 1097
+    },
+    {
+      "name": "@mesalvo/ts-logic",
+      "downloads": 909
+    },
+    {
+      "name": "templates-react",
+      "downloads": 906
+    },
+    {
+      "name": "wisemark",
+      "downloads": 868
+    },
+    {
+      "name": "@polgubau/astro-reveal",
+      "downloads": 598
+    },
+    {
+      "name": "@wisemark/core",
+      "downloads": 561
+    },
+    {
+      "name": "@codedbypol/translate",
+      "downloads": 559
+    },
+    {
+      "name": "@polgubau/fuzzy",
+      "downloads": 526
+    },
+    {
+      "name": "@wisemark/cli",
+      "downloads": 509
+    },
+    {
+      "name": "create-pol-ui",
+      "downloads": 462
+    },
+    {
+      "name": "@pol-gubau/changelogui",
+      "downloads": 328
+    },
+    {
+      "name": "@polgubau/git-cz-config",
+      "downloads": 275
+    },
+    {
+      "name": "@polgubau/semantic-release-config",
+      "downloads": 250
+    },
+    {
+      "name": "@polgubau/steganography",
+      "downloads": 195
+    },
+    {
+      "name": "@polgubau/validar-dni",
+      "downloads": 156
+    },
+    {
+      "name": "@mesalvo/logger",
+      "downloads": 97
+    },
+    {
+      "name": "@doscientos/configs",
+      "downloads": 0
+    },
+    {
+      "name": "@doscientos/pwa",
+      "downloads": 0
+    }
+  ]
+}

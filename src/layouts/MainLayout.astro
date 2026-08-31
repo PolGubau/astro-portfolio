@@ -47,6 +47,7 @@ const {
     <!-- Prevent FOUC: apply stored/system theme before paint -->
     <script is:inline>
       (function () {
+        document.documentElement.classList.add("reveal-ready");
         const stored = localStorage.getItem("theme");
         const prefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)",
@@ -88,7 +89,31 @@ const {
       </div>
     </main>
     <script>
-      import "@polgubau/astro-reveal";
+      const revealElements =
+        document.querySelectorAll<HTMLElement>("[data-reveal]");
+      let hasRevealed = false;
+
+      revealElements.forEach((element) => {
+        element.addEventListener(
+          "reveal",
+          () => {
+            hasRevealed = true;
+          },
+          { once: true },
+        );
+      });
+
+      function revealAll() {
+        revealElements.forEach((element) => {
+          element.dataset.state = "visible";
+        });
+      }
+
+      window.setTimeout(() => {
+        if (!hasRevealed) revealAll();
+      }, 1_200);
+
+      import("@polgubau/astro-reveal").catch(revealAll);
 
       // Only pull in medium-zoom (and run it) on pages that actually have
       // zoomable content, instead of shipping/executing it on every route.

@@ -122,7 +122,7 @@ const profilePageSchema = {
             value: `${new Date().getFullYear() - 2019}+`,
             label: t("about.stats.years"),
           },
-          { value: "62k+", label: t("about.stats.npm") },
+          { value: metadata.npmDownloads, label: t("about.stats.npm") },
           { value: "150+", label: t("about.stats.components") },
           { value: "50+", label: t("about.stats.projects") },
         ].map(({ value, label }) => (

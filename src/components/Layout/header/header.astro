@@ -2,18 +2,31 @@
 import { Image } from "astro:assets";
 import me from "../../../assets/media/me.webp";
 import { getLocale, useTranslations } from "../../../i18n/utils";
+import { metadata } from "../../../lib/constants";
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
+const npmDownloads = Number(metadata.npmDownloads);
+const formattedNpmDownloads = new Intl.NumberFormat(locale).format(
+  npmDownloads,
+);
+const githubRepositories = Number(metadata.githubRepositories);
+const formattedGitHubRepositories = new Intl.NumberFormat(locale).format(
+  githubRepositories,
+);
 
 const stats = [
-  { value: "62k+", label: t("home.stats.npm") },
+  {
+    value: formattedNpmDownloads,
+    label: t("home.stats.npm"),
+    npmDownloads,
+  },
   { value: "1M+", label: t("home.stats.vercel") },
   {
     value: `${new Date().getFullYear() - 2019}+`,
     label: t("home.stats.years"),
   },
-  { value: "55+", label: t("home.stats.react") },
+  { value: formattedGitHubRepositories, label: t("home.stats.projects") },
 ];
 ---
 
@@ -62,9 +75,20 @@ const stats = [
     class="grid grid-cols-2 md:grid-cols-4 gap-px rounded-xl overflow-hidden border border-ink/20 divide-ink/20 divide-x"
   >
     {
-      stats.map(({ value, label }) => (
+      stats.map(({ value, label, npmDownloads }) => (
         <div class="flex flex-col gap-1 px-6 py-5 bg-background">
-          <span class="text-2xl md:text-3xl font-medium">{value}</span>
+          {typeof npmDownloads === "number" ? (
+            <span
+              data-npm-downloads
+              data-value={npmDownloads}
+              data-locale={locale}
+              class="text-2xl md:text-3xl font-medium tabular-nums"
+            >
+              {value}
+            </span>
+          ) : (
+            <span class="text-2xl md:text-3xl font-medium">{value}</span>
+          )}
           <span class="text-sm text-ink/50">{label}</span>
         </div>
       ))

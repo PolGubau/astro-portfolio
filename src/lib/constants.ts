@@ -1,4 +1,9 @@
 import path from "node:path";
+import githubRepositoriesReport from "./github-stats/github-repos.json";
+import npmDownloadsReport from "./npm-stats/npm-downloads.json";
+
+const githubRepositories = String(githubRepositoriesReport.repositories);
+const npmDownloads = String(npmDownloadsReport.totals.downloads);
 
 export const paths = {
   projects: path.join(process.cwd(), "src", "content", "projects"),
@@ -22,8 +27,8 @@ export const metadata = {
     npm: "https://www.npmjs.com/~polgubau",
   },
 
-  /** Last updated: 2026-05-14 */
-  npmDownloads: "62.6k",
+  npmDownloads,
+  githubRepositories,
   vercelViews: "1M+",
 
   homeOgImage: "assets/thumbnail.webp",

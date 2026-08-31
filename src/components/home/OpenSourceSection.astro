@@ -14,6 +14,10 @@ interface Props {
 const { projects } = Astro.props;
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
+const npmDownloads = Number(metadata.npmDownloads);
+const formattedNpmDownloads = new Intl.NumberFormat(locale).format(
+  npmDownloads,
+);
 ---
 
 <section class="flex flex-col gap-12">
@@ -33,11 +37,23 @@ const t = useTranslations(locale);
           rel="noopener noreferrer"
           data-reveal="bottom"
           data-speed="fast"
-          title={`${metadata.npmDownloads} ${t("stats.npmTooltip")}`}
-          class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-50 border border-red-200 text-red-600 text-xs font-medium hover:bg-red-100 transition-colors shrink-0 dark:bg-red-950/40 dark:border-red-900/60 dark:text-red-300 dark:hover:bg-red-950/60"
+          title={`${formattedNpmDownloads} ${t("stats.npmTooltip")}`}
+          aria-label={`${formattedNpmDownloads} ${t("stats.npmTooltip")}`}
+          class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-50 border border-red-200 text-red-600 text-xs font-medium shadow-sm hover:-translate-y-px hover:bg-red-100 hover:shadow-red-200/60 transition-[background-color,box-shadow,transform] shrink-0 dark:bg-red-950/40 dark:border-red-900/60 dark:text-red-300 dark:hover:bg-red-950/60"
         >
           <NpmIcon class="w-3 h-3" aria-hidden="true" />
-          <span>{metadata.npmDownloads}</span>
+          <span
+            data-npm-downloads
+            data-value={npmDownloads}
+            data-locale={locale}
+            aria-hidden="true"
+            class="min-w-[7ch] text-right tabular-nums tracking-tight"
+          >
+            {formattedNpmDownloads}
+          </span>
+          <span
+            class="h-1 w-1 rounded-full bg-red-400 dark:bg-red-500"
+            aria-hidden="true"></span>
           <span class="hidden sm:inline text-red-400 dark:text-red-500/70"
             >{t("home.side.downloads")}</span
           >
@@ -76,3 +92,62 @@ const t = useTranslations(locale);
   </div>
   <ProjectListRow projects={projects} />
 </section>
+
+<script>
+  const formatterByLocale = new Map<string, Intl.NumberFormat>();
+
+  function formatDownloads(value: number, locale: string) {
+    if (!formatterByLocale.has(locale)) {
+      formatterByLocale.set(locale, new Intl.NumberFormat(locale));
+    }
+    return formatterByLocale.get(locale)!.format(value);
+  }
+
+  function animateDownloads(element: HTMLElement) {
+    if (element.dataset.animated) return;
+    const total = Number(element.dataset.value);
+    if (!Number.isSafeInteger(total)) return;
+
+    const locale = element.dataset.locale ?? document.documentElement.lang;
+    const initial = Math.max(
+      0,
+      total - Math.max(10, Math.round(total * 0.0002)),
+    );
+    let value = initial;
+
+    element.dataset.animated = "true";
+    element.textContent = formatDownloads(value, locale);
+    const interval = window.setInterval(() => {
+      if (!element.isConnected) {
+        window.clearInterval(interval);
+        return;
+      }
+
+      value += 1;
+      element.textContent = formatDownloads(value, locale);
+    }, 900);
+  }
+
+  const counters = document.querySelectorAll<HTMLElement>(
+    "[data-npm-downloads]",
+  );
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries, currentObserver) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          animateDownloads(entry.target as HTMLElement);
+          currentObserver.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.4 },
+    );
+    counters.forEach((counter) => observer.observe(counter));
+  } else if (!reduceMotion) {
+    counters.forEach(animateDownloads);
+  }
+</script>

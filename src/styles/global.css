@@ -60,6 +60,12 @@
   --ink: var(--color-secondary-950);
 }
 
+/* Reveal animations are progressive enhancement: never hide SSR content when JavaScript is unavailable. */
+html:not(.reveal-ready) [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 .dark {
   --background: var(--color-secondary-950);
   --ink: var(--color-secondary-50);

@@ -36,7 +36,7 @@ export const en = {
   "home.stats.npm": "NPM downloads",
   "home.stats.vercel": "Vercel requests/yr",
   "home.stats.years": "Years of experience",
-  "home.stats.react": "React projects",
+  "home.stats.projects": "Custom projects",
 
   // Home sections
   "home.work.title": "Selected work",

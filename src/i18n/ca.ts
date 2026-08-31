@@ -38,7 +38,7 @@ export const ca: Record<UiKey, string> = {
   "home.stats.npm": "Descàrregues NPM",
   "home.stats.vercel": "Peticions Vercel/any",
   "home.stats.years": "Anys d'experiència",
-  "home.stats.react": "Projectes React",
+  "home.stats.projects": "Projectes entregats",
 
   // Home sections
   "home.work.title": "Feina seleccionada",

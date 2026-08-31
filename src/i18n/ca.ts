@@ -50,6 +50,7 @@ export const ca: Record<UiKey, string> = {
   "home.beyond.caption1": "Entrevistat a TV3 sobre la meva feina",
   "home.beyond.caption2": "Ensenyant Astro i Tailwind a més de 35 alumnes",
   "home.beyond.caption3": "Presentant Pol-UI com a Treball de Fi de Grau",
+  "home.beyond.caption4": "Participant a Innoemprèn",
   "home.doscientos.title":
     "Necessites software a mida, fet per enginyers sènior?",
   "home.doscientos.body":

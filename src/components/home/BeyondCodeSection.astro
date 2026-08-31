@@ -1,4 +1,5 @@
 ---
+import innoempren from "../../assets/media/about/innoempren.avif";
 import teaching from "../../assets/media/about/teaching.avif";
 import tfg from "../../assets/media/about/tfg.avif";
 import tv3 from "../../assets/media/about/tv3.avif";
@@ -9,6 +10,11 @@ const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 
 const photos = [
+  {
+    src: innoempren,
+    alt: "Pol Gubau participating in Innoemprèn",
+    caption: t("home.beyond.caption4"),
+  },
   {
     src: tv3,
     alt: "Pol Gubau being interviewed on TV3",
@@ -35,7 +41,10 @@ const photos = [
   >
     {t("home.beyond.title")}
   </h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4" data-stagger="120">
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+    data-stagger="120"
+  >
     {
       photos.map((photo) => (
         <div data-reveal="bottom" data-easing="soft">

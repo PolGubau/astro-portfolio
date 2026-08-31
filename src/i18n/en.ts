@@ -48,6 +48,7 @@ export const en = {
   "home.beyond.caption1": "Interviewed on TV3 about my work",
   "home.beyond.caption2": "Teaching Astro & Tailwind to 35+ students",
   "home.beyond.caption3": "Presenting Pol-UI as Bachelor's Thesis",
+  "home.beyond.caption4": "Participating in Innoemprèn",
   "home.doscientos.title": "Need custom software, built by senior engineers?",
   "home.doscientos.body":
     'I co-founded <strong class="text-secondary-50">Doscientos</strong>, a software studio that turns ideas into working products in six weeks.',

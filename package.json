@@ -11,7 +11,7 @@
     "check": "astro check",
     "astro": "astro",
     "github:repos": "node src/lib/github-stats/github-repos-report.mjs --user polgubau --fallback 55 --output src/lib/github-stats/github-repos.json",
-    "github:contributions": "node src/lib/github-stats/github-contributions-report.mjs --user polgubau --output src/lib/github-stats/github-contributions.json",
+    "github:contributions": "node --env-file-if-exists=.env.local src/lib/github-stats/github-contributions-report.mjs --user polgubau --output src/lib/github-stats/github-contributions.json",
     "npm:downloads": "node src/lib/npm-stats/npm-downloads-report.mjs --user pol-gubau --scope mesalvo --scope doscientos --scope codedbypol --scope polgubau --scope wisemark --output src/lib/npm-stats/npm-downloads.json",
     "validate:seo": "node scripts/validate-seo.js",
     "optimize:images": "node scripts/optimize-images.js",

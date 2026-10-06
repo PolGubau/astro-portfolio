@@ -25,9 +25,9 @@ export const en = {
   "a11y.switchLang": "Switch language",
 
   // SEO
-  "seo.home.title": "Pol Gubau Amores - Frontend Developer & Designer",
+  "seo.home.title": "Senior Frontend Engineer in Barcelona | Pol Gubau",
   "seo.home.description":
-    "Senior frontend engineer based in Barcelona. I build fast, accessible web and mobile products with React, TypeScript and Expo.",
+    "Senior frontend engineer building React, TypeScript and React Native products, design systems and accessible web experiences. Based in Barcelona, Spain.",
 
   // Home hero
   "home.hero.title": "I'm Pol, a senior frontend developer",
@@ -136,9 +136,9 @@ export const en = {
   "projects.notice": "",
   "projects.similar": "Similar Projects",
   "projects.meta.title":
-    "Projects - Web, Mobile & Open Source Work by Pol Gubau",
+    "Frontend Projects by Pol Gubau | React & TypeScript",
   "projects.meta.description":
-    "Explore 50+ projects by Pol Gubau Amores across React, TypeScript, and React Native - web apps, design systems, mobile apps, and freelance work, from open source libraries to client products.",
+    "Selected frontend engineering projects by Pol Gubau, Senior Frontend Engineer in Barcelona: React, TypeScript, React Native, design systems and accessible product interfaces.",
   "projects.status.inProgress": "In Progress",
   "projects.links.visit": "Visit Project",
   "projects.links.source": "Source code",

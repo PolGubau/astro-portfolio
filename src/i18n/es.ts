@@ -27,9 +27,9 @@ export const es: Record<UiKey, string> = {
   "a11y.switchLang": "Cambiar idioma",
 
   // SEO
-  "seo.home.title": "Pol Gubau Amores - Desarrollador frontend senior",
+  "seo.home.title": "Desarrollador frontend senior en Barcelona | Pol Gubau",
   "seo.home.description":
-    "Desarrollador frontend senior en Barcelona. Creo productos web y móviles rápidos y accesibles con React, TypeScript y Expo.",
+    "Desarrollador frontend senior especializado en React, TypeScript y React Native. Creo productos web y móviles accesibles y sistemas de diseño desde Barcelona.",
 
   // Home hero
   "home.hero.title": "Soy Pol, desarrollador frontend senior",
@@ -139,9 +139,9 @@ export const es: Record<UiKey, string> = {
   "projects.notice": "El detalle de los proyectos está en inglés.",
   "projects.similar": "Proyectos similares",
   "projects.meta.title":
-    "Proyectos - Trabajo web, móvil y open source de Pol Gubau",
+    "Proyectos frontend de Pol Gubau | React y TypeScript",
   "projects.meta.description":
-    "Explora más de 50 proyectos de Pol Gubau Amores en React, TypeScript y React Native: apps web, design systems, apps móviles y trabajo freelance, desde librerías open source hasta productos para clientes.",
+    "Selección de proyectos de ingeniería frontend de Pol Gubau, desarrollador senior en Barcelona: productos React y TypeScript, apps móviles, sistemas de diseño e interfaces accesibles.",
   "projects.status.inProgress": "En progreso",
   "projects.links.visit": "Visitar proyecto",
   "projects.links.source": "Ver código",

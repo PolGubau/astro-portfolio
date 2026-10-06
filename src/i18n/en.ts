@@ -32,7 +32,7 @@ export const en = {
   // Home hero
   "home.hero.title": "I'm Pol, a senior frontend developer",
   "home.hero.intro":
-    'Founder and CTO at <a href="https://doscientos.es" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Doscientos</a>.<br />Senior Frontend Engineer at <a href="https://mesalvo.com" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Mesalvo</a>.<br />Based in Mataró, Barcelona.',
+    'Founder and CTO at <a href="https://doscientos.es" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Doscientos</a>.<br />Based in Mataró, Barcelona.',
   "home.stats.npm": "NPM downloads",
   "home.stats.vercel": "Visits/yr",
   "home.stats.years": "Years of experience",

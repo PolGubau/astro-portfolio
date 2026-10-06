@@ -34,7 +34,7 @@ export const es: Record<UiKey, string> = {
   // Home hero
   "home.hero.title": "Soy Pol, desarrollador frontend senior",
   "home.hero.intro":
-    'Fundador y director técnico de <a href="https://doscientos.es" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Doscientos</a>.<br />Senior Frontend Engineer en <a href="https://mesalvo.com" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Mesalvo</a>.<br />En Matar\u00f3, Barcelona.',
+    'Fundador y director técnico de <a href="https://doscientos.es" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Doscientos</a>.<br />En Matar\u00f3, Barcelona.',
   "home.stats.npm": "Descargas NPM",
   "home.stats.vercel": "Visitas/año",
   "home.stats.years": "Años de experiencia",

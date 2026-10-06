@@ -24,12 +24,6 @@ This portfolio implements the following security best practices:
 - **Dependency Updates**: Regular updates of npm packages
 - **Static Site**: No server-side vulnerabilities (Astro SSG)
 
-## Supported Versions
-
-| Version | Supported          |
-| ------- | ------------------ |
-| Latest  | :white_check_mark: |
-| < Latest| :x:                |
 
 ## Third-Party Dependencies
 

@@ -16,29 +16,10 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Bricolage";
-  src:
-    url("/fonts/Bricolage.woff2") format("woff2"),
-    url("/fonts/Bricolage.ttf") format("truetype");
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 @theme {
-  --color-primary-50: #ffffec;
-  --color-primary-100: #ffffc5;
-  --color-primary-200: #ffffa9;
-  --color-primary-300: #ffff82;
-  --color-primary-400: #ffff69;
-  --color-primary-500: #ffff44;
-  --color-primary-600: #e8e83e;
-  --color-primary-700: #b5b530;
-  --color-primary-800: #8c8c25;
-  --color-primary-900: #6b6b1d;
-  --color-primary-950: #4d4d14;
-
+  /* Monochrome system: no accent hue. Emphasis comes from contrast,
+     weight and spacing. Semantic tokens (--ink / --background) flip
+     automatically in dark mode. */
   --color-secondary-50: #f6f7f9;
   --color-secondary-100: #eaeaea;
   --color-secondary-200: #d4d4d4;
@@ -51,7 +32,9 @@
   --color-secondary-900: #222222;
   --color-secondary-950: #0d0d0d;
   --font-main: "Gabarito", sans-serif;
-  --font-title: "Bricolage", sans-serif;
+  /* Single typeface: titles alias the main font so existing
+     font-title call sites keep working without a second family. */
+  --font-title: "Gabarito", sans-serif;
 }
 
 :root {
@@ -106,7 +89,9 @@ html:not(.reveal-ready) [data-reveal] {
 }
 
 @theme inline {
-  --color-primary: var(--color-primary-500);
+  /* The accent is the ink itself: monochrome emphasis that inverts
+     with the theme instead of introducing a hue. */
+  --color-primary: var(--color-ink);
   --color-secondary: var(--color-secondary-500);
   --color-background: var(--background);
   --color-ink: var(--ink);
@@ -124,7 +109,8 @@ body {
 }
 
 *::selection {
-  @apply bg-primary/80 text-ink backdrop-blur-md rounded-lg;
+  /* Inverted ink: selection reads as a highlight on any surface, both themes */
+  @apply bg-ink text-background backdrop-blur-md rounded-lg;
 }
 
 /* Global focus-visible ring — keyboard nav accessible on all interactive elements */
@@ -274,7 +260,7 @@ main {
   }
 
   h1 {
-    @apply font-bold font-title text-xl md:text-3xl;
+    @apply font-bold text-xl md:text-3xl;
   }
 
   h2 {

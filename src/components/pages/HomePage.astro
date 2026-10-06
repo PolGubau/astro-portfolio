@@ -6,23 +6,32 @@ import "../../styles/cards.css";
 import GitHubGrid from "../GitHub/GitHubGrid.astro";
 import Header from "../Layout/header/header.astro";
 import BeyondCodeSection from "../home/BeyondCodeSection.astro";
-import OpenSourceSection from "../home/OpenSourceSection.astro";
 import PerformanceCards from "../home/PerformanceCards.astro";
 import WorkSection from "../home/WorkSection.astro";
 
 const allProjects = getProjects();
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
-const workProjects = allProjects.filter((p) => !!p.data.client).slice(0, 6);
-const sideProjects = allProjects.filter((p) => !p.data.client).slice(0, 8);
+const featuredProjectIds = new Set([
+  ...allProjects
+    .filter((project) => !!project.data.client)
+    .slice(0, 6)
+    .map((project) => project.id),
+  ...allProjects
+    .filter((project) => !project.data.client)
+    .slice(0, 8)
+    .map((project) => project.id),
+]);
+const featuredProjects = allProjects.filter((project) =>
+  featuredProjectIds.has(project.id),
+);
 ---
 
 <MainLayout title={t("seo.home.title")} description={t("seo.home.description")}>
   <div>
     <Header />
     <main class="flex w-full flex-1 flex-col gap-20 md:gap-32">
-      <WorkSection projects={workProjects} />
-      <OpenSourceSection projects={sideProjects} />
+      <WorkSection projects={featuredProjects} />
       <GitHubGrid />
       <BeyondCodeSection />
       <PerformanceCards />

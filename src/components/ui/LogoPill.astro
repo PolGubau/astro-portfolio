@@ -1,24 +1,22 @@
 ---
-import arrow from "../../assets/media/branding/arrow.svg";
-import cursor from "../../assets/media/branding/cursor.svg";
-import message from "../../assets/media/branding/message.svg";
-import star from "../../assets/media/branding/star.svg";
-import { Image } from "astro:assets";
+import arrow from "../../assets/media/branding/arrow.svg?raw";
+import cursor from "../../assets/media/branding/cursor.svg?raw";
+import message from "../../assets/media/branding/message.svg?raw";
+import star from "../../assets/media/branding/star.svg?raw";
 
-const icons = [
-  { src: star, alt: "" },
-  { src: arrow, alt: "" },
-  { src: cursor, alt: "" },
-  { src: message, alt: "" },
-];
+const icons = [star, arrow, cursor, message];
 ---
 
 <div
-  class="flex items-center gap-2 w-fit rounded-full text-background bg-ink/80 px-4 py-2 backdrop-blur-md"
+  class="flex items-center gap-2 w-fit rounded-full text-ink px-2 py-2 font-medium backdrop-blur-md"
 >
   {
-    icons.map(({ src, alt }) => (
-      <Image src={src} alt={alt} width={20} height={20} class="w-5 h-5" />
+    icons.map((icon) => (
+      <span
+        aria-hidden="true"
+        class="h-5 w-5 [&>svg]:h-full [&>svg]:w-full"
+        set:html={icon}
+      />
     ))
   }
 </div>

@@ -1,12 +1,30 @@
 ---
 import { metadata } from "../../lib/constants";
 import { githubContributions } from "../../lib/github";
+import { getLocale, useTranslations } from "../../i18n/utils";
 
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
 const contributions = githubContributions;
 
 const hasData = contributions && contributions.weeks.length > 0;
 const total = hasData ? contributions.totalContributions : 0;
 const weeks = hasData ? contributions.weeks : [];
+const formattedTotal = new Intl.NumberFormat(locale).format(total);
+const dateFormatter = new Intl.DateTimeFormat(locale, {
+  dateStyle: "medium",
+  timeZone: "UTC",
+});
+
+const getDayTitle = (count: number, date: string) => {
+  const translationKey =
+    count === 1 ? "home.github.day.one" : "home.github.day.other";
+  const formattedDate = dateFormatter.format(new Date(`${date}T00:00:00Z`));
+
+  return t(translationKey)
+    .replace("{count}", new Intl.NumberFormat(locale).format(count))
+    .replace("{date}", formattedDate);
+};
 
 const getContributionColor = (count: number) => {
   if (count === 0) return "bg-ink/10";
@@ -25,9 +43,9 @@ const getContributionColor = (count: number) => {
     <h2
       data-reveal="bottom"
       data-speed="fast"
-      class="text-3xl md:text-4xl font-medium"
+      class="text-xl md:text-2xl font-normal text-ink/75"
     >
-      GitHub Activity
+      {t("home.github.title")}
     </h2>
     <a
       href={metadata.links.github}
@@ -37,16 +55,18 @@ const getContributionColor = (count: number) => {
       data-speed="fast"
       class="inline-flex items-center gap-1 text-sm text-ink/50 hover:text-ink transition-colors sm:shrink-0"
     >
-      {hasData ? `${total} contributions this year` : "View profile"}
+      {
+        hasData
+          ? t("home.github.contributions").replace("{count}", formattedTotal)
+          : t("home.github.profile")
+      }
     </a>
   </div>
 
   <div class="overflow-x-auto scrollbar-hide" data-reveal="bottom">
     {
       !hasData ? (
-        <p class="text-ink/40 text-sm py-4">
-          GitHub activity is unavailable for this build.
-        </p>
+        <p class="text-ink/40 text-sm py-4">{t("home.github.unavailable")}</p>
       ) : (
         <div class="flex gap-[2px] w-full min-w-md pb-1">
           {weeks.map((week) => (
@@ -54,7 +74,7 @@ const getContributionColor = (count: number) => {
               {week.contributionDays.map((day) => (
                 <div
                   class={`aspect-square w-full rounded-[2px] ${getContributionColor(day.contributionCount)} transition-colors cursor-default`}
-                  title={`${day.contributionCount} contribution${day.contributionCount !== 1 ? "s" : ""} on ${day.date}`}
+                  title={getDayTitle(day.contributionCount, day.date)}
                 />
               ))}
             </div>
@@ -65,7 +85,7 @@ const getContributionColor = (count: number) => {
   </div>
 
   <div class="flex items-center justify-end gap-2 text-[10px] text-ink/40">
-    <span>Less</span>
+    <span>{t("home.github.less")}</span>
     <div class="flex gap-1">
       <div class="w-2.5 h-2.5 rounded-[1px] bg-neutral-200 dark:bg-neutral-800">
       </div>
@@ -78,7 +98,7 @@ const getContributionColor = (count: number) => {
       <div class="w-2.5 h-2.5 rounded-[1px] bg-green-800 dark:bg-green-400">
       </div>
     </div>
-    <span>More</span>
+    <span>{t("home.github.more")}</span>
   </div>
 </section>
 

@@ -17,6 +17,9 @@ tech:
 
 import { Image } from "astro:assets";
 import cover from "../../../assets/media/projects/precio-luz/thumbnail.png";
+import home from "../../../assets/media/projects/precio-luz/home.png";
+import hourly from "../../../assets/media/projects/precio-luz/precio-por-hora.png";
+import calculator from "../../../assets/media/projects/precio-luz/calculadora.png";
 
 **Precio Luz** és un producte independent que vaig construir per resoldre una consulta quotidiana: saber quant costa l'electricitat avui i quan convé fer servir cada electrodomèstic. No és un projecte de Doscientos.
 
@@ -31,6 +34,12 @@ Transforma dades horàries en una consulta directa, comprensible i útil des de 
 La interfície prioritza les dades que ajuden a prendre una decisió: el preu actual, l'hora més barata, la més cara i una visualització completa de les 24 hores. Tota la informació rellevant està disponible només obrir l'eina.
 
 A més de consultar cada franja horària, permet estimar el cost aproximat d'un ús domèstic en una hora concreta.
+
+<div class="show-animation grid gap-4 my-8 md:grid-cols-2 md:items-start">
+  <Image src={home} alt="Pantalla principal de Precio Luz amb el resum del preu elèctric" class="rounded-2xl md:row-span-2" />
+  <Image src={hourly} alt="Detall del preu de l'electricitat per hora" class="rounded-2xl" />
+  <Image src={calculator} alt="Calculadora per estimar el cost d'un electrodomèstic" class="rounded-2xl" />
+</div>
 
 ## Dades públiques, sense fricció
 

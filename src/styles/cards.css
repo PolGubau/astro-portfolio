@@ -3,13 +3,14 @@
 :root {
   --card-height: 40vw;
   --card-margin: 2vw;
-  --card-top-offset: 6em;
+  --card-first-offset: 3.5em;
+  --card-top-offset: 4.5em;
 }
 
 #cards-header {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 0;
   padding-block: 1rem;
   background: var(--background);
 }
@@ -22,7 +23,9 @@
 
 #sticked-cards {
   /* Make place at bottom, as items will slide to that position*/
-  padding-bottom: calc(var(--numCards) * var(--card-top-offset));
+  padding-bottom: calc(
+    var(--card-first-offset) + var(--numCards) * var(--card-top-offset)
+  );
   /* Don't include the --card-margin in padding, as that will affect the scroll-timeline*/
   margin-bottom: var(--card-margin);
 }
@@ -46,7 +49,10 @@
 .card {
   position: sticky;
   top: 0;
-  padding-top: calc(var(--index) * var(--card-top-offset));
+  z-index: calc(var(--index) + 1);
+  padding-top: calc(
+    var(--card-first-offset) + var(--index) * var(--card-top-offset)
+  );
   transform-origin: center center;
 }
 

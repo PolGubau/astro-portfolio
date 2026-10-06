@@ -17,6 +17,9 @@ tech:
 
 import { Image } from "astro:assets";
 import cover from "../../../assets/media/projects/precio-luz/thumbnail.png";
+import home from "../../../assets/media/projects/precio-luz/home.png";
+import hourly from "../../../assets/media/projects/precio-luz/precio-por-hora.png";
+import calculator from "../../../assets/media/projects/precio-luz/calculadora.png";
 
 **Precio Luz** is an independent product I built around an everyday question: how much does electricity cost today, and when is the best time to use each appliance? It is not a Doscientos project.
 
@@ -31,6 +34,12 @@ It turns hourly data into a direct, understandable and useful check from any pho
 The interface prioritises the data that helps people act: the current price, the cheapest and most expensive hour, and a complete view of all 24 hours. Every relevant detail is available as soon as the tool opens.
 
 Alongside each hourly price, it can estimate the approximate cost of using a household appliance at a specific time.
+
+<div class="show-animation grid gap-4 my-8 md:grid-cols-2 md:items-start">
+  <Image src={home} alt="Precio Luz home screen with an electricity price summary" class="rounded-2xl md:row-span-2" />
+  <Image src={hourly} alt="Hourly electricity price details" class="rounded-2xl" />
+  <Image src={calculator} alt="Calculator estimating the cost of running an appliance" class="rounded-2xl" />
+</div>
 
 ## Public data, no friction
 

@@ -13,7 +13,9 @@ const icons = [
 ];
 ---
 
-<div class="flex items-center gap-2 w-fit rounded-full bg-ink/10 px-4 py-2">
+<div
+  class="flex items-center gap-2 w-fit rounded-full bg-ink/80 px-4 py-2 backdrop-blur-md"
+>
   {
     icons.map(({ src, alt }) => (
       <Image src={src} alt={alt} width={20} height={20} class="w-5 h-5" />

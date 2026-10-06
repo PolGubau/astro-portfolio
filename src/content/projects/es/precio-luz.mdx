@@ -17,6 +17,9 @@ tech:
 
 import { Image } from "astro:assets";
 import cover from "../../../assets/media/projects/precio-luz/thumbnail.png";
+import home from "../../../assets/media/projects/precio-luz/home.png";
+import hourly from "../../../assets/media/projects/precio-luz/precio-por-hora.png";
+import calculator from "../../../assets/media/projects/precio-luz/calculadora.png";
 
 **Precio Luz** es un producto independiente que construí para resolver una consulta cotidiana: saber cuánto cuesta la electricidad hoy y cuándo conviene usar cada electrodoméstico. No es un proyecto de Doscientos.
 
@@ -31,6 +34,12 @@ Transforma datos horarios en una consulta directa, comprensible y útil desde cu
 La interfaz prioriza los datos que ayudan a tomar una decisión: el precio actual, la hora más barata, la más cara y una visualización completa de las 24 horas. Toda la información relevante está disponible nada más abrir la herramienta.
 
 Además de consultar cada tramo horario, permite estimar el coste aproximado de un uso doméstico en una hora concreta.
+
+<div class="show-animation grid gap-4 my-8 md:grid-cols-2 md:items-start">
+  <Image src={home} alt="Pantalla principal de Precio Luz con el resumen del precio eléctrico" class="rounded-2xl md:row-span-2" />
+  <Image src={hourly} alt="Detalle del precio de la electricidad por hora" class="rounded-2xl" />
+  <Image src={calculator} alt="Calculadora para estimar el coste de un electrodoméstico" class="rounded-2xl" />
+</div>
 
 ## Datos públicos, sin fricción
 

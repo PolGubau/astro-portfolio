@@ -6,7 +6,6 @@ import "../../styles/cards.css";
 import GitHubGrid from "../GitHub/GitHubGrid.astro";
 import Header from "../Layout/header/header.astro";
 import BeyondCodeSection from "../home/BeyondCodeSection.astro";
-import DoscientosCTA from "../home/DoscientosCTA.astro";
 import OpenSourceSection from "../home/OpenSourceSection.astro";
 import PerformanceCards from "../home/PerformanceCards.astro";
 import WorkSection from "../home/WorkSection.astro";
@@ -26,7 +25,6 @@ const sideProjects = allProjects.filter((p) => !p.data.client).slice(0, 8);
       <OpenSourceSection projects={sideProjects} />
       <GitHubGrid />
       <BeyondCodeSection />
-      <DoscientosCTA />
       <PerformanceCards />
     </main>
   </div>

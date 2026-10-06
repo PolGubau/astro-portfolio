@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import me from "../../../assets/media/me.webp";
 import { getLocale, useTranslations } from "../../../i18n/utils";
 import { metadata } from "../../../lib/constants";
 
@@ -30,66 +28,47 @@ const stats = [
 ];
 ---
 
-<header class="flex flex-col gap-12 py-16 md:py-24">
-  <!-- Name + Avatar -->
-  <div
-    class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
-  >
-    <div class="flex flex-col gap-4 max-w-2xl">
-      <h1
-        data-reveal="bottom"
-        data-speed="fast"
-        data-easing="soft"
-        class="text-5xl md:text-6xl text-balance font-medium leading-[0.95]"
-      >
-        {t("home.hero.title")}
-      </h1>
-      <p
-        data-reveal="bottom"
-        data-delay="120"
-        data-easing="soft"
-        class="text-lg text-ink/60 max-w-lg"
-        set:html={t("home.hero.intro")}
-      />
-    </div>
-
-    <Image
+<header class="flex flex-col gap-8 py-12 md:py-16">
+  <div class="flex flex-col items-start gap-4 max-w-3xl">
+    <h1
       data-reveal="bottom"
       data-speed="fast"
-      data-delay="80"
-      src={me}
-      class="rounded-full bg-ink/10 object-cover"
-      alt="Pol Gubau Amores"
-      width={120}
-      height={120}
-      loading="eager"
-      priority
+      data-easing="soft"
+      class="text-4xl md:text-5xl text-balance font-medium leading-[0.98]"
+    >
+      {t("home.hero.title")}
+    </h1>
+    <p
+      data-reveal="bottom"
+      data-delay="120"
+      data-easing="soft"
+      class="text-base md:text-lg text-ink/60 max-w-xl text-balance"
+      set:html={t("home.hero.intro")}
     />
   </div>
 
-  <!-- Stats -->
   <div
     data-reveal="bottom"
     data-delay="200"
     data-easing="soft"
-    class="grid grid-cols-2 md:grid-cols-4 gap-px rounded-xl overflow-hidden border border-ink/20 divide-ink/20 divide-x"
+    class="flex flex-wrap items-center gap-2"
   >
     {
       stats.map(({ value, label, npmDownloads }) => (
-        <div class="flex flex-col gap-1 px-6 py-5 bg-background">
+        <div class="inline-flex items-center gap-2 rounded-lg bg-ink/5 px-3 py-2">
           {typeof npmDownloads === "number" ? (
             <span
               data-npm-downloads
               data-value={npmDownloads}
               data-locale={locale}
-              class="text-2xl md:text-3xl font-medium tabular-nums"
+              class="text-base md:text-lg font-medium tabular-nums"
             >
               {value}
             </span>
           ) : (
-            <span class="text-2xl md:text-3xl font-medium">{value}</span>
+            <span class="text-base md:text-lg font-medium">{value}</span>
           )}
-          <span class="text-sm text-ink/50">{label}</span>
+          <span class="text-xs text-ink/55">{label}</span>
         </div>
       ))
     }

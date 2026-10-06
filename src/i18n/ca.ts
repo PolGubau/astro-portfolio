@@ -34,7 +34,7 @@ export const ca: Record<UiKey, string> = {
   // Home hero
   "home.hero.title": "Sóc en Pol, faig productes digitals",
   "home.hero.intro":
-    'Fundador i director tècnic de <a href="https://doscientos.es" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Doscientos</a>. Desenvolupador frontend a <a href="https://mesalvo.com" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Mesalvo</a>.<br />Des de Mataró, Barcelona.',
+    'Fundador i director tècnic de <a href="https://doscientos.es" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Doscientos</a>.<br />Desenvolupador frontend a <a href="https://mesalvo.com" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Mesalvo</a>.<br />Des de Mataró, Barcelona.',
   "home.stats.npm": "Descàrregues NPM",
   "home.stats.vercel": "Visites/any",
   "home.stats.years": "Anys d'experiència",

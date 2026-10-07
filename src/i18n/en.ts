@@ -73,14 +73,14 @@ export const en = {
   // About page
   "about.role": "Senior Frontend Engineer · Mataró, Barcelona",
   "about.hero":
-    'I build interfaces for a living and can\'t stop building things outside of work. Currently Senior Frontend at <a href="https://mesalvo.com" class="text-ink hover:underline underline-offset-4" target="_blank" rel="noopener noreferrer">Mesalvo</a> and co-founder of <a href="https://doscientos.es" class="text-ink hover:underline underline-offset-4" target="_blank" rel="noopener noreferrer">Doscientos</a>.',
+    'I work across frontend engineering and product design to build clear, accessible digital products. I\'m a Senior Frontend Engineer at <a href="https://mesalvo.com" class="text-ink hover:underline underline-offset-4" target="_blank" rel="noopener noreferrer">Mesalvo</a> and co-founder and CTO of <a href="https://doscientos.es" class="text-ink hover:underline underline-offset-4" target="_blank" rel="noopener noreferrer">Doscientos</a>.',
   "about.story.title": "The story so far",
   "about.story.p1":
-    "I started as a graphic designer, winning school hackathons, shooting cars for dealerships and creating branding for startups. People kept asking me to build websites after seeing the ones I made for myself, so I learned to code.",
+    "I started out in graphic design, creating brand identities for startups and photographing cars for dealerships. Building websites for my own projects sparked my interest in development, so I taught myself to code.",
   "about.story.p2":
-    'One thing led to another. WordPress sites became React apps, freelance projects became a full-time job at Mesalvo, and a university thesis became <a href="/projects/polui" class="text-ink underline underline-offset-4 hover:opacity-70">Pol-UI</a> - a React component library with 150+ components, 62k+ npm downloads, and a 10/10 score with special distinction from UAB.',
+    'My work has taken me from WordPress sites to React applications, and from independent projects to a full-time frontend role at Mesalvo. My university thesis became <a href="/projects/polui" class="text-ink underline underline-offset-4 hover:opacity-70">Pol-UI</a>, a React component library with 150+ components, 62k+ npm downloads, and a 10/10 grade with special distinction from UAB.',
   "about.story.p3":
-    'After graduating I moved to Germany to be closer to Mesalvo\'s headquarters, then came back to Spain and co-founded <a href="/projects/doscientos" class="text-ink underline underline-offset-4 hover:opacity-70">Doscientos</a>, a software studio that implements tech that have outgrown Excel.',
+    'After graduating, I moved to Germany to work closer to Mesalvo\'s headquarters. I later returned to Spain and co-founded <a href="/projects/doscientos" class="text-ink underline underline-offset-4 hover:opacity-70">Doscientos</a>, where I lead engineering for the studio\'s product platform.',
   "about.stats.years": "Years building",
   "about.stats.npm": "npm downloads",
   "about.stats.components": "React components",
@@ -88,27 +88,27 @@ export const en = {
   "about.beyond.title": "Beyond the screen",
   "about.beyond.caption1": "Interviewed on TV3 about tech & design",
   "about.beyond.caption2": "Teaching Astro & Tailwind to 35+ students",
-  "about.beyond.caption3": "Presenting Pol-UI - 10/10 distinction",
+  "about.beyond.caption3": "Presenting Pol-UI, awarded 10/10 with special distinction",
   "about.currently.title": "Currently",
   "about.currently.item1":
-    'Senior Frontend at <strong class="text-ink font-medium">Mesalvo</strong> - building healthcare products used across Europe',
+    'Senior Frontend Engineer at <strong class="text-ink font-medium">Mesalvo</strong>, building healthcare products used across Europe',
   "about.currently.item2":
-    'Co-founder at <strong class="text-ink font-medium">Doscientos</strong> - MVPs and internal tools, fixed price, 6 weeks',
+    'Co-founder and CTO at <strong class="text-ink font-medium">Doscientos</strong>, leading engineering for the studio\'s product platform',
   "about.currently.item3":
-    'Building <a href="/projects/les-santes" class="text-ink underline underline-offset-4 hover:opacity-70">Les Santes</a> - unofficial app for Mataró\'s biggest festival',
+    'Building <a href="/projects/les-santes" class="text-ink underline underline-offset-4 hover:opacity-70">Les Santes</a>, an unofficial guide to Mataró\'s annual festival',
   "about.currently.item4": "Based in Mataró, Barcelona",
   "about.contact.title": "Get in touch",
   "about.contact.body":
-    "Open to interesting projects, freelance work, and good conversations about craft.",
+    "Open to conversations about senior frontend opportunities and product engineering.",
   "about.contact.email": "Email me",
 
   // About page - SEO meta
   "about.meta.title":
-    "About Pol Gubau Amores - Senior Frontend Engineer & Designer",
+    "About Pol Gubau | Senior Frontend Engineer",
   "about.meta.description":
-    "Get to know Pol Gubau Amores, a Senior Frontend Engineer based in Mataró, Barcelona. Co-founder of Doscientos, creator of Pol UI, and a designer-turned-developer who cares about craft, performance, and accessibility.",
+    "Meet Pol Gubau, a Senior Frontend Engineer in Mataró, Barcelona. He builds healthcare products at Mesalvo and leads product engineering at Doscientos, bringing together frontend engineering and a background in design.",
   "about.meta.schema":
-    "Get to know Pol Gubau Amores, a Senior Frontend Engineer based in Mataró, Barcelona. Co-founder of Doscientos, creator of Pol UI.",
+    "Senior Frontend Engineer in Mataró, Barcelona, building healthcare products at Mesalvo and leading product engineering at Doscientos.",
 
   // UI experiments page
   "ui.heading": "Experiments",

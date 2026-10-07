@@ -76,14 +76,14 @@ export const ca: Record<UiKey, string> = {
   // About page
   "about.role": "Senior Frontend Engineer · Mataró, Barcelona",
   "about.hero":
-    'Construeixo interfícies per viure i no puc parar de crear coses fora de la feina. Actualment Senior Frontend a <a href="https://mesalvo.com" class="text-ink hover:underline underline-offset-4" target="_blank" rel="noopener noreferrer">Mesalvo</a> i cofundador de <a href="https://doscientos.es" class="text-ink hover:underline underline-offset-4" target="_blank" rel="noopener noreferrer">Doscientos</a>.',
+    'Combino l\'enginyeria frontend i el disseny de producte per crear productes digitals clars i accessibles. Soc Senior Frontend Engineer a <a href="https://mesalvo.com" class="text-ink hover:underline underline-offset-4" target="_blank" rel="noopener noreferrer">Mesalvo</a> i cofundador i CTO de <a href="https://doscientos.es" class="text-ink hover:underline underline-offset-4" target="_blank" rel="noopener noreferrer">Doscientos</a>.',
   "about.story.title": "La història fins ara",
   "about.story.p1":
-    "Vaig començar com a dissenyador gràfic, guanyant hackathons a l'escola, fotografiant cotxes per a concessionaris i creant branding per a startups. La gent no parava de demanar-me webs en veure les que feia per a mi mateix, així que vaig aprendre a programar.",
+    "Vaig començar en el disseny gràfic, creant identitats visuals per a startups i fotografiant cotxes per a concessionaris. Fer webs per a projectes propis em va acostar al desenvolupament i em va portar a aprendre a programar.",
   "about.story.p2":
-    'Una cosa va portar a l\'altra. Les webs de WordPress es van convertir en apps de React, els projectes freelance en una feina a temps complet a Mesalvo, i un treball de fi de grau en <a href="/ca/projects/polui" class="text-ink underline underline-offset-4 hover:opacity-70">Pol-UI</a>: una llibreria de components React amb més de 150 components, més de 62k descàrregues a npm i un 10/10 amb menció especial de la UAB.',
+    'Amb el temps vaig passar de crear webs amb WordPress a desenvolupar aplicacions React, i de projectes independents a una feina de frontend a temps complet a Mesalvo. El meu treball de fi de grau va donar lloc a <a href="/ca/projects/polui" class="text-ink underline underline-offset-4 hover:opacity-70">Pol-UI</a>, una llibreria React amb més de 150 components, 62k+ descàrregues a npm i una nota de 10/10 amb menció especial de la UAB.',
   "about.story.p3":
-    'Després de graduar-me em vaig mudar a Alemanya per estar més a prop de la seu de Mesalvo, llavors vaig tornar a Espanya i vaig cofundar <a href="/ca/projects/doscientos" class="text-ink underline underline-offset-4 hover:opacity-70">Doscientos</a>, un estudi de programari que implementa tecnologia per a qui s\'ha quedat petit amb l\'Excel.',
+    'Després de graduar-me, em vaig traslladar a Alemanya per treballar més a prop de la seu de Mesalvo. Més tard vaig tornar a Espanya i vaig cofundar <a href="/ca/projects/doscientos" class="text-ink underline underline-offset-4 hover:opacity-70">Doscientos</a>, on lidero l\'enginyeria de la plataforma de producte de l\'estudi.',
   "about.stats.years": "Anys creant",
   "about.stats.npm": "descàrregues npm",
   "about.stats.components": "components React",
@@ -91,27 +91,27 @@ export const ca: Record<UiKey, string> = {
   "about.beyond.title": "Més enllà de la pantalla",
   "about.beyond.caption1": "Entrevistat a TV3 sobre tecnologia i disseny",
   "about.beyond.caption2": "Ensenyant Astro i Tailwind a més de 35 alumnes",
-  "about.beyond.caption3": "Presentant Pol-UI - distinció 10/10",
+  "about.beyond.caption3": "Presentant Pol-UI, TFG amb 10/10 i menció especial",
   "about.currently.title": "Ara mateix",
   "about.currently.item1":
-    'Senior Frontend a <strong class="text-ink font-medium">Mesalvo</strong> - creant productes de salut usats a tota Europa',
+    'Senior Frontend Engineer a <strong class="text-ink font-medium">Mesalvo</strong>, on desenvolupo productes de salut que s\'utilitzen arreu d\'Europa',
   "about.currently.item2":
-    'Cofundador a <strong class="text-ink font-medium">Doscientos</strong> - MVPs i eines internes, preu tancat, 6 setmanes',
+    'Cofundador i CTO de <strong class="text-ink font-medium">Doscientos</strong>; lidero l\'enginyeria de la plataforma de producte de l\'estudi',
   "about.currently.item3":
-    'Creant <a href="/ca/projects/les-santes" class="text-ink underline underline-offset-4 hover:opacity-70">Les Santes</a> - app no oficial de la festa major de Mataró',
+    'Desenvolupant <a href="/ca/projects/les-santes" class="text-ink underline underline-offset-4 hover:opacity-70">Les Santes</a>, una guia no oficial de la festa major de Mataró',
   "about.currently.item4": "A Mataró, Barcelona",
   "about.contact.title": "Parlem",
   "about.contact.body":
-    "Obert a projectes interessants, feina freelance i bones converses sobre l'ofici.",
+    "Obert a parlar d'oportunitats com a Senior Frontend Engineer i d'enginyeria de producte.",
   "about.contact.email": "Escriu-me",
 
   // About page - SEO meta
   "about.meta.title":
-    "Sobre Pol Gubau Amores - Senior Frontend Engineer & Dissenyador",
+    "Sobre Pol Gubau | Senior Frontend Engineer",
   "about.meta.description":
-    "Coneix en Pol Gubau Amores, Senior Frontend Engineer a Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI, dissenyador reconvertit en desenvolupador.",
+    "Coneix Pol Gubau, Senior Frontend Engineer a Mataró, Barcelona. Desenvolupa productes de salut a Mesalvo i lidera l'enginyeria de producte a Doscientos, amb una trajectòria que combina frontend i disseny.",
   "about.meta.schema":
-    "Coneix en Pol Gubau Amores, Senior Frontend Engineer a Mataró, Barcelona. Cofundador de Doscientos, creador de Pol UI.",
+    "Senior Frontend Engineer a Mataró, Barcelona. Desenvolupa productes de salut a Mesalvo i lidera l'enginyeria de producte a Doscientos.",
 
   // UI experiments page
   "ui.heading": "Experiments",

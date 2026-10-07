@@ -1,7 +1,11 @@
 ---
 import { getLocale, useTranslations } from "../../i18n/utils";
 import MainLayout from "../../layouts/MainLayout.astro";
-import { getProjects } from "../../lib/utils";
+import {
+  getLocalizedProject,
+  getProjects,
+  parseProjectId,
+} from "../../lib/utils";
 import "../../styles/cards.css";
 import GitHubGrid from "../GitHub/GitHubGrid.astro";
 import Header from "../Layout/header/header.astro";
@@ -22,9 +26,12 @@ const featuredProjectIds = new Set([
     .slice(0, 8)
     .map((project) => project.id),
 ]);
-const featuredProjects = allProjects.filter((project) =>
-  featuredProjectIds.has(project.id),
-);
+const featuredProjects = allProjects
+  .filter((project) => featuredProjectIds.has(project.id))
+  .map(
+    (project) =>
+      getLocalizedProject(parseProjectId(project.id).slug, locale) ?? project,
+  );
 ---
 
 <MainLayout title={t("seo.home.title")} description={t("seo.home.description")}>

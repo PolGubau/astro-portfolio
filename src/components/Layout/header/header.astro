@@ -4,6 +4,8 @@ import { metadata } from "../../../lib/constants";
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
+const [heroTitleLead, ...heroTitleRestParts] = t("home.hero.title").split(", ");
+const heroTitleRest = heroTitleRestParts.join(", ");
 const npmDownloads = Number(metadata.npmDownloads);
 const formattedNpmDownloads = new Intl.NumberFormat(locale).format(
   npmDownloads,
@@ -32,7 +34,8 @@ const stats = [
       data-easing="soft"
       class="text-4xl md:text-5xl text-balance font-medium leading-[0.98]"
     >
-      {t("home.hero.title")}
+      <span class="md:block">{heroTitleLead},</span>{" "}
+      <span class="md:block">{heroTitleRest}</span>
     </h1>
     <p
       data-reveal="bottom"

@@ -30,7 +30,7 @@ export const en = {
     "Senior frontend engineer building React, TypeScript and React Native products, design systems and accessible web experiences. Based in Barcelona, Spain.",
 
   // Home hero
-  "home.hero.title": "I'm Pol, a senior frontend developer",
+  "home.hero.title": "I'm Pol, I build digital products",
   "home.hero.intro":
     'Founder and CTO at <a href="https://doscientos.es" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Doscientos</a>.<br />Based in Mataró, Barcelona.',
   "home.stats.npm": "NPM downloads",

@@ -32,7 +32,7 @@ export const es: Record<UiKey, string> = {
     "Desarrollador frontend senior especializado en React, TypeScript y React Native. Creo productos web y móviles accesibles y sistemas de diseño desde Barcelona.",
 
   // Home hero
-  "home.hero.title": "Soy Pol, desarrollador frontend senior",
+  "home.hero.title": "Soy Pol, construyo productos digitales",
   "home.hero.intro":
     'Fundador y director técnico de <a href="https://doscientos.es" target="_blank" rel="noopener noreferrer" class="text-ink hover:underline underline-offset-4">Doscientos</a>.<br />En Matar\u00f3, Barcelona.',
   "home.stats.npm": "Descargas NPM",

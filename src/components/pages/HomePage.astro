@@ -1,11 +1,7 @@
 ---
 import { getLocale, useTranslations } from "../../i18n/utils";
 import MainLayout from "../../layouts/MainLayout.astro";
-import {
-  getLocalizedProject,
-  getProjects,
-  parseProjectId,
-} from "../../lib/utils";
+import { getLocalizedProject } from "../../lib/utils";
 import "../../styles/cards.css";
 import GitHubGrid from "../GitHub/GitHubGrid.astro";
 import Header from "../Layout/header/header.astro";
@@ -13,25 +9,19 @@ import BeyondCodeSection from "../home/BeyondCodeSection.astro";
 import PerformanceCards from "../home/PerformanceCards.astro";
 import WorkSection from "../home/WorkSection.astro";
 
-const allProjects = getProjects();
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
-const featuredProjectIds = new Set([
-  ...allProjects
-    .filter((project) => !!project.data.client)
-    .slice(0, 6)
-    .map((project) => project.id),
-  ...allProjects
-    .filter((project) => !project.data.client)
-    .slice(0, 8)
-    .map((project) => project.id),
-]);
-const featuredProjects = allProjects
-  .filter((project) => featuredProjectIds.has(project.id))
-  .map(
-    (project) =>
-      getLocalizedProject(parseProjectId(project.id).slug, locale) ?? project,
-  );
+const featuredProjects = [
+  "les-santes",
+  "polui",
+  "doscientos",
+  "novahair",
+  "arenas",
+].map((slug) => {
+  const project = getLocalizedProject(slug, locale);
+  if (!project) throw new Error(`Featured project not found: ${slug}`);
+  return project;
+});
 ---
 
 <MainLayout title={t("seo.home.title")} description={t("seo.home.description")}>

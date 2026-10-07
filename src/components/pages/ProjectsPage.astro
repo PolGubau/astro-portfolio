@@ -8,7 +8,6 @@ import {
 import MainLayout from "../../layouts/MainLayout.astro";
 import { metadata } from "../../lib/constants";
 import { getLocalizedProjects, parseProjectId } from "../../lib/utils";
-import ContentLanguageNotice from "../Layout/ContentLanguageNotice.astro";
 import ProjectsList from "../Projects/ProjectList/ProjectsList.astro";
 
 const locale = getLocale(Astro.currentLocale);
@@ -54,7 +53,6 @@ const itemListSchema = {
         {t("projects.heading")}
       </h1>
       <p class="text-ink/60">{t("projects.subtitle")}</p>
-      <ContentLanguageNotice message={t("projects.notice")} />
     </header>
     <ProjectsList projects={projects} />
   </div>

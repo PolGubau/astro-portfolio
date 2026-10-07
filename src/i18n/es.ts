@@ -41,7 +41,7 @@ export const es: Record<UiKey, string> = {
   "home.stats.projects": "Proyectos entregados",
 
   // Home sections
-  "home.work.title": "Proyectos recientes",
+  "home.work.title": "Proyectos seleccionados",
   "home.viewAll": "Ver todo",
   "home.side.title": "Proyectos personales",
   "home.side.downloads": "descargas",
@@ -136,7 +136,6 @@ export const es: Record<UiKey, string> = {
   "projects.heading": "Proyectos",
   "projects.subtitle":
     "Una selección de trabajo en web, móvil, open source y freelance.",
-  "projects.notice": "El detalle de los proyectos está en inglés.",
   "projects.similar": "Proyectos similares",
   "projects.meta.title":
     "Proyectos frontend de Pol Gubau | React y TypeScript",

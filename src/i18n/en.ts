@@ -39,7 +39,7 @@ export const en = {
   "home.stats.projects": "Projects delivered",
 
   // Home sections
-  "home.work.title": "Recent projects",
+  "home.work.title": "Selected projects",
   "home.viewAll": "View all",
   "home.side.title": "Side projects",
   "home.side.downloads": "downloads",
@@ -133,7 +133,6 @@ export const en = {
   "projects.heading": "Projects",
   "projects.subtitle":
     "A selection of work across web, mobile, open source and freelance.",
-  "projects.notice": "",
   "projects.similar": "Similar Projects",
   "projects.meta.title":
     "Frontend Projects by Pol Gubau | React & TypeScript",

@@ -2,7 +2,11 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { getLocale, localizePath } from "../../i18n/utils";
-import { type ProjectMetadata, parseProjectId } from "../../lib/utils";
+import {
+  formatTechnologyName,
+  type ProjectMetadata,
+  parseProjectId,
+} from "../../lib/utils";
 
 interface Props {
   projects: ProjectMetadata[];
@@ -21,7 +25,7 @@ const locale = getLocale(Astro.currentLocale);
         data;
       const year = (endedAt ?? startedAt).getFullYear();
       const isActive = !endedAt;
-      const tags = (tech ?? []).slice(0, 3);
+      const tags = (tech ?? []).slice(0, 2);
 
       return (
         <li
@@ -72,7 +76,9 @@ const locale = getLocale(Astro.currentLocale);
                   </span>
                 )}
               </div>
-              <p class="line-clamp-1 text-sm text-ink/40">{summary}</p>
+              <p class="line-clamp-2 text-sm leading-relaxed text-ink/55">
+                {summary}
+              </p>
             </div>
 
             {/* Meta - desktop */}
@@ -82,12 +88,14 @@ const locale = getLocale(Astro.currentLocale);
                   {tags.map((tag, i) => (
                     <>
                       {i > 0 && <span class="text-ink/20">·</span>}
-                      <span class="text-xs text-ink/35">{tag}</span>
+                      <span class="text-[11px] text-ink/30">
+                        {formatTechnologyName(tag)}
+                      </span>
                     </>
                   ))}
                 </div>
               )}
-              <span class="w-9 text-right text-xs tabular-nums text-ink/25">
+              <span class="w-9 text-right text-[11px] tabular-nums text-ink/20">
                 {year}
               </span>
               <Icon
